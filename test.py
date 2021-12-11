@@ -16,4 +16,4 @@ for i in range(len(l)):
 print(l)
 
 # the code works for a list of 6 elements (nope)
-# but i'm getting close i feel it
+# but i'm getting close i feel it 
