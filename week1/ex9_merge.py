@@ -2,7 +2,7 @@
 l = [1, 5, 9, 12, 2, 6, 10]
 
 # the loop should continue as long as the list is unsorted
-while( not all(l[j] <= l[j+1] for j in range(len(l)-1))): # found on stackoverflow
+while(not all(l[j] <= l[j+1] for j in range(len(l)-1))): # found on stackoverflow
 #while (l[0] != min(l)) or (l[-1] != max(l)): # should check here if list is sorted
     for i in range(0, 1 + len(l)):
     
