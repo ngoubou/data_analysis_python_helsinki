@@ -5,7 +5,7 @@ l = [1, 5, 9, 12, 2, 6, 10]
 while (l[0] != min(l)) or (l[-1] != max(l)):
     for i in range(0, 1 + len(l)):
     
-        while i+1 < 1 + len(l):
+        while i+1 < len(l):
             #print(i)
             temp = l[i]
             #if i+1 > len(l):
