@@ -18,3 +18,4 @@ while( not all(l[j] <= l[j+1] for j in range(len(l)-1))): # found on stackoverfl
 print(l)
 
 # my code wasn't working cause the while condition was not correctly specified
+# try to improve my code using the wiki article illustration of merge sort
