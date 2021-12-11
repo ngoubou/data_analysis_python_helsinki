@@ -3,6 +3,7 @@
 #l = [40, 2, 34, 3, 18, 7] # works only for this example
 l = [1, 5, 9, 12, 2, 6, 10]
 # the loop should continue as long as the list is unsorted
+#all(l[i] <= l[i+1] for i in range(len(l)-1))
 while (l[0] != min(l)) or (l[-1] != max(l)): # should check here if list is sorted
     for i in range(0, 1 + len(l)):
     
