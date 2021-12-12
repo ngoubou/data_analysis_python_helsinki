@@ -1,3 +1,5 @@
+# Write a function that takes 2 lists as an argument,
+# merge them and return them sorted
 # test list
 l = [1, 5, 9, 12, 2, 6, 10]
 
