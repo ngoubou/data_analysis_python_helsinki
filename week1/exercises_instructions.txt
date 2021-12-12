@@ -1,5 +1,22 @@
 
 ##################### EXERCISES INSTRUCTIONS ##########################
 
-# EXERCISE 1 
+
+
+
+# EXERCISE 9 (merge)
+
+Suppose we have two lists L1 and L2 that contain integers which are sorted in ascending order. Create a function merge that gets these lists as parameters and returns a new sorted list L that has all the elements of L1 and L2. So, len(L) should equal to len(L1)+len(L2). Do this using the fact that both lists are already sorted. You can’t use the sorted function or the sort method in implementing the merge method. You can however use these sorted in the main function for creating inputs to the merge function. Test with a couple of examples in the main function that your solution works correctly.
+
+Note: In Python argument lists are passed by reference to the function, they are not copied! Make sure you don't modify the original lists of the caller
+
+
+# EXERCISE 10 (detect ranges)
+
+Create a function named detect_ranges that gets a list of integers as a parameter. The function should then sort this list, and transform the list into another list where pairs are used for all the detected intervals. So 3,4,5,6 is replaced by the pair (3,7). Numbers that are not part of any interval result just single numbers. The resulting list consists of these numbers and pairs, separated by commas. An example of how this function works:
+
+print(detect_ranges([2,5,4,8,12,6,7,10,13]))
+[2,(4,9),10,(12,14)]
+
+Note that the second element of the pair does not belong to the range. This is consistent with the way Python's range function works. You may assume that no element in the input list appears multiple times.
 
