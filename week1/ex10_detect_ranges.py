@@ -15,7 +15,7 @@ for i in range(4,7):
     print(i)
 
 # prends 2 nombres adjacents (i et i + 1)
-
+# calcule range(i, i+1)
 # s'il y a 2 chiffres et le dernier chiffre de range(i, i + 1) n'est pas égal à i + 1
 # prends i et mets le de côté dans une nouvelle liste
 
