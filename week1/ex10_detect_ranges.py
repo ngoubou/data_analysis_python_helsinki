@@ -21,7 +21,7 @@ ls = [2, 4, 5, 6, 7, 8, 10, 12, 13]
 for i in range(len(ls)):
     # écrire une condition pour ne pas prendre dernier élément
     # car i + 1 out of range
-    if len(range(ls[i], ls[i+1])) == 2:
+    if len(range(ls[i], ls[i+1])) == 2: 
         "oui"
     print(range(ls[i], ls[i+1]))
     #print(i)
