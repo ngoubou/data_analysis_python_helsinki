@@ -25,8 +25,12 @@ for i in range(len(ls)):
         if ls[i+1] not in range(ls[i], ls[i+1]): # normalement une boucle pour ça (while?)
             print(ls[i])
             # prends i+1
-            range(ls[i+1], ls[i+1])
-            #continue
+        if len(range(ls[j],ls[j+1])) == 1:
+            # prends j + 2
+
+            # range(ls[i+1], ls[i+1])
+            # break
+            # continue
 
         
     #if len(range(ls[i], ls[i+1])) == 2: 
