@@ -19,11 +19,14 @@ ls = [2, 4, 5, 6, 7, 8, 10, 12, 13]
 
 
 for i in range(len(ls)):
+    for j in range(1, len(ls)):
     # écrire une condition pour ne pas prendre dernier élément
     # car i + 1 out of range (while loop)
-    if ls[i+1] not in range(ls[i], ls[i+1]): # normalement une boucle pour ça
-        print(ls[i])
-        continue
+        if ls[i+1] not in range(ls[i], ls[i+1]): # normalement une boucle pour ça (while?)
+            print(ls[i])
+            # prends i+1
+            range(ls[i+1], ls[i+1])
+            #continue
 
         
     #if len(range(ls[i], ls[i+1])) == 2: 
