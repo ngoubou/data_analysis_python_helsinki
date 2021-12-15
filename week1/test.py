@@ -13,6 +13,7 @@ j = 0
 for i in range(2): # je veux uniquement que i soit égal à 0 et 1. Pourquoi? Aucune idée
     #for j in range(len(ll)):
     
+    ## PROBLÈME ICI
     new_list = list(range(ls[i], ll[j])) # attention au dernier élément de la liste
     #while i+1 < len(ls):
 # for i in ls:
@@ -20,13 +21,13 @@ for i in range(2): # je veux uniquement que i soit égal à 0 et 1. Pourquoi? Au
     
        
     # s'il y a un élément non présent dans LA LISTE:
-   
-    if not all(x in ls for x in new_list): # juste pour les 2 premiers éléments
+    ## PROBLÈME ICI
+    if not all(x in ls for x in new_list): # juste pour les 2 premiers éléments (rentre ici 1 seule fois)
         #print(ls[i])
         a = ls[i]
         j += 1
         #i += 1 si j loop uncomment
-    else:
+    else: # rentre ici une seule fois (?)
         a = ls[i]
         #j += 1    
     # peut-être update new_list ici
@@ -40,6 +41,7 @@ for i in range(2): # je veux uniquement que i soit égal à 0 et 1. Pourquoi? Au
         j += 1 
 
         # ne le faire qu'après être entré dans la while loop   
+        ## PROBLÈME ICI
         if new_list[-1] not in ls:
             #print(new_list[0], new_list[-1]) 
             b = new_list[0]
@@ -48,14 +50,16 @@ for i in range(2): # je veux uniquement que i soit égal à 0 et 1. Pourquoi? Au
             d = ll[j]
             new_list = list(range(ll[j+1], ll[j+2]))  # pour le dernier élément
             # le + 1 et + 2 sont trop spécifiques à mon exemple
-            if ll[j+2] not in new_list:
+        # imprimer successivement les éléments désirés
+        ## PROBLÈME ICI
+        if (ll[j+2] == ls[-1]) and (ll[j+2] not in new_list): # ne faire que pour dernier élément
                 #print(list([ll[j+1], ll[j+2] + 1]))
-                e = ll[j+1]
-                f = ll[j+2] + 1
+            e = ll[j+1]
+            f = ll[j+2] + 1
                 #print(f"The area is {c:6f}")
-                print("[{},({},{}),{},({},{})]".format(a, b, c, d, e, f)) 
+            print("[{},({},{}),{},({},{})]".format(a, b, c, d, e, f)) 
                 # ne pas toujours print a tout seul
-                break
+            break
             # si ll[j+2] pas présent dans new_list
             # alors print(list(ll[j+1], ll[j+2] + 1))
             # on arrête tout après ça
