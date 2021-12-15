@@ -1,6 +1,7 @@
 # coding=utf-8
 
-ls = [2, 4, 5, 6, 7, 8, 10, 12, 13]
+L = [12, 8, 5, 6, 7, 4, 10, 2, 13]
+ls = sorted(L)
 ll = list(ls)
 del ll[0]
 
@@ -20,7 +21,8 @@ for i in range(2): # je veux uniquement que i soit égal à 0 et 1. Pourquoi? Au
     # s'il y a un élément non présent dans LA LISTE:
    
     if not all(x in ls for x in new_list): # juste pour les 2 premiers éléments
-        print(ls[i])
+        #print(ls[i])
+        a = ls[i]
         j += 1
         #i += 1 si j loop uncomment
     
@@ -36,12 +38,20 @@ for i in range(2): # je veux uniquement que i soit égal à 0 et 1. Pourquoi? Au
 
         # ne le faire qu'après être entré dans la while loop   
         if new_list[-1] not in ls:
-            print(new_list[0], new_list[-1]) 
-            print(ll[j])
+            #print(new_list[0], new_list[-1]) 
+            b = new_list[0]
+            c = new_list[-1]
+            #print(ll[j])
+            d = ll[j]
             new_list = list(range(ll[j+1], ll[j+2]))  # pour le dernier élément
             # le + 1 et + 2 sont trop spécifiques à mon exemple
             if ll[j+2] not in new_list:
-                print(list([ll[j+1], ll[j+2] + 1]))
+                #print(list([ll[j+1], ll[j+2] + 1]))
+                e = ll[j+1]
+                f = ll[j+2] + 1
+                #print(f"The area is {c:6f}")
+                print("[{},({},{}),{},({},{})]".format(a, b, c, d, e, f)) 
+                #print("{} plus {} is equal to {}".format(2, 3, 4))
                 break
             # si ll[j+2] pas présent dans new_list
             # alors print(list(ll[j+1], ll[j+2] + 1))
