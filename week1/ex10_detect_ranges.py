@@ -16,16 +16,35 @@ l = [2,5,4,8,12,6,7,10,13]
 
 # work with the sorted list
 ls = [2, 4, 5, 6, 7, 8, 10, 12, 13]
+ll = ls.copy()
+del ll[0]
 
+n = [10, 20, 30, 40]
+m = [1, 20, 21, 30]
+#print(type(m))
+
+for j in ll:
+    for i in ls:
+        
+        print(range(j,i))
+#print([any(x in range(r) for r in m) for x in n])
 
 for i in range(len(ls)):
     for j in range(1, len(ls)):
     # écrire une condition pour ne pas prendre dernier élément
     # car i + 1 out of range (while loop)
-        if ls[i+1] not in range(ls[i], ls[i+1]): # normalement une boucle pour ça (while?)
+        if ls[i+1] not in range(ls[i], ls[i+1]): # normalement une boucle pour ça (while?) nope
             print(ls[i])
             # prends i+1
         if len(range(ls[j],ls[j+1])) == 1:
+            k = j + 2
+        #if (ls[j] and ls[k]) in range(ls[j], ls[k]):
+            #continue
+        print(list(range(ls[j], ls[k])))
+        if list(range(ls[j], ls[k])) in ls:
+            print('oui')
+        # continue jusqu'à ce que le range print un chiffre pas dans ls
+            #print(range(ls[j], ls[k]))
             # prends j + 2
 
             # range(ls[i+1], ls[i+1])
@@ -51,3 +70,4 @@ for i in range(len(ls)):
 # recommence la boucle
 
 # penser à écrire une seconde boucle
+
