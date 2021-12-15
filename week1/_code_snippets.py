@@ -1,4 +1,5 @@
-
+# coding=utf-8
+# put the above at the start of a file to use special characters in the comments
 l = []
 
 # check if a list is empty
