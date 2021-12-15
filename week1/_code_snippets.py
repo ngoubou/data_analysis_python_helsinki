@@ -9,3 +9,6 @@ if not l:
 # check if list is sorted
 # for a list named l
 all(l[j] <= l[j+1] for j in range(len(l)-1))
+
+# check if all elements of a list is in another list
+all(x in ['b', 'a', 'foo', 'bar'] for x in ['a', 'b'])
