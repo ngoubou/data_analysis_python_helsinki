@@ -1,6 +1,7 @@
 # coding=utf-8
 
-L = [12, 8, 5, 6, 7, 4, 10, 2, 13]
+#L = [12, 8, 5, 6, 7, 4, 10, 2, 13]
+L = [88, 89, 90, 92, 93, 94, 95, 96, 97]
 ls = sorted(L)
 ll = list(ls)
 del ll[0]
@@ -25,7 +26,9 @@ for i in range(2): # je veux uniquement que i soit égal à 0 et 1. Pourquoi? Au
         a = ls[i]
         j += 1
         #i += 1 si j loop uncomment
-    
+    else:
+        a = ls[i]
+        #j += 1    
     # peut-être update new_list ici
 
 # vérifier si tous les éléments de cette liste sont dans LA LISTE:
@@ -51,7 +54,7 @@ for i in range(2): # je veux uniquement que i soit égal à 0 et 1. Pourquoi? Au
                 f = ll[j+2] + 1
                 #print(f"The area is {c:6f}")
                 print("[{},({},{}),{},({},{})]".format(a, b, c, d, e, f)) 
-                #print("{} plus {} is equal to {}".format(2, 3, 4))
+                # ne pas toujours print a tout seul
                 break
             # si ll[j+2] pas présent dans new_list
             # alors print(list(ll[j+1], ll[j+2] + 1))
