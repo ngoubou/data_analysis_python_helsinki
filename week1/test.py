@@ -7,7 +7,11 @@ del ll[0]
 
 
 # faire range des 2 1ers éléments et les mettre dans une liste
-new_list = list(range(ls[0], ls[1]))
+for i in range(len(ls)): 
+# for i in ls:
+    #new_list =  list(range(i, i+1)) # donne un résultat différent
+    if ll:
+        new_list = list(range(ls[i], ls[i+1])) # attention au dernier élément de la liste
 
 
 
@@ -23,9 +27,13 @@ if all(x in ls for x in new_list):
     # si 2e nombre pas dans LISTE, alors dernier élément à imprimer
 
     # s'il y a un élément non présent dans LA LISTE:
+else:
+    print(ls[0])
+    
     # print le 1er nombre, et sors
     # update une variable ici
     # prends le 2e nombre avec qui tu étais et fais ce qui est au dessus
+    range(ls[1], ls[2])
 
 
 
