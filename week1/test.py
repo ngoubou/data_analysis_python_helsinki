@@ -4,5 +4,7 @@ del ll[0]
 
 for j in ll:
     for i in ls:
-        
-        print(range(j,i))
+        if j not in list(range(i,j)):
+            print(i)
+        #print(list(range(i,j)))
+        #print(range(j,i))
