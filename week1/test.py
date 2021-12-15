@@ -7,42 +7,53 @@ del ll[0]
 
 
 # faire range des 2 1ers éléments et les mettre dans une liste
-for i in range(len(ls)): 
+j = 0
+for i in range(2): # je veux uniquement que i soit égal à 0 et 1. Pourquoi? Aucune idée
     #for j in range(len(ll)):
-    j = 0
+    
     new_list = list(range(ls[i], ll[j])) # attention au dernier élément de la liste
     #while i+1 < len(ls):
 # for i in ls:
     #new_list =  list(range(i, i+1)) # donne un résultat différent
     
        
-
-
+    # s'il y a un élément non présent dans LA LISTE:
+   
+    if not all(x in ls for x in new_list): # juste pour les 2 premiers éléments
+        print(ls[i])
+        j += 1
+        #i += 1 si j loop uncomment
+    
+    # peut-être update new_list ici
 
 # vérifier si tous les éléments de cette liste sont dans LA LISTE:
 #print(all(x in ls for x in new_list))
     # s'ils le sont tous, étendre le range à l'élément suivant.
-    while all(x in ls for x in new_list):
-            #print(range(ls[i], ll[j]))
+    while all(x in ls for x in new_list): # ne pas revenir ici lorsqu'on est à l'avant dernier élément
+        #print(range(ls[i], ll[j+1]))
         new_list = list(range(ls[i], ll[j+1])) # après ici revenir checker directement
-    j += 1 # tester avec j dans la while loop
+        j += 1 
 
         # ne le faire qu'après être entré dans la while loop   
-    if all(x in ls for x in new_list): # la condition n'est pas bonne
-        print(new_list[0], new_list[-1]) 
-        print(ll[j])
-        print(list(range(ll[j+1], ll[j+2])))
-
+        if new_list[-1] not in ls:
+            print(new_list[0], new_list[-1]) 
+            print(ll[j])
+            new_list = list(range(ll[j+1], ll[j+2]))  # pour le dernier élément
+            # le + 1 et + 2 sont trop spécifiques à mon exemple
+            if ll[j+2] not in new_list:
+                print(list([ll[j+1], ll[j+2] + 1]))
+                break
+            # si ll[j+2] pas présent dans new_list
+            # alors print(list(ll[j+1], ll[j+2] + 1))
+            # on arrête tout après ça
+        
+        #print(list(range(ll[j+1], ll[j+2])))
+    
     # s'arrêter dès qu'il y a un élément non présent dans THE LIST
     # et print range(élément[0], élément[-1])
     # prends 2e nombre du range
     # si 2e nombre pas dans LISTE, alors dernier élément à imprimer
 
-    # s'il y a un élément non présent dans LA LISTE:
-    # changer condition après
-    if not all(x in ls for x in new_list): # juste pour les 2 premiers éléments
-        print(ls[i])
-        i += 1
     
     # print le 1er nombre, et sors
     # update une variable ici
