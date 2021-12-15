@@ -8,29 +8,37 @@ del ll[0]
 
 # faire range des 2 1ers éléments et les mettre dans une liste
 for i in range(len(ls)): 
-    while i+1 < len(ls):
+    for j in range(len(ll)):
+        new_list = list(range(ls[i], ll[j])) # attention au dernier élément de la liste
+    #while i+1 < len(ls):
 # for i in ls:
     #new_list =  list(range(i, i+1)) # donne un résultat différent
     
-        new_list = list(range(ls[i], ls[i+1])) # attention au dernier élément de la liste
+       
 
 
 
 # vérifier si tous les éléments de cette liste sont dans LA LISTE:
 #print(all(x in ls for x in new_list))
     # s'ils le sont tous, étendre le range à l'élément suivant.
-        if all(x in ls for x in new_list):
-            print(range(ls[i], ls[i+1]))
+        while all(x in ls for x in new_list):
+            #print(range(ls[i], ll[j]))
+            new_list = list(range(ls[i], ll[j+1])) # après ici revenir checker directement
+            j += 1
 
+        # ne le faire qu'après être entré dans la while loop   
+        if all(x in ls for x in new_list): 
+            print(new_list[0], new_list[-1]) 
+            print(ll[j])
     # s'arrêter dès qu'il y a un élément non présent dans THE LIST
     # et print range(élément[0], élément[-1])
     # prends 2e nombre du range
     # si 2e nombre pas dans LISTE, alors dernier élément à imprimer
 
     # s'il y a un élément non présent dans LA LISTE:
-        else:
+        if not all(x in ls for x in new_list):
             print(ls[i])
-        i += 1
+            i += 1
     
     # print le 1er nombre, et sors
     # update une variable ici
