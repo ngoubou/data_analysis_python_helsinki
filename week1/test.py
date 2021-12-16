@@ -22,16 +22,21 @@ for i in range(2): # je veux uniquement que i soit égal à 0 et 1. Pourquoi? Au
        
     # s'il y a un élément non présent dans LA LISTE:
     ## PROBLÈME ICI
-    if not all(x in ls for x in new_list): # juste pour les 2 premiers éléments (rentre ici 1 seule fois)
-        #print(ls[i])
-        a = ls[i]
-        j += 1
-        #i += 1 si j loop uncomment
-    else: # rentre ici une seule fois (?)
-        a = ls[i]
+    while i == 0: # essayer ça pour qu'il rentre ici que pour les 2 1ers éléments
+        if not all(x in ls for x in new_list): # juste pour les 2 premiers éléments (rentre ici 1 seule fois)
+            #print(ls[i])
+            a = ls[i]
+            j += 1
+            i += 1
+            #i += 1 si j loop uncomment
+        else: # rentre ici une seule fois (?)
+            a = ls[i]
+            i += 1
         #j += 1    
     # peut-être update new_list ici
-
+    if j < 2: # par rapport à la while loop au dessus
+        i = 0 
+    # j'augmente juste le i de 1 pour sortir de la loop
 # vérifier si tous les éléments de cette liste sont dans LA LISTE:
 #print(all(x in ls for x in new_list))
     # s'ils le sont tous, étendre le range à l'élément suivant.
@@ -48,7 +53,7 @@ for i in range(2): # je veux uniquement que i soit égal à 0 et 1. Pourquoi? Au
             c = new_list[-1]
             #print(ll[j])
             d = ll[j]
-            new_list = list(range(ll[j+1], ll[j+2]))  # pour le dernier élément
+            new_list = list(range(ll[j+1], ll[j+2]))  # pour le dernier élément LL == LS
             # le + 1 et + 2 sont trop spécifiques à mon exemple
         # imprimer successivement les éléments désirés
         ## PROBLÈME ICI
