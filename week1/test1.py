@@ -6,16 +6,20 @@ ls = [88, 89, 90, 92, 93, 94, 95, 96, 97]
 new_list = list(range(ls[0], ls[1]))
 j = 1
 #for i in range(len(ls)):
+print("[", end = "")
 while j < len(ls):
+    #singleton = []
     #for j in range(1,len(ls)): # mettre while loop ici
+   
     while (not all(x in ls for x in new_list)) and (j < len(ls)): #  mettre condition pour dernier élément
         if len(new_list) == 2:
-            print(new_list[0]) # créer une liste pour toutes les valeurs
+            print(new_list[0], end = ",") # créer une liste pour toutes les valeurs
                 #new_list = list(range(ls[i+1], ls[1]))
+            #print()
             new_list = list(range(ls[j], ls[j+1])) # mettre autre chose ici
             j += 1
         else:
-            print(new_list[0], new_list[-1]) # créer une liste pour toutes les valeurs
+            print("(" + str(new_list[0])+ "," + str(new_list[-1]) + ")", end = ",") # créer une liste pour toutes les valeurs
             new_list = list(range(ls[j-1], ls[j]))
         
     while (all(x in ls for x in new_list)) and (j < len(ls)): # mettre condition pour dernier élément
@@ -23,7 +27,7 @@ while j < len(ls):
         j += 1
             # pour dernier élément
         if ls[-1] == new_list[-1] + 1:
-            print(new_list[0], ls[-1] + 1) # créer une liste pour toutes les valeurs
+            print("(" + str(new_list[0]) + "," + str(ls[-1] + 1), end = ")]") # créer une liste pour toutes les valeurs
                 #print(range(new_list[0], ls[-1] + 1)) 
 
     #while all(x in ls for x in new_list):
