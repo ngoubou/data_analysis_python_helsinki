@@ -6,6 +6,7 @@ ls = [2, 4, 5, 6, 7, 8, 10, 12, 13]
 #ls = [1, 2, 4]
 #ls = [-2, 0, 1, 2, 3]
 #ls = sorted([4, 2, 0, -2, -4])
+#ls = sorted([-32, -22, -85, 76, -54, -49, 79, -17, -10, 86]) # infinite loo
 #print(list(reversed(ls)))
 new_list = list(range(ls[0], ls[1]))
 j = 1
