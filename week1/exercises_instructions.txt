@@ -168,11 +168,30 @@ Use the set container to temporarily store the distinct characters in a string. 
 
 
 
-### EXERCISE 13
+### EXERCISE 13 (reverse dictionary)
+
+Let d be a dictionary that has English words as keys and a list of Finnish words as values. So, the dictionary can be used to find out the Finnish equivalents of an English word in the following way:
+
+d["move"]
+["liikuttaa"]
+d["hide"]
+["piilottaa", "salata"]
+
+Make a function reverse_dictionary that creates a Finnish to English dictionary based on a English to Finnish dictionary given as a parameter. The values of the created dictionary should be lists of words. It should work like this:
+
+d={'move': ['liikuttaa'], 'hide': ['piilottaa', 'salata'], 'six': ['kuusi'], 'fir': ['kuusi']}
+reverse_dictionary(d)
+{'liikuttaa': ['move'], 'piilottaa': ['hide'], 'salata': ['hide'], 'kuusi': ['six', 'fir']}
+
+Be careful with synonyms and homonyms!
 
 
 
-### EXERCISE 14
+### EXERCISE 14 (find matching)
+
+Write function find_matching that gets a list of strings and a search string as parameters. The function should return the indices to those elements in the input list that contain the search string. Use the function enumerate.
+
+An example: find_matching(["sensitive", "engine", "rubbish", "comment"], "en") should return the list [0, 1, 3].
 
 
 
