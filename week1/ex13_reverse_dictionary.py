@@ -12,13 +12,19 @@ d={'move': ['liikuttaa'], 'hide': ['piilottaa', 'salata'], 'six': ['kuusi'], 'fi
 
 ### my solution ----
 
-# try unpacking the items in d into variables
+# try unpacking the items inside d into variables
 s = {"me":1, "no":2}
 
 # get dic keys
-x = set(s.keys())
+x = set(d.keys())
 # get dic values
-y = set(s.values())
+y = list(d.values()) # maybe convert it later to tuple
+#y = set()
+#y.add(d.values())
 
-print(x,y)
-
+#print(x,y)
+print(set(tuple(y)))
+#print(y)
+#print(d.keys())
+#print(set(d.keys()))
+#print(list(d.values()))
