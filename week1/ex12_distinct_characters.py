@@ -1,29 +1,31 @@
 #!/usr/bin/env python3
 
 def distinct_characters(L):
-    return {}
+    # convert the input list to a set (not necessary based on course solution)
+    s = set(L)
+    # create a dictionary that will store the final key and values
+    d = {}
+    for i, x in enumerate(s): # i'm just keeping the i cause removing it produces a different format 
+        #print(i)
+        #print(x, len(set(x)))
+        # x store each item in s and len(set(x)) counts the distinct characters in each item
+        d[x] = len(set(x)) 
+
+   
+    return d
 
 def main():
-    ls = ["check", "look", "try", "pop"]
-    print(distinct_characters(ls))
+    print(distinct_characters(["check", "look", "try", "pop"]))
 
 if __name__ == "__main__":
     main()
 
-# Write function distinct_characters that gets a list of strings as a parameter.
-# It should return a dictionary whose keys are the strings of the input list 
-# and the corresponding values are the numbers of distinct characters in the key.
 
-# Use the set container to temporarily store the distinct characters in a string. 
-# Example of usage: distinct_characters(["check", "look", "try", "pop"]) should return
-#  { "check" : 4, "look" : 3, "try" : 3, "pop" : 2}.
+# Course solution
 
-s = set(["check", "look", "try", "pop"])
-for i, x in enumerate(s):
-    #print(i)
-    print(x)
-    print(len(set(x)))
+#def distinct_characters(L):
+    #result = {}
+    #for s in L:
+        #result[s] = len(set(s))
 
-# écrire for loop combiné à enumerate
-# afin d'accéder à chaque élément du set
-# puis compter longeur
+    #return result
