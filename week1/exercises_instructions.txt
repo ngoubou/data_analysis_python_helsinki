@@ -195,7 +195,9 @@ An example: find_matching(["sensitive", "engine", "rubbish", "comment"], "en") s
 
 
 
-### EXERCISE 15
+### EXERCISE 15 (two dice comprehension)
+
+Redo the earlier exercise which printed all the pairs of two dice results that sum to 5. But this time use a list comprehension. Print one pair per line.
 
 
 
