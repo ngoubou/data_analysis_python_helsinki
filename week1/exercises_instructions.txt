@@ -201,20 +201,49 @@ Redo the earlier exercise which printed all the pairs of two dice results that s
 
 
 
-### EXERCISE 16
+### EXERCISE 16 (transform)
+
+Write a function transform that gets two strings as parameters and returns a list of integers. The function should split the strings into words, and convert these words to integers. This should give two lists of integers. Then the function should return a list whose elements are multiplication of two integers in the respective positions in the lists. For example transform("1 5 3", "2 6 -1") should return the list of integers [2, 30, -3].
+
+You have to use split, map, and zip functions/methods. You may assume that the two input strings are in correct format.
 
 
 
-### EXERCISE 17
+### EXERCISE 17 (positive list)
+
+Write a function positive_list that gets a list of numbers as a parameter, and returns a list with the negative numbers and zero filtered out using the filter function.
+
+The function call positive_list([2,-2,0,1,-7]) should return the list [2,1]. Test your function in the main function.
 
 
 
-### EXERCISE 18
+### EXERCISE 18 (acronyms)
+
+Write function acronyms which takes a string as a parameter and returns a list of acronyms. A word is an acronym if it has length at least two, and all its characters are in uppercase. Before acronym detection, delete punctuation with the strip method.
+
+Test this function in the main function with the following call:
+
+print(acronyms("""For the purposes of the EU General Data Protection Regulation (GDPR), the controller of your personal information is International Business Machines Corporation (IBM Corp.), 1 New Orchard Road, Armonk, New York, United States, unless indicated otherwise. Where IBM Corp. or a subsidiary it controls (not established in the European Economic Area (EEA)) is required to appoint a legal representative in the EEA, the representative for all such cases is IBM United Kingdom Limited, PO Box 41, North Harbour, Portsmouth, Hampshire, United Kingdom PO6 3AU."""))
+
+This should return ['EU', 'GDPR', 'IBM', 'IBM', 'EEA', 'EEA', 'IBM', 'PO', 'PO6', '3AU']
 
 
 
-### EXERCISE 19
+### EXERCISE 19 (sum equation)
+
+Write a function sum_equation which takes a list of positive integers as parameters and returns a string with an equation of the sum of the elements.
+
+Example: sum_equation([1,5,7]) returns "1 + 5 + 7 = 13" Observe, the spaces should be exactly as shown above. For an empty list the function should return the string "0 = 0".
 
 
 
-#### EXERCISE 20
+#### EXERCISE 20 (usemodule)
+
+Create your own module as file triangle.py in the src folder. The module should contain two functions:
+
+    hypothenuse which returns the length of the hypothenuse when given the lengths of two other sides of a right-angled triangle
+    area which returns the area of the right-angled triangle, when two sides, perpendicular to each other, are given as parameters.
+
+Make sure both the functions and the module have descriptive docstrings. Add also the __version__ and __author__ attributes to the module. Call both your functions from the main function (which is in file usemodule.py).
+
+
