@@ -22,3 +22,9 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# COURSE SOLUTION ----
+
+def transform(s1, s2):
+    
+    return [ a*b for (a, b) in zip(map(int, s1.split()), map(int, s2.split())) ]
