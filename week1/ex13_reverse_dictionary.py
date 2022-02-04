@@ -27,22 +27,34 @@ z = sum(list(d.values()),[]) # use it for the new keys
 # use keys as alues and vise versa
 a = {}
 i = 0
-while i < len(z):
+while i < len(y): # gérer la condition; len(y) ou len(z)
 #for i, j in enumerate(z): # remplacer z par y # i indices and j values
 # for i in len(z):    
     #print(j)
     #print(z[i+1])
     if len(y[i]) > 1:
-        a[z[i]] = x[i] # a[j]
-        a[z[i+1]] = x[i]
+        a[z[i]] = [x[i]] # a[j]
+        a[z[i+1]] = [x[i]]
         print(a)
+        #a.values = list(a.values())
+        #print(y[i])
         i += len(y[i])
+        #print(y[i])
     else:
     #print(len(y[i]))
         
-        a[z[i]] = x[i] # a[j]
+        a[z[i]] = [x[i]] # a[j]
+
         print(a)
+        if y[i] == y[i-1]:
+            a[z[i]] = [x[i-1], x[i]]
+            #print(y[i], y[i-1])
+            print(a)
+            # transform values to list
+            # append to list
+
         i += 1
+        #print(y[i])
         # gérer les doublons dans z
         # take advantage of sets methods
     #print(y)
