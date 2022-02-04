@@ -18,3 +18,6 @@ all(x in ['b', 'a', 'foo', 'bar'] for x in ['a', 'b'])
 mylist = [0, 1, 2, 3, 4, 5]
 x = mylist[-1]
 mylist[:x] + mylist[x+1:]
+
+# combine  all lists into one list
+y = sum(mylist,[]) # where mylist is a list of lists
