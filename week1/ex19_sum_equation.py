@@ -15,23 +15,36 @@ if __name__ == "__main__":
 # Example: sum_equation([1,5,7]) returns "1 + 5 + 7 = 13" Observe, the spaces should be exactly as shown above.
 # For an empty list the function should return the string "0 = 0".
 
-s = str([1,5,7])
-s1 = [1,5,7]
+
+
+
 #print(list(map(lambda x: x+x, s1)))
 
 # 1 - écrire un programme qui additionne tous les éléments de la liste, convertir résultat en string"
-
+s = [1,5,7]
 from functools import reduce   # import the reduce function from the functools module
-print(reduce(lambda x,y:x+y, s1, 0))
+add = reduce(lambda x,y:x+y, s, 0)
+
+add = str(add)
 
 # 2 - convertir la liste en string (ou boxer mouhahahaha)
+#s1 = str([1,5,7]) # not correct
+# i want to convert each element of the list as a string, so i use the following method
+s1 = [str(x) for x in s]
+
+
 # 3 - ajouter signe "+" à la liste convertie et signe "="
+s2 = " + ".join(s1)
+print(s2)
+#print(s1)
+#print(" ".join(L))  # This is the correct way of building a string out of smaller strings
+
 # 4 - concatener liste au résultat de l'addition
 
 
 # print(str(s))
 # print(" ".join(s))
-a = " + ".join(s)
+#a = " + ".join(s1)
 # print(len(a))
 # print(a.strip("+"))
 # print(a)
