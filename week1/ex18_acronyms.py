@@ -44,10 +44,20 @@ for i in a:
     b = i.split(" ")
     for j in b:
         if j.isupper():
+            j = j.strip("()")
             res.append(j)
         #print(j.isupper())
 
+# delete parentheses
+#for k in res:
+    #print(k)
+    #print(k.strip("()"))
+    #k = k.strip("()")
+    #print(k.lstrip("("))
+    #print(k.rstrip(")"))
+    
 print(res)
+print(len(res))
     #print(len(i))
     #print(i.split(" "))
     #print(len(i.split(" ")))
