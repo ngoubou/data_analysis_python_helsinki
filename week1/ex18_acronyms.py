@@ -23,10 +23,38 @@ if __name__ == "__main__":
 
 s = """For the purposes of the EU General Data Protection Regulation (GDPR), the controller of your personal information is International Business Machines Corporation (IBM Corp.), 1 New Orchard Road, Armonk, New York, United States, unless indicated otherwise. Where IBM Corp. or a subsidiary it controls (not established in the European Economic Area (EEA)) is required to appoint a legal representative in the EEA, the representative for all such cases is IBM United Kingdom Limited, PO Box 41, North Harbour, Portsmouth, Hampshire, United Kingdom PO6 3AU."""
 
+# strips only trim the leading and trailing characters specified in the sep argument
 
-#print(s.find("EU"))
+# print(s.find("EU"))
 a = s.split(",")
 #print("".join(a))
-#print(a)
 
-for i
+#print(len(a))
+#print(type(a[0]))
+#print(a)
+#for i in range(len(a)):
+res = []
+for i in a:
+
+   # print(a[i].isupper())
+    #a[i].find(a[i].isupper())
+    
+    #print(i.isalnum())
+   #print(type(i.split(" ")))
+    b = i.split(" ")
+    for j in b:
+        if j.isupper():
+            res.append(j)
+        #print(j.isupper())
+
+print(res)
+    #print(len(i))
+    #print(i.split(" "))
+    #print(len(i.split(" ")))
+    #print(type(i.split(" ")))
+    #print(i.split(" ").isupper())
+    #print(i)
+    #print(i.split())
+
+#print('abc GG def--ghi'.split("G"))
+#print("issi" in "mississipi")
