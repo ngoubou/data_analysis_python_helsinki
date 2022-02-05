@@ -36,8 +36,8 @@ s1 = [str(x) for x in s]
 # 3 - ajouter signe "+" à la liste convertie et signe "="
 s2 = " + ".join(s1)
 print(s2)
-#print(s1)
-#print(" ".join(L))  # This is the correct way of building a string out of smaller strings
+
+print(s2 + " = " + add)
 
 # 4 - concatener liste au résultat de l'addition
 
