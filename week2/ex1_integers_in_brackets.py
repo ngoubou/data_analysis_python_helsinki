@@ -25,7 +25,7 @@ if __name__ == "__main__":
 # input string
 import re
 s = " afd [asd] [12 ] [a34] [ -43 ]tt [+12]xxx"
-output = re.findall(r'[+-]?\d+', s) #[12, -43, 12]
+#output = re.findall(r'[+-]?\d+', s) #[12, -43, 12]
 
 # i want everything that starts with either a digit or [+-]
 # and ends with a digit
@@ -34,4 +34,12 @@ output = re.findall(r'[+-]?\d+', s) #[12, -43, 12]
 # use map to convert each element of the list as an integer
 # before printing it
 
-print(output)
+#print(output)
+#-\b\d+\b #|\b[\+-]
+
+# numbers starting and ending with a digit
+#print(re.findall(r'\b\d+\b', s)) # best so far
+#print(re.findall(r'[^a-zA-Z_+]?\d+', s))
+#print(re.findall(r'[^\-]?\d+', s)) # pas bon
+output = re.findall(r'[-]?\b\d+\b', s)
+print(list(map(int, output))) # got it
