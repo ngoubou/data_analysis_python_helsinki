@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 
 
+import imp
+
+
 def integers_in_brackets(s):
     return []
 
@@ -18,3 +21,17 @@ if __name__ == "__main__":
 # but no other character besides those that make up the integer.
 
 # Test your function from the main function.
+
+# input string
+import re
+s = " afd [asd] [12 ] [a34] [ -43 ]tt [+12]xxx"
+output = re.findall(r'[+-]?\d+', s) #[12, -43, 12]
+
+# i want everything that starts with either a digit or [+-]
+# and ends with a digit
+
+
+# use map to convert each element of the list as an integer
+# before printing it
+
+print(output)
