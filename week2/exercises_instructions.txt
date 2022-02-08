@@ -3,13 +3,13 @@
 
 
 
-### EXERCISE 1 (hello world)
+### EXERCISE 1 (integers in brackets)
 
-Fill in the missing piece in the solution stub file hello_world.py in folder src to make it print the following:
+Write function integers_in_brackets that finds from a given string all integers that are enclosed in brackets.
 
-Hello, world!
+Example run: integers_in_brackets(" afd [asd] [12 ] [a34] [ -43 ]tt [+12]xxx") returns [12, -43, 12]. So there can be whitespace between the number and the brackets, but no other character besides those that make up the integer.
 
-Make sure you use correct indenting. You can run it with command python3 src/hello_world.py. If the output looks good, then you can test it with command tmc test. If the tests pass, submit your solution to the server with command tmc submit.
+Test your function from the main function.
 
 
 
