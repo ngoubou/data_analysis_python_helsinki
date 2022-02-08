@@ -24,7 +24,8 @@ if __name__ == "__main__":
 
 # input string
 import re
-s = " afd [asd] [12 ] [a34] [ -43 ]tt [+12]xxx"
+#s = " afd [asd] [12 ] [a34] [ -43 ]tt [+12]xxx"
+s = "  afd [128+] [47 ] [a34]  [ +-43 ]tt [+12]xxx"
 #output = re.findall(r'[+-]?\d+', s) #[12, -43, 12]
 
 # i want everything that starts with either a digit or [+-]
@@ -42,4 +43,7 @@ s = " afd [asd] [12 ] [a34] [ -43 ]tt [+12]xxx"
 #print(re.findall(r'[^a-zA-Z_+]?\d+', s))
 #print(re.findall(r'[^\-]?\d+', s)) # pas bon
 output = re.findall(r'[-]?\b\d+\b', s)
-print(list(map(int, output))) # got it
+print(output)
+#print(list(map(int, output))) # got it
+#print(re.findall(r'[+-]?\d+', s))
+print(re.findall(r'[-]?\b[-\d]\d\b', s))
