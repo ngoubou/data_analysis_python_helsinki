@@ -21,3 +21,6 @@ mylist[:x] + mylist[x+1:]
 
 # combine  all lists into one list
 y = sum(mylist,[]) # where mylist is a list of lists
+
+# create cell on a python file
+#"#%%" # minus the first pound and the quotation marks
