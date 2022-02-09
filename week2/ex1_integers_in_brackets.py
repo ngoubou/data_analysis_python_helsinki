@@ -43,7 +43,28 @@ s = "  afd [128+] [47 ] [a34]  [ +-43 ]tt [+12]xxx"
 #print(re.findall(r'[^a-zA-Z_+]?\d+', s))
 #print(re.findall(r'[^\-]?\d+', s)) # pas bon
 output = re.findall(r'[-]?\b\d+\b', s)
-print(output)
+#print(output)
 #print(list(map(int, output))) # got it
 #print(re.findall(r'[+-]?\d+', s))
-print(re.findall(r'[-]?\b[-\d]\d\b', s))
+print(re.findall(r'[-]?\b[\d]\d\b', s)) # PARTIR DE LUI
+#print(re.findall(r'^[^+-]', s))
+#print(re.findall(r'[^+\d]+', s))
+#print(re.findall(r'[+-]?\d+\b', s))
+
+# print everything that ends with a digit
+#print(re.findall(r'\d+\b', s)) # prints every end digit if i dont use '+'
+
+# print everything that starts with a digit
+#print(re.findall(r'\b\d+', s))
+
+# print everything that starts with "+"
+#print(re.findall(r'\b\++', s))
+
+#print(re.findall(r'[+-]?\d+', s))
+print(re.search(r'\d+ (\d+) \d+ (\d+)', 'first 123 45 67 890 last'))
+#a = "+-43 25 48"
+#print(re.findall(r'^(-|\+)', a))
+#print(re.findall(r'[^\d\b]+\b\d+\b', a)) # prends +-43
+#print(re.findall(r'[^\d\b]+', a)) # prends +- et 'top'
+#print(re.findall(r'[^ea]', a))
+#print(re.findall(r'^"ea"', a))
