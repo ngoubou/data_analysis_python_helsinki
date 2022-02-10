@@ -34,21 +34,21 @@ f = open("/Users/Mamba/Library/Application Support/tmc/vscode/mooc-data-analysis
 ls = []        
 for i in range(1,48):           
     line = f.readline()
-    print(f"Line {i}: {line}", end="")
+    #print(f"Line {i}: {line}", end="")
     mo = re.findall(r'hyad-all\s{1,}(.*)', line) # va dans chaque ligne et trouve quelque chose
-    a = tuple(mo[0].split(" "))
-    d = re.split(r'\s|:', mo[0])
-    print(len(d))
-    b = re.split(r"[^\w']+", mo[0]) # the preferred result so far
+    #a = tuple(mo[0].split(" "))
+    good = tuple(re.split(r'\s|:', mo[0]))
+    #print(good)
+    #b = re.split(r"[^\w']+", mo[0]) # the preferred result so far
     #print(b)
     #print(a[3].split(":"))
-    print(a)
-    c = ".".join([b[5], b[-1]])
-    print(b)
+    #print(a)
+    #c = ".".join([b[5], b[-1]])
+   # print(b)
     
-    ls.append(b)
-    ls.append(c)
-    print(ls)
+    ls.append(good)
+    #ls.append(c)
+    #print(ls)
 
 f.close()
 print(ls) # what i'll return
