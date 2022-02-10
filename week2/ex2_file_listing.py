@@ -64,6 +64,7 @@ for i, j in enumerate(ls):
         if re.findall(r'^[\b\d?\d\b]+', l): # si ce sont des chiffres
             #print(ls[i][k])
             ls[i][k] = int(ls[i][k])
+        
             #print(ls[i][k])
             #print("list is not empty not as the lakers team")
         #print(i)
