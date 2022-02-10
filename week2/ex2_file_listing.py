@@ -35,9 +35,20 @@ ls = []
 for i in range(1,48):           
     line = f.readline()
     print(f"Line {i}: {line}", end="")
-    mo = re.search(r'hyad-all\s{1,}(.*)', line) # va dans chaque ligne et trouve quelque chose
-    print(mo.groups())
-    ls.append(mo.groups())
+    mo = re.findall(r'hyad-all\s{1,}(.*)', line) # va dans chaque ligne et trouve quelque chose
+    a = tuple(mo[0].split(" "))
+    d = re.split(r'\s|:', mo[0])
+    print(len(d))
+    b = re.split(r"[^\w']+", mo[0]) # the preferred result so far
+    #print(b)
+    #print(a[3].split(":"))
+    print(a)
+    c = ".".join([b[5], b[-1]])
+    print(b)
+    
+    ls.append(b)
+    ls.append(c)
+    print(ls)
 
 f.close()
 print(ls) # what i'll return
@@ -46,3 +57,4 @@ print(ls) # what i'll return
 #print(mo.groups())
 # \.txt(.*) # matches everything after ".txt" in the following sentence :
 # this/is/just.some/test.txt/some/other
+# 'hyad-all\s{1,}(.*)' # matches everything after 'hyad-all' and some spaces (at least one space)
