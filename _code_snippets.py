@@ -24,3 +24,20 @@ y = sum(mylist,[]) # where mylist is a list of lists
 
 # create cell on a python file
 #"#%%" # minus the first pound and the quotation marks
+
+# get current directory
+import os
+directory_path = os.getcwd()
+print("My current directory is : " + directory_path)
+folder_name = os.path.basename(directory_path)
+print("My directory name is : " + folder_name)
+
+# read a file
+# reading a file
+f = open("exercises_instructions.txt", "r") # write full path if file not in directory.
+        
+for i in range(10):            # And read the first ten lines
+    line = f.readline()
+    print(f"Line {i}: {line}", end="")
+f.close()
+
