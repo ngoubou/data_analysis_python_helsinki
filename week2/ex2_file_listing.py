@@ -26,3 +26,12 @@ if __name__ == "__main__":
 # -rw-r--r-- 1 jttoivon hyad-all   25399 Nov  2 21:25 exception_hierarchy.pdf
 
 # the function should create the tuple (25399, "Nov", 2, 21, 25, "exception_hierarchy.pdf").
+
+
+# 1 - read the file
+f = open("/Users/Mamba/Library/Application Support/tmc/vscode/mooc-data-analysis-with-python-2021/part02-e02_file_listing/src/listing.txt", "r") # write full path if file not in directory.
+        
+for i in range(1,48):            # And read the first ten lines
+    line = f.readline()
+    print(f"Line {i}: {line}", end="")
+f.close()
