@@ -51,6 +51,23 @@ for i in range(1,48):
     #print(ls)
 
 f.close()
+
+#print(len(ls))
+#print(ls[0][0])
+ls = list(map(list, ls))
+#print(ls)
+for i, j in enumerate(ls):
+    for k, l in enumerate(j):
+        #if i == 7 and k == 5: # to be deleted, just to track the error
+            #print("yes")
+
+        if re.findall(r'^[\b\d?\d\b]+', l): # si ce sont des chiffres
+            #print(ls[i][k])
+            ls[i][k] = int(ls[i][k])
+            #print(ls[i][k])
+            #print("list is not empty not as the lakers team")
+        #print(i)
+ls = list(map(tuple, ls))
 print(ls) # what i'll return
 #mo = re.search(r'\d+ (\d+) \d+ (\d+)', 'first 123 45 67 890 last')
 #print(mo)
