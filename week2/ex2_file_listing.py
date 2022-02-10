@@ -29,18 +29,20 @@ if __name__ == "__main__":
 
 
 # 1 - read the file
-#f = open("/Users/Mamba/Library/Application Support/tmc/vscode/mooc-data-analysis-with-python-2021/part02-e02_file_listing/src/listing.txt", "r") # write full path if file not in directory.
+f = open("/Users/Mamba/Library/Application Support/tmc/vscode/mooc-data-analysis-with-python-2021/part02-e02_file_listing/src/listing.txt", "r") # write full path if file not in directory.
 
-#ls = []        
-#for i in range(1,48):           
-    #line = f.readline()
-    #print(f"Line {i}: {line}", end="")
-    # mo = re.search(r'', line) # va dans chaque ligne et trouve quelque chose
-    # print(mo.groups())
-    # ls.append(mo.groups())
+ls = []        
+for i in range(1,48):           
+    line = f.readline()
+    print(f"Line {i}: {line}", end="")
+    mo = re.search(r'hyad-all\s{1,}(.*)', line) # va dans chaque ligne et trouve quelque chose
+    print(mo.groups())
+    ls.append(mo.groups())
 
-#f.close()
-#print(ls) # what i'll return
-mo = re.search(r'\d+ (\d+) \d+ (\d+)', 'first 123 45 67 890 last')
-print(mo)
-print(mo.groups())
+f.close()
+print(ls) # what i'll return
+#mo = re.search(r'\d+ (\d+) \d+ (\d+)', 'first 123 45 67 890 last')
+#print(mo)
+#print(mo.groups())
+# \.txt(.*) # matches everything after ".txt" in the following sentence :
+# this/is/just.some/test.txt/some/other
