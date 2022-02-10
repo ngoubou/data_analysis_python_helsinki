@@ -31,13 +31,14 @@ if __name__ == "__main__":
 # 1 - read the file
 f = open("/Users/Mamba/Library/Application Support/tmc/vscode/mooc-data-analysis-with-python-2021/part02-e02_file_listing/src/listing.txt", "r") # write full path if file not in directory.
 
-ls = []        
+ls = []  
+#ls1 = []      
 for i in range(1,48):           
     line = f.readline()
     #print(f"Line {i}: {line}", end="")
-    mo = re.findall(r'hyad-all\s{1,}(.*)', line) # va dans chaque ligne et trouve quelque chose
+    mo = re.findall(r'hyad-all\s{1,}(.*)', line) # va dans chaque ligne et prends ce qui est après hyad-all
     #a = tuple(mo[0].split(" "))
-    good = tuple(re.split(r'\s|:', mo[0]))
+    good = re.split(r'\s\s|\s|:', mo[0]) # sépare s'il y a un espace (ou double), ou un ":"
     #print(good)
     #b = re.split(r"[^\w']+", mo[0]) # the preferred result so far
     #print(b)
@@ -45,8 +46,22 @@ for i in range(1,48):
     #print(a)
     #c = ".".join([b[5], b[-1]])
    # print(b)
-    
+    #print(good)
+    #print(mo[0])
     ls.append(good)
+    #print(ls[i-1])
+    #if len(ls[i-1]) > 6:
+        #for j in ls[i-1]:
+            #if not j:
+                #good.pop(i-1)
+                
+    #ls1.append(good)
+    #print(ls)
+   # print(ls1)
+                
+
+        
+   
     #ls.append(c)
     #print(ls)
 
@@ -54,17 +69,19 @@ f.close()
 
 #print(len(ls))
 #print(ls[0][0])
-ls = list(map(list, ls))
+#ls = list(map(list, ls))
 #print(ls)
 for i, j in enumerate(ls):
     for k, l in enumerate(j):
-        #if i == 7 and k == 5: # to be deleted, just to track the error
-            #print("yes")
+        if len(ls[i]) > 6: # to be deleted, just to track the error
+            print("yes")
+            print(ls[i])
 
         if re.findall(r'^[\b\d?\d\b]+', l): # si ce sont des chiffres
             #print(ls[i][k])
             ls[i][k] = int(ls[i][k])
-        
+        if not ls[i][k]: # should not be doing that cause there should not be any empty string
+            ls[i][k] = int('0'+ls[i][k]) 
             #print(ls[i][k])
             #print("list is not empty not as the lakers team")
         #print(i)
