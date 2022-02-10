@@ -44,4 +44,28 @@ output = re.findall(r'[-]?\b[\d]\d\b', s)
 print(output)
 #print(list(map(int, output))) # got it
 # [^\[\]+?=\-] # matches everything but "+" and "-"
-# '[^\+\-][-]?\b[\d]\d\b' # matches 47
+# '[^\+\-][-+]?\b[\d]\d\b' # matches [47 and [+12
+# '[^\b\[\]\bA-Za-z]' # matches every digit inside the brackets
+#print(re.findall(r'[^\+\-][-+]?\b[\d]\d\b', s))
+mo = re.findall(r'[^\+\-][-+]?\b[\d]\d\b', s)
+
+ls  = []
+for i in mo:
+    yo = re.findall(r'[-]?\b[\d]\d\b', i)
+    #print(yo[0])
+    ls.append(yo[0])
+    #ls.append(re.findall(r'[-]?\b[\d]\d\b', i))
+
+print(ls)
+print(list(map(int, ls)))
+#print(re.findall(r'[-]?\b[\d]\d\b', mo))
+
+# this is not exactly how it should be done, but it is what it is
+
+## Course Solution ----
+#def integers_in_brackets(s):
+    
+    #result = re.findall(r"\[\s*([+-]?\d+)\s*\]", s)
+
+    #return list(map(int, result))
+
