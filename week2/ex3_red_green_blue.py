@@ -30,6 +30,7 @@ if __name__ == "__main__":
 # '255\t250\t250\tsnow'
 
 ls = []
+ls1 = []
 with open("/Users/Mamba/Library/Application Support/tmc/vscode/mooc-data-analysis-with-python-2021/part02-e03_red_green_blue/src/rgb.txt", "r") as f:
     for line in f:
         #print(line)
@@ -43,10 +44,39 @@ ls.pop(0)
 # loop through every element of the list
 for i, j in enumerate(ls):
     if re.findall(r'^[\s\s|\s]', j): # s'il y a un espace en début de ligne
-        print(j)
-        j = j.lstrip()
-        print(j)
+        #print(j)
+        j = j.lstrip() # supprimer espace en début de ligne
+        #print(j)
 
-       
+    #print(len(ls[i]))
     #print(ls[i])
-print(ls)
+    #for k in ls[i]: # replace every white space and double tab by a single tab
+    #print(ls[i])    
+
+    ## # PRENDS TOUT CE QUI EST AVANT LE NOM DE LA COULEUR
+    no_color = re.findall(r'(.*)\t\t', j) 
+    #print(type(a))
+    no_color = no_color[0].split(" ")
+    #print(len(a))
+    no_color = "\t".join(no_color)
+
+    ### PRENDS LE NOM DE LA COULEUR
+    colour = re.findall(r'\t\t(.*)', j) 
+
+    ## JOIN COLOR AND NO COLOR BY A TAB
+    result = "\t".join([no_color, colour[0]])
+    #print(result)
+    #print(colour[0])
+
+    ls1.append(result)
+    #print("\t".join(a))
+    #a = a.replace(" ", "\t")
+   # print(a)
+
+    #ls[i] = ls[i].replace(" ", "\t") # replace every white space by a single tab
+    #ls[i] = ls[i].replace("\t\t", "\t") # replace every double tab by a single tab
+    #ls[i] = ls[i].rstrip("\n") # delete '\n' at the end of the line
+    #print(ls[i])    
+   
+
+print(ls1)
