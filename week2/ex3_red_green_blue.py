@@ -42,7 +42,7 @@ with open("/Users/Mamba/Library/Application Support/tmc/vscode/mooc-data-analysi
 ls.pop(0)
 
 # loop through every element of the list
-for i, j in enumerate(ls):
+for j in ls:
     if re.findall(r'^[\s\s|\s]', j): # s'il y a un espace en début de ligne
         #print(j)
         j = j.lstrip() # supprimer espace en début de ligne
@@ -65,10 +65,11 @@ for i, j in enumerate(ls):
 
     ## JOIN COLOR AND NO COLOR BY A TAB
     result = "\t".join([no_color, colour[0]])
-    #print(result)
+    #print(result.split("\t"))
     #print(colour[0])
-
+    #a = result + "\n"
     ls1.append(result)
+    #print(ls1)
     #print("\t".join(a))
     #a = a.replace(" ", "\t")
    # print(a)
@@ -78,5 +79,7 @@ for i, j in enumerate(ls):
     #ls[i] = ls[i].rstrip("\n") # delete '\n' at the end of the line
     #print(ls[i])    
    
-
-print(ls1)
+for k in ls1:
+    if len(k.split("\t")) != 4:
+        print(k.split("\t"))
+        print(len(k.split("\t")))
