@@ -42,7 +42,7 @@ with open("/Users/Mamba/Library/Application Support/tmc/vscode/mooc-data-analysi
 ls.pop(0)
 
 # loop through every element of the list
-for j in ls:
+for i, j in enumerate(ls):
     if re.findall(r'^[\s\s|\s]', j): # s'il y a un espace en début de ligne
         #print(j)
         j = j.lstrip() # supprimer espace en début de ligne
@@ -52,13 +52,20 @@ for j in ls:
     #print(ls[i])
     #for k in ls[i]: # replace every white space and double tab by a single tab
     #print(ls[i])    
-
+    if i > 155: # TO BE DELETED JUST TO TRACK WHERE THE ERROR STARTS 
+        print(i) # i = line - 2
     ## # PRENDS TOUT CE QUI EST AVANT LE NOM DE LA COULEUR
     no_color = re.findall(r'(.*)\t\t', j) 
+    #print(no_color[0])
+    if no_color[0].endswith(" "):
+        no_color[0] = no_color[0].rstrip(" ")
+        #print("y a R")
     #print(type(a))
-    no_color = no_color[0].split(" ")
+    #no_color = no_color[0].split(" ")
+    no_color = re.split(r'\s\s\s\s\s|\s\s\s\s|\s\s\s|\s\s|\s', no_color[0]) # sépare s'il y a un espace (ou double)
     #print(len(a))
     no_color = "\t".join(no_color)
+    
 
     ### PRENDS LE NOM DE LA COULEUR
     colour = re.findall(r'\t\t(.*)', j) 
@@ -74,12 +81,17 @@ for j in ls:
     #a = a.replace(" ", "\t")
    # print(a)
 
+    # PLUS DE 4 CATÉGORIES 
+    #if len(ls1[i].split("\t")) != 4: # TO BE DELETED
+     #   print(ls1[i].split("\t"))
+      #  print(len(ls1[i].split("\t")))
+
     #ls[i] = ls[i].replace(" ", "\t") # replace every white space by a single tab
     #ls[i] = ls[i].replace("\t\t", "\t") # replace every double tab by a single tab
     #ls[i] = ls[i].rstrip("\n") # delete '\n' at the end of the line
     #print(ls[i])    
    
 for k in ls1:
-    if len(k.split("\t")) != 4:
+    if len(k.split("\t")) != 4: # ligne 158
         print(k.split("\t"))
         print(len(k.split("\t")))
