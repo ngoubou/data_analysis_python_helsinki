@@ -41,6 +41,12 @@ with open("/Users/Mamba/Library/Application Support/tmc/vscode/mooc-data-analysi
 ls.pop(0)
 
 # loop through every element of the list
-for i in ls:
-    print(i)
+for i, j in enumerate(ls):
+    if re.findall(r'^[\s\s|\s]', j): # s'il y a un espace en début de ligne
+        print(j)
+        j = j.lstrip()
+        print(j)
+
+       
+    #print(ls[i])
 print(ls)
