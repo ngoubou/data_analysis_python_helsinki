@@ -25,11 +25,37 @@ if __name__ == "__main__":
 #Gutenberg   26
 #EBook   3
 #of      303
-
-ls = [] # list that will store all the lines of the file
+import re
+ls_lines = [] # list that will store all the lines of the file
+ls_words = [] # list that will store the individual words
 with open("/Users/Mamba/Library/Application Support/tmc/vscode/mooc-data-analysis-with-python-2021/part02-e04_word_frequencies/src/alice.txt", "r") as f:
     for line in f:
-        ls.append(line)
+        line = line.strip() # remove leading and trailing spaces (if any)
+        
+        #if len(line) != 0: # if the line is not empty 
+        # don't do it cause if i append words to a list it will append it twice in some cases
+        words = re.split(r'\s', line) # split the lines into words 
+        
+        #print(line)
+        #print(words)
+        #print(len(line)) # number of characters in a line
+        #print(len(words)) # number of characters in a word
+        ls_lines.append(line)
+        ls_words.append(words) # words est une liste avec tous les mots d'une ligne
+        # donc len(ls_words) == len(ls_lines)
+        #print(ls_lines[0])
 
-# split the lines into words    
-print(len(ls))
+
+print(len(ls_lines))
+print(len(ls_words))
+# split the lines into words  
+# before doing so, remove the leading and trailing spaces (if any)
+
+for i in ls_lines:
+    words = re.split(r'\s', i)
+    print(i)
+    print(words)
+    print(len(words))
+    ls_words.append(words)
+      
+print(len(ls_lines))
