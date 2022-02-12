@@ -35,10 +35,17 @@ with open("/Users/Mamba/Library/Application Support/tmc/vscode/mooc-data-analysi
         words = re.split(r'\s', line) # split the lines into words 
         for i, j in enumerate(words):
             if not re.findall(r'[\w]$', j): # si le mot ne finit pas par une lettre ou chiffre  
-                words[i] = j.rstrip("""!"#$%&'()*,-./:;?@[]_""") # remove punctuation from the ends of words
+                words[i] = j.strip("""!"#$%&'()*,-./:;?@[]_""") # remove punctuation from ends & starts of words
        
         ls_lines.append(line)
         ls_words.append(words) # words est une liste avec tous les mots d'une ligne
         # donc len(ls_words) == len(ls_lines)
-      
 
+ 
+#print(ls_lines[0])
+#print(ls_words[0])
+print(1.85*3)  
+
+
+# count each unique word by line
+# use a counter variable everytime i detect an occuurrence of a unique word
