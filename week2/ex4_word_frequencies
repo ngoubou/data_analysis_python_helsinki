@@ -47,21 +47,50 @@ with open("/Users/Mamba/Library/Application Support/tmc/vscode/mooc-data-analysi
 #print(len(ls_lines))
 #print(len(ls_words[0]))
 
-for k, l in enumerate(ls_words): # me permet d'entrer dans chaque liste de ls_words
+# A PARTIR D'ICI JE COMPLIQUE TROP LES CHOSES ----------
+dic = {}
+for i in ls_words:
+    for k, j in enumerate(i):
+        if j not in dic and j: # s'il n'est pas dans le dico et s'il n'est pas vide
+            dic[j] = 1
+        elif j in dic and j:
+            #print(j)
+            #print(dic[j])
+            key_index = list(dic.keys()).index(j)
+            #print(key_index) # va remplacer k
+            #print(list(dic.values())[key_index]) # je ne dois pas utiliser k mais l'index de keys
+            #print(list(dic.keys())[key_index])
+            
+
+            #print(dic.values())
+            dic[j] = list(dic.values())[key_index] + 1
+            print(dic)
+
+
+
+
+#counter = 0
+#d = {} # dic that will store the words count
+#for k, l in enumerate(ls_words): # me permet d'entrer dans chaque liste de ls_words
     # identifie chaque mot unique de chaque ligne (utiliser words pour ça)
     # si un mot se retrouve dans l'une des lignes suivantes ajoute au compte
-    print(l)
-    for m in range(len(l)): # parcourt chaque mot à l'intérieur de words
-        if l[m] != l[m+1]:
+ #   print(l)
+  #  for m in range(len(l)): # parcourt chaque mot à l'intérieur de l
+   #     if l[m] != l[m+1]:
             # mettre l[m] dans un dico comme key et value = 1
             # faire pareil pour l[m+1]
-            d = {} # populate this dictionnary with the conditions above
-        else:
+            #d = {} # populate this dictionary with the conditions above
+    #        counter += 1
+     #       d[l[m]] = counter
+      #      print(d)
+       #     print(list(d.keys())[0], "\t", list(d.values())[0]) # how the final output shoul looks like
+            #print(list(d.values())[0])
+        #else:
             # update la key de 1
             # create a variable that will count the number of occurrences
-            new_d = {}
-        print(m)
-        print(l[m])
+         #   new_d = {}
+        #print(m)
+        #print(l[m])
    
     #print(1.85*3)  
 
