@@ -44,7 +44,26 @@ with open("/Users/Mamba/Library/Application Support/tmc/vscode/mooc-data-analysi
  
 #print(ls_lines[0])
 #print(ls_words[0])
-print(1.85*3)  
+#print(len(ls_lines))
+#print(len(ls_words[0]))
+
+for k, l in enumerate(ls_words): # me permet d'entrer dans chaque liste de ls_words
+    # identifie chaque mot unique de chaque ligne (utiliser words pour ça)
+    # si un mot se retrouve dans l'une des lignes suivantes ajoute au compte
+    print(l)
+    for m in range(len(l)): # parcourt chaque mot à l'intérieur de words
+        if l[m] != l[m+1]:
+            # mettre l[m] dans un dico comme key et value = 1
+            # faire pareil pour l[m+1]
+            d = {} # populate this dictionnary with the conditions above
+        else:
+            # update la key de 1
+            # create a variable that will count the number of occurrences
+            new_d = {}
+        print(m)
+        print(l[m])
+   
+    #print(1.85*3)  
 
 
 # count each unique word by line
