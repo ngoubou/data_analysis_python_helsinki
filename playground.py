@@ -9,15 +9,15 @@ s = ("If I’m not in a hurry, then I should stay. " +
 
 #print(s)
 #print(re.findall(r'[Ii]f (.*), then', s))
-print(bool(0))
+#print(bool(0))
 
 # Basic file processing
 
 
-print("a".encode("utf-8"))
+#print("a".encode("utf-8"))
 
 
-print(list("a".encode("utf-8"))  )            # Show as a list of integers
+#print(list("a".encode("utf-8"))  )            # Show as a list of integers
 
 
 # reading a file
@@ -31,7 +31,21 @@ print(list("a".encode("utf-8"))  )            # Show as a list of integers
 #f.close()
 
 s = ''
-print(s)
-print(type(s))
+#print(s)
+#print(type(s))
 s = int('0'+s)
-print(type(s))
+#print(type(s))
+
+
+w = "Release Date: August 12, 2006 [EBook #19033]"
+print(w)
+a = re.split(r'\s', w)
+print(a)
+print(type(a), len(a))
+for i in a:
+    if not re.findall(r'[\w]$', i) or not re.findall(r'^[\w]', i):
+        print(i.strip("""!"#$%&'()*,-./:;?@[]_"""))
+
+
+
+

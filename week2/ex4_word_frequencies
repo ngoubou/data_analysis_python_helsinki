@@ -34,7 +34,7 @@ with open("/Users/Mamba/Library/Application Support/tmc/vscode/mooc-data-analysi
         
         words = re.split(r'\s', line) # split the lines into words 
         for i, j in enumerate(words):
-            if not re.findall(r'[\w]$', j): # si le mot ne finit pas par une lettre ou chiffre  
+            if not re.findall(r'[\w]$', j) or not re.findall(r'^[\w]', j): # si le mot ne finit/commence pas par une lettre ou chiffre  
                 words[i] = j.strip("""!"#$%&'()*,-./:;?@[]_""") # remove punctuation from ends & starts of words
        
         ls_lines.append(line)
@@ -42,8 +42,9 @@ with open("/Users/Mamba/Library/Application Support/tmc/vscode/mooc-data-analysi
         # donc len(ls_words) == len(ls_lines)
 
  
-#print(ls_lines[0])
-#print(ls_words[0])
+print(ls_lines[0])
+print(ls_lines[14])
+print(ls_words[14])
 #print(len(ls_lines))
 #print(len(ls_words[0]))
 
@@ -64,7 +65,8 @@ for i in ls_words:
 
             #print(dic.values())
             dic[j] = list(dic.values())[key_index] + 1
-            print(dic)
+
+print(dic)
 
 
 
