@@ -38,6 +38,9 @@ s = int('0'+s)
 
 
 w = "Release Date: August 12, 2006 [EBook #19033]"
+tt = ""
+print(re.split(r'\s', tt))
+print(tt)
 print(w)
 a = re.split(r'\s', w)
 print(a)

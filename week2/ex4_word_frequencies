@@ -26,30 +26,41 @@ if __name__ == "__main__":
 #EBook   3
 #of      303
 import re
+from unittest import result
 ls_lines = [] # list that will store all the lines of the file
 ls_words = [] # list that will store the individual words
 with open("/Users/Mamba/Library/Application Support/tmc/vscode/mooc-data-analysis-with-python-2021/part02-e04_word_frequencies/src/alice.txt", "r") as f:
     for line in f:
         line = line.strip() # remove leading and trailing spaces (if any)
-        
+        #if not line: # if the line is empty delete it (nope dont)
+            #print(len(line))
+            #del(line)
+        #else:
         words = re.split(r'\s', line) # split the lines into words 
         for i, j in enumerate(words):
             if not re.findall(r'[\w]$', j) or not re.findall(r'^[\w]', j): # si le mot ne finit/commence pas par une lettre ou chiffre  
                 words[i] = j.strip("""!"#$%&'()*,-./:;?@[]_""") # remove punctuation from ends & starts of words
        
         ls_lines.append(line)
+        #print(words)
+        #print(len(words))
+        #if len(words) == 1 and not words[0]: # if it is an empty word, delete it
+            #del(words[0])
+
+        #else:
         ls_words.append(words) # words est une liste avec tous les mots d'une ligne
         # donc len(ls_words) == len(ls_lines)
 
- 
-print(ls_lines[0])
-print(ls_lines[14])
-print(ls_words[14])
+ # no need to check for empty words cause it does not change anything
+#print(ls_lines[0])
+#print(ls_lines[1360])
+#print(ls_words[1360])
 #print(len(ls_lines))
 #print(len(ls_words[0]))
 
 # A PARTIR D'ICI JE COMPLIQUE TROP LES CHOSES ----------
 dic = {}
+result = []
 for i in ls_words:
     for k, j in enumerate(i):
         if j not in dic and j: # s'il n'est pas dans le dico et s'il n'est pas vide
@@ -66,7 +77,15 @@ for i in ls_words:
             #print(dic.values())
             dic[j] = list(dic.values())[key_index] + 1
 
-print(dic)
+print(len(dic) - 2424) # i'm off by 31 words
+
+# GÉRER LE TOTAL DE MOTS INCORRECT ET COMMENT ÇA IMPRIME LE RÉSULTAT
+for ind, val in dic.items():
+    a = str(ind) + "\t" + str(val)
+    print(a)
+    result.append(a)
+    print(result)
+print(dic.keys(), "\t", dic.values())
 
 
 
