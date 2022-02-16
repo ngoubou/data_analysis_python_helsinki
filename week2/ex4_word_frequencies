@@ -32,33 +32,15 @@ ls_words = [] # list that will store the individual words
 with open("/Users/Mamba/Library/Application Support/tmc/vscode/mooc-data-analysis-with-python-2021/part02-e04_word_frequencies/src/alice.txt", "r") as f:
     for line in f:
         line = line.strip() # remove leading and trailing spaces (if any)
-        #if not line: # if the line is empty delete it (nope dont)
-            #print(len(line))
-            #del(line)
-        #else:
+       
         words = re.split(r'\s', line) # split the lines into words 
         for i, j in enumerate(words):
-            if not re.findall(r'[\w]$', j) or not re.findall(r'^[\w]', j): # si le mot ne finit/commence pas par une lettre ou chiffre  
+            if not re.findall(r'[a-zA-Z0-9]$', j) or not re.findall(r'^[a-zA-Z0-9]', j): # si le mot ne finit/commence pas par une lettre ou chiffre  
                 words[i] = j.strip("""!"#$%&'()*,-./:;?@[]_""") # remove punctuation from ends & starts of words
        
         ls_lines.append(line)
-        #print(words)
-        #print(len(words))
-        #if len(words) == 1 and not words[0]: # if it is an empty word, delete it
-            #del(words[0])
+        ls_words.append(words)
 
-        #else:
-        ls_words.append(words) # words est une liste avec tous les mots d'une ligne
-        # donc len(ls_words) == len(ls_lines)
-
- # no need to check for empty words cause it does not change anything
-#print(ls_lines[0])
-#print(ls_lines[1360])
-#print(ls_words[1360])
-#print(len(ls_lines))
-#print(len(ls_words[0]))
-
-# A PARTIR D'ICI JE COMPLIQUE TROP LES CHOSES ----------
 dic = {}
 result = []
 for i in ls_words:
@@ -66,55 +48,19 @@ for i in ls_words:
         if j not in dic and j: # s'il n'est pas dans le dico et s'il n'est pas vide
             dic[j] = 1
         elif j in dic and j:
-            #print(j)
-            #print(dic[j])
+           
             key_index = list(dic.keys()).index(j)
-            #print(key_index) # va remplacer k
-            #print(list(dic.values())[key_index]) # je ne dois pas utiliser k mais l'index de keys
-            #print(list(dic.keys())[key_index])
-            
-
-            #print(dic.values())
+           
             dic[j] = list(dic.values())[key_index] + 1
 
 print(len(dic) - 2424) # i'm off by 31 words
 
 # GÉRER LE TOTAL DE MOTS INCORRECT ET COMMENT ÇA IMPRIME LE RÉSULTAT
+# http, arobase, gestion des doubles tirets (?), tirets du 8, 
 for ind, val in dic.items():
     a = str(ind) + "\t" + str(val)
-    print(a)
     result.append(a)
-    print(result)
-print(dic.keys(), "\t", dic.values())
-
-
-
-
-#counter = 0
-#d = {} # dic that will store the words count
-#for k, l in enumerate(ls_words): # me permet d'entrer dans chaque liste de ls_words
-    # identifie chaque mot unique de chaque ligne (utiliser words pour ça)
-    # si un mot se retrouve dans l'une des lignes suivantes ajoute au compte
- #   print(l)
-  #  for m in range(len(l)): # parcourt chaque mot à l'intérieur de l
-   #     if l[m] != l[m+1]:
-            # mettre l[m] dans un dico comme key et value = 1
-            # faire pareil pour l[m+1]
-            #d = {} # populate this dictionary with the conditions above
-    #        counter += 1
-     #       d[l[m]] = counter
-      #      print(d)
-       #     print(list(d.keys())[0], "\t", list(d.values())[0]) # how the final output shoul looks like
-            #print(list(d.values())[0])
-        #else:
-            # update la key de 1
-            # create a variable that will count the number of occurrences
-         #   new_d = {}
-        #print(m)
-        #print(l[m])
    
-    #print(1.85*3)  
+print(dic)
+#print(dic.keys(), "\t", dic.values())
 
-
-# count each unique word by line
-# use a counter variable everytime i detect an occuurrence of a unique word

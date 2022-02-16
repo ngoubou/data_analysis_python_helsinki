@@ -37,16 +37,18 @@ s = int('0'+s)
 #print(type(s))
 
 
-w = "Release Date: August 12, 2006 [EBook #19033]"
-tt = ""
-print(re.split(r'\s', tt))
-print(tt)
-print(w)
+w = 'yes-papa yes--papa _I I_ _I_ -I- "I" [I] yes-'
+#print(w)
 a = re.split(r'\s', w)
-print(a)
-print(type(a), len(a))
+#print(a)
+#print(type(a), len(a))
 for i in a:
-    if not re.findall(r'[\w]$', i) or not re.findall(r'^[\w]', i):
+    #print(len(i))
+    #print(i.endswith(r'[\w]$'))
+    if not re.findall(r'[a-zA-Z0-9]$', i) or not re.findall(r'^[a-zA-Z0-9]', i): # si le mot ne finit/commence pas par une lettre ou chiffre 
+        #z = []
+        #z.append(i)
+        #z.append(i.strip("""!"#$%&'()*,-./:;?@[]_"""))
         print(i.strip("""!"#$%&'()*,-./:;?@[]_"""))
 
 
