@@ -37,7 +37,7 @@ s = int('0'+s)
 #print(type(s))
 
 
-w = 'yes-papa yes--papa _I I_ _I_ -I- "I" [I] yes-'
+w = '1.F.1.  Project Gutenberg volunteers and employees expend considerable'
 #print(w)
 a = re.split(r'\s', w)
 #print(a)
