@@ -17,20 +17,23 @@ if __name__ == "__main__":
 
 # 1 read each line and convert the numbers to floats
 from math import sqrt
+
 ls = []
-with open("/Users/Mamba/Library/Application Support/tmc/vscode/mooc-data-analysis-with-python-2021/part02-e05_summary/src/example.txt", "r") as f:
-    for line in f:
-        line = float(line.strip("\n"))
-        ls.append(line)
+for i in range(1,4): 
+    print(i)
+    print(sys.argv[i:])
 
 
-s = []
-for i in ls:
-    var = ((i - mean(ls))**2) / (len(ls)-1) # len(ls) = n
-    s.append((i - mean(ls))**2)
+    with open(str(sys.argv[i]), "r") as f:
+        for line in f:
+            line = float(line.strip("\n"))
+            ls.append(line)
 
-sd = sqrt(sum(s) / (len(ls)-1))
+
+
+sd = sqrt(variance(ls))
 print(round(sum(ls), 6), round(mean(ls), 6), round(sd, 6))
+#print(sys.argv[1:]
 
 # DONT SPECIFY ANY FILE IN THE OPEN FUNCTION
 # COMMAND LINE PARAMETERS WILL TAKE CARE OF IT
