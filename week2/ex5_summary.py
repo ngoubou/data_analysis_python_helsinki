@@ -3,6 +3,7 @@
 import sys
 
 def summary(filename):
+
     return (0,0,0)
 
 def main():
@@ -10,6 +11,19 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
+#print(float(12+3.4+17+20+-1))
+#print(sum([1,4]))
+# 1 read each line and convert the numbers to floats
+ls = []
+with open("/Users/Mamba/Library/Application Support/tmc/vscode/mooc-data-analysis-with-python-2021/part02-e05_summary/src/example.txt", "r") as f:
+    for line in f:
+        line = float(line.strip("\n"))
+        ls.append(line)
+
+print(ls)
 
 # This exercise can give two points at maximum!
 
