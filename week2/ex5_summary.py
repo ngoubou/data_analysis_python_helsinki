@@ -15,8 +15,6 @@ if __name__ == "__main__":
 
 
 
-#print(float(12+3.4+17+20+-1))
-#print(sum([1,4]))
 # 1 read each line and convert the numbers to floats
 from math import sqrt
 ls = []
@@ -26,17 +24,16 @@ with open("/Users/Mamba/Library/Application Support/tmc/vscode/mooc-data-analysi
         ls.append(line)
 
 
-#print(2**2)
 s = []
 for i in ls:
-    #print((i - mean(ls))**2)
     var = ((i - mean(ls))**2) / (len(ls)-1) # len(ls) = n
-    
     s.append((i - mean(ls))**2)
 
 sd = sqrt(sum(s) / (len(ls)-1))
 print(round(sum(ls), 6), round(mean(ls), 6), round(sd, 6))
 
+# DONT SPECIFY ANY FILE IN THE OPEN FUNCTION
+# COMMAND LINE PARAMETERS WILL TAKE CARE OF IT
 
 # This exercise can give two points at maximum!
 
