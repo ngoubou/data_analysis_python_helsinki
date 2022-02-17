@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+from statistics import mean, variance
 import sys
 
 def summary(filename):
@@ -17,13 +18,25 @@ if __name__ == "__main__":
 #print(float(12+3.4+17+20+-1))
 #print(sum([1,4]))
 # 1 read each line and convert the numbers to floats
+from math import sqrt
 ls = []
 with open("/Users/Mamba/Library/Application Support/tmc/vscode/mooc-data-analysis-with-python-2021/part02-e05_summary/src/example.txt", "r") as f:
     for line in f:
         line = float(line.strip("\n"))
         ls.append(line)
 
-print(ls)
+
+#print(2**2)
+s = []
+for i in ls:
+    #print((i - mean(ls))**2)
+    var = ((i - mean(ls))**2) / (len(ls)-1) # len(ls) = n
+    
+    s.append((i - mean(ls))**2)
+
+sd = sqrt(sum(s) / (len(ls)-1))
+print(round(sum(ls), 6), round(mean(ls), 6), round(sd, 6))
+
 
 # This exercise can give two points at maximum!
 
