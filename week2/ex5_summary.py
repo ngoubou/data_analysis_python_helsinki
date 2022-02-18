@@ -1,11 +1,31 @@
 #!/usr/bin/env python3
 
-from statistics import mean, variance
 import sys
+from statistics import mean, variance
+from math import sqrt
 
-def summary(filename):
+#ls = []
 
-    return (0,0,0)
+def summary(filename = sys.argv[1:]):
+    for i in range(3):
+        with open(filename[i], "r") as f:
+            ls = []
+            add = []
+            moyenne = []
+            sd = []
+            for line in f:
+                try:
+                    line = float(line.strip("\n"))          # The float constructor raises ValueError exception if conversion is no possible
+                except ValueError:
+                   continue
+                ls.append(line)
+    
+        add.append(sum(ls))
+        moyenne.append(mean(ls))
+        sd.append(sqrt(variance(ls)))
+    #print(add[0], moyenne[0], sd[0])
+
+    return (add[0], moyenne[0], sd[0]) # si j'utilise list comprehension, define empty list above function
 
 def main():
     pass
@@ -14,26 +34,47 @@ if __name__ == "__main__":
     main()
 
 
+### -------------------------------
+# Sum is not working (might have to do with sys argv)
+# filename handling
+# try except usage
+### -------------------------------
+
 
 # 1 read each line and convert the numbers to floats
-from math import sqrt
+#from math import sqrt
 
-ls = []
-for i in range(1,4): 
-    print(i)
-    print(sys.argv[i:])
-
-
-    with open(str(sys.argv[i]), "r") as f:
+files = ["/Users/Mamba/Library/Application Support/tmc/vscode/mooc-data-analysis-with-python-2021/part02-e05_summary/src/example.txt",
+"/Users/Mamba/Library/Application Support/tmc/vscode/mooc-data-analysis-with-python-2021/part02-e05_summary/src/example2.txt",
+"/Users/Mamba/Library/Application Support/tmc/vscode/mooc-data-analysis-with-python-2021/part02-e05_summary/src/example3.txt"]
+for i in range(3):
+    with open(files[i], "r") as f:
+        ls = []
+        add = []
+        moyenne = []
+        sd = []
         for line in f:
-            line = float(line.strip("\n"))
+            try:        
+                line = float(line.strip("\n"))
+            except ValueError:
+                continue # ignore characters
+                    
             ls.append(line)
 
+    add.append(sum(ls))
+    moyenne.append(mean(ls))
+    sd.append(sqrt(variance(ls)))
+    print(add[0], moyenne[0], sd[0])
+1+1
+#sd = sqrt(variance(ls))
+#print(sum(ls), mean(ls), sd)
+a = sys.argv[1:]
+#print(type(a))
+print(a)
+#print(len(a))
+#print(type(sys.argv[1:]))
 
 
-sd = sqrt(variance(ls))
-print(round(sum(ls), 6), round(mean(ls), 6), round(sd, 6))
-#print(sys.argv[1:]
 
 # DONT SPECIFY ANY FILE IN THE OPEN FUNCTION
 # COMMAND LINE PARAMETERS WILL TAKE CARE OF IT
