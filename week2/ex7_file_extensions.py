@@ -39,22 +39,8 @@ def file_extensions(filename):
                     s = i
     return ([s], dic)
 
-# Part 2.
 
-# Write a main method that calls the file_extensions function with "src/filenames.txt" as the argument. 
-# Then print the results so that for each extension there is a line consisting of the extension and 
-# the number of files with that extension. 
-# The first line of the output should give the number of files without extensions.
 
-# With the example in part 1, the output should be
-
-#1 files with no extension
-#gz 1
-#pdf 1
-#txt 2
-
-# Had there been no filenames without extension then the first line would have been 0 files 
-# with no extension. In the printout list the extensions in alphabetical order.
 
 def main():
     for i in sys.argv[1:]:
@@ -64,6 +50,10 @@ def main():
         testt = []
         c = 0
         d = {}
+        if all(type(z[j]) == list and type(z[j+1]) == list for j in range(len(z)-1)): # if no file has an extension
+    
+            print(f"{c} files with no extension") 
+
         if not re.findall(r'\.', z[0][0]): # s'il n'y a pas d'extension
             c += 1
             print(f"{c} files with no extension")
@@ -85,6 +75,10 @@ def main():
           
             print(f"{list(dic2.keys())[l]} {list(dic2.values())[l]}")
             #1
+
+## TO DO ----
+# Had there been no filenames without extension then the first line would have been 0 files 
+# with no extension. In the printout list the extensions in alphabetical order.
      
 
 if __name__ == "__main__":
