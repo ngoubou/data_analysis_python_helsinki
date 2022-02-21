@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-
+import re
 def file_extensions(filename):
     return ([], {})
 
@@ -11,10 +11,16 @@ if __name__ == "__main__":
 
 filename = "/Users/Mamba/Library/Application Support/tmc/vscode/mooc-data-analysis-with-python-2021/part02-e07_file_extensions/src/filenames.txt"
 files = []
+a = []
 with open(filename, "r") as file:
     for line in file:
-        files.append(line.strip("\n"))
-    print(files)
+        if not re.findall(r"(.*)\.", line): # if there's no extension
+            files.append(line.strip("\n"))
+       
+        else:
+            files.append(re.findall(r"(.*)\.", line)[0]) # take everything 
+       
+    print((files, 1))
 
 # This exercise can give two points at maximum!
 
