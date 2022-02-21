@@ -1,79 +1,43 @@
 #!/usr/bin/env python3
+import sys
 import re
+
 def file_extensions(filename):
-    return ([], {})
-
-def main():
-    pass
-
-if __name__ == "__main__":
-    main()
-
-filename = "/Users/Mamba/Library/Application Support/tmc/vscode/mooc-data-analysis-with-python-2021/part02-e07_file_extensions/src/filenames.txt"
-
-with open(filename, "r") as file:
-    files = []
-    dic = {}
-    dic_values = []  # what i'll use for the dic values
-    dic_keys = []
+    with open(filename, "r") as file:
+        files = []
+        dic = {}
+        dic_values = []  # what i'll use for the dic values
+        dic_keys = []
     # read the file and put the file names in a list
-    for line in file:
-        if not re.findall(r"(.*)\.", line): # if there's no extension
-            files.append(line.strip("\n"))
-            dic_values.append(line.strip("\n"))
-            dic_keys.append(line.strip("\n")) # dic key
+        for line in file:
+            if not re.findall(r"(.*)\.", line): # if there's no extension
+                files.append(line.strip("\n"))
+                dic_values.append(line.strip("\n"))
+                dic_keys.append(line.strip("\n")) # dic key
        
-        else:
-            files.append(re.findall(r"(.*)\.", line)[0]) # take everything before the extension (ie the dot)
-            dic_values.append(line.strip("\n"))
-            dic_keys.append(re.findall(r"\.(.*)", line)[0])
+            else:
+                files.append(re.findall(r"(.*)\.", line)[0]) # take everything before the extension (ie the dot)
+                dic_values.append(line.strip("\n"))
+                dic_keys.append(re.findall(r"\.(.*)", line)[0])
  
     #dic_keys[3] = re.findall(r"\.(.*)", dic_keys[3])[0] # delete the "tar" before converting to set
     # doing so cause a set is unordered so can't use indices because it changes everytime
-    dic_keys = list(set(dic_keys)) # remove duplicates from keys
+        dic_keys = list(set(dic_keys)) # remove duplicates from keys
     
 
-    for i in dic_keys:
-        a = []
-        for j in dic_values:
+        for i in dic_keys:
+            a = []
+            for j in dic_values:
             
-            if re.findall(r'\.', j) and re.findall(r'\.(.*)', j)[0] == i:
-                if i == "tar.gz": # handle the "tar.gz extension"
-                    i = re.findall(r'\.(.*)', i)[0]
+                if re.findall(r'\.', j) and re.findall(r'\.(.*)', j)[0] == i:
+                    if i == "tar.gz":
+                        i = re.findall(r'\.(.*)', i)[0]
+                    a.append(j)
+                    dic[i] = a 
                 
-                a.append(j)
-                dic[i] = a # = a
-                
-            elif i == j: # if the file has no extension
-                s = i
-
-
-print(([s], dic))
-1+1
-
-# This exercise can give two points at maximum!
-
-# Part 1.
-
-# Write function file_extensions that gets as a parameter a filename. 
-# It should read through the lines from this file. Each line contains a filename. 
-# Find the extension for each filename. The function should return a pair, 
-# where the first element is a list containing all filenames with no extension 
-# (with the preceding period (.) removed). 
-# The second element of the pair is a dictionary with extensions as keys and corresponding values
-#  are lists with filenames having that extension.
-
-# Sounds a bit complicated, but hopefully the next example will clarify this. 
-# If the file contains the following lines
-
-#file1.txt
-#mydocument.pdf
-#file2.txt
-#archive.tar.gz
-#test
-
-# then the return value should be the pair: 
-# (["test"], { "txt" : ["file1.txt", "file2.txt"], "pdf" : ["mydocument.pdf"], "gz" : ["archive.tar.gz"] } )
+                elif i == j: # if the file has no extension
+                    s = i
+    return ([s], dic)
 
 # Part 2.
 
@@ -91,3 +55,37 @@ print(([s], dic))
 
 # Had there been no filenames without extension then the first line would have been 0 files 
 # with no extension. In the printout list the extensions in alphabetical order.
+
+def main():
+    for i in sys.argv[1:]:
+        z = file_extensions(i)
+     
+        test = []
+        testt = []
+        c = 0
+        d = {}
+        if not re.findall(r'\.', z[0][0]): # s'il n'y a pas d'extension
+            c += 1
+            print(f"{c} files with no extension")
+            #78
+       
+        for k in list(z[1].values()):
+            test.append(len(k))
+        for j in z[1]:   
+            testt.append(j)
+        
+        for m,n in enumerate(testt):
+            #print(m,n)
+            d[n] = test[m]
+        dic2 = {}
+        for i in sorted(d):
+            dic2[i]=d[i]
+     
+        for l in range(len(test)):
+          
+            print(f"{list(dic2.keys())[l]} {list(dic2.values())[l]}")
+            #1
+     
+
+if __name__ == "__main__":
+    main()
