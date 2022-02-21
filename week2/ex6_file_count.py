@@ -52,13 +52,14 @@ with open(filename, "r") as file:
         for i in word:
             if i: # if it is not an empty string
                 count_words += 1
-            for character in i:
+            for character in i: # characters count
                 count_char += 1
+            count_char += 1 # count the space between two words
                 #print(character)
 
     # characters count
     #for j in 
 
     print(count_lines, count_words, count_char)
-    print(1)
+    print(538-647)
   
