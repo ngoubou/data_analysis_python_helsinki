@@ -52,12 +52,15 @@ import re
   #      print(i.strip("""!"#$%&'()*,-./:;?@[]_"""))
 
 
-import sys
+#import sys
 #%%
-from statistics import mean, variance
-help(open)
+#from statistics import mean, variance
+#help(open)
 #print('Number of arguments:', len(sys.argv), 'arguments.')
 #print('Argument List:', str(sys.argv))
-print(sys.argv[1:])
+#print(sys.argv[1:])
 
-# %%
+a = (float(15.904), float(904.15), float(567.3457))
+#print(type(a))
+for i in a:
+    print(i)
