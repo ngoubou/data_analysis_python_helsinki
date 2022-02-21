@@ -9,6 +9,13 @@ def main():
 if __name__ == "__main__":
     main()
 
+filename = "/Users/Mamba/Library/Application Support/tmc/vscode/mooc-data-analysis-with-python-2021/part02-e07_file_extensions/src/filenames.txt"
+files = []
+with open(filename, "r") as file:
+    for line in file:
+        files.append(line.strip("\n"))
+    print(files)
+
 # This exercise can give two points at maximum!
 
 # Part 1.
