@@ -10,16 +10,34 @@ if __name__ == "__main__":
     main()
 
 filename = "/Users/Mamba/Library/Application Support/tmc/vscode/mooc-data-analysis-with-python-2021/part02-e07_file_extensions/src/filenames.txt"
-files = []
-a = []
+
 with open(filename, "r") as file:
+    files = []
+    dic = {}
+    dic_values = []  # what i'll use for the dic values
+    dic_keys = []
+    # read the file and put the file names in a list
     for line in file:
         if not re.findall(r"(.*)\.", line): # if there's no extension
             files.append(line.strip("\n"))
+            #dic_values.append(line.strip("\n"))
+            #dic_keys.append(line.strip("\n")) # dic key
        
         else:
-            files.append(re.findall(r"(.*)\.", line)[0]) # take everything 
-       
+            print(line.strip("\n"))
+            print(re.findall(r"(.*)\.", line)[0])
+            print(re.findall(r"\.(.*)", line)[0])
+            
+            #files.append(re.findall(r"(.*)\.", line)[0]) # take everything before the extension (ie the dot)
+            #dic_values.append(line.strip("\n"))
+            #dic_keys.append(re.findall(r"\.(.*)", line)[0])
+    #dic_keys = list(set(dic_keys)) # remove duplicates from keys
+    # create a dic storing the extensions as keys & values are the whole file name
+        #print(re.findall(r"\.(.*)", line)[0]) # my dic keys
+        #dic_values.append(line.strip("\n"))
+    #dic[i] = dic.get(i, 0) + 1    
+        #dic[re.findall(r"\.(.*)", line)[0]] = dic_values#line.strip("\n")
+    
     print((files, 1))
 
 # This exercise can give two points at maximum!
