@@ -41,15 +41,24 @@ with open(filename, "r") as file:
     count_lines = 0
     words = []
     count_words = 0
+    count_char = 0
     for line in file:
         count_lines += 1 # count the number of lines in the files
         if line != "\n": # do it for non empty lines
             words.append(re.split(r'\s', line)) # split the lines into words 
     
+    # words count
     for word in words:
         for i in word:
             if i: # if it is not an empty string
                 count_words += 1
-    print(count_lines)
-    print(count_words)
+            for character in i:
+                count_char += 1
+                #print(character)
+
+    # characters count
+    #for j in 
+
+    print(count_lines, count_words, count_char)
+    print(1)
   
