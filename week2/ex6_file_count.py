@@ -1,65 +1,56 @@
 #!/usr/bin/env python3
 
-from fileinput import filename
 import sys
+import re
 
 def file_count(filename):
-    return (0, 0, 0)
+    with open(filename, "r") as file:
+        count_lines = 0
+        words = []
+        count_words = 0
+        count_char = 0
+        # count lines and add words to list
+        for line in file:
+            count_lines += 1 # count the number of lines in the files
+            if line != "\n": # do it for non empty lines
+                words.append(re.split(r'\s', line)) # split the lines into words 
+
+    # words count
+        for word in words:
+            for i in word:
+                if i: # if it is not an empty string
+                    count_words += 1
+                for character in i:
+                    count_char += 1
+                count_char += 1 # count the space between two words
+
+    return (count_lines, count_words, count_char)
 
 def main():
-    pass
+    for i in sys.argv[1:]:
+        z = file_count(i)
+        print(f"{z[0]}\t{z[1]}\t{z[2]}\t{i}")
 
 if __name__ == "__main__":
     main()
 
-# This exercise can give two points at maximum!
+## Course Solution ----
 
-# Part 1.
+#import sys
 
-# Create a function file_count that gets a filename as parameter and returns a triple of numbers. 
-# The function should read the file, count the number of lines, words, and characters in the file, 
-# and return a triple with these count in this order. You get division into words by splitting 
-# at whitespace. You don't have to remove punctuation.
+#def file_count(filename):
+ #   lines=0
+  #  words=0
+   # chars=0
+    #with open(filename) as f:
+     #   for line in f:
+#            lines += 1
+#            words += len(line.split())
+#            chars += len(line)
+#    return (lines, words, chars) 
 
-# Part 2.
+#def main():
 
-# Create a main function that in a loop calls file_count using each filename in the list of 
-# command line parameters sys.argv[1:] as a parameter, in turn. 
-# For call python3 src/file_count file1 file2 ... the output should be
-
-#?      ?       ?       file1
-#?      ?       ?       file2
-#...
-
-# The fields are separated by tabs (\t). 
-# The fields are in order: linecount, wordcount, charactercount, filename.
-import re
-import sys
-# 1 - read the file
-filename = "/Users/Mamba/Library/Application Support/tmc/vscode/mooc-data-analysis-with-python-2021/part02-e06_file_count/src/test.txt"
-with open(filename, "r") as file:
-    count_lines = 0
-    words = []
-    count_words = 0
-    count_char = 0
-    for line in file:
-        count_lines += 1 # count the number of lines in the files
-        if line != "\n": # do it for non empty lines
-            words.append(re.split(r'\s', line)) # split the lines into words 
-    
-    # words count
-    for word in words:
-        for i in word:
-            if i: # if it is not an empty string
-                count_words += 1
-            for character in i: # characters count
-                count_char += 1
-            count_char += 1 # count the space between two words
-                #print(character)
-
-    # characters count
-    #for j in 
-
-    print(count_lines, count_words, count_char)
-    print(538-647)
-  
+#    for filename in sys.argv[1:]:
+#        lines, words, chars = file_count(filename)
+#        print(f"{lines}\t{words}\t{chars}\t{filename}")
