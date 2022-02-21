@@ -61,6 +61,9 @@ import re
 #print(sys.argv[1:])
 
 a = (float(15.904), float(904.15), float(567.3457))
+d = {"oui": 1}
+#print(d)
+j = "test"
+print(re.findall(r'\.(.*)', j)[0])
 #print(type(a))
-for i in a:
-    print(i)
+

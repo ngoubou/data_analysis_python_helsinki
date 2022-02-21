@@ -28,19 +28,24 @@ with open(filename, "r") as file:
             dic_values.append(line.strip("\n"))
             dic_keys.append(re.findall(r"\.(.*)", line)[0])
  
-    dic_keys[3] = re.findall(r"\.(.*)", dic_keys[3])[0] # delete the "tar" before converting to set
+    #dic_keys[3] = re.findall(r"\.(.*)", dic_keys[3])[0] # delete the "tar" before converting to set
     # doing so cause a set is unordered so can't use indices because it changes everytime
     dic_keys = list(set(dic_keys)) # remove duplicates from keys
-    #print(dic_keys[3])
-    #print(re.findall(r"\.(.*)", dic_keys[1]))
     
-    # create a dic storing the extensions as keys & values are the whole file name
-        #print(re.findall(r"\.(.*)", line)[0]) # my dic keys
-        #dic_values.append(line.strip("\n"))
-    #dic[i] = dic.get(i, 0) + 1    
-        #dic[re.findall(r"\.(.*)", line)[0]] = dic_values#line.strip("\n")
-    
-    print((files, 1))
+
+    for i in dic_keys:
+        a = []
+        for j in dic_values:
+            
+            if re.findall(r'\.', j) and re.findall(r'\.(.*)', j)[0] == i:
+                a.append(j)
+                dic[i] = a # = a
+                
+            elif i == j: # if the file has no extension
+                print(i)
+          
+
+print(dic)
 
 # This exercise can give two points at maximum!
 
