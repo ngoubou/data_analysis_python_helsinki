@@ -20,18 +20,20 @@ with open(filename, "r") as file:
     for line in file:
         if not re.findall(r"(.*)\.", line): # if there's no extension
             files.append(line.strip("\n"))
-            #dic_values.append(line.strip("\n"))
-            #dic_keys.append(line.strip("\n")) # dic key
+            dic_values.append(line.strip("\n"))
+            dic_keys.append(line.strip("\n")) # dic key
        
         else:
-            print(line.strip("\n"))
-            print(re.findall(r"(.*)\.", line)[0])
-            print(re.findall(r"\.(.*)", line)[0])
-            
-            #files.append(re.findall(r"(.*)\.", line)[0]) # take everything before the extension (ie the dot)
-            #dic_values.append(line.strip("\n"))
-            #dic_keys.append(re.findall(r"\.(.*)", line)[0])
-    #dic_keys = list(set(dic_keys)) # remove duplicates from keys
+            files.append(re.findall(r"(.*)\.", line)[0]) # take everything before the extension (ie the dot)
+            dic_values.append(line.strip("\n"))
+            dic_keys.append(re.findall(r"\.(.*)", line)[0])
+ 
+    dic_keys[3] = re.findall(r"\.(.*)", dic_keys[3])[0] # delete the "tar" before converting to set
+    # doing so cause a set is unordered so can't use indices because it changes everytime
+    dic_keys = list(set(dic_keys)) # remove duplicates from keys
+    #print(dic_keys[3])
+    #print(re.findall(r"\.(.*)", dic_keys[1]))
+    
     # create a dic storing the extensions as keys & values are the whole file name
         #print(re.findall(r"\.(.*)", line)[0]) # my dic keys
         #dic_values.append(line.strip("\n"))
