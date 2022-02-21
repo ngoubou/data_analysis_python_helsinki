@@ -13,142 +13,156 @@ Test your function from the main function.
 
 
 
-### EXERCISE 2 (compliment)
+### EXERCISE 2 (file listing)
 
-Fill in the stub solution to make the program work as follows. The program should ask the user for an input, and the print an answer as the examples below show.
+The file src/listing.txt contains a list of files with one line per file. Each line contains seven fields: access rights, number of references, owner's name, name of owning group, file size, date, filename. These fields are separated with one or more spaces. Note that there may be spaces also within these seven fields.
 
-What country are you from? Sweden
-I have heard that Sweden is a beautiful country.
+Write function file_listing that loads the file src/listing.txt. It should return a list of tuples (size, month, day, hour, minute, filename). Use regular expressions to do this (either match, search, findall, or finditer method).
 
-What country are you from? Chile  
-I have heard that Chile is a beautiful country.
+An example: for line
 
+-rw-r--r-- 1 jttoivon hyad-all   25399 Nov  2 21:25 exception_hierarchy.pdf
 
-
-### EXERCISE 3 (multiplication)
-
-Make a program that gives the following output. You should use a for loop in your solution.
-
-4 multiplied by 0 is 0
-4 multiplied by 1 is 4
-4 multiplied by 2 is 8
-4 multiplied by 3 is 12
-4 multiplied by 4 is 16
-4 multiplied by 5 is 20
-4 multiplied by 6 is 24
-4 multiplied by 7 is 28
-4 multiplied by 8 is 32
-4 multiplied by 9 is 36
-4 multiplied by 10 is 40
+the function should create the tuple (25399, "Nov", 2, 21, 25, "exception_hierarchy.pdf").
 
 
 
-#### EXERCISE 4 (multiplication table)
+### EXERCISE 3 (red green blue)
 
-In the main function print a multiplication table, which is shown below:
+The file src/rgb.txt contains names of colors and their numerical representations in RGB format. The RBG format allows a color to be represented as a mixture of red, green, and blue components. Each component can have an integer value in the range [0,255]. Each line in the file contains four fields: red, green, blue, and colorname. Each field is separated by some amount of whitespace (tab or space in this case). The text file is formatted to make it print nicely, but that makes it harder to process by a computer. Note that some color names can also contain a space character.
 
-   1   2   3   4   5   6   7   8   9  10
-   2   4   6   8  10  12  14  16  18  20
-   3   6   9  12  15  18  21  24  27  30
-   4   8  12  16  20  24  28  32  36  40
-   5  10  15  20  25  30  35  40  45  50
-   6  12  18  24  30  36  42  48  54  60
-   7  14  21  28  35  42  49  56  63  70
-   8  16  24  32  40  48  56  64  72  80
-   9  18  27  36  45  54  63  72  81  90
-  10  20  30  40  50  60  70  80  90 100
+Write function red_green_blue that reads the file rgb.txt from the folder src. Remove the irrelevant first line of the file. The function should return a list of strings. Clean-up the file so that the strings in the returned list have four fields separated by a single tab character (\t). Use regular expressions to do this.
 
-For example at row 4 and column 9 we have 4*9=36.
+The first string in the returned list should be:
 
-Use two nested for loops to achieve this. Note that you can use the following form to stop the print function from automatically starting a new line:
+'255\t250\t250\tsnow'
 
 
 
-### EXERCISE 5 (two dice)
+#### EXERCISE 4 (word frequencies)
 
-Let us consider throwing two dice. (A dice can give a value between 1 and 6.) Use two nested for loops in the main function to iterate through all possible combinations the pair of dice can give. There are 36 possible combinations. Print all those combinations as (ordered) pairs that sum to 5. For example, your printout should include the pair (2,3). Print one pair per line.
+Create function word_frequencies that gets a filename as a parameter and returns a dict with the word frequencies. In the dictionary the keys are the words and the corresponding values are the number of times that word occurred in the file specified by the function parameter. Read all the lines from the file and split the lines into words using the split() method. Further, remove punctuation from the ends of words using the strip("""!"#$%&'()*,-./:;?@[]_""") method call.
+
+Test this function in the main function using the file alice.txt. In the output, there should be a word and its count per line separated by a tab:
+
+The     64
+Project 83
+Gutenberg   26
+EBook   3
+of      303
 
 
 
-### EXERCISE 6 (triple square)
+### EXERCISE 5 (summary)
 
-Write two functions: triple and square. Function triple multiplies its parameter by three. Function square raises its parameter to the power of two. For example, we have equalities triple(5)==15 and square(5)==25.
+This exercise can give two points at maximum!
 
 Part 1.
 
-In the main function write a for loop that iterates through values 1 to 10, and for each value prints its triple and its square. The output should be as follows:
+Create a function called summary that gets a filename as a parameter. The input file should contain a floating point number on each line of the file. Make your function read these numbers and then return a triple containing the sum, average, and standard deviation of these numbers for the file. As a reminder, the formula for corrected sample standard deviation is ∑i=1n(xi−x‾)2n−1\sqrt{\frac{\sum_{i=1}^n (x_i - \overline x)^2}{n-1}}n−1∑i=1n​(xi​−x)2​
 
-triple(1)==3 square(1)==1
-triple(2)==6 square(2)==4
-...
+​, where x‾\overline xx is the average.
+
+The main function should call the function summary for each filename in the list sys.argv[1:] of command line parameters. (Skip sys.argv[0] since it contains the name of the current program.)
+
+Example of usage from the command line: python3 src/summary.py src/example.txt src/example2.txt
+
+Print floating point numbers using six decimals precision. The output should look like this:
+
+File: src/example.txt Sum: 51.400000 Average: 10.280000 Stddev: 8.904606
+File: src/example2.txt Sum: 5446.200000 Average: 1815.400000 Stddev: 3124.294045
 
 Part 2.
 
-Now modify this for loop so that it stops iteration when the square of a value is larger than the triple of the value, without printing anything in the last iteration.
+If some line doesn’t represent a number, you can just ignore that line. You can achieve this with the try-except block. An example of recovering from an exceptional situation:
 
-Note that the test cases check that both functions triple and square are called exactly once per iteration.
+try:
+    x = float(line)           # The float constructor raises ValueError exception if conversion is no possible
+except ValueError:
+    # Statements in here are executed when the above conversion fails
 
-
-
-### EXERCISE 7 (areas of shapes)
-
-Create a program that can compute the areas of three shapes, triangles, rectangles and circles, when their dimensions are given.
-
-An endless loop should ask for which shape you want the area be calculated. An empty string as input will exit the loop. If the user gives a string that is none of the given shapes, the message “Unknown shape!” should be printed. Then it will ask for dimensions for that particular shape. When all the necessary dimensions are given, it prints the area, and starts the loop all over again. Use format specifier f for the area.
-
-What happens if you give incorrect dimensions, like giving string "aa" as radius? You don't have to check for errors in the input.
-
-Example interaction:
-
-Choose a shape (triangle, rectangle, circle): triangle
-Give base of the triangle: 20
-Give height of the triangle: 5
-The area is 50.000000
-Choose a shape (triangle, rectangle, circle): rectangel
-Unknown shape!
-Choose a shape (triangle, rectangle, circle): rectangle
-Give width of the rectangle: 20
-Give height of the rectangle: 4
-The area is 80.000000
-Choose a shape (triangle, rectangle, circle): circle
-Give radius of the circle: 10
-The area is 314.159265
-Choose a shape (triangle, rectangle, circle): 
+We will cover more about exceptions later in the course.
 
 
 
-### EXERCISE 8 (solve quadratic)
+### EXERCISE 6 (file count)
 
-In mathematics, the quadratic equation ax2 + bx + c = 0 can be solved with the formula 
-x = (−b ± b2 − 4ac) / 2ax
+This exercise can give two points at maximum!
 
-Write a function solve_quadratic, that returns both solutions of a generic quadratic as a pair (2-tuple) when the coefficients are given as parameters. It should work like this:
+Part 1.
 
-print(solve_quadratic(1,-3,2))
-(2.0,1.0)
-print(solve_quadratic(1,2,1))
-(-1.0,-1.0)
+Create a function file_count that gets a filename as parameter and returns a triple of numbers. The function should read the file, count the number of lines, words, and characters in the file, and return a triple with these count in this order. You get division into words by splitting at whitespace. You don't have to remove punctuation.
 
-You may want to use the math.sqrt function from the math module in your solution. Test that your function works in the main function!
+Part 2.
 
+Create a main function that in a loop calls file_count using each filename in the list of command line parameters sys.argv[1:] as a parameter, in turn. For call python3 src/file_count file1 file2 ... the output should be
 
+?      ?       ?       file1
+?      ?       ?       file2
+...
 
-### EXERCISE 9 (merge)
-
-Suppose we have two lists L1 and L2 that contain integers which are sorted in ascending order. Create a function merge that gets these lists as parameters and returns a new sorted list L that has all the elements of L1 and L2. So, len(L) should equal to len(L1)+len(L2). Do this using the fact that both lists are already sorted. You can’t use the sorted function or the sort method in implementing the merge method. You can however use these sorted in the main function for creating inputs to the merge function. Test with a couple of examples in the main function that your solution works correctly.
-
-Note: In Python argument lists are passed by reference to the function, they are not copied! Make sure you don't modify the original lists of the caller.
+The fields are separated by tabs (\t). The fields are in order: linecount, wordcount, charactercount, filename.
 
 
 
-### EXERCISE 10 (detect ranges)
+### EXERCISE 7 (file extensions)
 
-Create a function named detect_ranges that gets a list of integers as a parameter. The function should then sort this list, and transform the list into another list where pairs are used for all the detected intervals. So 3,4,5,6 is replaced by the pair (3,7). Numbers that are not part of any interval result just single numbers. The resulting list consists of these numbers and pairs, separated by commas. An example of how this function works:
+This exercise can give two points at maximum!
 
-print(detect_ranges([2,5,4,8,12,6,7,10,13]))
-[2,(4,9),10,(12,14)]
+Part 1.
 
-Note that the second element of the pair does not belong to the range. This is consistent with the way Python's range function works. You may assume that no element in the input list appears multiple times.
+Write function file_extensions that gets as a parameter a filename. It should read through the lines from this file. Each line contains a filename. Find the extension for each filename. The function should return a pair, where the first element is a list containing all filenames with no extension (with the preceding period (.) removed). The second element of the pair is a dictionary with extensions as keys and corresponding values are lists with filenames having that extension.
+
+Sounds a bit complicated, but hopefully the next example will clarify this. If the file contains the following lines
+
+file1.txt
+mydocument.pdf
+file2.txt
+archive.tar.gz
+test
+
+then the return value should be the pair: (["test"], { "txt" : ["file1.txt", "file2.txt"], "pdf" : ["mydocument.pdf"], "gz" : ["archive.tar.gz"] } )
+
+Part 2.
+
+Write a main method that calls the file_extensions function with "src/filenames.txt" as the argument. Then print the results so that for each extension there is a line consisting of the extension and the number of files with that extension. The first line of the output should give the number of files without extensions.
+
+With the example in part 1, the output should be
+
+1 files with no extension
+gz 1
+pdf 1
+txt 2
+
+Had there been no filenames without extension then the first line would have been 0 files with no extension. In the printout list the extensions in alphabetical order. 
+
+
+
+### EXERCISE 8 (prepend)
+
+Create a class called Prepend. We create an instance of the class by giving a string as a parameter to the initializer. The initializer stores the parameter in an instance attribute start. The class also has a method write(s) which prints the string s prepended with the start string. An example of usage:
+
+p = Prepend("+++ ")
+p.write("Hello");
+
+Will print
+
++++ Hello
+
+Try out using the class from the main function.
+
+
+
+### EXERCISE 9 (rational)
+
+Create a class Rational whose instances are rational numbers. A new rational number can be created with the call to the class. For example, the call r=Rational(1,4) creates a rational number “one quarter”. Make the instances support the following operations: + - * / < > == with their natural behaviour. Make the rationals also printable so that from the printout we can clearly see that they are rational numbers.
+
+
+### EXERCISE 10 (extract numbers)
+
+Write a function extract_numbers that gets a string as a parameter. It should return a list of numbers that can be both ints and floats. Split the string to words at whitespace using the split() method. Then iterate through each word, and initially try to convert to an int. If unsuccesful, then try to convert to a float. If not a number then skip the word.
+
+Example run: print(extract_numbers("abd 123 1.2 test 13.2 -1")) will return [123, 1.2, 13.2, -1]
 
 
 
