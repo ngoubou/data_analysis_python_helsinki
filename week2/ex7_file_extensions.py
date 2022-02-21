@@ -38,14 +38,18 @@ with open(filename, "r") as file:
         for j in dic_values:
             
             if re.findall(r'\.', j) and re.findall(r'\.(.*)', j)[0] == i:
+                if i == "tar.gz": # handle the "tar.gz extension"
+                    i = re.findall(r'\.(.*)', i)[0]
+                
                 a.append(j)
                 dic[i] = a # = a
                 
             elif i == j: # if the file has no extension
-                print(i)
-          
+                s = i
 
-print(dic)
+
+print(([s], dic))
+1+1
 
 # This exercise can give two points at maximum!
 
