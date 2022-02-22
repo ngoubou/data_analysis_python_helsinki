@@ -7,7 +7,7 @@ class Prepend(object):
         "This initialises an instance of type ClassName"
         self.start = start # creates an instance attribute
     
-    def write(self, s):#, param1):
+    def write(self, s):
         """This is a method of the class"""
         print(self.start + s)
  
