@@ -38,48 +38,67 @@ def file_extensions(filename):
                 elif i == j: # if the file has no extension
                     s = i
     return ([s], dic)
-
-
-
+ 
 
 def main():
-    for i in sys.argv[1:]:
-        z = file_extensions(i)
-     
-        test = []
-        testt = []
-        c = 0
-        d = {}
-        if all(type(z[j]) == list and type(z[j+1]) == list for j in range(len(z)-1)): # if no file has an extension
-    
-            print(f"{c} files with no extension") 
-
-        if not re.findall(r'\.', z[0][0]): # s'il n'y a pas d'extension
-            c += 1
-            print(f"{c} files with no extension")
-            #78
-       
-        for k in list(z[1].values()):
-            test.append(len(k))
-        for j in z[1]:   
-            testt.append(j)
+    z = file_extensions("filenames.txt")
+    try:
+        print(f"{0} files with no extension") # when it's 1 it does not work and i don't know 
+        # why it works for zero
         
-        for m,n in enumerate(testt):
-            #print(m,n)
-            d[n] = test[m]
-        dic2 = {}
-        for i in sorted(d):
-            dic2[i]=d[i]
+        for j in sorted(z[1]):
+            dic2 = {}
+            dic2[j] = z[1][j]
+            print(list(dic2.keys())[0], len(list(dic2.values())[0]))
+    except:
+         print(f"0 files with no extension")
      
-        for l in range(len(test)):
-          
-            print(f"{list(dic2.keys())[l]} {list(dic2.values())[l]}")
-            #1
-
-## TO DO ----
-# Had there been no filenames without extension then the first line would have been 0 files 
-# with no extension. In the printout list the extensions in alphabetical order.
+    
      
-
+   
 if __name__ == "__main__":
     main()
+
+## Course Solution ----
+
+#def file_extensions(filename):
+    
+   # no_extension=[]
+
+   # d = {}
+
+    #with open(filename) as f:
+
+        #for line in f:
+
+            #line=line.strip()
+
+            #v = line.split('.')
+
+           # if len(v) == 1:
+
+          #      no_extension.append(line)
+
+         #   else:
+
+        #        extension = v[-1]
+
+       #         if extension not in d:
+
+      #              d[extension] = []
+
+     #           d[extension].append(line)
+
+    #return (no_extension, d)
+
+ 
+
+#def main():
+
+ #   no_extension, d = file_extensions("src/filenames.txt")
+
+  #  print(f"{len(no_extension)} files with no extension")
+
+   # for extension, files in sorted(d.items()):
+
+    #    print(f"{extension} {len(files)}")
