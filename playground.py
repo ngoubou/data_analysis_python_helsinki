@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 ## WEEK 2 ----
 
 # Regular expressions
@@ -53,17 +54,26 @@ import re
 
 
 #import sys
-#%%
+#
 #from statistics import mean, variance
 #help(open)
 #print('Number of arguments:', len(sys.argv), 'arguments.')
 #print('Argument List:', str(sys.argv))
 #print(sys.argv[1:])
 
-a = (float(15.904), float(904.15), float(567.3457))
-d = {"oui": 1}
+#a = (float(15.904), float(904.15), float(567.3457))
+#d = {"oui": 1}
 #print(d)
-j = "test"
-print(re.findall(r'\.(.*)', j)[0])
+#j = "test"
+#print(re.findall(r'\.(.*)', j)[0])
 #print(type(a))
 
+
+## Classes and objects
+class MyClass:
+      x = 5
+
+print(MyClass)
+p1 = MyClass()
+print(p1.x)
+print(type(p1))
