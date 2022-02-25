@@ -4,6 +4,7 @@
 # Regular expressions
 
 import re
+from tkinter import E
 
 #s = ("If I’m not in a hurry, then I should stay. " +
  #   "On the other hand, if I leave, then I can sleep.")
@@ -73,7 +74,36 @@ import re
 class MyClass:
       x = 5
 
-print(MyClass)
-p1 = MyClass()
-print(p1.x)
-print(type(p1))
+#print(MyClass)
+#p1 = MyClass()
+#print(p1.x)
+#print(type(p1))
+
+## Corey Schafer YT ----
+class Employee:
+    def __init__(self, first, last, pay):
+        self.first = first
+        self.last = last
+        self.pay = pay
+        self.email = first + "." + last + "@company.com"
+    #pass
+
+emp_1 = Employee("Corey", "Schafer", 50000)
+#emp_2 = Employee()
+#print(Employee("Lionel", "Ngoubou", "150K").first)
+#print(emp_2)
+#emp_1.first = "Corey"
+#print(emp_1.email)
+
+## StackOverflow ----
+class MyClass(object):
+    def __str__(self):
+        return "MyClass([])"
+    def __repr__(self):
+            return "I am an instance of MyClass at address "+hex(id(self))
+ 
+m = MyClass()
+print(MyClass())
+#MyClass([])
+#m
+#I am an instance of MyClass at address 0x108ed5a10

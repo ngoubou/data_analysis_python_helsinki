@@ -8,9 +8,10 @@ class Rational(object):
         self.num1 = num1 # creates an instance attribute
         self.num2 = num2
         #c = num1 / num2
-    def __truediv__(self):
+    def __div__(self, s, ss):
         #x += 1
-        print(self.num1/self.num2)
+        #print(self.num1/self.num2)
+        return s/ss
     #print(__truediv__())
     #print(x)
 #class Test(Rational):
@@ -25,6 +26,7 @@ class Rational(object):
 def main():
     r1=Rational(1,4)
     r2=Rational(2,3)
+    #print(r1.__div__(1,4))
     print(r1)
     #r3 = Test(1,4)
     #print(r3)
