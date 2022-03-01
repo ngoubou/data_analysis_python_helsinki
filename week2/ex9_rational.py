@@ -14,15 +14,24 @@ class Rational:
     def __mul__(self, other):
         return Rational(self.first * other.first, self.last * other.last)
 
-    def __add__(self, other):
-        return Rational(self.first + other.first, self.last + other.last)
+    def __truediv__(self, other):
+        return Rational(self.first * other.last, self.last * other.first)
+
+    def __add__(self, other): 
+        return Rational(self.first * other.last + self.last * other.first, self.last * other.last)
+    
+    def __sub__(self, other):
+        return Rational(self.first * other.last - self.last * other.first, self.last * other.last)
+
 def main():
     r1 = Rational(1,4)
     r2 = Rational(2, 3)
     print(r1)
     print(r2)
     print(r1 * r2)
+    print(r1 / r2)
     print(r1 + r2)
+    print(r1 - r2)
 
 
 if __name__ == "__main__":
