@@ -103,7 +103,29 @@ class MyClass(object):
             return "I am an instance of MyClass at address "+hex(id(self))
  
 m = MyClass()
-print(MyClass())
+#print(MyClass())
 #MyClass([])
 #m
 #I am an instance of MyClass at address 0x108ed5a10
+
+#a = int(15/3)
+#a.from_bytes
+#print(a)
+
+class B(object):
+    def f(self):
+        print("Executing B.f")
+    def g(self):
+        print("Executing B.g")
+    
+class C(B):
+    def g(self):
+        print("Executing C.g")
+        
+x=C()
+#x.f() # inherited from B
+#x.g() # overridden by C
+#print(issubclass(C,B))
+y = B()
+print(isinstance(x,B)== isinstance(x,C)==isinstance(y,B))
+print(isinstance(y,C))
