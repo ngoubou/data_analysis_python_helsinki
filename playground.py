@@ -127,5 +127,10 @@ x=C()
 #x.g() # overridden by C
 #print(issubclass(C,B))
 y = B()
-print(isinstance(x,B)== isinstance(x,C)==isinstance(y,B))
-print(isinstance(y,C))
+#print(isinstance(x,B)== isinstance(x,C)==isinstance(y,B))
+#print(isinstance(y,C))
+print(5/4)
+x = 5
+y = 4
+print(x.__truediv__(y))
+print(x.__div__(y))
