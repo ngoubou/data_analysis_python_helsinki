@@ -11,14 +11,18 @@ class Rational:
         return f"{self.first / self.last}"
     
     # i now implement the basic operations and comparisons
-    def __mul__(self, s):
-        return Rational(self.first * s.first, self.last * s.last)
+    def __mul__(self, other):
+        return Rational(self.first * other.first, self.last * other.last)
+
+    def __add__(self, other):
+        return Rational(self.first + other.first, self.last + other.last)
 def main():
     r1 = Rational(1,4)
     r2 = Rational(2, 3)
     print(r1)
     print(r2)
-    print(r1*r2)
+    print(r1 * r2)
+    print(r1 + r2)
 
 
 if __name__ == "__main__":
