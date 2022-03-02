@@ -2,7 +2,24 @@
 
 import re
 def extract_numbers(s):
-    return []
+    ls = []
+    s = s.split(" ")
+    for i in s:
+        try:
+            if type(i) == int:
+                x = int(i)
+                ls.append(x)
+            elif type(i) == float:
+                x = float(i)
+                ls.append(x)
+        except TypeError:
+            continue
+            #if type(i) == float:
+             #   x = float(i)
+              #  ls.append(x)
+        #else:
+          #  continue
+    return ls
 
 def main():
     print(extract_numbers("abd 123 1.2 test 13.2 -1"))

@@ -151,7 +151,7 @@
 
 ## EXCEPTIONS ----
 
-L=[1,2,3]
+#L=[1,2,3]
 #try:
  #   print(L[43])
 #except IndexError:
@@ -162,23 +162,29 @@ L=[1,2,3]
 #print(float(s)/n) 
 #print(len(L))
 
-def compute_average(L):
-    n=len(L)
-    s=sum(L)
-    return float(s)/n # error is noticed here !!!
-mylist=[]
-while True:
-    try:
-        x=float(input("Give a number (non-number quits): "))
-        mylist.append(x)
-    except ValueError:
-        break
-try:
-    average=compute_average(mylist)
-    print("Average is", average)
-except ZeroDivisionError:
+#def compute_average(L):
+ #   n=len(L)
+  #  s=sum(L)
+   # return float(s)/n # error is noticed here !!!
+#mylist=[]
+#while True:
+ #   try:
+  #      x=float(input("Give a number (non-number quits): "))
+   #     mylist.append(x)
+    #except ValueError:
+     #   break
+#try:
+ #   average=compute_average(mylist)
+  #  print("Average is", average)
+#except ZeroDivisionError:
     # and the error is handled here
-    if len(mylist) == 0:
-        print("Tried to compute the average of empty list of numbers")
-    else:
-        print("Something strange happened")
+ #   if len(mylist) == 0:
+  #      print("Tried to compute the average of empty list of numbers")
+   # else:
+    #    print("Something strange happened")
+
+x = 7.0
+if type(x) == int:
+    print(x)
+else:
+    print("nope")
