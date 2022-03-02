@@ -6,14 +6,20 @@ def extract_numbers(s):
     s = s.split(" ")
     for i in s:
         try:
-            if type(i) == int:
-                x = int(i)
-                ls.append(x)
-            elif type(i) == float:
-                x = float(i)
-                ls.append(x)
-        except TypeError:
+            #print(re.findall(r'\b[\d]+\b', i))
+            #print(re.findall(r'[-]?\b[\d]\d\b', i))
+            #if type(i) == int: # changer les conditions
+            x = int(i)
+            ls.append(x)
+            #elif type(i) == float:
+                #x = float(i)
+                #ls.append(x)
+        except ValueError:
+            #x = float(i)
+            #ls.append(x)
             continue
+        #else:
+         #   continue
             #if type(i) == float:
              #   x = float(i)
               #  ls.append(x)
