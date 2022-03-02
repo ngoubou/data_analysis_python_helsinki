@@ -166,98 +166,105 @@ Example run: print(extract_numbers("abd 123 1.2 test 13.2 -1")) will return [123
 
 
 
-### EXERCISE 11 (interleave)
+### EXERCISE 11 (rows and columns)
 
-Write function interleave that gets arbitrary number of lists as parameters. You may assume that all the lists have equal length. The function should return one list containing all the elements from the input lists interleaved. Test your function from the main function of the program.
+Write two functions, get_rows and get_columns, that get a two dimensional array as parameter. They should return the list of rows and columns of the array, respectively. The rows and columns should be one dimensional arrays. You may use the transpose operation, which flips rows to columns, in your solution. The transpose is done by the T method:
 
-Example: interleave([1,2,3], [20,30,40], ['a', 'b', 'c']) should return [1, 20, 'a', 2, 30, 'b', 3, 40, 'c']. Use the zip function to implement interleave. Remember the extend method of list objects.
+a=np.random.randint(0, 10, (4,4))
+print(a)
+print(a.T)
 
+[[0 1 9 9]
+[0 4 7 3]
+[2 7 2 0]
+[0 4 5 5]]
+[[0 0 2 0]
+[1 4 7 4]
+[9 7 2 5]
+[9 3 0 5]]
 
+Test your solution in the main function. Example of usage:
 
-### EXERCISE 12 (distinct characters)
-
-Write function distinct_characters that gets a list of strings as a parameter. It should return a dictionary whose keys are the strings of the input list and the corresponding values are the numbers of distinct characters in the key.
-
-Use the set container to temporarily store the distinct characters in a string. Example of usage: distinct_characters(["check", "look", "try", "pop"]) should return { "check" : 4, "look" : 3, "try" : 3, "pop" : 2}.
-
-
-
-### EXERCISE 13 (reverse dictionary)
-
-Let d be a dictionary that has English words as keys and a list of Finnish words as values. So, the dictionary can be used to find out the Finnish equivalents of an English word in the following way:
-
-d["move"]
-["liikuttaa"]
-d["hide"]
-["piilottaa", "salata"]
-
-Make a function reverse_dictionary that creates a Finnish to English dictionary based on a English to Finnish dictionary given as a parameter. The values of the created dictionary should be lists of words. It should work like this:
-
-d={'move': ['liikuttaa'], 'hide': ['piilottaa', 'salata'], 'six': ['kuusi'], 'fir': ['kuusi']}
-reverse_dictionary(d)
-{'liikuttaa': ['move'], 'piilottaa': ['hide'], 'salata': ['hide'], 'kuusi': ['six', 'fir']}
-
-Be careful with synonyms and homonyms!
+a = np.array([[5, 0, 3, 3],
+ [7, 9, 3, 5],
+ [2, 4, 7, 6],
+ [8, 8, 1, 6]])
+get_rows(a)
+[array([5, 0, 3, 3]), array([7, 9, 3, 5]), array([2, 4, 7, 6]), array([8, 8, 1, 6])]
+get_columns(a)
+[array([5, 7, 2, 8]), array([0, 9, 4, 8]), array([3, 3, 7, 1]), array([3, 5, 6, 6]
 
 
 
-### EXERCISE 14 (find matching)
+### EXERCISE 12 (row and column vectors)
 
-Write function find_matching that gets a list of strings and a search string as parameters. The function should return the indices to those elements in the input list that contain the search string. Use the function enumerate.
+Create function get_row_vectors that returns a list of rows from the input array of shape (n,m), but this time the rows must have shape (1,m). Similarly, create function get_columns_vectors that returns a list of columns (each having shape (n,1)) of the input matrix .
 
-An example: find_matching(["sensitive", "engine", "rubbish", "comment"], "en") should return the list [0, 1, 3].
+Example: for a 2x3 input matrix
 
+ [[5 0 3]
+  [3 7 9]]
 
+the result should be
 
-### EXERCISE 15 (two dice comprehension)
+Row vectors: 
+[array([[5, 0, 3]]), array([[3, 7, 9]])]
+Column vectors: 
+[array([[5],
+        [3]]), 
+ array([[0],
+        [7]]), 
+ array([[3],
+        [9]])]
 
-Redo the earlier exercise which printed all the pairs of two dice results that sum to 5. But this time use a list comprehension. Print one pair per line.
-
-
-
-### EXERCISE 16 (transform)
-
-Write a function transform that gets two strings as parameters and returns a list of integers. The function should split the strings into words, and convert these words to integers. This should give two lists of integers. Then the function should return a list whose elements are multiplication of two integers in the respective positions in the lists. For example transform("1 5 3", "2 6 -1") should return the list of integers [2, 30, -3].
-
-You have to use split, map, and zip functions/methods. You may assume that the two input strings are in correct format.
-
-
-
-### EXERCISE 17 (positive list)
-
-Write a function positive_list that gets a list of numbers as a parameter, and returns a list with the negative numbers and zero filtered out using the filter function.
-
-The function call positive_list([2,-2,0,1,-7]) should return the list [2,1]. Test your function in the main function.
+The above output is basically just the returned lists printed with print. Only some whitespace is adjusted to make it look nicer. Output is not tested.
 
 
 
-### EXERCISE 18 (acronyms)
+### EXERCISE 13 (diamond)
 
-Write function acronyms which takes a string as a parameter and returns a list of acronyms. A word is an acronym if it has length at least two, and all its characters are in uppercase. Before acronym detection, delete punctuation with the strip method.
+Create a function diamond that returns a two dimensional integer array where the 1s form a diamond shape. Rest of the numbers are 0. The function should get a parameter that tells the length of a side of the diamond. Do this using the eye and concatenate functions of NumPy and array slicing.
 
-Test this function in the main function with the following call:
+Example of usage:
 
-print(acronyms("""For the purposes of the EU General Data Protection Regulation (GDPR), the controller of your personal information is International Business Machines Corporation (IBM Corp.), 1 New Orchard Road, Armonk, New York, United States, unless indicated otherwise. Where IBM Corp. or a subsidiary it controls (not established in the European Economic Area (EEA)) is required to appoint a legal representative in the EEA, the representative for all such cases is IBM United Kingdom Limited, PO Box 41, North Harbour, Portsmouth, Hampshire, United Kingdom PO6 3AU."""))
-
-This should return ['EU', 'GDPR', 'IBM', 'IBM', 'EEA', 'EEA', 'IBM', 'PO', 'PO6', '3AU']
-
-
-
-### EXERCISE 19 (sum equation)
-
-Write a function sum_equation which takes a list of positive integers as parameters and returns a string with an equation of the sum of the elements.
-
-Example: sum_equation([1,5,7]) returns "1 + 5 + 7 = 13" Observe, the spaces should be exactly as shown above. For an empty list the function should return the string "0 = 0".
+print(diamond(3))
+[[0 0 1 0 0]
+ [0 1 0 1 0]
+ [1 0 0 0 1]
+ [0 1 0 1 0]
+ [0 0 1 0 0]]
+print(diamond(1))
+[[1]]
 
 
 
-#### EXERCISE 20 (usemodule)
+### EXERCISE 14 (vector lengths)
 
-Create your own module as file triangle.py in the src folder. The module should contain two functions:
+Write function vector_lengths that gets a two dimensional array of shape (n,m) as a parameter. Each row in this array corresponds to a vector. The function should return an array of shape (n,), that has the length of each vector in the input. The length is defined by the usual Euclidean norm. Don't use loops at all in your solution. Instead use vectorized operations. You must use at least the np.sum and the np.sqrt functions. You can't use the function scipy.linalg.norm. Test your function in the main function.
 
-    hypothenuse which returns the length of the hypothenuse when given the lengths of two other sides of a right-angled triangle
-    area which returns the area of the right-angled triangle, when two sides, perpendicular to each other, are given as parameters.
 
-Make sure both the functions and the module have descriptive docstrings. Add also the __version__ and __author__ attributes to the module. Call both your functions from the main function (which is in file usemodule.py).
+
+### EXERCISE 15 (vector angles)
+
+Let x and y be m-dimensional vectors. The angle α\alphaα between two vectors is defined by the equation cos⁡xy(α):=⟨x,y⟩∣∣x∣∣∣∣y∣∣\cos_{xy}(\alpha):=\frac{\langle x,y\rangle}{||x|| ||y||}cosxy​(α):=∣∣x∣∣∣∣y∣∣⟨x,y⟩​, where the angle brackets denote the inner product, and ∣∣x∣∣:=⟨x,x⟩||x||:=\sqrt{\langle x,x \rangle}∣∣x∣∣:=⟨x,x⟩​.
+
+Write function vector_angles that gets two arrays X and Y with same shape (n,m) as parameters. Each row in the arrays corresponds to a vector. The function should return vector of shape (n,) with the corresponding angles between vectors of X and Y in degrees, not in radians. Again, don't use loops, but use vectorized operations.
+
+Note: function np.arccos is only defined on the domain [-1.0,1.0]. If you try to compute np.arccos(1.000000001), it will fail. These kind of errors can occur due to use of finite precision in numerical computations. Force the argument to be in the correct range (clip method).
+
+Test your solution in the main program.
+
+
+
+### EXERCISE 16 multiplication table revisited)
+
+Write function multiplication_table that gets a positive integer n as parameter. The function should return an array with shape (n,n). The element at index (i,j) should be i*j. Don't use for loops! In your solution, rely on broadcasting, the np.arange function, reshaping and vectorized operators. Example of usage:
+
+print(multiplication_table(4))
+[[0 0 0 0]
+ [0 1 2 3]
+ [0 2 4 6]
+ [0 3 6 9]]
+
 
 
