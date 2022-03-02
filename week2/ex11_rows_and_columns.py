@@ -3,13 +3,17 @@
 import numpy as np
 
 def get_rows(a):
-    result_c = []
+    result = []
     for rows in a:
-        result_c.append(rows)
-    return result_c
+        result.append(rows)
+    return result
 
 def get_columns(a):
-    return []
+    result = []
+    for cols in a.T:
+        result.append(cols)
+    return result
+    
 
 def main():
     np.random.seed(0)
@@ -18,13 +22,14 @@ def main():
     print("a:", a)
     #print("cols:", a[])
     #ls = []
-    #for i in a :
-     #   ls.append(i)
+    #for i in a.T :
+        #ls.append(i)
+     #   print(i)
     #print(ls)
     #b = np.array([[1,2,3], [4,5,6]])
     #print(b, type(b))
     print("Rows:", get_rows(a))
-    #print("Columns:", get_columns(a))
+    print("Columns:", get_columns(a))
 
 if __name__ == "__main__":
     main()
