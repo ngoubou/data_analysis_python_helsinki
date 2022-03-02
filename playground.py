@@ -3,8 +3,8 @@
 
 # Regular expressions
 
-import re
-from tkinter import E
+#import re
+#from tkinter import E # don't know why this was imported
 
 #s = ("If I’m not in a hurry, then I should stay. " +
  #   "On the other hand, if I leave, then I can sleep.")
@@ -71,8 +71,8 @@ from tkinter import E
 
 
 ## Classes and objects
-class MyClass:
-      x = 5
+#class MyClass:
+ #     x = 5
 
 #print(MyClass)
 #p1 = MyClass()
@@ -80,15 +80,15 @@ class MyClass:
 #print(type(p1))
 
 ## Corey Schafer YT ----
-class Employee:
+#class Employee:
     
-    raise_amt  = 1.04
+ #   raise_amt  = 1.04
 
-    def __init__(self, first, last, pay):
-        self.first = first
-        self.last = last
-        self.email = first + "." + last + "@company.com"
-        self.pay = pay
+  #  def __init__(self, first, last, pay):
+   #     self.first = first
+    #    self.last = last
+     #   self.email = first + "." + last + "@company.com"
+      #  self.pay = pay
         
     #def fullname(self):
      #   return f"{self.first}, {self.last}"
@@ -96,27 +96,27 @@ class Employee:
     #def apply_raise(self):
      #   self.pay = int(self.pay * self.raise_amt)
 
-    def __repr__(self):
-        return f"Employee {self.first}, {self.last}, {self.pay}"
+    #def __repr__(self):
+     #   return f"Employee {self.first}, {self.last}, {self.pay}"
     
     #pass
 
-emp_1 = Employee("Corey", "Schafer", 50000)
+#emp_1 = Employee("Corey", "Schafer", 50000)
 #emp_2 = Employee()
-print(emp_1)
+#print(emp_1)
 #print(Employee("Lionel", "Ngoubou", "150K").first)
 #print(emp_2)
 #emp_1.first = "Corey"
 #print(emp_1.email)
 
 ## StackOverflow ----
-class MyClass(object):
-    def __str__(self):
-        return "MyClass([])"
-    def __repr__(self):
-            return "I am an instance of MyClass at address "+hex(id(self))
+#class MyClass(object):
+ #   def __str__(self):
+  #      return "MyClass([])"
+   # def __repr__(self):
+    #        return "I am an instance of MyClass at address "+hex(id(self))
  
-m = MyClass()
+#m = MyClass()
 #print(MyClass())
 #MyClass([])
 #m
@@ -126,27 +126,59 @@ m = MyClass()
 #a.from_bytes
 #print(a)
 
-class B(object):
-    def f(self):
-        print("Executing B.f")
-    def g(self):
-        print("Executing B.g")
+#class B(object):
+ #   def f(self):
+  #      print("Executing B.f")
+   # def g(self):
+    #    print("Executing B.g")
     
-class C(B):
-    def g(self):
-        print("Executing C.g")
+#class C(B):
+ #   def g(self):
+  #      print("Executing C.g")
         
-x=C()
+#x=C()
 #x.f() # inherited from B
 #x.g() # overridden by C
 #print(issubclass(C,B))
-y = B()
+#y = B()
 #print(isinstance(x,B)== isinstance(x,C)==isinstance(y,B))
 #print(isinstance(y,C))
 #print(5/4)
-x = 5
-y = 4
+#x = 5
+#y = 4
 #print(x.__truediv__(y))
 #print(x.__div__(y))
 
+## EXCEPTIONS ----
 
+L=[1,2,3]
+#try:
+ #   print(L[43])
+#except IndexError:
+ #   print("Fuck it, i'm prison mike")
+
+#n=len(L)
+#s=sum(L)
+#print(float(s)/n) 
+#print(len(L))
+
+def compute_average(L):
+    n=len(L)
+    s=sum(L)
+    return float(s)/n # error is noticed here !!!
+mylist=[]
+while True:
+    try:
+        x=float(input("Give a number (non-number quits): "))
+        mylist.append(x)
+    except ValueError:
+        break
+try:
+    average=compute_average(mylist)
+    print("Average is", average)
+except ZeroDivisionError:
+    # and the error is handled here
+    if len(mylist) == 0:
+        print("Tried to compute the average of empty list of numbers")
+    else:
+        print("Something strange happened")

@@ -9,16 +9,6 @@ def main():
 
 if __name__ == "__main__":
     main()
-#!/usr/bin/env python3
-
-def extract_numbers(s):
-    return []
-
-def main():
-    print(extract_numbers("abd 123 1.2 test 13.2 -1"))
-
-if __name__ == "__main__":
-    main()
 
 # Write a function extract_numbers that gets a string as a parameter. 
 # It should return a list of numbers that can be both ints and floats. 
