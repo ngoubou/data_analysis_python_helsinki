@@ -229,8 +229,8 @@ np.random.seed(0)
 #print(np.random.randint(0, 100, 10))
 #print(np.random.normal(0, 1, 10))
 #
-new_generator = np.random.RandomState(seed=123)  # RandomState is a class, so we give the seed to its constructor
-new_generator.randint(0, 100, 10)
+#new_generator = np.random.RandomState(seed=123)  # RandomState is a class, so we give the seed to its constructor
+#new_generator.randint(0, 100, 10)
 #
 a = [1, 4, 2, 7, 9, 5]
 #a
@@ -238,24 +238,41 @@ a[:]
 #print(a[::-1])    # Reverses the array
 
 #
-a = np.arange(9)
-a
-anew = a.reshape(3,3)
-anew
+#a = np.arange(9)
+#a
+#anew = a.reshape(3,3)
+#anew
 ##
 
 #a = [[[2]], [[3]]]
 np.random.seed(0)
 a = np.random.randint(0,10, (4,4))
-ls = []
-print(a)
+#ls = []
+#print(a)
+r = []
 for i in a.T:
-    print(i)
+    ##print(i)
     1
     #ls.append()
-    for k in range(len(i)):
+    ls = []
+    for j in range(len(i)):
+        #print(i[j])
+        ls.append([i[j]]) # chaque élément de i doit avoir 2 crochets
+        #print(np.array(ls))
+        #print(np.concatenate(ls))
+    #print(np.concatenate(ls))
+    r.append(np.concatenate(ls))
+    print(r)
+        #print(i[0,0])
+        #print([i[j]])
+        #print(type([i[j]]))
+        #print(type(i[j]))
+        #i[j] = [i[j]]
+        #i[j] = 6
+        #print(i[j])
+    #for k in range(len(i)):
         #ls.append([[k]])
-        ls.append(np.concatenate([[k]]))
+     #   ls.append(np.concatenate([[k]]))
         #print([[k]])
 print(ls)
 #print(np.array(ls))
