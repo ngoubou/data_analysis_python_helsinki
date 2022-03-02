@@ -183,21 +183,64 @@ import re
    # else:
     #    print("Something strange happened")
 
-s = "abd 123 1.2 test 13.2 -1".split(" ")
-ls = []
+#s = "abd 123 1.2 test 13.2 -1".split(" ")
+#ls = []
 
-for i in s:
+#for i in s:
 
-    if len(re.findall(r'[-]?\b[\d]+\b', i)) == 1: # if it is an integer
+    #if len(re.findall(r'[-]?\b[\d]+\b', i)) == 1: # if it is an integer
         #print(re.findall(r'\b[\d]+\b', i)[0]) # print integers
-        ls.append(re.findall(r'[-]?\b[\d]+\b', i)[0])
+     #   ls.append(re.findall(r'[-]?\b[\d]+\b', i)[0])
         #print(type(re.findall(r'\b[\d]+\b', i)[0]))
-    elif len(re.findall(r'[-]?\b[\d]+\b', i)) > 1:
+    #elif len(re.findall(r'[-]?\b[\d]+\b', i)) > 1:
         #print(".".join(re.findall(r'\b[\d]+\b', i)))
-        ls.append(".".join(re.findall(r'\b[\d]+\b', i)))
+   #     ls.append(".".join(re.findall(r'\b[\d]+\b', i)))
         #print(re.findall(r'\b[\d]+\b', i))
         # join the numbers by a point # but where should i put the point
-    else:
-       continue
-print(ls)
+  #  else:
+ #      continue
+#print(ls)
     
+## NUMPY ---
+
+import numpy as np
+
+#%%
+import numpy as np
+len(np.array([[[1,2], [3,4]], [[5,6], [7,8]]]))
+np.array([[[1,2], [3,4]], [[5,6], [7,8]]])   # one dimensional array
+# %%
+np.zeros((3,4), dtype = int)
+# %%
+len(np.zeros((3,4)))
+# %%
+np.empty((2,4))
+# %%
+np.arange(0,10)
+# %%
+np.arange(0,10,2)
+# %%
+np.pi
+# %%
+np.linspace(1, 7.9087, 5)  # Evenly spaced range with 5 elements
+# %%
+np.random.seed(0)
+print(np.random.randint(0, 100, 10))
+print(np.random.normal(0, 1, 10))
+# %%
+new_generator = np.random.RandomState(seed=123)  # RandomState is a class, so we give the seed to its constructor
+new_generator.randint(0, 100, 10)
+# %%
+a = [1, 4, 2, 7, 9, 5]
+#a
+a[:]
+#print(a[::-1])    # Reverses the array
+
+# %%
+a = np.arange(9)
+a
+anew = a.reshape(3,3)
+anew
+# %%
+
+# %%

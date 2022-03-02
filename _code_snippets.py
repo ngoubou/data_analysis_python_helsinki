@@ -44,3 +44,8 @@ print(os.getcwd())
   #  print(f"Line {i}: {line}", end="")
 #f.close()
 # rather use context manager 
+
+import numpy as np
+a = np.array([1,4,2,7,9,5])
+
+print(a[::-1])    # Reverses the array
