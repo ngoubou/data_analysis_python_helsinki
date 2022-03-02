@@ -10,9 +10,11 @@ def get_row_vectors(a):
 
 def get_column_vectors(a):
     result = []
+    #i, j = np.shape(a)
     for cols in a.T:
+        # use a for loop instead
         i = 0
-        result.append(np.concatenate(([[cols[i]]], [[cols[i+1]]])))
+        result.append(np.concatenate(([[cols[i]]], [[cols[i+1]]], [[cols[i+2]]], [[cols[i+3]]])))
         #for i in np.array([cols]):
          #   result.append(np.array([i]))
 
@@ -22,16 +24,25 @@ def get_column_vectors(a):
 def main():
     np.random.seed(0)
     a = np.random.randint(0,10, (4,4))
-    #print("a:", a)
-    b = np.array([[5, 0, 3], [3, 7, 9]])
+    print("a:", a)
+    #b = np.array([[5, 0, 3], [3, 7, 9]])
    # print("b:", b)
-    c = np.array([[50, 10, 33], [23, 17, 94]])
+    #c = np.array([[50, 10, 33], [23, 17, 94]])
     #print(np.concatenate(([[1]], [[2]])))
     #print("b transposed:", b.T)
-    ls = []
-    for i in b.T:
+    #ls = []
+    #print(np.shape(a))
+    #i, j = np.shape(a)
+    #z = np.shape(a)
+    #print(z)
+    #print(range(i))
+    #print(i)
+    #print(j)
+    #for i in np.shape(a):
+     #   print(i)
+    #for i in b.T:
         #print(np.array([i])) # go from here
-        k = 0
+     #   k = 0
        # print(np.concatenate(([[i[k]]], [[i[k+1]]])))
         #print(np.concatenate(([[i[k]]], [[i[k+1]]])))
         #for k in range(len(i)):
@@ -41,9 +52,9 @@ def main():
         #print(i)
 
         #print(range(len(i)))
-        for j in i:
+      #  for j in i:
             #print([j])
-            ls.append([j])
+       #     ls.append([j])
             #print(j)
     #print(ls)
         #print(np.concatenate())
