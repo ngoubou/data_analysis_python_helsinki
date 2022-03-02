@@ -247,34 +247,23 @@ a[:]
 #a = [[[2]], [[3]]]
 np.random.seed(0)
 a = np.random.randint(0,10, (4,4))
-#ls = []
-#print(a)
+
 r = []
+rr = []
 for i in a.T:
-    ##print(i)
-    1
-    #ls.append()
     ls = []
+    l = []
     for j in range(len(i)):
-        #print(i[j])
         ls.append([i[j]]) # chaque élément de i doit avoir 2 crochets
-        #print(np.array(ls))
-        #print(np.concatenate(ls))
-    #print(np.concatenate(ls))
+        l.append([[i[j]]])
+        # mais quand je mets 2 crochets r a un résultat différent de celui espéré
+        
     r.append(np.concatenate(ls))
-    print(r)
-        #print(i[0,0])
-        #print([i[j]])
-        #print(type([i[j]]))
-        #print(type(i[j]))
-        #i[j] = [i[j]]
-        #i[j] = 6
-        #print(i[j])
-    #for k in range(len(i)):
-        #ls.append([[k]])
-     #   ls.append(np.concatenate([[k]]))
-        #print([[k]])
-print(ls)
-#print(np.array(ls))
-#print(np.concatenate(np.array(ls)))
-#print(np.concatenate(a))
+    rr.append(np.concatenate(l))
+    #print(ls)
+    #print(l)
+    #print(r)
+    #print(rr)
+        
+print(r)
+print(rr)
