@@ -3,17 +3,29 @@
 import numpy as np
 
 def get_row_vectors(a):
-    return []
+    result = []
+    for rows in a:
+        result.append(np.array([rows]))
+    return result
 
 def get_column_vectors(a):
-    return []
+    result = []
+    for cols in a.T:
+        result.append(cols)
+    return result
 
 def main():
     np.random.seed(0)
     a=np.random.randint(0,10, (4,4))
-    print("a:", a)
+    #print("a:", a)
+    #b = np.array([[5, 0, 3], [3, 7, 9]])
+    #print("b:", b)
+    #for i in b:
+     #   print(np.array([i]))
+    #for i in a:
+     #   print(np.array(i).reshape(2,2))
     print("Row vectors:", get_row_vectors(a))
-    print("Column vectors:", get_column_vectors(a))
+    #print("Column vectors:", get_column_vectors(a))
 
 if __name__ == "__main__":
     main()
