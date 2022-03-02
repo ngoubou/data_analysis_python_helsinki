@@ -8,12 +8,13 @@ def extract_numbers(s):
         try:
             #print(re.findall(r'\b[\d]+\b', i))
             #print(re.findall(r'[-]?\b[\d]\d\b', i))
+            if len(re.findall(r'[-]?\b[\d]+\b', i)) == 1:
             #if type(i) == int: # changer les conditions
-            x = int(i)
-            ls.append(x)
-            #elif type(i) == float:
+                #x = int(i)
+                ls.append(int(i))
+            elif len(re.findall(r'[-]?\b[\d]+\b', i)) > 1:
                 #x = float(i)
-                #ls.append(x)
+                ls.append(float(i))
         except ValueError:
             #x = float(i)
             #ls.append(x)

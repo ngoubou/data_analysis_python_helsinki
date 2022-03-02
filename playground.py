@@ -185,10 +185,9 @@ import re
 
 s = "abd 123 1.2 test 13.2 -1".split(" ")
 ls = []
-y = []
-#print(int(1.2))
+
 for i in s:
-    
+
     if len(re.findall(r'[-]?\b[\d]+\b', i)) == 1: # if it is an integer
         #print(re.findall(r'\b[\d]+\b', i)[0]) # print integers
         ls.append(re.findall(r'[-]?\b[\d]+\b', i)[0])
@@ -201,4 +200,4 @@ for i in s:
     else:
        continue
 print(ls)
-    #print(re.findall(r'[-]?\b[\d]\d\b', i))
+    
