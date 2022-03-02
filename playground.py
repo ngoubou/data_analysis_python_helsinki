@@ -184,17 +184,21 @@ import re
     #    print("Something strange happened")
 
 s = "abd 123 1.2 test 13.2 -1".split(" ")
+ls = []
+y = []
 #print(int(1.2))
 for i in s:
-    #print(i)
-    # handle minus signs
-    if len(re.findall(r'\b[\d]+\b', i)) == 1: # if it is an integer
-        print(re.findall(r'\b[\d]+\b', i)[0]) # print integers
+    
+    if len(re.findall(r'[-]?\b[\d]+\b', i)) == 1: # if it is an integer
+        #print(re.findall(r'\b[\d]+\b', i)[0]) # print integers
+        ls.append(re.findall(r'[-]?\b[\d]+\b', i)[0])
         #print(type(re.findall(r'\b[\d]+\b', i)[0]))
-    elif len(re.findall(r'\b[\d]+\b', i)) > 1:
-        print(".".join(re.findall(r'\b[\d]+\b', i)))
-        print(re.findall(r'\b[\d]+\b', i))
+    elif len(re.findall(r'[-]?\b[\d]+\b', i)) > 1:
+        #print(".".join(re.findall(r'\b[\d]+\b', i)))
+        ls.append(".".join(re.findall(r'\b[\d]+\b', i)))
+        #print(re.findall(r'\b[\d]+\b', i))
         # join the numbers by a point # but where should i put the point
     else:
-        print(i)
+       continue
+print(ls)
     #print(re.findall(r'[-]?\b[\d]\d\b', i))
