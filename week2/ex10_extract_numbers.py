@@ -1,32 +1,17 @@
 #!/usr/bin/env python3
 
-import re
 def extract_numbers(s):
-    ls = []
+    result = []
     s = s.split(" ")
     for i in s:
         try:
-            #print(re.findall(r'\b[\d]+\b', i))
-            #print(re.findall(r'[-]?\b[\d]\d\b', i))
-            if len(re.findall(r'[-]?\b[\d]+\b', i)) == 1:
-            #if type(i) == int: # changer les conditions
-                #x = int(i)
-                ls.append(int(i))
-            elif len(re.findall(r'[-]?\b[\d]+\b', i)) > 1:
-                #x = float(i)
-                ls.append(float(i))
+            result.append(int(i))
         except ValueError:
-            #x = float(i)
-            #ls.append(x)
-            continue
-        #else:
-         #   continue
-            #if type(i) == float:
-             #   x = float(i)
-              #  ls.append(x)
-        #else:
-          #  continue
-    return ls
+            try:
+                result.append(float(i))
+            except ValueError:
+                continue
+    return result
 
 def main():
     print(extract_numbers("abd 123 1.2 test 13.2 -1"))
@@ -34,10 +19,18 @@ def main():
 if __name__ == "__main__":
     main()
 
-# Write a function extract_numbers that gets a string as a parameter. 
-# It should return a list of numbers that can be both ints and floats. 
-# Split the string to words at whitespace using the split() method. 
-# Then iterate through each word, and initially try to convert to an int. 
-# If unsuccesful, then try to convert to a float. If not a number then skip the word.
 
-# Example run: print(extract_numbers("abd 123 1.2 test 13.2 -1")) will return [123, 1.2, 13.2, -1]
+# turns out i did not need regex at all 
+# my solution is 98% (yeah i made up than number but it's pretty accurate) close to the course one
+## Course Solution ----
+#def extract_numbers(s):   
+ #   result=[]
+  #  for word in s.split():
+   #     try:
+    #        result.append(int(word))
+     #   except ValueError:
+      #      try:
+       #         result.append(float(word))
+        #    except ValueError:
+         #       pass
+    #return result
