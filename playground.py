@@ -3,7 +3,7 @@
 
 # Regular expressions
 
-#import re
+import re
 #from tkinter import E # don't know why this was imported
 
 #s = ("If I’m not in a hurry, then I should stay. " +
@@ -183,8 +183,18 @@
    # else:
     #    print("Something strange happened")
 
-x = 7.0
-if type(x) == int:
-    print(x)
-else:
-    print("nope")
+s = "abd 123 1.2 test 13.2 -1".split(" ")
+#print(int(1.2))
+for i in s:
+    #print(i)
+    # handle minus signs
+    if len(re.findall(r'\b[\d]+\b', i)) == 1: # if it is an integer
+        print(re.findall(r'\b[\d]+\b', i)[0]) # print integers
+        #print(type(re.findall(r'\b[\d]+\b', i)[0]))
+    elif len(re.findall(r'\b[\d]+\b', i)) > 1:
+        print(".".join(re.findall(r'\b[\d]+\b', i)))
+        print(re.findall(r'\b[\d]+\b', i))
+        # join the numbers by a point # but where should i put the point
+    else:
+        print(i)
+    #print(re.findall(r'[-]?\b[\d]\d\b', i))
