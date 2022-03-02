@@ -3,17 +3,28 @@
 import numpy as np
 
 def get_rows(a):
-    return []
+    result_c = []
+    for rows in a:
+        result_c.append(rows)
+    return result_c
 
 def get_columns(a):
     return []
 
 def main():
     np.random.seed(0)
-    a=np.random.randint(0,10, (4,4))
+    a = np.random.randint(0,10, (4,4))
+    #print(a.ndim)
     print("a:", a)
+    #print("cols:", a[])
+    #ls = []
+    #for i in a :
+     #   ls.append(i)
+    #print(ls)
+    #b = np.array([[1,2,3], [4,5,6]])
+    #print(b, type(b))
     print("Rows:", get_rows(a))
-    print("Columns:", get_columns(a))
+    #print("Columns:", get_columns(a))
 
 if __name__ == "__main__":
     main()
