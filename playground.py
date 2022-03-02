@@ -205,42 +205,59 @@ import re
 
 import numpy as np
 
-#%%
+
+#%
 import numpy as np
 len(np.array([[[1,2], [3,4]], [[5,6], [7,8]]]))
 np.array([[[1,2], [3,4]], [[5,6], [7,8]]])   # one dimensional array
-# %%
+#
 np.zeros((3,4), dtype = int)
-# %%
+#
 len(np.zeros((3,4)))
-# %%
+#
 np.empty((2,4))
-# %%
+#
 np.arange(0,10)
-# %%
+#
 np.arange(0,10,2)
-# %%
+#
 np.pi
-# %%
+#
 np.linspace(1, 7.9087, 5)  # Evenly spaced range with 5 elements
-# %%
+#
 np.random.seed(0)
-print(np.random.randint(0, 100, 10))
-print(np.random.normal(0, 1, 10))
-# %%
+#print(np.random.randint(0, 100, 10))
+#print(np.random.normal(0, 1, 10))
+#
 new_generator = np.random.RandomState(seed=123)  # RandomState is a class, so we give the seed to its constructor
 new_generator.randint(0, 100, 10)
-# %%
+#
 a = [1, 4, 2, 7, 9, 5]
 #a
 a[:]
 #print(a[::-1])    # Reverses the array
 
-# %%
+#
 a = np.arange(9)
 a
 anew = a.reshape(3,3)
 anew
-# %%
+##
 
-# %%
+#a = [[[2]], [[3]]]
+np.random.seed(0)
+a = np.random.randint(0,10, (4,4))
+ls = []
+print(a)
+for i in a.T:
+    print(i)
+    1
+    #ls.append()
+    for k in range(len(i)):
+        #ls.append([[k]])
+        ls.append(np.concatenate([[k]]))
+        #print([[k]])
+print(ls)
+#print(np.array(ls))
+#print(np.concatenate(np.array(ls)))
+#print(np.concatenate(a))
