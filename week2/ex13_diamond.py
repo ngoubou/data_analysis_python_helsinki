@@ -17,11 +17,17 @@ if __name__ == "__main__":
 # Do this using the eye and concatenate functions of NumPy and array slicing.
 
 a = np.eye(5, dtype = int)
+b = np.array([0, 1, 0, 0, 0])
+c = np.array([0, 0, 0, 1, 0])
+d = np.array([0, 0, 1, 0, 0])
+print(a)
+#print(a.reshape(5,1))
+#print(np.concatenate((b, c), axis = 0))
 #print(5//2 + 5%2)
 i,j = a.shape
 #print(a)
 #print(i//2 + i%2)
-print(a[i//2]) # lui je l'utilise comme début et fin de la matrice finale
+#print(a[i//2]) # lui je l'utilise comme début et fin de la matrice finale
 #for r in range(i):
     #print(i)
  #   print(a[r])
