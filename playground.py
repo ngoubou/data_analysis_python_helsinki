@@ -265,5 +265,8 @@ for i in a.T:
     #print(r)
     #print(rr)
         
-print(r)
-print(rr)
+#print(r)
+#print(rr)
+
+print(np.eye(5, dtype = int))
+print((4*2-5,)*2)
