@@ -17,8 +17,14 @@ if __name__ == "__main__":
 # Do this using the eye and concatenate functions of NumPy and array slicing.
 
 a = np.eye(5, dtype = int)
-for i in a:
-    print(i)
+#print(5//2 + 5%2)
+i,j = a.shape
+#print(a)
+#print(i//2 + i%2)
+print(a[i//2]) # lui je l'utilise comme début et fin de la matrice finale
+#for r in range(i):
+    #print(i)
+ #   print(a[r])
 #print(a)
 #print((4*2-5,)*2)
 # Example of usage:
