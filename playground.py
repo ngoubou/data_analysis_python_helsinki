@@ -268,5 +268,12 @@ for i in a.T:
 #print(r)
 #print(rr)
 
-print(np.eye(5, dtype = int))
-print((4*2-5,)*2)
+#print(np.eye(5, dtype = int))
+#print((4*2-5,)*2)
+
+a = np.array([2.1, 5.0, 17.2])
+a2 = a * 2
+print(a2)
+print([2.1, 5.0, 17.2] * 2)
+
+print()
