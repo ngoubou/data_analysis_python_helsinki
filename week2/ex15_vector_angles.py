@@ -17,14 +17,22 @@ if __name__ == "__main__":
 # print(np.cos(1))
 a = np.array([[0,0,1], [-1,1,0]]) # compute the angle between these 2 vectors in degress
 b = np.array([[0,1,0], [1,1,0]])
-print(a.shape, b.shape)
-s = np.array([-1,1,0])
-f = np.array([0,1,0])
-#print(np.inner(s,f))
+#print(a.shape, b.shape)
+#x = np.random.randn(2,3)
+#print("X1")
+#print(x)
+#print("X2")
+#print(x)
+#print("INNER PRODUCT")
+#print(np.vdot(a,b))
 
+#print(sum(a[:] * b[:]))
+#print(np.inner(a,b))
+#print(np.inner(x,x))
+#print(np.vdot(np.array([-1,1,0]), np.array([0,1,0])))
 ## 1 - Compute the inner product between the vectors of X and Y
-prod_in = np.inner(a, b)
-print(prod_in)
+prod_in = np.inner(a, b)[0]
+#print(prod_in)
 ## 2 - Compute the product of the l1 norms of X and Y
 prod_norms = norm(a, 1) * norm(b, 1)
 #print(prod_norms)
@@ -34,7 +42,7 @@ prod_norms = norm(a, 1) * norm(b, 1)
 #angle =  np.array([np.arccos(np.clip(prod_in / prod_norms, -1, 1)) * 180 / pi, np.arccos(np.clip(prod_in / prod_norms, -1, 1)) * 180 / pi]) # forces the input to be between -1 and 1 with np.clip
 angle = np.arccos(np.clip(prod_in / prod_norms, -1, 1)) * 180 / pi
 print(angle)
-print(angle.shape)
+#print(angle.shape)
 
 ## ERROR FROM TMC
 # # (shapes (2,), (10,) mismatch)
