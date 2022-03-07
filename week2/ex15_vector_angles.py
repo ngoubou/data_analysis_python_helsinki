@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 
 import numpy as np
-import scipy.linalg
+from scipy.linalg import norm
+from math import pi
 
 def vector_angles(X, Y):
+    
     np.array([])
 
 def main():
@@ -16,14 +18,22 @@ if __name__ == "__main__":
 a = np.array([[0,0,1], [-1,1,0]]) # compute the angle between these 2 vectors in degress
 b = np.array([[0,1,0], [1,1,0]])
 #print(a.shape, b.shape)
-s = np.array([0,0,1])
+s = np.array([-1,1,0])
 f = np.array([0,1,0])
-print(np.inner(s,f))
+#print(np.inner(s,f))
 
 ## 1 - Compute the inner product between the vectors of X and Y
-## 2 - Compute the l1 norm of X and Y
-## 3 - Compute the ratio between 1 et 2
-## 4 - Compute the arccos of 3
+prod_in = np.vdot(a, b)
+#print(prod_in)
+## 2 - Compute the product of the l1 norms of X and Y
+prod_norms = norm(a, 1) * norm(b, 1)
+#print(prod_norms)
+## 4 - Compute the arccos of the ratio between 1 et 2 and returns the dvalue in degree rather than radian
+angle =  np.arccos(np.clip(prod_in / prod_norms, -1, 1)) * 180 / pi # forces the input to be between -1 and 1 with np.clip
+print(angle)
+
+#print(np.arccos(0)*180/pi)
+#np.arc
 ## 5 - Profit
 # np.cos()
 # dénominateur = 2 ie, scipy.linalg.norm(a, 1) * scipy.linalg.norm(b, 1)
