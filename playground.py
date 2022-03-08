@@ -205,3 +205,20 @@ import re
 
 import numpy as np
 
+
+
+
+a = np.array([3, 4, 0])
+b = np.array([4, 4, 2])
+
+print(np.inner(a,b))
+#Solution: calculate dot product of vectors:
+#a·b = 3 · 4 + 4 · 4 + 0 · 2 = 12 + 16 + 0 = 28.
+
+#Calculate vectors magnitude:
+#|a| = √32 + 42 + 02 = √9 + 16 = √25 = 5
+#|b| = √42 + 42 + 22 = √16 + 16 + 4 = √36 = 6
+
+#Calculate the angle between vectors:
+#cos α =  	a · b 	 =  	28 	 =  	14
+#|a| · |b| 	5 · 6 	15
