@@ -208,17 +208,28 @@ import numpy as np
 
 
 
-a = np.array([3, 4, 0])
-b = np.array([4, 4, 2])
+a = np.array([[0,0,1], [-1,1,0]])
+b = np.array([[0,1,0], [1,1,0]])
 
-print(np.inner(a,b))
-#Solution: calculate dot product of vectors:
-#a·b = 3 · 4 + 4 · 4 + 0 · 2 = 12 + 16 + 0 = 28.
 
-#Calculate vectors magnitude:
-#|a| = √32 + 42 + 02 = √9 + 16 = √25 = 5
-#|b| = √42 + 42 + 22 = √16 + 16 + 4 = √36 = 6
 
-#Calculate the angle between vectors:
-#cos α =  	a · b 	 =  	28 	 =  	14
-#|a| · |b| 	5 · 6 	15
+def unit_vector(vector):
+    """ Returns the unit vector of the vector.  """
+    return vector / np.linalg.norm(vector)
+
+def angle_between(v1, v2):
+    """ Returns the angle in radians between vectors 'v1' and 'v2'::
+
+            >>> angle_between((1, 0, 0), (0, 1, 0))
+            1.5707963267948966
+            >>> angle_between((1, 0, 0), (1, 0, 0))
+            0.0
+            >>> angle_between((1, 0, 0), (-1, 0, 0))
+            3.141592653589793
+    """
+    v1_u = unit_vector(v1)
+    v2_u = unit_vector(v2)
+    return np.arccos(np.clip(np.dot(v1_u, v2_u), -1.0, 1.0))
+
+print(angle_between(a,b))
+np.ra
