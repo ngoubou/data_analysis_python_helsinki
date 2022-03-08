@@ -20,3 +20,5 @@ angle = np.arccos(np.clip(prod_in / prod_norms, -1, 1)) * 180 / pi
 
 ## TO DO ----
 # Revoir implémentations de inner product et norm
+# Voir exemples de documentation de chacune des fonctions
+# Voir exemples math et voir ce que ça fait 
