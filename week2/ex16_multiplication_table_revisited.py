@@ -15,13 +15,14 @@ if __name__ == "__main__":
 a = np.array([[0, 0, 0, 0], [0, 1, 2, 3], [0, 2, 4, 6], [0, 3, 6, 9]])
 #b = np.random.randn(4,4)
 b = np.random.randint(0, 4, size = (4,4))
-print(b)
+#print(b)
 #print(a[2,3])
 for i in range(len(b)):
-    for j in b[i]:
-        b[i] = i * j
+#for i in b:
+    for j in range(len(b[i])):
+        b[i, j] = i * j
         pass
-print("BOUH")
+# the for loop is what i have to implement relying on broadcasting
 print(b)
 # Write function multiplication_table that gets a positive integer n as parameter. 
 # The function should return an array with shape (n,n). The element at index (i,j) should be i*j. 
