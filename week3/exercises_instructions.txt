@@ -1,0 +1,283 @@
+
+##################### EXERCISES INSTRUCTIONS ##########################
+
+
+
+### EXERCISE 11 (to grayscale)
+
+This exercise can give two points at maximum!
+
+Part 1.
+
+Write a function to_grayscale that takes an RGB image (three dimensional array) and returns a two dimensional gray-scale image. The conversion to gray-scale should take a weighted sum of the red, green, and blue values, and use that as the value of gray. The first axis is the x, the second is y, and the third is the color components (red, green, blue). Use the weights 0.2126, 0.7152, and 0.0722 for red, green, and blue, respectively. These weights are so because the human eye is most sensitive to green color and least sensitive to blue color.
+
+In the main function you can, for example, use the provided image src/painting.png. Display the grayscale image with the plt.imshow function. You may have to call the function plt.gray to set the color palette (colormap) to gray. (See help(plt.colormaps) for more information about colormaps.)
+
+Part 2.
+
+Write functions to_red, to_green, and to_blue that get a three dimensional array as a parameter and return a three dimensional arrays. For instance, the function to_red should zero out the green and blue color components and return the result. In the main function create a figure with three subfigures: the top one should be the red image, the middle one the green image, and the bottom one the blue image.
+
+
+
+### EXERCISE 12 (radial fade)
+
+Make program that does fading of an image as earlier, except now not in horizontal direction but in radial direction. As we move away from the centre of the image, the pixels fade to black.
+
+Part1.
+
+Write function center that returns coordinate pair (center_y, center_x) of the image center. Note that these coordinates might not be integers. Example of usage:
+
+print(center(np.zeros((10, 11, 3))))
+(4.5, 5)
+
+The function should work both for two and three dimensional images, that is grayscale and color images.
+
+Write also function radial_distance that returns for image with width w and height h an array with shape (h,w), where the number at index (i,j) gives the euclidean distance from the point (i,j) to the center of the image.
+
+Part 2.
+
+Create function scale(a, tmin=0.0, tmax=1.0) that returns a copy of the array a with its elements scaled to be in the range [tmin,tmax].
+
+Using the functions radial_distance and scale write function radial_mask that takes an image as a parameter and returns an array with same height and width filled with values between 0.0 and 1.0. Do this using the scale function. To make the resulting array values near the center of array to be close to 1 and closer to the edges of the array are values closer to be 0, subtract the previous array from 1.
+
+Write also function radial_fade that returns the image multiplied by its radial mask.
+
+Test your functions in the main function, which should create, using matplotlib, a figure that has three subfigures stacked vertically. On top the original painting.png, in the middle the mask, and on the bottom the faded image.
+
+
+
+### EXERCISE 9 (multiple graphs)
+
+In the above plot the x coordinates were implicitly set to the indices of the array a, that is, arange(10). Find out from the documentation of plt.plot how to specify the x coordinates explicitly. Find out also how to draw multiple graphs in one axes.
+
+Make your main function plot the following two graphs in one axes. The first graphs has x coordinates 2,4,6,7 and y coordinates 4,3,5,1. The second graph has x coordinates 1,2,3,4 and y coordinates 4,2,3,1.
+
+Add also a title and some labels for x axis and y axis. Note that in the non-interactive mode you have to call plt.show() for the figure to show.
+
+The plot should look like the one below.
+
+
+
+#### EXERCISE 10 (subfigures)
+
+Write function subfigures that creates a figure that has two subfigures (two axes in matplotlib parlance). The function gets a two dimensional array a as a parameter. In the left subfigure draw using the plot method a graph, whose x coordinates are in the first column of a and the y coordinates are in the second column of a. In the right subfigure draw using the scatter method a set of points whose x coords are again in the first column of a and whose y coordinates are in the second column of a. Additionally, the points should get their color from the third column of a, and size of the point from the fourth column of a. For this, use the c and s named parameters of scatter, respectively
+
+Test your function subfigure from the main function.
+
+
+
+### EXERCISE 5 (summary)
+
+This exercise can give two points at maximum!
+
+Part 1.
+
+Create a function called summary that gets a filename as a parameter. The input file should contain a floating point number on each line of the file. Make your function read these numbers and then return a triple containing the sum, average, and standard deviation of these numbers for the file. As a reminder, the formula for corrected sample standard deviation is ∑i=1n(xi−x‾)2n−1\sqrt{\frac{\sum_{i=1}^n (x_i - \overline x)^2}{n-1}}n−1∑i=1n​(xi​−x)2​
+
+​, where x‾\overline xx is the average.
+
+The main function should call the function summary for each filename in the list sys.argv[1:] of command line parameters. (Skip sys.argv[0] since it contains the name of the current program.)
+
+Example of usage from the command line: python3 src/summary.py src/example.txt src/example2.txt
+
+Print floating point numbers using six decimals precision. The output should look like this:
+
+File: src/example.txt Sum: 51.400000 Average: 10.280000 Stddev: 8.904606
+File: src/example2.txt Sum: 5446.200000 Average: 1815.400000 Stddev: 3124.294045
+
+Part 2.
+
+If some line doesn’t represent a number, you can just ignore that line. You can achieve this with the try-except block. An example of recovering from an exceptional situation:
+
+try:
+    x = float(line)           # The float constructor raises ValueError exception if conversion is no possible
+except ValueError:
+    # Statements in here are executed when the above conversion fails
+
+We will cover more about exceptions later in the course.
+
+
+
+### EXERCISE 6 (file count)
+
+This exercise can give two points at maximum!
+
+Part 1.
+
+Create a function file_count that gets a filename as parameter and returns a triple of numbers. The function should read the file, count the number of lines, words, and characters in the file, and return a triple with these count in this order. You get division into words by splitting at whitespace. You don't have to remove punctuation.
+
+Part 2.
+
+Create a main function that in a loop calls file_count using each filename in the list of command line parameters sys.argv[1:] as a parameter, in turn. For call python3 src/file_count file1 file2 ... the output should be
+
+?      ?       ?       file1
+?      ?       ?       file2
+...
+
+The fields are separated by tabs (\t). The fields are in order: linecount, wordcount, charactercount, filename.
+
+
+
+### EXERCISE 7 (file extensions)
+
+This exercise can give two points at maximum!
+
+Part 1.
+
+Write function file_extensions that gets as a parameter a filename. It should read through the lines from this file. Each line contains a filename. Find the extension for each filename. The function should return a pair, where the first element is a list containing all filenames with no extension (with the preceding period (.) removed). The second element of the pair is a dictionary with extensions as keys and corresponding values are lists with filenames having that extension.
+
+Sounds a bit complicated, but hopefully the next example will clarify this. If the file contains the following lines
+
+file1.txt
+mydocument.pdf
+file2.txt
+archive.tar.gz
+test
+
+then the return value should be the pair: (["test"], { "txt" : ["file1.txt", "file2.txt"], "pdf" : ["mydocument.pdf"], "gz" : ["archive.tar.gz"] } )
+
+Part 2.
+
+Write a main method that calls the file_extensions function with "src/filenames.txt" as the argument. Then print the results so that for each extension there is a line consisting of the extension and the number of files with that extension. The first line of the output should give the number of files without extensions.
+
+With the example in part 1, the output should be
+
+1 files with no extension
+gz 1
+pdf 1
+txt 2
+
+Had there been no filenames without extension then the first line would have been 0 files with no extension. In the printout list the extensions in alphabetical order. 
+
+
+
+### EXERCISE 8 (prepend)
+
+Create a class called Prepend. We create an instance of the class by giving a string as a parameter to the initializer. The initializer stores the parameter in an instance attribute start. The class also has a method write(s) which prints the string s prepended with the start string. An example of usage:
+
+p = Prepend("+++ ")
+p.write("Hello");
+
+Will print
+
++++ Hello
+
+Try out using the class from the main function.
+
+
+
+### EXERCISE 9 (rational)
+
+Create a class Rational whose instances are rational numbers. A new rational number can be created with the call to the class. For example, the call r=Rational(1,4) creates a rational number “one quarter”. Make the instances support the following operations: + - * / < > == with their natural behaviour. Make the rationals also printable so that from the printout we can clearly see that they are rational numbers.
+
+
+### EXERCISE 10 (extract numbers)
+
+Write a function extract_numbers that gets a string as a parameter. It should return a list of numbers that can be both ints and floats. Split the string to words at whitespace using the split() method. Then iterate through each word, and initially try to convert to an int. If unsuccesful, then try to convert to a float. If not a number then skip the word.
+
+Example run: print(extract_numbers("abd 123 1.2 test 13.2 -1")) will return [123, 1.2, 13.2, -1]
+
+
+
+### EXERCISE 11 (rows and columns)
+
+Write two functions, get_rows and get_columns, that get a two dimensional array as parameter. They should return the list of rows and columns of the array, respectively. The rows and columns should be one dimensional arrays. You may use the transpose operation, which flips rows to columns, in your solution. The transpose is done by the T method:
+
+a=np.random.randint(0, 10, (4,4))
+print(a)
+print(a.T)
+
+[[0 1 9 9]
+[0 4 7 3]
+[2 7 2 0]
+[0 4 5 5]]
+[[0 0 2 0]
+[1 4 7 4]
+[9 7 2 5]
+[9 3 0 5]]
+
+Test your solution in the main function. Example of usage:
+
+a = np.array([[5, 0, 3, 3],
+ [7, 9, 3, 5],
+ [2, 4, 7, 6],
+ [8, 8, 1, 6]])
+get_rows(a)
+[array([5, 0, 3, 3]), array([7, 9, 3, 5]), array([2, 4, 7, 6]), array([8, 8, 1, 6])]
+get_columns(a)
+[array([5, 7, 2, 8]), array([0, 9, 4, 8]), array([3, 3, 7, 1]), array([3, 5, 6, 6]
+
+
+
+### EXERCISE 12 (row and column vectors)
+
+Create function get_row_vectors that returns a list of rows from the input array of shape (n,m), but this time the rows must have shape (1,m). Similarly, create function get_columns_vectors that returns a list of columns (each having shape (n,1)) of the input matrix .
+
+Example: for a 2x3 input matrix
+
+ [[5 0 3]
+  [3 7 9]]
+
+the result should be
+
+Row vectors: 
+[array([[5, 0, 3]]), array([[3, 7, 9]])]
+Column vectors: 
+[array([[5],
+        [3]]), 
+ array([[0],
+        [7]]), 
+ array([[3],
+        [9]])]
+
+The above output is basically just the returned lists printed with print. Only some whitespace is adjusted to make it look nicer. Output is not tested.
+
+
+
+### EXERCISE 13 (diamond)
+
+Create a function diamond that returns a two dimensional integer array where the 1s form a diamond shape. Rest of the numbers are 0. The function should get a parameter that tells the length of a side of the diamond. Do this using the eye and concatenate functions of NumPy and array slicing.
+
+Example of usage:
+
+print(diamond(3))
+[[0 0 1 0 0]
+ [0 1 0 1 0]
+ [1 0 0 0 1]
+ [0 1 0 1 0]
+ [0 0 1 0 0]]
+print(diamond(1))
+[[1]]
+
+
+
+### EXERCISE 14 (vector lengths)
+
+Write function vector_lengths that gets a two dimensional array of shape (n,m) as a parameter. Each row in this array corresponds to a vector. The function should return an array of shape (n,), that has the length of each vector in the input. The length is defined by the usual Euclidean norm. Don't use loops at all in your solution. Instead use vectorized operations. You must use at least the np.sum and the np.sqrt functions. You can't use the function scipy.linalg.norm. Test your function in the main function.
+
+
+
+### EXERCISE 15 (vector angles)
+
+Let x and y be m-dimensional vectors. The angle α\alphaα between two vectors is defined by the equation cos⁡xy(α):=⟨x,y⟩∣∣x∣∣∣∣y∣∣\cos_{xy}(\alpha):=\frac{\langle x,y\rangle}{||x|| ||y||}cosxy​(α):=∣∣x∣∣∣∣y∣∣⟨x,y⟩​, where the angle brackets denote the inner product, and ∣∣x∣∣:=⟨x,x⟩||x||:=\sqrt{\langle x,x \rangle}∣∣x∣∣:=⟨x,x⟩​.
+
+Write function vector_angles that gets two arrays X and Y with same shape (n,m) as parameters. Each row in the arrays corresponds to a vector. The function should return vector of shape (n,) with the corresponding angles between vectors of X and Y in degrees, not in radians. Again, don't use loops, but use vectorized operations.
+
+Note: function np.arccos is only defined on the domain [-1.0,1.0]. If you try to compute np.arccos(1.000000001), it will fail. These kind of errors can occur due to use of finite precision in numerical computations. Force the argument to be in the correct range (clip method).
+
+Test your solution in the main program.
+
+
+
+### EXERCISE 16 multiplication table revisited)
+
+Write function multiplication_table that gets a positive integer n as parameter. The function should return an array with shape (n,n). The element at index (i,j) should be i*j. Don't use for loops! In your solution, rely on broadcasting, the np.arange function, reshaping and vectorized operators. Example of usage:
+
+print(multiplication_table(4))
+[[0 0 0 0]
+ [0 1 2 3]
+ [0 2 4 6]
+ [0 3 6 9]]
+
+
+
