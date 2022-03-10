@@ -3,6 +3,138 @@
 
 
 
+
+### EXERCISE 1 (column comparison)
+
+Write function column_comparison that gets a two dimensional array as parameter. The function should return a new array containing those rows from the input that have the value in the second column larger than in the second last column. You may assume that the input contains at least two columns. Don't use loops, but instead vectorized operations. Try out your function in the main function.
+
+For array
+
+ [[8 9 3 8 8]
+ [0 5 3 9 9]
+ [5 7 6 0 4]
+ [7 8 1 6 2]
+ [2 1 3 5 8]]
+
+the result would be
+
+ [[8 9 3 8 8]
+ [5 7 6 0 4]
+ [7 8 1 6 2]]
+
+
+
+### EXERCISE 2 (first half second half)
+
+Write function first_half_second_half that gets a two dimensional array of shape (n,2*m) as a parameter. The input array has 2*m columns. The output from the function should be a matrix with those rows from the input that have the sum of the first m elements larger than the sum of the last m elements on the row. Your solution should call the np.sum function or the corresponding method exactly twice.
+
+Example of usage:
+
+a = np.array([[1, 3, 4, 2],
+              [2, 2, 1, 2]])
+first_half_second_half(a)
+array([[2, 2, 1, 2]])
+
+
+
+### EXERCISE 3 (most frequent first)
+
+Note: This exercise is fairly difficult. Feel free to skip if you get stuck.
+
+Write function most_frequent_first that gets a two dimensional array and an index c of a column as parameters. The function should then return the array whose rows are sorted based on column c, in the following way. Rows are ordered so that those rows with the most frequent element in column c come first, then come the rows with the second most frequent element in column c, and so on. Therefore, the values outside column c don't affect the ordering in any way.
+
+Example of usage:
+
+a:
+ [[5 0 3 3 7 9 3 5 2 4]
+ [7 6 8 8 1 6 7 7 8 1]
+ [5 9 8 9 4 3 0 3 5 0]
+ [2 3 8 1 3 3 3 7 0 1]
+ [9 9 0 4 7 3 2 7 2 0]
+ [0 4 5 5 6 8 4 1 4 9]
+ [8 1 1 7 9 9 3 6 7 2]
+ [0 3 5 9 4 4 6 4 4 3]
+ [4 4 8 4 3 7 5 5 0 1]
+ [5 9 3 0 5 0 1 2 4 2]]
+print(most_frequent_first(a, -1))
+ [[4 4 8 4 3 7 5 5 0 1]
+ [2 3 8 1 3 3 3 7 0 1]
+ [7 6 8 8 1 6 7 7 8 1]
+ [5 9 3 0 5 0 1 2 4 2]
+ [8 1 1 7 9 9 3 6 7 2]
+ [9 9 0 4 7 3 2 7 2 0]
+ [5 9 8 9 4 3 0 3 5 0]
+ [0 3 5 9 4 4 6 4 4 3]
+ [0 4 5 5 6 8 4 1 4 9]
+ [5 0 3 3 7 9 3 5 2 4]]
+
+If we look at the last column, we see that the number 1 appears three times, then both numbers 2 and 0 appear twice, and lastly numbers 3, 9, and 4 appear only once. Note that, for example, among those rows that contain in column c a number that appear twice in column c the order can be arbitrary.
+
+Hint: the function np.unique may be useful.
+
+
+
+### EXERCISE 4 (matrix power)
+
+Repeat the functionality of the NumPy function numpy.linalg.matrix_power, which raises a square matrix of shape (m,m) to the nth power. Here the multiplication is the matrix multiplication. Square matrix a raised to power n is therefore a @ a @ ... @ a where a is repeated n times. When n is zero then a0a^0a0 is equal to np.eye(m).
+
+Write function matrix_power that gets as first argument a square matrix a and as second argument a non-negative integer n. The function should return the matrix a multiplied by itself n-1 times. Use Python's reduce function and a generator expression.
+
+Extend the matrix_power function. For negative powers, we define a−1a^{-1}a−1 to be equal to the multiplicative inverse of a. You can use NumPy's function numpy.linalg.inv for this. And you may assume that the input matrix is invertible.
+
+
+
+### EXERCISE 5 (correlation)
+
+This exercise can give two points at maximum!
+
+Load the iris dataset using the provided function load() in the stub solution. The four columns of the returned array correspond to
+
+    sepal length (cm)
+    sepal width (cm)
+    petal length (cm)
+    petal width (cm)
+
+Part 1. What is the Pearson correlation between the variables sepal length and petal length. Compute this using the scipy.stats.pearsonr function. It returns a tuple whose first element is the correlation. Write a function lengths that loads the data and returns the correlation.
+
+Part 2. What are the correlations between all the variables. Write a function correlations that returns an array of shape (4,4) containing the correlations. Use the function np.corrcoef. Which pair of variables is the most highly correlated?
+
+Note the input formats of both functions pearsonr and corrcoef.
+
+
+
+### EXERCISE 6 (meeting lines)
+
+Write function meeting_lines that gets the coefficients of two lines as parameters and returns the point where the two lines meet. The equations for the lines are y=a1x+b1y=a_1x + b_1y=a1​x+b1​ and y=a2x+b2y=a_2x + b_2y=a2​x+b2​. Use the np.linalg.solve function. Create a main function to test your solution.
+
+Example of usage:
+
+x, y = meeting_lines(a1, b1, a2, b2)
+
+
+
+### EXERCISE 7 (meeting planes)
+
+Write function meeting_planes that gets the coefficients of three planes as parameters and returns the point where the planes meet. The equations for the planes are: z=a1y+b1x+c1z =a_1y + b_1x+ c_1z=a1​y+b1​x+c1​, z=a2y+b2x+c2z =a_2y + b_2x+ c_2z=a2​y+b2​x+c2​, and z=a3y+b3x+c3z =a_3y + b_3x+ c_3z=a3​y+b3​x+c3​.
+
+Example of usage:
+
+x, y, z = meeting_planes(a1, b1, c1,  a2, b2, c2,  a3, b3, c3)
+
+
+
+### EXERCISE 8 (almost meeting lines)
+
+In the earlier "meeting lines" exercise there is a problem if the lines don't meet at all. Extend that solution so that it tells the meeting point if it exists, and otherwise finds the point that is closest to the both lines. You can use the numpy.linalg.lstsq for this.
+
+Example of usage:
+
+(x, y), exact = almost_meeting_lines(1, 2, -1, 0)
+print(x, y, exact)
+-1.000000 1.000000 True
+
+
+
 ### EXERCISE 11 (to grayscale)
 
 This exercise can give two points at maximum!
