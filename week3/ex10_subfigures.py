@@ -4,7 +4,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def subfigures(a):
-    pass
+    ax = plt.subplots(1,2)[1]
+    ax[0].plot(a[:,0], a[:,1]) # left
+    ax[1].scatter(a[:,0], a[:,1], c =  a[:,2],  s = a[:,3]) # right
+    plt.show()  
 
 def main():
     pass
@@ -12,14 +15,21 @@ def main():
 if __name__ == "__main__":
     main()
 
-# Write function subfigures that creates a figure that has two subfigures 
-# (two axes in matplotlib parlance). 
-# The function gets a two dimensional array a as a parameter. 
-# In the left subfigure draw using the plot method a graph, 
-# whose x coordinates are in the first column of a and the y coordinates are in the second column of a. 
-# In the right subfigure draw using the scatter method a set of points whose x coords are again 
-# in the first column of a and whose y coordinates are in the second column of a. 
-# Additionally, the points should get their color from the third column of a, and size of the point
-# from the fourth column of a. For this, use the c and s named parameters of scatter, respectively
+## Course Solution ----
+# The only (minor) difference is the figure size specified
+# I'll add the main function tho, to see how it tests the subfigures function 
 
-# Test your function subfigure from the main function.
+#def subfigures(a):
+ #   fig, ax = plt.subplots(1,2, figsize=(6,3))
+  #  ax[0].plot(a[:,0], a[:,1])
+   # ax[1].scatter(a[:,0], a[:,1], c=a[:,2], s=a[:,3])
+    #plt.show()
+
+#def main():
+ #   n = 10
+  #  a = np.random.randint(0, 10, (n, 3))
+   # print(a)
+    #print(a.dtype)
+    #print(a.shape)
+    #a = np.concatenate([np.arange(n)[:, np.newaxis], a], axis=1)
+    #subfigures(a)
