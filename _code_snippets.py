@@ -49,3 +49,6 @@ import numpy as np
 a = np.array([1,4,2,7,9,5])
 
 print(a[::-1])    # Reverses the array
+
+# Find the maximum value in a list of arrays
+#max(map(max, arr.values()))

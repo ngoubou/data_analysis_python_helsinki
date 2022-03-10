@@ -8,35 +8,30 @@ def load():
     return pd.read_csv("src/iris.csv").drop('species', axis=1).values
 
 def lengths():
-    return 0
+    a = load()
+    return scipy.stats.pearsonr(a[:,0], a[:,2])[0]
 
 def correlations():
-    return np.array([])
+    a = load()
+    b = np.array([a[:,0], a[:,1], a[:,2], a[:,3]])
+    # b = a.T # Course Solution
+    return np.corrcoef(b)
 
 def main():
-    print(lengths())
     print(correlations())
+    c = 0 # the 1 indexes; they change position by 1 every iteration
+    for i in correlations():
+        print(max(np.delete(i, c))) # delete the ones
+        print(np.where(i == max(np.delete(i, c)))) # get the index of the maximum value
+        # store the 2 previous values in a dictionary and return the max value
+        # the key will be the correlation value, and the value will be a list
+        # where the first value is j (for i, j in enumarate(correlations())) and the
+        # second value is np.where ...
+        c += 1
+    # The most highly correlated pair of variables is the 4th and 3rd variable
 
 if __name__ == "__main__":
     main()
 
-# This exercise can give two points at maximum!
-
-# Load the iris dataset using the provided function load() in the stub solution. 
-# The four columns of the returned array correspond to
-
- #   sepal length (cm)
-  #  sepal width (cm)
-   # petal length (cm)
-    #petal width (cm)
-
-# Part 1. What is the Pearson correlation between the variables sepal length and petal length.
-# Compute this using the scipy.stats.pearsonr function. 
-# It returns a tuple whose first element is the correlation. 
-# Write a function lengths that loads the data and returns the correlation.
-
-# Part 2. What are the correlations between all the variables.
-# Write a function correlations that returns an array of shape (4,4) containing the correlations. 
-# Use the function np.corrcoef. Which pair of variables is the most highly correlated?
-
-# Note the input formats of both functions pearsonr and corrcoef.
+## Course Solution ----
+# (See correlations function)
