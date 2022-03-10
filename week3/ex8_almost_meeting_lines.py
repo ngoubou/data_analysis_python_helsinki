@@ -11,13 +11,13 @@ def almost_meeting_lines(a1, b1, a2, b2):
     a = np.array([[-a1,1], [-a2,1]])
     b = np.array([b1,b2])
     tt = []
-    c = 0
+    c = 0 # keep track of number of times it computes the exact solution
     try:
         t = np.linalg.solve(a, b) # si celui-ci produit une erreur
         c += 1
     except np.linalg.LinAlgError:
         t = np.linalg.lstsq(a,b)[0] # calcule least square
-        #c -= 1 
+
     if c > 0:
         tt.append(True)
     else:
@@ -64,18 +64,13 @@ def main():
 if __name__ == "__main__":
     main()
 
-# In the earlier "meeting lines" exercise there is a problem if the lines don't meet at all. 
-# Extend that solution so that it tells the meeting point if it exists, 
-# and otherwise finds the point that is closest to the both lines. 
-# You can use the numpy.linalg.lstsq for this.
-#a1=1
-#b1=2
-#a2=-1
-#b2=0
-#np.linalg.lsts
-# Example of usage:
+## Course Solution ----
+# Very interesting cause it helps me brush off my linear algebra skills
+# but it really has been painful
 
-# (x, y), exact = almost_meeting_lines(1, 2, -1, 0)
-# print(x, y, exact)
-# -1.000000 1.000000 True
-
+#def almost_meeting_lines(a1, b1, a2, b2):
+#    A=np.array([[-a1,1],[-a2,1]])
+#    b=np.array([b1,b2])
+#    x, residuals, rank, s = np.linalg.lstsq(A, b)
+#    exact = rank==2
+#    return x, bool(exact)
