@@ -239,8 +239,26 @@ import matplotlib.pyplot as plt
 
 a = np.array([2, 5, 7, 4, 7, 0, 3, 1, 9, 2])
 
-plt.plot(a)                   # plot the points in the array a
-plt.title("My first figure")  # Add a title to the figure
-plt.xlabel("My x-axis")       # Give a label to the x-axis
-plt.ylabel("My y-axis")       # Give a label to the y-axis
-plt.show() 
+#plt.plot(a)                   # plot the points in the array a
+#plt.title("My first figure")  # Add a title to the figure
+#plt.xlabel("My x-axis")       # Give a label to the x-axis
+#plt.ylabel("My y-axis")       # Give a label to the y-axis
+#plt.show() 
+
+#fig, ax = plt.subplots(2,2)
+#print(ax.shape)
+#ax[0,0].plot(np.arange(6))          # top left
+#ax[0,1].plot(np.arange(6,0,-1))     # top right
+#ax[1,0].plot((-1)**np.arange(6))    # bottom left
+#ax[1,1].plot((-1)**np.arange(1,7))  # bottom right
+#plt.show()
+
+plt.subplot(2, 2, 1)    # Note the 1-indexing of subplots. 
+plt.plot(np.arange(6))
+plt.subplot(2, 2, 2)
+plt.plot(np.arange(6, 0, -1))
+plt.subplot(2, 2, 3)
+plt.plot((-1)**np.arange(6))
+plt.subplot(2, 2, 4)
+plt.plot((-1)**np.arange(1, 7))
+plt.show()
