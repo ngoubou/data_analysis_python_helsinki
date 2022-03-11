@@ -72,3 +72,12 @@ def angle_between(v1, v2):
     v1_u = unit_vector(v1)
     v2_u = unit_vector(v2)
     return np.arccos(np.clip(np.dot(v1_u, v2_u), -1.0, 1.0))
+
+# Subplots using matplotlib
+#fig, ax = plt.subplots(2,2)
+#print(ax.shape)
+#ax[0,0].plot(np.arange(6))          # top left
+#ax[0,1].plot(np.arange(6,0,-1))     # top right
+#ax[1,0].plot((-1)**np.arange(6))    # bottom left
+#ax[1,1].plot((-1)**np.arange(1,7))  # bottom right
+#plt.show()

@@ -238,7 +238,7 @@ def angle_between(v1, v2):
 import matplotlib.pyplot as plt
 
 a = np.array([2, 5, 7, 4, 7, 0, 3, 1, 9, 2])
-
+print(a.max())
 #plt.plot(a)                   # plot the points in the array a
 #plt.title("My first figure")  # Add a title to the figure
 #plt.xlabel("My x-axis")       # Give a label to the x-axis
@@ -253,12 +253,12 @@ a = np.array([2, 5, 7, 4, 7, 0, 3, 1, 9, 2])
 #ax[1,1].plot((-1)**np.arange(1,7))  # bottom right
 #plt.show()
 
-plt.subplot(2, 2, 1)    # Note the 1-indexing of subplots. 
-plt.plot(np.arange(6))
-plt.subplot(2, 2, 2)
-plt.plot(np.arange(6, 0, -1))
-plt.subplot(2, 2, 3)
-plt.plot((-1)**np.arange(6))
-plt.subplot(2, 2, 4)
-plt.plot((-1)**np.arange(1, 7))
-plt.show()
+#plt.subplot(2, 2, 1)    # Note the 1-indexing of subplots. 
+#plt.plot(np.arange(6))
+#plt.subplot(2, 2, 2)
+#plt.plot(np.arange(6, 0, -1))
+#plt.subplot(2, 2, 3)
+#plt.plot((-1)**np.arange(6))
+#plt.subplot(2, 2, 4)
+#plt.plot((-1)**np.arange(1, 7))
+#plt.show()
