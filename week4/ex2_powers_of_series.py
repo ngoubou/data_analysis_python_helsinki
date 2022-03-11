@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import pandas as pd
+import numpy as np
 
 def powers_of_series(s, k):
     return None
@@ -20,7 +21,26 @@ if __name__ == "__main__":
 # The values should be numbers, but the index can have any type. Test your function from the main function. 
 # Example of usage:
 
-
+ind = list("abcd")
+s = pd.Series([1,2,3,4], index = ind)
+s2 = s**2
+s3 = s**3
+#print(s3.values)
+columns = []
+for i in s:
+    columns.append(i)
+#print(np.array(columns))
+#df = pd.DataFrame(s, index = ind)
+#print(df)
+#print(powers_of_series(s, 3))
+k = 3
+d = {}
+for i in range(1, k + 1):
+    #print(i)
+    d.update({i: s.values**i})
+print(d)
+df = pd.DataFrame(d, index = ind)
+print(df)
 # Should print:
 
 #    1   2   3
