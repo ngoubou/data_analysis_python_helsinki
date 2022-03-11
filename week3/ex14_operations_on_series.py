@@ -17,24 +17,14 @@ def main():
     L2 = [4, 5, 6]
     s1 = pd.Series(L1, index = ["a", "b", "c"])
     s2 = pd.Series(L2, index = ["a", "b", "c"])
-    #print(create_series(L1, L2))
+    print(create_series(L1, L2))
     print(modify_series(s1, s2))
-    #return
+    print(s1+s2)
     
 if __name__ == "__main__":
     main()
 
-L1 = [1, 2, 3]
-L2 = [4, 5, 6]
-s1 = pd.Series(L1, index = ["a", "b", "c"])
-s2 = pd.Series(L2, index = ["a", "b", "c"])
-s1["d"] = s2["b"]
-del s2["b"]
-#print(s1)
-#print(s2)
+# Course Solution ----
+# A slight difference is it avoids the repetition in index argument in pd.Series
 
-
-# Test these functions from the main function. 
-# Try adding together the Series returned by the modify_series function. 
-# The operations on Series use the indices to keep the element-wise operations aligned. 
-# If for some index the operation could not be performed, the resulting value will be NaN (Not A Number).
+# indices = list("abc"), then use list as index
