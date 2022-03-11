@@ -1,62 +1,52 @@
 #!/usr/bin/env python3
 
-import pandas as pd    # This is the standard way of importing the Pandas library
+import pandas as pd    
 import numpy as np
 import re
-def read_series(a):
-    
-    ind = [] # the series indexes
-    #inde = []
+
+def read_series():
+    contents = []
+    ind = [] 
     val = []
-    #vale = []
-    for i in a: # remplace a par e
-        #print(len(i.split()))
-        if i and len(i.split()) != 2:
-            raise Exception("The line is malformed")
-            
+
+    while True: 
+        line = input()
+        contents.append(line)
+        if line: # As long as the input is not empty, continue prompting the user
+            continue
+        else:
+            break
+   
+    for i in contents: 
+        if i and len(i.split()) != 2: # if the input does not have two parts separated by a space
+            raise Exception("The line is malformed")  
         try:
             ind.append(i.split()[0])
             val.append(i.split()[-1])
-            #inde.append(re.findall(r'^(.*?)\s', i)[0]) # don't convert it to int cause they can be characters too
-            #vale.append(re.findall(r'\s(.*?)$', i)[0]) # everything after the space
         except IndexError:
             pass
-
+        
     result = pd.Series(val, index = ind)
     return result
 
 def main():
-    a = ["a  12", "b	 3", "c	50", ""]
-    #a = ["0 a", "xxxxx"]
-    #a = [""]
-    print(read_series(a))
-    #pass
+    print(read_series())
 
 if __name__ == "__main__":
     main()
 
-# Write function read_series that reads input lines from the user and return a Series. 
-# Each line should contain first the index and then the corresponding value, separated by whitespace. 
-# The index and values are strings (in this case dtype is object). An empty line signals the end of Series. 
-# Malformed input should cause an exception. 
-# An input line is malformed, if it is non-empty and, when split at whitespace, does not result in two parts.
+## Course Solution ----
+# My code is very similar to the course solution, but i'll paste it nonetheless
 
-# Test your function from the main function.
-#e = []
-#name = input("Gimme: ")
-#e.append(name)
-#print(name)
-#input = "a Lionel"#\n1 Ralph\n2 Me\n"
-#input1 = "b Ralph"
-#input2 = "c1 Me"
-
-#a = [input, input1, input2]
-#a = ["a  12", "b	 3", "c	50", ""]
-#ind = [] # the series indexes
-#val = []
-#for i in a: # remplace a par e
-#    ind.append(re.findall(r'^(.*?)\s', i)[0]) # don't convert it to int cause they can be characters too
-#    val.append(re.findall(r'\s(.*?)$', i)[0]) # everything after the space
-
-#result = pd.Series(val, index = ind)
-#print(result)
+#def read_series():    
+#    values=[]
+#    indices=[]
+#    while True:
+#        line = input("")
+#        if not line:
+#            break
+#        i, v = line.split()
+#        values.append(v)
+#        indices.append(i)
+#    s = pd.Series(values, index=indices)
+#    return s
