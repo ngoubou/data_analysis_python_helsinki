@@ -81,3 +81,5 @@ def angle_between(v1, v2):
 #ax[1,0].plot((-1)**np.arange(6))    # bottom left
 #ax[1,1].plot((-1)**np.arange(1,7))  # bottom right
 #plt.show()
+
+#t = painting[:,:,0] # remove a dimension from a 3D numpy array
