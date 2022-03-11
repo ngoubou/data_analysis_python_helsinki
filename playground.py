@@ -208,28 +208,28 @@ import numpy as np
 
 
 
-a = np.array([[0,0,1], [-1,1,0]])
-b = np.array([[0,1,0], [1,1,0]])
+#a = np.array([[0,0,1], [-1,1,0]])
+#b = np.array([[0,1,0], [1,1,0]])
 
 
 
-def unit_vector(vector):
-    """ Returns the unit vector of the vector.  """
-    return vector / np.linalg.norm(vector)
+#def unit_vector(vector):
+ #   """ Returns the unit vector of the vector.  """
+  #  return vector / np.linalg.norm(vector)
 
-def angle_between(v1, v2):
-    """ Returns the angle in radians between vectors 'v1' and 'v2'::
-
-            >>> angle_between((1, 0, 0), (0, 1, 0))
-            1.5707963267948966
-            >>> angle_between((1, 0, 0), (1, 0, 0))
-            0.0
-            >>> angle_between((1, 0, 0), (-1, 0, 0))
-            3.141592653589793
-    """
-    v1_u = unit_vector(v1)
-    v2_u = unit_vector(v2)
-    return np.arccos(np.clip(np.dot(v1_u, v2_u), -1.0, 1.0))
+#def angle_between(v1, v2):
+ #   """ Returns the angle in radians between vectors 'v1' and 'v2'::
+#
+ #           >>> angle_between((1, 0, 0), (0, 1, 0))
+  #          1.5707963267948966
+   #         >>> angle_between((1, 0, 0), (1, 0, 0))
+    #        0.0
+     #       >>> angle_between((1, 0, 0), (-1, 0, 0))
+      #      3.141592653589793
+    #"""
+    #v1_u = unit_vector(v1)
+    #v2_u = unit_vector(v2)
+    #return np.arccos(np.clip(np.dot(v1_u, v2_u), -1.0, 1.0))
 
 #print(angle_between(a,b))
 
@@ -237,8 +237,8 @@ def angle_between(v1, v2):
 # Matplotlib
 import matplotlib.pyplot as plt
 
-a = np.array([2, 5, 7, 4, 7, 0, 3, 1, 9, 2])
-print(a.max())
+#a = np.array([2, 5, 7, 4, 7, 0, 3, 1, 9, 2])
+#print(a.max())
 #plt.plot(a)                   # plot the points in the array a
 #plt.title("My first figure")  # Add a title to the figure
 #plt.xlabel("My x-axis")       # Give a label to the x-axis
@@ -262,3 +262,10 @@ print(a.max())
 #plt.subplot(2, 2, 4)
 #plt.plot((-1)**np.arange(1, 7))
 #plt.show()
+
+## WEEK 4 ----
+# PANDAS
+import pandas as pd
+import numpy as np
+df = pd.DataFrame(np.random.randn(2,3), columns=["First", "Second", "Third"], index=["a", "b"])
+print(df)

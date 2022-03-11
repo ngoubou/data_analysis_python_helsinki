@@ -1,0 +1,231 @@
+
+##################### EXERCISES INSTRUCTIONS ##########################
+
+
+
+
+### EXERCISE 1 (cities)
+
+Write function cities that returns the following DataFrame of top Finnish cities by population:
+
+                 Population Total area
+Helsinki         643272     715.48
+Espoo            279044     528.03
+Tampere          231853     689.59
+Vantaa           223027     240.35
+Oulu             201810     3817.52
+
+
+
+### EXERCISE 2 (powers of series)
+
+Make function powers_of_series that takes a Series and a positive integer k as parameters and returns a DataFrame. The resulting DataFrame should have the same index as the input Series. The first column of the dataFrame should be the input Series, the second column should contain the Series raised to power of two. The third column should contain the Series raised to the power of three, and so on until (and including) power of k. The columns should have indices from 1 to k.
+
+The values should be numbers, but the index can have any type. Test your function from the main function. Example of usage:
+
+s = pd.Series([1,2,3,4], index=list("abcd"))
+print(powers_of_series(s, 3))
+
+Should print:
+
+   1   2   3
+a  1   1   1
+b  2   4   8
+c  3   9  27
+d  4  16  64
+
+
+
+### EXERCISE 3 (municipal information)
+
+In the main function load a data set of municipal information from the src folder (originally from Statistics Finland). Use the function pd.read_csv, and note that the separator is a tabulator.
+
+Print the shape of the DataFrame (number of rows and columns) and the column names in the following format:
+
+Shape: r,c
+Columns:
+col1 
+col2
+...
+
+Note, sometimes file ending tsv (tab separated values) is used instead of csv if the separator is a tab.
+
+
+
+### EXERCISE 4 (municipalities of finland)
+
+Load again the municipal information DataFrame. The rows of the DataFrame correspond to various geographical areas of Finland. The first row is about Finland as a whole, then rows from Akaa to Äänekoski are municipalities of Finland in alphabetical order. After that some larger regions are listed.
+
+Write function municipalities_of_finland that returns a DataFrame containing only rows about municipalities. Give an appropriate argument for pd.read_csv so that it interprets the column about region name as the (row) index. This way you can index the DataFrame with the names of the regions.
+
+Test your function from the main function.
+
+
+
+### EXERCISE 5 (swedish and foreigners)
+
+Write function swedish_and_foreigners that
+
+    Reads the municipalities data set
+    Takes the subset about municipalities (like in previous exercise)
+    Further take a subset of rows that have proportion of Swedish speaking people and proportion of foreigners both above 5 % level
+    From this data set take only columns about population, the proportions of Swedish speaking people and foreigners, that is three columns.
+
+The function should return this final DataFrame.
+
+Do you see some kind of correlation between the columns about Swedish speaking and foreign people? Do you see correlation between the columns about the population and the proportion of Swedish speaking people in this subset?
+
+
+
+### EXERCISE 6 (growing municipalities)
+
+Write function growing_municipalities that gets subset of municipalities (a DataFrame) as a parameter and returns the proportion of municipalities with increasing population in that subset.
+
+Test your function from the main function using some subset of the municipalities. Print the proportion as percentages using 1 decimal precision.
+
+Example output:
+
+Proportion of growing municipalities: 12.4%
+
+
+
+### EXERCISE 7 (subsetting with loc)
+
+Write function subsetting_with_loc that in one go takes the subset of municipalities from Akaa to Äänekoski and restricts it to columns: "Population", "Share of Swedish-speakers of the population, %", and "Share of foreign citizens of the population, %". The function should return this content as a DataFrame. Use the attribute loc.
+
+
+
+### EXERCISE 8 (subsetting by positions)
+
+Write function subsetting_by_positions that does the following.
+
+Read the data set of the top forty singles from the beginning of the year 1964 from the src folder. Return the top 10 entries and only the columns Title and Artist. Get these elements by their positions, that is, by using a single call to the iloc attribute. The function should return these as a DataFrame.
+
+
+
+### EXERCISE 9 (snow depth)
+
+Write function snow_depth that reads in the weather DataFrame from the src folder and returns the maximum amount of snow in the year 2017.
+
+Print the result in the main function in the following form:
+
+Max snow depth: xx.x
+
+
+
+### EXERCISE 10 (average temperature)
+
+Write function average_temperature that reads the weather data set and returns the average temperature in July.
+
+Print the result in the main function in the following form:
+
+Average temperature in July: xx.x
+
+
+
+### EXERCISE 11 (below zero)
+
+Write function below_zero that returns the number of days when the temperature was below zero.
+
+Print the result in the main function in the following form:
+
+Number of days below zero: xx
+
+
+
+### EXERCISE 12 (cyclists)
+
+Write function cyclists that does the following.
+
+Load the Helsinki bicycle data set from the src folder (https://hri.fi/data/dataset//helsingin-pyorailijamaarat). The dataset contains the number of cyclists passing by measuring points per hour. The data is gathered over about four years, and there are 20 measuring points around Helsinki. The dataset contains some empty rows at the end. Get rid of these. Also, get rid of columns that contain only missing values. Return the cleaned dataset.
+
+
+
+### EXERCISE 13 (missing value types)
+
+Make function missing_value_types that returns the following DataFrame. Use the State column as the (row) index. The value types for the two other columns should be float and object, respectively. Replace the dashes with the appropriate missing value symbols.
+State 	Year of independence 	President
+United Kingdom 	- 	-
+Finland 	1917 	Niinistö
+USA 	1776 	Trump
+Sweden 	1523 	-
+Germany 	- 	Steinmeier
+Russia 	1992 	Putin
+
+
+
+### EXERCISE 14 (special missing values)
+
+Write function special_missing_values that does the following.
+
+Read the data set of the top forty singles from the beginning of the year 1964 from the src folder. Return the rows whose singles' position dropped compared to last week's position (column LW=Last Week).
+
+To do this you first have to convert the special values "New" and "Re" (Re-entry) to missing values (None).
+
+
+
+### EXERCISE 15 (last week)
+
+This exercise can give two points at maximum!
+
+Write function last_week that reads the top40 data set mentioned in the above exercise. The function should then try to reconstruct the top40 list of the previous week based on that week's list. Try to do this as well as possible. You can fill the values that are impossible to reconstruct by missing value symbols. Your solution should work for a top40 list of any week. So don't rely on specific features of this top40 list. The column WoC means "Weeks on Chart", that is, on how many weeks this song has been on the top 40 list.
+
+Hint. First create the last week's top40 list of those songs that are also on this week's list. Then add those entries that were not on this week's list. Finally sort by position.
+
+Hint 2. The where method of Series and DataFrame can be useful. It can also be nested.
+
+Hint 3. Like in NumPy, you can use with Pandas the bitwise operators &, |, and ~. Remember that he bitwise operators have higher precedence than the comparison operations, so you may have to use parentheses around comparisons, if you combined result of comparisons with bitwise operators.
+
+You get a second point, if you get the columns LW and Peak Pos correct.
+
+
+
+### EXERCISE 16 (split date)
+
+Read again the bicycle data set from src folder, and clean it as in the earlier exercise. Then split the Päivämäärä column into a DataFrame with five columns with column names Weekday, Day, Month, Year, and Hour. Note that you also need to to do some conversions. To get Hours, drop the colon and minutes. Convert field Weekday according the following rule:
+
+ma -> Mon
+ti -> Tue
+ke -> Wed
+to -> Thu
+pe -> Fri
+la -> Sat
+su -> Sun
+
+Convert the Month column according to the following mapping
+
+tammi 1
+helmi 2
+maalis 3
+huhti 4
+touko 5
+kesä 6
+heinä 7
+elo 8
+syys 9
+loka 10
+marras 11
+joulu 12
+
+Create function split_date that does the above and returns a DataFrame with five columns. You may want to use the map method of Series objects.
+
+So the first element in the Päivämäärä column of the original data set should be converted from ke 1 tammi 2014 00:00 to Wed 1 1 2014 0 . Test your solution from the main function.
+
+
+
+### EXERCISE 17 (cleaning data)
+
+This exercise can give two points at maximum!
+
+The entries in the following table of US presidents are not uniformly formatted. Make function cleaning_data that reads the table from the tsv file src/presidents.tsv and returns the cleaned version of it. Note, you must do the edits programmatically using the string edit methods, not by creating a new DataFrame by hand. The columns should have dtypes object, integer, float, integer, object. The where method of DataFrames can be helpful, likewise the string methods of Series objects. You get an additional point, if you manage to get the columns President and Vice-president right!
+President 	Start 	Last 	Seasons 	Vice-president
+donald trump 	2017 Jan 	- 	1 	Mike pence
+barack obama 	2009 	2017 	2 	joe Biden
+bush, george 	2001 	2009 	2 	Cheney, dick
+Clinton, Bill 	1993 	2001 	two 	gore, Al
+Additional information
+
+We covered subsetting of DataFrames with the indexers [], .loc[], and .iloc[] quite concisely. For a more verbose explanation, look at the tutorials at Dunder Data. Especially, the problems with chained indexing operators (like df["a"][1]) are explained well there (tutorial 4), which we did not cover at all. As a rule of thumb: one should avoid chained indexing combined with assignment! See Pandas documentation.
+
+
+
