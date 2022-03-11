@@ -6,8 +6,15 @@ def municipalities_of_finland():
     return None
     
 def main():
-    return
-    
+    file = "/Users/Mamba/Library/Application Support/tmc/vscode/mooc-data-analysis-with-python-2021/part04-e04_municipalities_of_finland/src/municipal.tsv"
+    df = pd.read_csv(file, sep = "\t")
+    r, c = df.shape
+    #print(f"Shape: {r}, {c}")
+    #print("Columns:")
+    for i in df.columns:
+        #print(i)
+        i
+    print(df)
 if __name__ == "__main__":
     main()
 
