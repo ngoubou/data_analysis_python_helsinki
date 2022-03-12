@@ -3,21 +3,24 @@
 import pandas as pd
 
 def municipalities_of_finland():
-    return None
+    file = "/Users/Mamba/Library/Application Support/tmc/vscode/mooc-data-analysis-with-python-2021/part04-e04_municipalities_of_finland/src/municipal.tsv"
+    df = pd.read_csv(file, sep = "\t", index_col = 0) # use the first column as the rows index
+    return df["Akaa": "Äänekoski"] # return the rows corresponding to municipalities in Finland
     
 def main():
-    #print(municipalities_of_finland())
-    pass
+    print(municipalities_of_finland())
     
 if __name__ == "__main__":
     main()
 
-# Load again the municipal information DataFrame. The rows of the DataFrame correspond to various geographical areas of Finland. 
-# The first row is about Finland as a whole, then rows from Akaa to Äänekoski are municipalities of Finland in alphabetical order. 
-# After that some larger regions are listed.
+## Course Solution ----
+# Similar to mine, only use main() to print different values of the df
 
-# Write function municipalities_of_finland that returns a DataFrame containing only rows about municipalities. 
-# Give an appropriate argument for pd.read_csv so that it interprets the column about region name as the (row) index. 
-# This way you can index the DataFrame with the names of the regions.
-
-# Test your function from the main function.
+#def main():
+#    df=municipalities_of_finland()
+#    print(df.iloc[0,0])
+#    print(df.iloc[-1,-1])
+#    #df=pd.DataFrame()
+#    print("Shape: {}, {}".format(*df.shape))
+#    for name in df.columns:
+#        print(name)
