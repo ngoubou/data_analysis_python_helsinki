@@ -3,20 +3,28 @@
 import pandas as pd
 
 def growing_municipalities(df):
-    0.0
+    increase_pop = df[df["Population change from the previous year, %"] > 0]
+    return len(increase_pop)/len(df)
 
 def main():
-    return
+    file = "/Users/Mamba/Library/Application Support/tmc/vscode/mooc-data-analysis-with-python-2021/part04-e06_growing_municipalities/src/municipal.tsv"
+    df = pd.read_csv(file, sep = "\t", index_col = 0)
+    df = df["Akaa" : "Äänekoski"]
+    print(f"Proportion of growing municipalities: {round(growing_municipalities(df), 1)}%")
 
 if __name__ == "__main__":
     main()
 
-# Write function growing_municipalities that gets subset of municipalities (a DataFrame) as a parameter and returns 
-# the proportion of municipalities with increasing population in that subset.
+## Course Solution ----
+#def growing_municipalities(df):
+#    c="Population change from the previous year, %"
+#    n = len(df)
+#    k = sum(df[c] > 0.0)
+#    return k / n
 
-# Test your function from the main function using some subset of the municipalities. 
-# Print the proportion as percentages using 1 decimal precision.
-
-# Example output:
-
-# Proportion of growing municipalities: 12.4%
+#def main():
+#    df = pd.read_csv("src/municipal.tsv", index_col=0, sep="\t")
+#    df = df["Akaa":"Äänekoski"]
+#    proportion = growing_municipalities(df)
+#    print(f"Proportion of growing municipalities: {proportion:.1%}")
+ 
