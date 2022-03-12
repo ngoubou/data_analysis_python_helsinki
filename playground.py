@@ -268,4 +268,6 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 df = pd.DataFrame(np.random.randn(2,3), columns=["First", "Second", "Third"], index=["a", "b"])
-print(df)
+#print(df)
+
+print(pd.Series([1,3,2, np.nan]))
