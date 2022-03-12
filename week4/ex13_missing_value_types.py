@@ -4,37 +4,35 @@ import pandas as pd
 import numpy as np
 
 def missing_value_types():
-    return None
+    state = ["United Kingdom", "Finland", "USA", "Sweden", "Germany", "Russia"] # use it as index
+    dic = {"Year of independence" : [np.nan, 1917, 1776, 1523, np.nan, 1992], "President" : [np.nan, "Niinistö", "Trump", np.nan, "Steinmeier", "Putin"]}
+    df = pd.DataFrame(dic, index = state)
+    df = df.astype({"Year of independence": float, "President": object})
+    return df
                
 def main():
-    return
+    print(missing_value_types())
 
 if __name__ == "__main__":
     main()
 
-state = ["United Kingdom", "Finland", "USA", "Sweden", "Germany", "Russia"] # use it as index
-#columns = {"Year of independence": "-", }
-d = {}
-year = np.array([["-", 1917, 1776, 1523, 1992, "-"], ["-", "Niinistö", "Trump", "-", "Steinmeier", "Putin"]]) # transform "-" as NaN
-#presi = ["-", "Niinistö", "Trump", "-", "Steinmeier", "Putin"]
-cols = ["Year of independence", "President"]
-#print(s)
-dic = {"Year of independence": ["-", 1917, 1776, 1523, 1992, "-"], "President": ["-", "Niinistö", "Trump", "-", "Steinmeier", "Putin"]}
-#print(dic)
-    #for j in year:
-     #   d.update({i: j})
-      #  print(d)
-df = pd.DataFrame(dic, index = state)
-print(df.describe())
+## Course Solution ----    
+# For type float, we use "np.nan" to express missing values and for type object we use "None"
 
-# Make function missing_value_types that returns the following DataFrame. Use the State column as the (row) index. 
-# The value types for the two other columns should be float and object, respectively. 
-# Replace the dashes with the appropriate missing value symbols.
+#def missing_value_types():
+ #   df=pd.DataFrame([["United Kingdom", np.nan, None],
+  #                   ["Finland",        1917,   "Niinistö"],
+  #                   ["USA",            1776,   "Trump"],
+   #                  ["Sweden",         1523,   None],
+    #                 ["Germany",        np.nan, "Steinmeier"],
+     #                ["Russia",         1992,   "Putin"]],
+      #              columns=["State", "Year of independence", "President"])
 
-# State 	Year of independence 	President
-# United Kingdom 	- 	-
-# Finland 	1917 	Niinistö
-# USA 	1776 	Trump
-# Sweden 	1523 	-
-# Germany 	- 	Steinmeier
-# Russia 	1992 	Putin
+    #df = df.set_index("State")
+    #return df
+
+#def main():
+ #   df = missing_value_types()
+  #  print("Column names:", df.columns)
+   # print("dtypes:", df.dtypes)
+    #print(df)
