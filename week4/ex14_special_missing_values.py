@@ -4,16 +4,31 @@ import pandas as pd
 import numpy as np
 
 def special_missing_values():
-    return None
+    file = "/Users/Mamba/Library/Application Support/tmc/vscode/mooc-data-analysis-with-python-2021/part04-e14_special_missing_values/src/UK-top40-1964-1-2.tsv"
+    df = pd.read_csv(file, sep = "\t")
+    df.loc[(df["LW"] == "New") | (df["LW"] == "Re")] = None
+    df = df.astype({"LW": float})
+    return df[df["LW"] < df["Pos"]]
 
 def main():
-    return
+    print(special_missing_values())
 
 if __name__ == "__main__":
     main()
 
-# Write function special_missing_values that does the following.
+## Course Solution ----
+# Almost similar
 
-# Read the data set of the top forty singles from the beginning of the year 1964 from the src folder. Return the rows whose singles' position dropped compared to last week's position (column LW=Last Week).
+#def special_missing_values():
+ #   df = pd.read_csv("src/UK-top40-1964-1-2.tsv", sep="\t")
+  #  m = (df["LW"] == "New") | (df["LW"] == "Re")
+   # df.loc[m, "LW"] = np.nan
+    #df["LW"] = pd.to_numeric(df["LW"])
+    #m2 = df["LW"] < df["Pos"]
+    #return df[m2]
 
-# To do this you first have to convert the special values "New" and "Re" (Re-entry) to missing values (None).
+#def main():
+ #   df = special_missing_values()
+  #  print("Shape: {}, {}".format(*df.shape))
+   # print("dtypes:", df.dtypes, sep="\n")
+    #print(df)
