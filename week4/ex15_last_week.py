@@ -13,6 +13,8 @@ def last_week():
     missing = df[df.isnull().any(axis = 1)]
     new_df = lw.append(missing, ignore_index = True)
     new_df.sort_values("LW", ascending = True, inplace = True)
+    new_df["Pos"] = new_df["LW"]
+    new_df["LW"] = np.nan
     return new_df
 
 def main():
