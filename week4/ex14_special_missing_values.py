@@ -6,7 +6,10 @@ import numpy as np
 def special_missing_values():
     file = "/Users/Mamba/Library/Application Support/tmc/vscode/mooc-data-analysis-with-python-2021/part04-e14_special_missing_values/src/UK-top40-1964-1-2.tsv"
     df = pd.read_csv(file, sep = "\t")
-    df.loc[(df["LW"] == "New") | (df["LW"] == "Re")] = None
+    #df.loc[(df["LW"] == "New") | (df["LW"] == "Re")] = None # it replaces the whole line with NaNs, while i only want the LW value to be changed
+    # used instead the following
+    m = (df["LW"] == "New") | (df["LW"] == "Re")
+    df.loc[m, "LW"] = np.nan
     df = df.astype({"LW": float})
     return df[df["LW"] < df["Pos"]]
 
