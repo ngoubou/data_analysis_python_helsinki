@@ -3,7 +3,7 @@
 import re
 
 
-def file_listing(filename="src/listing.txt"):
+def file_listing(filename = "listing.txt"):
     # 1 - read the file
     f = open("/Users/Mamba/Library/Application Support/tmc/vscode/mooc-data-analysis-with-python-2021/part02-e02_file_listing/src/listing.txt", "r") # write full path if file not in directory.
 

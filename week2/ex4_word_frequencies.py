@@ -3,7 +3,7 @@
 import re
 from unittest import result
 
-def word_frequencies(filename = "src/alice.txt"):
+def word_frequencies(filename = "alice.txt"):
     dic = {}
     
     with open(filename, "r") as f:

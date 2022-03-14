@@ -3,8 +3,8 @@
 import pandas as pd
 
 def municipalities_of_finland():
-    file = "/Users/Mamba/Library/Application Support/tmc/vscode/mooc-data-analysis-with-python-2021/part04-e04_municipalities_of_finland/src/municipal.tsv"
-    df = pd.read_csv(file, sep = "\t", index_col = 0) # use the first column as the rows index
+    #file = "/Users/Mamba/Library/Application Support/tmc/vscode/mooc-data-analysis-with-python-2021/part04-e04_municipalities_of_finland/src/municipal.tsv"
+    df = pd.read_csv("data/municipal.tsv", sep = "\t", index_col = 0) # use the first column as the rows index
     return df["Akaa": "Äänekoski"] # return the rows corresponding to municipalities in Finland
     
 def main():

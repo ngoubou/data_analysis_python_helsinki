@@ -2,7 +2,7 @@
 
 import re
 
-def red_green_blue(filename="src/rgb.txt"):
+def red_green_blue(filename = "rgb.txt"):
     temp_list = []
     result = []
     with open(filename, "r") as f:

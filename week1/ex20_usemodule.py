@@ -1,23 +1,23 @@
 #!/usr/bin/env python3
-"""Creates a module that contains two functions for computing the hypothenuse and the area 
-of a right-angled triangle."""
 
-from math import sqrt
-
-def hypothenuse(L, l):
-    """Returns the length of the hypothenuse when given the lengths 
-        of two other sides of a right-angled triangle"""
-    hypo = sqrt(L**2 + l**2)
-    return hypo
-
-def area(b, h):
-    """Returns the area of the right-angled triangle, when two sides, 
-        perpendicular to each other, are given as parameters."""
-    a = (b * h) / 2
-    return a
+# Don't modify the below hack
 
 
-__author__ = "Lionel Ngoubou"
-__version__ = "0.1"
 
-# Done Week 1 finally !!!!
+try:
+    from src import triangle
+except ModuleNotFoundError:
+    import triangle
+
+def main():
+    # Call the functions from here
+    print(triangle.hypothenuse(5,6))
+    print(triangle.area(9,8))
+# i wasn't haing the full points cause i did not specify the module
+# i used hypothenuse(5,6), instead of triangle.hypothenuse(5,6)
+# i should use the second line cause i just use import triangle
+# and not from triangle import
+# the import statement is already in the file
+
+if __name__ == "__main__":
+    main()
