@@ -10,10 +10,9 @@ def last_week():
     ## Étape 1 : Replace lines with Re and New by NaNs
     df.loc[(df["LW"] == "New") | (df["LW"] == "Re")] = np.nan
     df = df.astype({"Pos": float, "LW": float, "Peak Pos": float, "WoC": float})
-
+    # df = df.astype({"Pos": float}) # doesn't work for some reason
     ## Étape 2 : Since we don't know last week positions, WoC steps down by 1 point
     df["WoC"] = df["WoC"] - 1
-    lw = df.dropna()
   
     ## Étape 3 : If the Peak Position of a song is Pos but not LW, then convert it to NaN
     df["Peak Pos"] = np.where((df['Peak Pos'] == df['Pos']) & (df['Peak Pos'] != df['LW']), np.nan, df["Peak Pos"])
@@ -42,7 +41,6 @@ def main():
     print("Shape: {}, {}".format(*df.shape))
     print("dtypes:", df.dtypes)
     print(df)
-    print(np.nan)
 
 if __name__ == "__main__":
     main()
