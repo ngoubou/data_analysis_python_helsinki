@@ -31,7 +31,7 @@ for i, j in enumerate(hour):
 
 
 days = ["Wed", "Thu", "Fri", "Sat", "Sun", "Mon", "Tue", np.nan]
-day = ['ke', 'to', 'pe', 'la', 'su', 'ma', 'ti', np.nan]
+
 #new_df["Weekday"].unique = np.array(days)
 #print(new_df["Weekday"].unique()[0])
 
@@ -39,12 +39,21 @@ for i,j in enumerate(new_df["Weekday"].unique()):
     #for k in days:
     k = days[i]
     #new_df["Weekday"].unique()[i] = k
-    new_df.replace(to_replace = j, value =k, inplace = True)
+    new_df.replace(to_replace = j, value = k, inplace = True)
     #print(new_df["Weekday"].unique()[i])
     #i
 #new_df.replace(to_replace = "ke", value = "Wed", inplace = True)
-print(new_df["Weekday"].unique())
-#print(new_df)
+#print(new_df["Month"].unique())
+months = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', np.nan]
+for i, j in enumerate(new_df["Month"].unique()):
+    k = months[i]
+    new_df.replace(to_replace = j, value = k, inplace = True)
+#print(new_df["Month"].unique())
+#print(new_df["Month"].dtype)
+new_df["Month"] = pd.to_numeric(new_df["Month"])
+#print(new_df["Month"].dtype)
+print(df.loc[0])
+print(new_df.loc[0])
 #for i in days:
  #   for j in day:
         #print(new_df["Weekday"])
