@@ -22,7 +22,8 @@ def last_week():
     ## Étape 4 : Use LW column as Pos and sent LW to NaN
     df["Pos"] = df["LW"]  
     df["LW"] = np.nan
- 
+    
+    # This part needs some optimization
     temp = df.loc[28]
     df.loc[28] = df.loc[31]
     df.loc[31] = temp
