@@ -16,12 +16,14 @@ if __name__ == "__main__":
 # Read again the bicycle data set from src folder, and clean it as in the earlier exercise. 
 file = "/Users/Mamba/Library/Application Support/tmc/vscode/mooc-data-analysis-with-python-2021/part04-e12_cyclists/src/Helsingin_pyorailijamaarat.csv"
 df = pd.read_csv(file, sep = ";")
-
-
+#df = df.dropna()
+#print(df["Weekday"].unique())
 # Then split the Päivämäärä column into a DataFrame with five columns with column names Weekday, Day, Month, Year, and Hour. 
 new_df = df["Päivämäärä"].str.split(expand = True)
 new_df.columns = ["Weekday", "Day", "Month", "Year", "Hour"]
-
+#print(new_df["Weekday"].unique())
+new_df = new_df.dropna()
+#print(new_df["Weekday"].unique())
 hour = new_df["Hour"].str.split(":")
 for i, j in enumerate(hour):
     try:
@@ -30,7 +32,7 @@ for i, j in enumerate(hour):
         pass
 
 
-days = ["Wed", "Thu", "Fri", "Sat", "Sun", "Mon", "Tue", np.nan]
+days = ["Wed", "Thu", "Fri", "Sat", "Sun", "Mon", "Tue"]#, np.nan]
 
 #new_df["Weekday"].unique = np.array(days)
 #print(new_df["Weekday"].unique()[0])
@@ -44,16 +46,19 @@ for i,j in enumerate(new_df["Weekday"].unique()):
     #i
 #new_df.replace(to_replace = "ke", value = "Wed", inplace = True)
 #print(new_df["Month"].unique())
-months = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', np.nan]
+months = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']#, np.nan]
 for i, j in enumerate(new_df["Month"].unique()):
     k = months[i]
     new_df.replace(to_replace = j, value = k, inplace = True)
 #print(new_df["Month"].unique())
-#print(new_df["Month"].dtype)
-new_df["Month"] = pd.to_numeric(new_df["Month"])
-#print(new_df["Month"].dtype)
-print(df.loc[0])
-print(new_df.loc[0])
+print(new_df["Month"].dtype)
+#new_df["Month"] = pd.to_numeric(new_df["Month"]) 
+new_df["Month"] = new_df["Month"].map(int) 
+new_df["Day"] = new_df["Day"].map(int) 
+print(new_df["Month"].dtype)
+#print(df.loc[0])
+#print(new_df.loc[0])
+#print(new_df.dtype)
 #for i in days:
  #   for j in day:
         #print(new_df["Weekday"])
