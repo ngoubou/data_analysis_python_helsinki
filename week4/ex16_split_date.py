@@ -14,7 +14,28 @@ if __name__ == "__main__":
     main()
 
 # Read again the bicycle data set from src folder, and clean it as in the earlier exercise. 
+file = "/Users/Mamba/Library/Application Support/tmc/vscode/mooc-data-analysis-with-python-2021/part04-e12_cyclists/src/Helsingin_pyorailijamaarat.csv"
+df = pd.read_csv(file, sep = ";")
+
+
 # Then split the Päivämäärä column into a DataFrame with five columns with column names Weekday, Day, Month, Year, and Hour. 
+new_df = df["Päivämäärä"].str.split(expand = True)
+new_df.columns = ["Weekday", "Day", "Month", "Year", "Hour"]
+
+a = new_df["Hour"].str.split(":")
+for i, j in enumerate(a):
+    #print(new_df)
+    #print(new_df.iloc[i, 4])
+    try:
+        new_df.iloc[i, 4] = j[0]
+    except TypeError:
+        pass
+    #print(new_df.iloc[i, 4])
+print(new_df)
+#new_df["Hour"] = new_df["Hour"].str.split(":")[0]
+#print(new_df)
+#print("00:00".split(":")[0])
+
 # Note that you also need to to do some conversions. To get Hours, drop the colon and minutes. 
 # Convert field Weekday according the following rule:
 
