@@ -22,20 +22,38 @@ df = pd.read_csv(file, sep = ";")
 new_df = df["Päivämäärä"].str.split(expand = True)
 new_df.columns = ["Weekday", "Day", "Month", "Year", "Hour"]
 
-a = new_df["Hour"].str.split(":")
-for i, j in enumerate(a):
-    #print(new_df)
-    #print(new_df.iloc[i, 4])
+hour = new_df["Hour"].str.split(":")
+for i, j in enumerate(hour):
     try:
         new_df.iloc[i, 4] = j[0]
     except TypeError:
         pass
-    #print(new_df.iloc[i, 4])
-print(new_df)
-#new_df["Hour"] = new_df["Hour"].str.split(":")[0]
-#print(new_df)
-#print("00:00".split(":")[0])
 
+
+days = ["Wed", "Thu", "Fri", "Sat", "Sun", "Mon", "Tue", np.nan]
+day = ['ke', 'to', 'pe', 'la', 'su', 'ma', 'ti', np.nan]
+#new_df["Weekday"].unique = np.array(days)
+#print(new_df["Weekday"].unique()[0])
+
+for i,j in enumerate(new_df["Weekday"].unique()):
+    #for k in days:
+    k = days[i]
+    #new_df["Weekday"].unique()[i] = k
+    new_df.replace(to_replace = j, value =k, inplace = True)
+    #print(new_df["Weekday"].unique()[i])
+    #i
+#new_df.replace(to_replace = "ke", value = "Wed", inplace = True)
+print(new_df["Weekday"].unique())
+#print(new_df)
+#for i in days:
+ #   for j in day:
+        #print(new_df["Weekday"])
+  #      for k in new_df["Weekday"]:
+   #         if j == k:
+    #            new_df.replace(to_replace = k, value = i, inplace = True)
+     #       else:
+      #          break
+#print(new_df["Weekday"].unique())
 # Note that you also need to to do some conversions. To get Hours, drop the colon and minutes. 
 # Convert field Weekday according the following rule:
 
