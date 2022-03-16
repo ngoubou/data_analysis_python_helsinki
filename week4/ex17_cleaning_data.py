@@ -2,7 +2,7 @@
 
 import pandas as pd
 import numpy as np
-
+import re
 
 def cleaning_data():
     return None
@@ -32,9 +32,18 @@ start = df["Start"].str.split(" ")
 for i, k in enumerate(df["Start"]):
     j = start[i]
     df["Start"].replace(to_replace = k, value = j[0], inplace = True)
-    
 
+# President modif  
+for i in df["President"]:
+    if re.findall(r',\s', i):
+        #print(i)
+        j = i.split(", ")
+        j.reverse()
+        j = " ".join(j)
+        df["President"].replace(to_replace = i, value = j, inplace = True)
+        #print(df["President"])
 #print(df)
+
 # Faire à la fin
 #df = df.astype({"Start": int, "Last": float, "Seasons": int})
 # Note, you must do the edits programmatically using the string edit methods, not by creating a new DataFrame by hand.
