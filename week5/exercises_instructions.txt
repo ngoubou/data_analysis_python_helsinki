@@ -1,0 +1,201 @@
+
+##################### EXERCISES INSTRUCTIONS ##########################
+
+
+
+
+### EXERCISE 1 (split date continues)
+
+Write function split_date_continues that does
+
+    read the bicycle data set
+    clean the data set of columns/rows that contain only missing values
+    drops the Päivämäärä column and replaces it with its splitted components as before
+
+Use the concat function to do this. The function should return a DataFrame with 25 columns (first five related to the date and then the rest 20 conserning the measument location.
+
+Hint: You may use your solution or the model solution from exercise 16 of the previous set as a starting point.
+
+
+
+### EXERCISE 2 (cycling weather)
+
+Merge the processed cycling data set (from the previous exercise) and weather data set along the columns year, month, and day. Note that the names of these columns might be different in the two tables: use the left_on and right_on parameters. Then drop useless columns 'm', 'd', 'Time', and 'Time zone'.
+
+Write function cycling_weather that reads the data sets and returns the resulting DataFrame.
+
+
+
+### EXERCISE 3 (top bands)
+
+Merge the DataFrames UK top40 and the bands DataFrame that are stored in the src folder. Do all this in the parameterless function top_bands, which should return the merged DataFrame. Use the left_on and right_on parameters to merge. Test your function from the main function.
+
+
+
+### EXERCISE 4 (cyclists per day)
+
+This exercise can give two points at maximum!
+
+Part 1.
+
+Read, clean and parse the bicycle data set as before. Group the rows by year, month, and day. Get the sum for each group. Make function cyclists_per_day that does the above. The function should return a DataFrame. Make sure that the columns Hour and Weekday are not included in the returned DataFrame.
+
+Part 2.
+
+In the main function, using the function cyclists_per_day, get the daily counts. The index of the DataFrame now consists of tuples (Year, Month, Day). Then restrict this data to August of year 2017, and plot this data. Don't forget to call the plt.show function of matplotlib. The x-axis should have ticks from 1 to 31, and there should be a curve to each measuring station. Can you spot the weekends?
+
+
+
+### EXERCISE 5 (best record company)
+
+We use again the UK top 40 data set from the first week of 1964 in the src folder. Here we define "goodness" of a record company (Publisher) based on the sum of the weeks on chart (WoC) of its singles. Return a DataFrame of the singles by the best record company (a subset of rows of the original DataFrame). Do this with function best_record_company.
+
+
+
+### EXERCISE 6 (suicide fractions)
+
+Load the suicide data set from src folder. This data was originally downloaded from Kaggle. Kaggle contains lots of interesting open data sets.
+
+Write function suicide_fractions that loads the data set and returns a Series that has the country as the (row) index and as the column the mean fraction of suicides per population in that country. In other words, the value is the average of suicide fractions. The information about year, sex and age is not used.
+
+
+
+### EXERCISE 7 (suicide weather)
+
+Copy the function suicide fractions from the previous exercise.
+
+Implement function suicide_weather as described below. We use the dataset of average temperature (over years 1961-1990) in different countries from src/List_of_countries_by_average_yearly_temperature.html (https://en.wikipedia.org/wiki/List_of_countries_by_average_yearly_temperature) . You can use the function pd.read_html to get all the tables from a html page. By default pd.read_html does not know which row contains column headers and which column contains row headers. Therefore, you have to give both index_col and header parameters to read_html. Maku sure you use the country as the (row) index for both of the DataFrames. What is the Spearman correlation between these variables? Use the corr method of Series object. Note the the two Series need not be sorted as the indices of the rows (country names) are used to align them.
+
+The return value of the function suicide_weather is a tuple (suicide_rows, temperature_rows, common_rows, spearman_correlation) The output from the main function should be of the following form:
+
+Suicide DataFrame has x rows
+Temperature DataFrame has x rows
+Common DataFrame has x rows
+Spearman correlation: x.x
+
+You might have trouble when trying to convert the temperatures to float. The is because the negative numbers on that html page use a special unicode minus sign, which looks typographically nice, but the float constructor cannot interpret it as a minus sign. You can try out the following example:
+
+s="\u2212" "5"   # unicode minus sign and five
+print(s)
+try:
+    float(s)
+except ValueError as e:
+    import sys
+    print(e, file=sys.stderr)
+        
+
+−5
+could not convert string to float: '−5'
+
+But if we explicitly convert unicode minus sign to normal minus sign, it works:
+
+float(s.replace("\u2212", "-"))
+
+-5.0
+
+
+
+### EXERCISE 8 (bicycle timeseries)
+
+Write function bicycle_timeseries that
+
+    reads the data set
+    cleans it
+    turns its Päivämäärä column into (row) DatetimeIndex (that is, to row names) of that DataFrame
+    returns the new DataFrame
+
+
+
+### EXERCISE 9 (commute)
+
+In function commute do the following:
+
+Use the function bicycle_timeseries to get the bicycle data. Restrict to August 2017, group by the weekday, aggregate by summing. Set the Weekday column to numbers from one to seven. Then set the column Weekday as the (row) index. Return the resulting DataFrame from the function.
+
+In the main function plot the DataFrame. Xticklabels should be the weekdays. Don't forget to call show function!
+
+If you want the xticklabels to be ['Mon', 'Tue', 'Wed', 'Thu', 'Fr', 'Sat', 'Sun'] instead of numbers (1,..,7), then it may get a bit messy. There seems to be a problem with non-numeric x values. You could try the following after plotting, but you don't have to:
+
+weekdays="x mon tue wed thu fri sat sun".title().split()
+plt.gca().set_xticklabels(weekdays)
+
+
+
+### EXERCISE 10 (linear regression)
+
+This exercise can give two points at maximum!
+
+Part 1.
+
+Write a function fit_line that gets one dimensional arrays x and y as parameters. The function should return the tuple (slope, intercept) of the fitted line. Write a main program that tests the fit_line function with some example arrays. The main function should produce output in the following form:
+
+Slope: 1.0
+Intercept: 1.16666666667
+
+Part 2.
+
+Modify your main function to plot the fitted line using matplotlib, in addition to the textual output. Plot also the original data points.
+
+
+
+### EXERCISE 11 (mystery data)
+
+Read the tab separated file mystery_data.tsv. Its first five columns define the features, and the last column is the response. Use scikit-learn's LinearRegression to fit this data. Implement function mystery_data that reads this file and learns and returns the regression coefficients for the five features. You don't have to fit the intercept. The main method should print output in the following form:
+
+Coefficient of X1 is ...
+Coefficient of X2 is ...
+Coefficient of X3 is ...
+Coefficient of X4 is ...
+Coefficient of X5 is ...
+
+Which features you think are needed to explain the response Y?
+
+
+
+### EXERCISE 12 (coefficient of determination)
+
+This exercise can give two points at maximum!
+
+Using the same data as in the previous exercise, instead of printing the regression coefficients, print the coefficient of determination. The coefficient of determination, denoted by R2, tells how well the linear regression fits the data. The maximum value of the coefficient of determination is 1. That means the best possible fit.
+
+Part 1.
+
+Using all the features (X1 to X5), fit the data using a linear regression (include the intercept). Get the coefficient of determination using the score method of the LinearRegression class. Write a function coefficient_of_determination to do all this. It should return a list containing the R2-score as the only value.
+
+Part 2.
+
+Extend your function so that it also returns R2-scores related to linear regression with each single feature in turn. The coefficient_of_determination (https://en.wikipedia.org/wiki/Coefficient_of_determination) function should therefore return a list with six R2-scores (the first score is for five features, like in Part 1). To achieve this, your function should call both the fit method and the score method six times.
+
+The output from the main method should look like this:
+
+R2-score with feature(s) X: ...
+R2-score with feature(s) X1: ...
+R2-score with feature(s) X2: ...
+R2-score with feature(s) X3: ...
+R2-score with feature(s) X4: ...
+R2-score with feature(s) X5: ...
+
+How small can the R2-score be? Experiment both with fitting the intercept and without fitting the intercept.
+
+
+
+### EXERCISE 13 (cycling weather continues)
+
+Write function cycling_weather_continues that tries to explain with linear regression the variable of a cycling measuring station's counts using the weather data from corresponding day. The function should take the name of a (cycling) measuring station as a parameter and return the regression coefficients and the score. In more detail:
+
+Read the weather data set from the src folder. Read the cycling data set from folder src and restrict it to year 2017. Further, get the sums of cycling counts for each day. Merge the two datasets by the year, month, and day. Note that for the above you need only small additions to the solution of exercise cycling_weather. After this, use forward fill to fill the missing values.
+
+In the linear regression use as explanatory variables the following columns 'Precipitation amount (mm)', 'Snow depth (cm)', and 'Air temperature (degC)'. Explain the variable (measuring station), whose name is given as a parameter to the function cycling_weather_continues. Fit also the intercept. The function should return a pair, whose first element is the regression coefficients and the second element is the score. Above, you may need to use the method reset_index (its counterpart is the method set_index).
+
+The output from the main function should be in the following form:
+
+Measuring station: x
+Regression coefficient for variable 'precipitation': x.x
+Regression coefficient for variable 'snow depth': x.x
+Regression coefficient for variable 'temperature': x.x
+Score: x.xx
+
+Use precision of one decimal for regression coefficients, and precision of two decimals for the score. In the main function test you solution using some measuring station, for example Baana.
+
+
+
