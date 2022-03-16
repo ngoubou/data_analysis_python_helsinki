@@ -42,10 +42,23 @@ for i in df["President"]:
         j = " ".join(j)
         df["President"].replace(to_replace = i, value = j, inplace = True)
         #print(df["President"])
-#print(df)
 
+# Vice-president modif
+df["Vice-president"] = df["Vice-president"].str.title()
+#print(df["Vice-president"])
+
+for i in df["Vice-president"]:
+   
+    if re.findall(r',\s', i):
+        #print(i)
+        j = i.split(", ")
+        j.reverse()
+        j = " ".join(j)
+        df["Vice-president"].replace(to_replace = i, value = j, inplace = True)
+#print(df)
 # Faire à la fin
-#df = df.astype({"Start": int, "Last": float, "Seasons": int})
+df = df.astype({"Start": int, "Last": float, "Seasons": int})
+print(df.dtypes)
 # Note, you must do the edits programmatically using the string edit methods, not by creating a new DataFrame by hand.
 # The columns should have dtypes object, integer, float, integer, object. 
 # The where method of DataFrames can be helpful, likewise the string methods of Series objects. 
