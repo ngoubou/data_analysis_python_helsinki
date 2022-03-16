@@ -20,15 +20,17 @@ def split_date_continues():
     df = split_date()
     df1 = pd.read_csv("data/Helsingin_pyorailijamaarat.csv", sep = ";")
     df1 = df1.dropna(axis = 1, how = 'all')
-    final_df = pd.concat([df1, df], axis = 1)
+    df1 = df1.drop(["Päivämäärä"], axis = 1)
+    final_df = pd.concat([df, df1], axis = 1)
     final_df = final_df.dropna(how = "all")
     return final_df
 
 def main():
     df = split_date_continues()
-    print("Shape:", df.shape)
-    print("Column names:\n", df.columns)
-    print(df.head())
+    #print("Shape:", df.shape)
+    #print("Column names:\n", df.columns)
+    #print(df.head())
+    print(df["Baana"].head())
 
 
 if __name__ == "__main__":
