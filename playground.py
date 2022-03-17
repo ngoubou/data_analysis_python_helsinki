@@ -203,7 +203,7 @@ import re
     
 ## NUMPY ---
 
-import numpy as np
+#import numpy as np
 
 
 
@@ -235,7 +235,7 @@ import numpy as np
 
 ## WEEK 3 ----
 # Matplotlib
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 
 #a = np.array([2, 5, 7, 4, 7, 0, 3, 1, 9, 2])
 #print(a.max())
