@@ -269,7 +269,8 @@ import pandas as pd
 import numpy as np
 df = pd.DataFrame(np.random.randn(2,3), columns=["First", "Second", "Third"], index=["a", "b"])
 print(df)
-
+print(df.index)
+print(len(df.index))
 #print(pd.Series([1,3,2, np.nan]))
 
 ## WEEK 5 ----
