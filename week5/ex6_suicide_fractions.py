@@ -7,25 +7,24 @@ import os
 new_dir = os.chdir("/Users/mamba/Downloads/Data_Scientist_Path/Courses/python_helsinki/week5")
 
 def suicide_fractions():
-    return pd.Series()
+    df = pd.read_csv("data/who_suicide_statistics.csv")
+    groups = df.groupby("country")
+    mean_fraction = round(groups["suicides_no"].mean() / groups["population"].mean(), 6)
+    return mean_fraction
 
 def main():
-    return
-
-if __name__ == "__main__":
-    main()
+    print(suicide_fractions().head())
 
 # Load the suicide data set from src folder. This data was originally downloaded from Kaggle. 
 # Kaggle contains lots of interesting open data sets.
-df = pd.read_csv("data/who_suicide_statistics.csv")
+#df = pd.read_csv("data/who_suicide_statistics.csv")
 #df = df.dropna()
 #print(df.shape)#.dtypes)
 #print(df.dropna().shape)
-groups = df.groupby("country")
+#groups = df.groupby("country")
 
-print(groups["suicides_no"].mean() / groups["population"].mean())
-for i,j in groups["suicides_no"].mean() / groups["population"].mean():
-    i
+#print(groups["suicides_no"].mean() / groups["population"].mean())
+#mean_fraction = groups["suicides_no"].mean() / groups["population"].mean()
 #print(groups["population"].mean())
 #print(7.462121/2.338514e+05)
 ## EN DERNIER ----
