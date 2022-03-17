@@ -3,14 +3,18 @@
 import pandas as pd
 
 def top_bands():
-    return pd.DataFrame()
+    df = pd.read_csv("src/bands.tsv", sep = "\t")
+    df["Band"] = df["Band"].str.upper()
+    df1 = pd.read_csv("src/UK-top40-1964-1-2.tsv", sep = "\t")
+    merged = pd.merge(df1, df, left_on = ["Artist"], right_on = ["Band"])
+    return merged
 
 def main():
-    return
+    print(top_bands().shape)
 
 if __name__ == "__main__":
     main()
 
-# Merge the DataFrames UK top40 and the bands DataFrame that are stored in the src folder. 
-# Do all this in the parameterless function top_bands, which should return the merged DataFrame. 
-# Use the left_on and right_on parameters to merge. Test your function from the main function.
+## Course Solution ----
+# Same as mine
+# I do not have to put column names in brackets when there's only one
