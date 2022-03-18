@@ -6,17 +6,17 @@ from sklearn.linear_model import LinearRegression
 import matplotlib.pyplot as plt
 
 def fit_line(x, y):
-    model=LinearRegression(fit_intercept=True)
+    model = LinearRegression(fit_intercept = True)
     model.fit(x[:,np.newaxis], y)
-    xfit=np.linspace(1, 3, 10)
+    xfit = np.linspace(1, 3, 10)
     print(xfit)
-    yfit=model.predict(xfit[:, np.newaxis])
+    yfit = model.predict(xfit[:, np.newaxis])
     print(yfit)
     return(model.coef_[0], model.intercept_)
     
 def main():
-    x = np.array([1,2,3])
-    y = np.array([1,2.5,3]) + 1
+    x = np.array([1, 2, 3])
+    y = np.array([1, 2.5, 3]) + 1
     s, i = fit_line(x, y)
 
     xfit = np.linspace(1, 3, 3)

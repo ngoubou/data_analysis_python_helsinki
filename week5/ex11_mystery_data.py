@@ -2,26 +2,45 @@
 
 import pandas as pd
 from sklearn.linear_model import LinearRegression
+import numpy as np
+import os
+os.chdir("/Users/mamba/Downloads/Data_Scientist_Path/Courses/python_helsinki/week5")
 
 def mystery_data():
-    return []
+    df = pd.read_csv("data/mystery_data.tsv", sep = "\t")
+    model = LinearRegression(fit_intercept = False)
+    pred  = []
+    for i in range(len(df)):
+        s = np.array([df.iloc[i, [0, 1, 2, 3, 4]]])
+        pred.append(s)
+    X = np.vstack(pred)
+    Y = np.array(df["Y"])
+    model.fit(X, Y)
+    return model.coef_
 
 def main():
     coefficients = mystery_data()
-    # print the coefficients here
+    j = 1
+    for i in coefficients:
+        print(f"Coefficient of X{j} is {i}")
+        j += 1
     
 if __name__ == "__main__":
     main()
 
-# Read the tab separated file mystery_data.tsv. Its first five columns define the features, and the last column is the response. 
-# Use scikit-learn's LinearRegression to fit this data. 
-# Implement function mystery_data that reads this file and learns and returns the regression coefficients for the five features. 
-# You don't have to fit the intercept. The main method should print output in the following form:
+## Course Solution ----
+# As expected, i did not have to loop
 
-#Coefficient of X1 is ...
-#Coefficient of X2 is ...
-#Coefficient of X3 is ...
-#Coefficient of X4 is ...
-#Coefficient of X5 is ...
+#def mystery_data():
+ #   df = pd.read_csv("src/mystery_data.tsv", sep="\t")
+  #  X = df.loc[:, "X1":"X5"]
+   # y = df.Y
+    #reg = LinearRegression(fit_intercept=False)
+    #reg.fit(X, y)
+    #return reg.coef_
 
-#Which features you think are needed to explain the response Y?
+#def main():
+ #   coefficients = mystery_data()
+  #  for i, c in enumerate(coefficients):
+   #     print(f"Coefficient of X{i+1} is {c:.4f}")
+
