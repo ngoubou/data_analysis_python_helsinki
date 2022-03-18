@@ -1,8 +1,16 @@
 #!/usr/bin/env python3
 
 import pandas as pd
+import os
 
-    
+new_dir = os.chdir("/Users/mamba/Downloads/Data_Scientist_Path/Courses/python_helsinki/week5")
+
+def suicide_fractions():
+    df = pd.read_csv("data/who_suicide_statistics.csv")
+    df["Suicide fraction"] = df["suicides_no"] / df["population"]
+    result = df.groupby("country").mean()
+    return result["Suicide fraction"]
+
 def suicide_weather():
     return (0, 0, 0, 0.0)
 
@@ -21,6 +29,8 @@ if __name__ == "__main__":
 # By default pd.read_html does not know which row contains column headers and which column contains row headers. 
 # Therefore, you have to give both index_col and header parameters to read_html. 
 # Make sure you use the country as the (row) index for both of the DataFrames. 
+df = pd.read_html("https://en.wikipedia.org/wiki/List_of_countries_by_average_yearly_temperature", header = 0, index_col = 0)[0]
+print(df.sort_index())
 # What is the Spearman correlation between these variables? Use the corr method of Series object. 
 # Note the the two Series need not be sorted as the indices of the rows (country names) are used to align them.
 
@@ -35,13 +45,13 @@ if __name__ == "__main__":
 # The is because the negative numbers on that html page use a special unicode minus sign, which looks typographically nice, 
 # but the float constructor cannot interpret it as a minus sign. You can try out the following example:
 
-s="\u2212" "5"   # unicode minus sign and five
-print(s)
-try:
-    float(s)
-except ValueError as e:
-    import sys
-    print(e, file=sys.stderr)
+#s="\u2212" "5"   # unicode minus sign and five
+#print(s)
+#try:
+ #   float(s)
+#except ValueError as e:
+    #import sys
+    #print(e, file = sys.stderr)
         
 
 # −5
@@ -49,6 +59,6 @@ except ValueError as e:
 
 # But if we explicitly convert unicode minus sign to normal minus sign, it works:
 
-float(s.replace("\u2212", "-"))
+#float(s.replace("\u2212", "-"))
 
--5.0
+#-5.0
