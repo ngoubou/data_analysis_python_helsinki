@@ -2,7 +2,7 @@
 
 import pandas as pd
 import os
-
+#from math import 
 new_dir = os.chdir("/Users/mamba/Downloads/Data_Scientist_Path/Courses/python_helsinki/week5")
 
 def suicide_fractions():
@@ -31,10 +31,15 @@ if __name__ == "__main__":
 # Make sure you use the country as the (row) index for both of the DataFrames. 
 df = pd.read_html("https://en.wikipedia.org/wiki/List_of_countries_by_average_yearly_temperature", header = 0, index_col = 0)[0]
 df = df.sort_index()
+#df.replace(to_replace = "\u2212", value = "-", inplace = True)
+#df.r
 df1 = suicide_fractions().to_frame() # convert series to df
 #print(df1)
 final_df = df.merge(df1, left_index = True, right_index = True)
-print(final_df)
+
+
+final_df["Average yearly temperature (1961–1990, Celsius)"] = pd.to_numeric(final_df["Average yearly temperature (1961–1990, Celsius)"].replace(to_replace = "\u2212", value = "-", inplace = True))
+#print(final_df.corr(method = "spearman"))
 # What is the Spearman correlation between these variables? Use the corr method of Series object. 
 # Note the the two Series need not be sorted as the indices of the rows (country names) are used to align them.
 
