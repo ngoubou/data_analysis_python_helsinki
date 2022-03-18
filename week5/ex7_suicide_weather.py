@@ -31,13 +31,24 @@ if __name__ == "__main__":
 # Therefore, you have to give both index_col and header parameters to read_html. 
 # Make sure you use the country as the (row) index for both of the DataFrames. 
 df = pd.read_html("https://en.wikipedia.org/wiki/List_of_countries_by_average_yearly_temperature", header = 0, index_col = 0)[0]
-df = df.sort_index()
+#df = df.sort_index()
 s = df.squeeze() # transform the df to a serie
 s = s.transform(lambda x: x.replace("\u2212", "-")) # transform is "kinda" of a loop
-#print(s)
+#print(pd.to_numeric(s))
 s1 = suicide_fractions()
-
+#print(s1.dtypes)
 result = pd.concat([s, s1], axis = 1, join = "inner")
 result["Average yearly temperature (1961–1990, Celsius)"] = pd.to_numeric(result["Average yearly temperature (1961–1990, Celsius)"])
+#result = result.dropna()
 #print(result.corr(method = "spearman"))
-print(result.iloc[:,0].corr(result.iloc[:,1], method = "spearman"))
+#print(len(result))
+#import numpy as np
+from scipy.stats import spearmanr
+rho = spearmanr(result, nan_policy = "omit", alternative = "less")[0]
+#print(rho)
+#print(result.sort_index())
+#print(result.iloc[:,0].corr(result.iloc[:,1], method = "spearman"))
+#print(pd.to_numeric(s).corr(s1, method = "spearman"))
+#print(result["Average yearly temperature (1961–1990, Celsius)"].corr(result["Suicide fraction"], method = "spearman"))
+#print(result.corr(method = "spearman"))
+print(df[0])
