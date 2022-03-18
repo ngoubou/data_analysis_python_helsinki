@@ -39,4 +39,5 @@ s1 = suicide_fractions()
 
 result = pd.concat([s, s1], axis = 1, join = "inner")
 result["Average yearly temperature (1961–1990, Celsius)"] = pd.to_numeric(result["Average yearly temperature (1961–1990, Celsius)"])
-print(result.dtypes)
+#print(result.corr(method = "spearman"))
+print(result.iloc[:,0].corr(result.iloc[:,1], method = "spearman"))
