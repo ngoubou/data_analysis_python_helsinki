@@ -269,7 +269,7 @@ import pandas as pd
 import numpy as np
 df = pd.DataFrame(np.random.randn(2,3), columns=["First", "Second", "Third"], index=["a", "b"])
 #print(df)
-a = df.cop
+a = df.copy()
 print(a)
 df = df * 2
 print(a)
@@ -279,3 +279,5 @@ print(a)
 
 ## WEEK 5 ----
 # PANDAS STILL
+
+# ML
