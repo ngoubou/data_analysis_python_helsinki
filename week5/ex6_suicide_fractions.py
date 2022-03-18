@@ -29,6 +29,5 @@ if __name__ == "__main__":
 #def suicide_fractions():
  #   df = pd.read_csv("src/who_suicide_statistics.csv")
   #  df["Suicide fraction"] = df["suicides_no"] / df["population"]
-   # print(df)
     #result = df.groupby("country").mean()
     #return result["Suicide fraction"]
