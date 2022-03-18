@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 
 import pandas as pd
+import os 
 
+os.chdir("/Users/mamba/Downloads/Data_Scientist_Path/Courses/python_helsinki/week5")
 
 def split_date():
-    df = pd.read_csv("src/Helsingin_pyorailijamaarat.csv", sep = ";")
+    df = pd.read_csv("data/Helsingin_pyorailijamaarat.csv", sep = ";")
     new_df = df["Päivämäärä"].str.split(expand = True)
     new_df.columns = ["Weekday", "Day", "Month", "Year", "Hour"]
     new_df = new_df.dropna()
@@ -35,7 +37,8 @@ def split_date():
 
 
 def main():
-    print(split_date())
+    df = split_date()
+    print(df.shape)
        
 
 if __name__ == "__main__":
