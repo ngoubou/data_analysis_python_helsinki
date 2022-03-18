@@ -2,8 +2,8 @@
 
 from curses import newpad
 import pandas as pd
-import numpy as np
-
+import os
+os.chdir("/Users/mamba/Downloads/Data_Scientist_Path/Courses/python_helsinki/week5")
 days = dict(zip("ma ti ke to pe la su".split(), "Mon Tue Wed Thu Fri Sat Sun".split()))
 months = dict(zip("tammi helmi maalis huhti touko kesä heinä elo syys loka marras joulu".split(), range(1,13)))
 
@@ -19,7 +19,7 @@ def split_date(df):
     return d
 
 def bicycle_timeseries():
-    df = pd.read_csv("src/Helsingin_pyorailijamaarat.csv", sep = ";")
+    df = pd.read_csv("data/Helsingin_pyorailijamaarat.csv", sep = ";")
     df = df.dropna(axis = 0, how="all").dropna(axis = 1, how = "all")
     new_df = split_date(df)
     df["Date"] = pd.to_datetime(new_df[["Year", "Month", "Day", "Hour"]])
@@ -28,7 +28,8 @@ def bicycle_timeseries():
     return df
 
 def main():
-    print(bicycle_timeseries())
+    df = bicycle_timeseries()
+    print(df.head())
 
 if __name__ == "__main__":
     main()
