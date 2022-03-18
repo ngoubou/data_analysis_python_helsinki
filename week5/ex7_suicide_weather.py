@@ -30,7 +30,11 @@ if __name__ == "__main__":
 # Therefore, you have to give both index_col and header parameters to read_html. 
 # Make sure you use the country as the (row) index for both of the DataFrames. 
 df = pd.read_html("https://en.wikipedia.org/wiki/List_of_countries_by_average_yearly_temperature", header = 0, index_col = 0)[0]
-print(df.sort_index())
+df = df.sort_index()
+df1 = suicide_fractions().to_frame() # convert series to df
+#print(df1)
+final_df = df.merge(df1, left_index = True, right_index = True)
+print(final_df)
 # What is the Spearman correlation between these variables? Use the corr method of Series object. 
 # Note the the two Series need not be sorted as the indices of the rows (country names) are used to align them.
 
