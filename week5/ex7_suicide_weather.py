@@ -31,14 +31,14 @@ if __name__ == "__main__":
 # Therefore, you have to give both index_col and header parameters to read_html. 
 # Make sure you use the country as the (row) index for both of the DataFrames. 
 df = pd.read_html("https://en.wikipedia.org/wiki/List_of_countries_by_average_yearly_temperature", header = 0, index_col = 0)[0]
+
 #df = df.sort_index()
 
-s = df.squeeze()
+s = df.squeeze() # transform the df to a serie
+#print(s)
+s = s.transform(lambda x: x.replace("\u2212", "+-")) # transform is "kinda" of a loop
+#print(df.iloc[30,0])
 print(s)
-#s1 = s.transform(lambda x: x.replace(to_replace = "\u2212", value = "-"))
-
-#df["Average yearly temperature (1961–1990, Celsius)"] = df["Average yearly temperature (1961–1990, Celsius)"].replace(to_replace = "\u2212", value = "+")
-
 df1 = suicide_fractions().to_frame() # convert series to df
 #df1.index.name = df.index.name
 #print(df1.index.name == df.index.name)
