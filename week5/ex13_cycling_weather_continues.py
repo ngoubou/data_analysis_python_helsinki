@@ -76,6 +76,9 @@ model.fit(X, Y)
 r = model.score(X, Y)
 #print(model.coef_[2]) # use formatting when printing these values
 print((model.coef_, r))
+#print(df.shape)
+station = "Merikannontie"
+#print(merged[station])
 #model.fit(X[:,0][:,np.newaxis], Y)
 # 'Precipitation amount (mm)', 'Snow depth (cm)', and 'Air temperature (degC)'. 
 # Explain the variable (measuring station), whose name is given as a parameter to the function cycling_weather_continues. 
