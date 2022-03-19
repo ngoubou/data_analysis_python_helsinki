@@ -44,12 +44,19 @@ listColumns.remove("Hour")
 listColumns.remove("Day")
 listColumns.remove("Month")
 groups = df.groupby(["Month", "Day"])[listColumns].sum()
-print(groups)
+groups["Year"] = 2017
+groups.reset_index(inplace = True)
+#groups.set_index(["Day", "Month", "Year"], inplace = True)
+#print(groups.shape)
 
  # and finally do your summation: df.groupby(['Country', 'Item_Code'])[listColumns].sum()
 file1 = "data/kumpula-weather-2017.csv"
 weather = pd.read_csv(file1)
-#print(weather)
+#print(weather.columns)
+merged = pd.merge(weather, groups,  left_on = ["Year", "d", "m"], right_on = ["Year", "Day", "Month"])
+merged = merged.drop(['m', 'd', 'Time', 'Time zone'], axis = 1)
+merged.set_index(["Year", "Month", "Day"], inplace = True)
+print(merged)
 # After this, use forward fill to fill the missing values.
 
 # In the linear regression use as explanatory variables the following columns 
