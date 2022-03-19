@@ -72,10 +72,10 @@ def main():
     station = "Merikannontie"
     coef, score = cycling_weather_continues(station)
     print(f"Measuring station: {station}")
-    print(f"Regression coefficient for variable 'precipitation': {coef[0]: .1f}")
-    print(f"Regression coefficient for variable 'snow depth': {coef[1]: .1f}")
-    print(f"Regression coefficient for variable 'temperature': {coef[2]: .1f}")
-    print(f"Score: {score: .2f}")
+    print(f"Regression coefficient for variable 'precipitation': {coef[0]:.1f}")
+    print(f"Regression coefficient for variable 'snow depth': {coef[1]:.1f}")
+    print(f"Regression coefficient for variable 'temperature': {coef[2]:.1f}")
+    print(f"Score: {score:.2f}")
 
 if __name__ == "__main__":
     main()
