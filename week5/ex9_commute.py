@@ -54,3 +54,24 @@ if __name__ == "__main__":
 ## Course Solution ----
 # For some reason that i ignore, the function works albeit i don't see much changes in my code
 
+ 
+
+#def commute():
+ #   df = bicycle_timeseries()
+  #  df = df["2017-8-1":"2017-8-31"]
+   # df = df.groupby(pd.datetime.weekday).sum()
+    #print(df)
+    #weekdays = list(range(1, 8))
+    #df["Weekday"] = weekdays
+    #df = df.set_index("Weekday")
+    #return df
+
+#def main():
+    #df = commute()
+    #pd.set_option("display.max_rows", None)
+    #print(df)
+    #df.plot(title="Number of cyclists in Helsinki August 2017")
+   # weekdays = "x mon tue wed thu fri sat sun".title().split()
+  #  plt.gca().set_xticklabels(weekdays)
+ #   plt.show()
+#    print(df.values.sum())
