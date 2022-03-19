@@ -43,20 +43,34 @@ def main():
 if __name__ == "__main__":
     main()
 
-# Part 2.
+## Course Solution
 
-# Extend your function so that it also returns R2-scores related to linear regression with each single feature in turn. 
-# The coefficient_of_determination (https://en.wikipedia.org/wiki/Coefficient_of_determination) function should therefore return a list 
-# with six R2-scores (the first score is for five features, like in Part 1). 
-# To achieve this, your function should call both the fit method and the score method six times.
+#from sklearn import linear_model
+ 
+#def coefficient_of_determination():
+ #   scores = []
+  #  df = pd.read_csv("src/mystery_data.tsv", sep="\t")
+   # #print(df.head())
+    #X = df.loc[:, "X1":"X5"]
+    #y = df.Y
+    #reg = linear_model.LinearRegression(fit_intercept=True)
+    #reg.fit(X, y)
+    #score = reg.score(X, y)
+    #scores.append(score)
+    #features = df.columns[:-1]
+    #print(features)
+    #for f in features:
+     #   x = df[[f]]
+      #  print(x.shape)
+       # reg.fit(x, y)
+        #scores.append(reg.score(x, y))
+    #return scores
 
-# The output from the main method should look like this:
-
-#R2-score with feature(s) X: ...
-#R2-score with feature(s) X1: ...
-#R2-score with feature(s) X2: ...
-#R2-score with feature(s) X3: ...
-#R2-score with feature(s) X4: ...
-#R2-score with feature(s) X5: ...
-
-# How small can the R2-score be? Experiment both with fitting the intercept and without fitting the intercept.
+#def main():
+ #   scores = coefficient_of_determination()
+  #  z = scores[1:]
+   # for i in range(4):
+    #    print(sum(z[i:i+2]))
+    #titles = "X X1 X2 X3 X4 X5".split()
+    #for title, score in zip(titles, scores):
+     #   print(f"R2-score with feature(s) {title}: {score:.2f}")
