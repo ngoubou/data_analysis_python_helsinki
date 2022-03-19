@@ -55,7 +55,7 @@ def cycling_weather_continues(station):
     merged = pd.merge(weather, groups,  left_on = ["Year", "d", "m"], right_on = ["Year", "Day", "Month"])
     merged = merged.drop(['m', 'd', 'Time', 'Time zone'], axis = 1)
     merged.set_index(["Year", "Month", "Day"], inplace = True)
-    merged = merged.fillna(method = 'bfill')
+    merged = merged.fillna(method = 'ffill')
 
     model = LinearRegression(fit_intercept = True)
     pred  = []
