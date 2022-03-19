@@ -45,28 +45,23 @@ def cycling_weather_reg():
     merged = merged.fillna(method = 'bfill')
     return merged
 
-df = split_date_continues()#.groupby(["Year", "Month", "Day"]).sum()
+## ----------------------------------
+df = split_date_continues()
 df = df[df["Year"] == 2017]
 listColumns = list(df.columns)
 listColumns = [i for i in listColumns if i not in ("Year", "Month", "Day", "Hour")]
 groups = df.groupby(["Month", "Day"])[listColumns].sum()
 groups["Year"] = 2017
 groups.reset_index(inplace = True)
-#groups.set_index(["Day", "Month", "Year"], inplace = True)
-#print(groups.shape)
 
- # and finally do your summation: df.groupby(['Country', 'Item_Code'])[listColumns].sum()
+
 file1 = "data/kumpula-weather-2017.csv"
 weather = pd.read_csv(file1)
-#print(weather)
 merged = pd.merge(weather, groups,  left_on = ["Year", "d", "m"], right_on = ["Year", "Day", "Month"])
 merged = merged.drop(['m', 'd', 'Time', 'Time zone'], axis = 1)
 merged.set_index(["Year", "Month", "Day"], inplace = True)
-#print(merged)
-# After this, use forward fill to fill the missing values.
-#print(merged[merged.isnull().any(axis = 1)]) # get comumns with NAs (it's actually kinda of a summary of each column)
 merged = merged.fillna(method = 'bfill')
-print(merged.shape)
+print(merged.columns)
 
 # In the linear regression use as explanatory variables the following columns 
 # 'Precipitation amount (mm)', 'Snow depth (cm)', and 'Air temperature (degC)'. 
