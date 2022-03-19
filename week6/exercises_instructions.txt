@@ -1,0 +1,166 @@
+
+##################### EXERCISES INSTRUCTIONS ##########################
+
+
+
+
+### EXERCISE 1 (blob classification)
+
+Write function blob_classification that gets feature matrix X and label vector y as parameters. It should then return the accuracy score of the prediction. Do the prediction using GaussianNB, and use train_test_split function from sklearn to split the dataset in to two parts: one for training and one for testing. Give parameter random_state=0 to the splitting function so that the result is deterministic. Use training set size of 75% of the whole data.
+
+
+
+### EXERCISE 2 (plant classification)
+
+Write function plant_classification that does the following:
+
+    loads the iris dataset using sklearn (sklearn.datasets.load_iris)
+
+    splits the data into training and testing part using the train_test_split function so that the training set size is 80% of the whole data (give the call also the random_state=0 argument to make the result deterministic)
+
+    use Gaussian naive Bayes to fit the training data
+
+    predict labels of the test data
+
+    the function should return the accuracy score of the prediction performance (sklearn.metrics.accuracy_score)
+
+
+
+### EXERCISE 3 (word classification)
+
+This exercise can give four points at maximum!
+
+In this exercise we create a model that tries to label previously unseen words to be either Finnish or English.
+
+Part 1.
+
+Write function get_features that gets a one dimensional np.array, containing words, as parameter. It should return a feature matrix of shape (n, 29), where n is the number of elements of the input array. There should be one feature for each of the letters in the following alphabet: "abcdefghijklmnopqrstuvwxyzäö-". The values should be the number of times the corresponding character appears in the word.
+
+Part 2.
+
+Write function contains_valid_chars that takes a string as a parameter and returns the truth value of whether all the characters in the string belong to the alphabet or not.
+
+Part 3.
+
+Write function get_features_and_labels that returns the tuple (X, y) of the feature matrix and the target vector. Use the labels 0 and 1 for Finnish and English, respectively. Use the supplied functions load_finnish() and load_english() to get the lists of words. Filter the lists in the following ways:
+
+    Convert the Finnish words to lowercase, and then filter out those words that contain characters that don't belong to the alphabet.
+    For the English words first filter out those words that begin with an uppercase letter to get rid of proper nouns. Then proceed as with the Finnish words.
+
+Use get_features function you made earlier to form the feature matrix.
+
+Part 4.
+
+We have earlier seen examples where we split the data into learning part and testing part. This way we can test whether the model can really be used to predict unseen data. However, it can be that we had bad luck and the split produced very biased learning and test datas. To counter this, we can perform the split several times and take as the final result the average from the different splits. This is called cross validation.
+
+Create word_classification function that does the following:
+
+Use the function get_features_and_labels you made earlier to get the feature matrix and the labels. Use multinomial naive Bayes to do the classification. Get the accuracy scores using the sklearn.model_selection.cross_val_score function; use 5-fold cross validation. The function should return a list of five accuracy scores.
+
+The cv parameter of cross_val_score can be either an integer, which specifies the number of folds, or it can be a cross-validation generator that generates the (train set,test set) pairs. What happens if you pass the following cross-validation generator to cross_val_score as a parameter: sklearn.model_selection.KFold(n_splits=5, shuffle=True, random_state=0).
+
+Why the difference?
+
+
+
+### EXERCISE 4 (spam detection)
+
+This exercise gives two points if solved correctly!
+
+In the src folder there are two files: ham.txt.gz and spam.txt.gz. The files are preprocessed versions of the files from https://spamassassin.apache.org/old/publiccorpus/. There is one email per line. The file ham.txt.gz contains emails that are non-spam, and, conversely, emails in file spam.txt are spam. The email headers have been removed, except for the subject line, and non-ascii characters have been deleted.
+
+Write function spam_detection that does the following:
+
+    Read the lines from these files into arrays. Use function open from gzip module, since the files are compressed. From each file take only fraction of lines from the start of the file, where fraction is a parameter to spam_detection, and should be in the range [0.0, 1.0].
+    forms the combined feature matrix using CountVectorizer class' fit_transform method. The feature matrix should first have the rows for the ham dataset and then the rows for the spam dataset. One row in the feature matrix corresponds to one email.
+    use labels 0 for ham and 1 for spam
+    divide that feature matrix and the target label into training and test sets, using train_test_split. Use 75% of the data for training. Pass the random_state parameter from spam_detection to train_test_split.
+    train a MultinomialNB model, and use it to predict the labels for the test set
+
+The function should return a triple consisting of
+
+    accuracy score of the prediction
+    size of test sample
+    number of misclassified sample points
+
+Note. The tests use the fraction parameter with value 0.1 to ease to load on the TMC server. If full data were used and the solution did something non-optimal, it could use huge amounts of memory, causing the solution to fail.
+
+
+
+### EXERCISE 5 (plant clustering)
+
+Using the same iris data set that you saw earlier in the classification, apply k-means clustering with 3 clusters. Create a function plant_clustering that loads the iris data set, clusters the data and returns the accuracy_score.
+
+
+
+### EXERCISE 6 (nonconvex clusters)
+
+This exercise can give four points at maximum!
+
+Read the tab separated file data.tsv from the src folder into a DataFrame. The dataset has two features X1 and X2, and the label y. Cluster the feature matrix using DBSCAN with different values for the eps parameter. Use values in np.arange(0.05, 0.2, 0.05) for clustering. For each clustering, collect the accuracy score, the number of clusters, and the number of outliers. Return these values in a DataFrame, where columns and column names are as in the below example.
+
+Note that DBSCAN uses label -1 to denote outliers , that is, those data points that didn't fit well in any cluster. You have to modify the find_permutation function to handle this: ignore the outlier data points from the accuracy score computation. In addition, if the number of clusters is not the same as the number of labels in the original data, set the accuracy score to NaN.
+
+     eps   Score  Clusters  Outliers                             
+0    0.05      ?         ?         ?
+1    0.10      ?         ?         ?
+2    0.15      ?         ?         ?
+3    0.20      ?         ?         ?
+
+Before submitting the solution, you can plot the data set (with clusters colored) to see what kind of data we are dealing with.
+
+Points are given for each correct column in the result DataFrame.
+
+
+
+### EXERCISE 7 (binding sites)
+
+This exercise can give three points at maximum!
+
+A binding site is a piece of DNA where a certain protein prefers to bind. The piece of DNA can be described as a string consisting of letters A, C, G, and T, which correspond to nucleotides Adenine, Cytosine, Guanine, and Thymine. In this exercise the length of binding sites is eight nucleotides. They are stored in the file data.seq, and the binding sites there are classified into two classes.
+
+Part 1. Write function toint that converts a nucleotide to an integer. Use the following mapping:
+
+A -> 0
+C -> 1
+G -> 2
+T -> 3
+
+Write also function get_features_and_labels that gets a filename as a parameter. The function should load the contents of the file into a DataFrame. The column X contains a string. Convert this column into a feature matrix using the above toint function. For example the column ["GGATAATA","CGATAACC"] should result to the feature matrix
+
+[[2,2,0,3,0,0,3,0],
+[1,2,0,3,0,0,1,1]]
+
+The function should return a pair, whose first element is the feature matrix and the second element is the label vector.
+
+Part 2. Create function cluster_euclidean that gets a filename as parameter. Get the features and labels using the function from part 1. Perform hierarchical clustering using the function sklearn.cluster.AgglomerativeClustering. Get two clusters using average linkage and euclidean affinity. Fit the model and predict the labels. Note that you may have to use the find_permutation function again, because even though the clusters are correct, they may be labeled differently than the real labels given in data.seq. The function should return the accuracy score.
+
+Part 3. Create function cluster_hamming that works like the function in part 2, except now using the hamming affinity. Even though it is possible to pass the function hamming to AgglomerativeClustering, let us now compute the Hamming distance matrix explicitly. We can achieve this using the function sklearn.metrics.pairwise_distances. Use the affinity parameter precomputed to AgglomerativeClustering. And give the distance matrix you got from pairwise_distances, instead of the feature matrix, to the fit_predict method of the model. If you want, you can visualize the clustering using the provided plot function.
+
+NB! When submitting your solution, please comment away all plot function calls. This might cause tests to fail on the server.
+
+Which affinity (or distance) do you think is theoretically more correct of these two (Euclidean or Hamming)? Why?
+
+
+
+### EXERCISE 8 (explained variance)
+
+This exercise can give two points at maximum!
+
+Part 1.
+
+Write function explained_variance which reads the tab separated file "data.tsv". The data contains 10 features. Then fit PCA to the data. The function should return two lists (or 1D arrays). The first list should contain the variances of all the features. The second list should consist of the explained variances returned by the PCA.
+
+In the main function print these values in the following form:
+
+The variances are: ?.??? ?.??? ...
+The explained variances after PCA are: ?.??? ?.??? ...
+
+Print the values with three decimal precision and separate the values by a space.
+
+Part 2.
+
+Plot the cumulative explained variances. The y-axis should be the cumulative sum, and the x-axis the number of terms in the cumulative sum.
+
+
+
