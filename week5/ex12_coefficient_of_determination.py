@@ -1,20 +1,28 @@
 #!/usr/bin/env python3
 
 import pandas as pd
-from sklearn import linear_model
+from sklearn.linear_model import LinearRegression
+import numpy as np
+import os
 
+os.chdir("/Users/mamba/Downloads/Data_Scientist_Path/Courses/python_helsinki/week5")
 
 def coefficient_of_determination():
-    return []
+    df = pd.read_csv("data/mystery_data.tsv", sep = "\t")
+    model = LinearRegression(fit_intercept = True)
+    pred  = []
+    for i in range(len(df)):
+        s = np.array([df.iloc[i, [0, 1, 2, 3, 4]]])
+        pred.append(s)
+    X = np.vstack(pred)
+    Y = np.array(df["Y"])
+    model.fit(X, Y)
+    return [model.score(X, Y)]
     
 def main():
-
+    print(coefficient_of_determination())
 if __name__ == "__main__":
     main()
-
-# Using the same data as in the previous exercise, instead of printing the regression coefficients, print the coefficient of determination. 
-# The coefficient of determination, denoted by R2, tells how well the linear regression fits the data. 
-# The maximum value of the coefficient of determination is 1. That means the best possible fit.
 
 # Part 1.
 
