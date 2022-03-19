@@ -11,7 +11,7 @@ from ex1_split_date_continues import split_date_continues
 
 def cycling_weather():
     df = split_date_continues()
-    file1 = "/Users/mamba/Downloads/Data_Scientist_Path/Courses/python_helsinki/week5/data/kumpula-weather-2017.csv"
+    file1 = "data/kumpula-weather-2017.csv"
     weather = pd.read_csv(file1)
     merged = pd.merge(weather, df,  left_on = ["Year", "d", "m"], right_on = ["Year", "Day", "Month"])
     merged = merged.drop(['m', 'd', 'Time', 'Time zone'], axis = 1)
