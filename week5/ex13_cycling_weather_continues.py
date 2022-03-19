@@ -52,13 +52,15 @@ groups.reset_index(inplace = True)
  # and finally do your summation: df.groupby(['Country', 'Item_Code'])[listColumns].sum()
 file1 = "data/kumpula-weather-2017.csv"
 weather = pd.read_csv(file1)
-#print(weather.columns)
+#print(weather)
 merged = pd.merge(weather, groups,  left_on = ["Year", "d", "m"], right_on = ["Year", "Day", "Month"])
 merged = merged.drop(['m', 'd', 'Time', 'Time zone'], axis = 1)
 merged.set_index(["Year", "Month", "Day"], inplace = True)
-print(merged)
+#print(merged)
 # After this, use forward fill to fill the missing values.
-
+#print(merged[merged.isnull().any(axis = 1)]) # get comumns with NAs (it's actually kinda of a summary of each column)
+merged = merged.fillna(method = 'bfill')
+print(merged[merged.isnull().any(axis = 1)])
 # In the linear regression use as explanatory variables the following columns 
 # 'Precipitation amount (mm)', 'Snow depth (cm)', and 'Air temperature (degC)'. 
 # Explain the variable (measuring station), whose name is given as a parameter to the function cycling_weather_continues. 
