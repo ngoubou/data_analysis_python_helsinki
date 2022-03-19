@@ -9,40 +9,37 @@ os.chdir("/Users/mamba/Downloads/Data_Scientist_Path/Courses/python_helsinki/wee
 
 def coefficient_of_determination():
     df = pd.read_csv("data/mystery_data.tsv", sep = "\t")
-    X = df.loc[:, "X1":"X5"]
-    y = df.Y
-    reg = LinearRegression(fit_intercept = True)
-    
-    m = reg.fit(X, y)
-    
-    #print(df.loc[:, "X1"].shape)
-    x1 = df.loc[:, "X1"]
-    x2 = df.loc[:, "X2"]
-    x3 = df.loc[:, "X3"]
-    x4 = df.loc[:, "X4"]
-    x5 = df.loc[:, "X5"]
-    m1 = reg.fit(x1[:,np.newaxis], y)
-    m2 = reg.fit(x2[:,np.newaxis], y)
-    m3 = reg.fit(x3[:,np.newaxis], y)
-    m4 = reg.fit(x4[:,np.newaxis], y)
-    m5 = reg.fit(x5[:,np.newaxis], y)
-    #ls = [m1, m2, m3, m4, m5]
-    #for i in range(1, 6):
-     #   print("m%d" %i)
-      #  ls.append("m%d" %i)
-    #print(X.shape)
-    #print(X.T.shape)
-    #print(y.shape)
-    
-    #a = reg.score(X, y)
-    #reg.fit
-    #reg.score
-    a = [reg.score(X, y), reg.score(x1[:,np.newaxis], y), reg.score(x2[:,np.newaxis], y),
-    reg.score(x3[:,np.newaxis], y), reg.score(x4[:,np.newaxis], y), reg.score(x5[:,np.newaxis], y)]
-    return a
+    model = LinearRegression(fit_intercept = True)
+    pred  = []
+    for i in range(len(df)):
+        s = np.array([df.iloc[i, [0, 1, 2, 3, 4]]])
+        pred.append(s)
+    X = np.vstack(pred)
+    Y = np.array(df["Y"])
+    model.fit(X, Y)
+    r = model.score(X, Y)
+    model.fit(X[:,0][:,np.newaxis], Y)
+    r1 = model.score(X[:,0][:,np.newaxis], Y)
+    model.fit(X[:,1][:,np.newaxis], Y)
+    r2 = model.score(X[:,1][:,np.newaxis], Y)
+    model.fit(X[:,2][:,np.newaxis], Y)
+    r3 = model.score(X[:,2][:,np.newaxis], Y)
+    model.fit(X[:,3][:,np.newaxis], Y)
+    r4 = model.score(X[:,3][:,np.newaxis], Y)
+    model.fit(X[:,4][:,np.newaxis], Y)
+    r5 = model.score(X[:,4][:,np.newaxis], Y)
+    return [r, r1, r2, r3, r4, r5]
     
 def main():
-    print(coefficient_of_determination())
+    R2 = coefficient_of_determination()
+    x = 0
+    for i in R2:
+        if x == 0:
+            print(f"R2-score with feature(s) X: {i}")
+        else:
+            print(f"R2-score with feature(s) X{x}: {i}")
+        x += 1
+
 if __name__ == "__main__":
     main()
 
