@@ -32,10 +32,7 @@ def cycling_weather_reg():
     df = split_date_continues()
     df = df[df["Year"] == 2017]
     listColumns = list(df.columns)
-    listColumns.remove("Year")
-    listColumns.remove("Hour")
-    listColumns.remove("Day")
-    listColumns.remove("Month")
+    listColumns = [i for i in listColumns if i not in ("Year", "Month", "Day", "Hour")]
     groups = df.groupby(["Month", "Day"])[listColumns].sum()
     groups["Year"] = 2017
     groups.reset_index(inplace = True)
@@ -47,13 +44,11 @@ def cycling_weather_reg():
     merged.set_index(["Year", "Month", "Day"], inplace = True)
     merged = merged.fillna(method = 'bfill')
     return merged
+
 df = split_date_continues()#.groupby(["Year", "Month", "Day"]).sum()
 df = df[df["Year"] == 2017]
 listColumns = list(df.columns)
-listColumns.remove("Year")
-listColumns.remove("Hour")
-listColumns.remove("Day")
-listColumns.remove("Month")
+listColumns = [i for i in listColumns if i not in ("Year", "Month", "Day", "Hour")]
 groups = df.groupby(["Month", "Day"])[listColumns].sum()
 groups["Year"] = 2017
 groups.reset_index(inplace = True)
@@ -71,7 +66,7 @@ merged.set_index(["Year", "Month", "Day"], inplace = True)
 # After this, use forward fill to fill the missing values.
 #print(merged[merged.isnull().any(axis = 1)]) # get comumns with NAs (it's actually kinda of a summary of each column)
 merged = merged.fillna(method = 'bfill')
-print(merged)
+print(merged.shape)
 
 # In the linear regression use as explanatory variables the following columns 
 # 'Precipitation amount (mm)', 'Snow depth (cm)', and 'Air temperature (degC)'. 
