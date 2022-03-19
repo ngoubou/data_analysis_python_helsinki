@@ -28,13 +28,24 @@ if __name__ == "__main__":
 # Note that for the above you need only small additions to the solution of exercise cycling_weather. 
 from ex1_split_date_continues import split_date_continues
 
-def cycling_weather():
+def cycling_weather_reg():
     df = split_date_continues()
-    df = df[df["Year"] == 2017] # Ajout
+    df = df[df["Year"] == 2017]
+    listColumns = list(df.columns)
+    listColumns.remove("Year")
+    listColumns.remove("Hour")
+    listColumns.remove("Day")
+    listColumns.remove("Month")
+    groups = df.groupby(["Month", "Day"])[listColumns].sum()
+    groups["Year"] = 2017
+    groups.reset_index(inplace = True)
+
     file1 = "data/kumpula-weather-2017.csv"
     weather = pd.read_csv(file1)
     merged = pd.merge(weather, df,  left_on = ["Year", "d", "m"], right_on = ["Year", "Day", "Month"])
     merged = merged.drop(['m', 'd', 'Time', 'Time zone'], axis = 1)
+    merged.set_index(["Year", "Month", "Day"], inplace = True)
+    merged = merged.fillna(method = 'bfill')
     return merged
 df = split_date_continues()#.groupby(["Year", "Month", "Day"]).sum()
 df = df[df["Year"] == 2017]
@@ -60,7 +71,8 @@ merged.set_index(["Year", "Month", "Day"], inplace = True)
 # After this, use forward fill to fill the missing values.
 #print(merged[merged.isnull().any(axis = 1)]) # get comumns with NAs (it's actually kinda of a summary of each column)
 merged = merged.fillna(method = 'bfill')
-print(merged[merged.isnull().any(axis = 1)])
+print(merged)
+
 # In the linear regression use as explanatory variables the following columns 
 # 'Precipitation amount (mm)', 'Snow depth (cm)', and 'Air temperature (degC)'. 
 # Explain the variable (measuring station), whose name is given as a parameter to the function cycling_weather_continues. 
