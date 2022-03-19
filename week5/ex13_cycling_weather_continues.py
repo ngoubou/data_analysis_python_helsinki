@@ -61,9 +61,22 @@ merged = pd.merge(weather, groups,  left_on = ["Year", "d", "m"], right_on = ["Y
 merged = merged.drop(['m', 'd', 'Time', 'Time zone'], axis = 1)
 merged.set_index(["Year", "Month", "Day"], inplace = True)
 merged = merged.fillna(method = 'bfill')
-print(merged.columns)
+#print(merged.columns)
 
 # In the linear regression use as explanatory variables the following columns 
+model = LinearRegression(fit_intercept = True)
+pred  = []
+for i in range(len(merged)):
+    s = np.array([merged.iloc[i, [0, 1, 2]]]) # not sure i need a loop for that
+    #s = np.array([merged.iloc[:, [0, 1, 2]]]) # this outside a loop can yield same results
+    pred.append(s)
+X = np.vstack(pred)
+Y = np.array(merged["Merikannontie"])
+model.fit(X, Y)
+r = model.score(X, Y)
+#print(model.coef_[2]) # use formatting when printing these values
+print((model.coef_, r))
+#model.fit(X[:,0][:,np.newaxis], Y)
 # 'Precipitation amount (mm)', 'Snow depth (cm)', and 'Air temperature (degC)'. 
 # Explain the variable (measuring station), whose name is given as a parameter to the function cycling_weather_continues. 
 # Fit also the intercept. The function should return a pair, 
