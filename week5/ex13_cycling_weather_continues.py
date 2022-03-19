@@ -64,7 +64,7 @@ def cycling_weather_continues(station):
     #s = np.array([merged.iloc[:, [0, 1, 2]]]) # this outside a loop can yield same results
         pred.append(s)
     X = np.vstack(pred)
-    Y = np.array(merged[station]) # station = "Merikannontie"
+    Y = np.array(merged[station])
     model.fit(X, Y)
     return (model.coef_,  model.score(X, Y))
     
@@ -80,3 +80,25 @@ def main():
 if __name__ == "__main__":
     main()
 
+# Course Solution ----
+
+#def cycling_weather():
+ #   wh = pd.read_csv("src/kumpula-weather-2017.csv")
+  #  bike = split_date_continues()
+   # bike = bike[bike.Year == 2017]
+    # bike = bike.groupby(["Year", "Month", "Day"]).sum(axis=0)
+    # bike = bike.reset_index().drop(["Weekday", "Hour"], axis=1)
+    #bike = bike.groupby(["Year", "Month", "Day"]).sum()
+    #bike = bike.reset_index().drop(["Hour"], axis=1)
+    #result = wh.merge(bike, left_on=["Year", "m", "d"], right_on=["Year", "Month", "Day"])
+    #return result.drop(['m', 'd', 'Time', 'Time zone'], axis=1)
+
+#def cycling_weather_continues(station):
+#    df = cycling_weather()
+ #   df = df.fillna(method='ffill')
+  #  X = df[['Precipitation amount (mm)', 'Snow depth (cm)', 'Air temperature (degC)']]
+   # y = df[station]
+    #reg = LinearRegression()
+   # reg.fit(X, y)
+    #score = reg.score(X, y)
+    #return reg.coef_, score
