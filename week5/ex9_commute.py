@@ -9,9 +9,10 @@ from ex8_bicycle_timeseries import bicycle_timeseries
 
 def commute():
     df1 = bicycle_timeseries()
-    df = pd.read_csv("data/Helsingin_pyorailijamaarat.csv", sep = ";")
-    df = df.dropna(axis = 0, how="all").dropna(axis = 1, how = "all")
-    df = df.drop("Päivämäärä", axis = 1)
+    #print(df1.head())
+    #df = pd.read_csv("data/Helsingin_pyorailijamaarat.csv", sep = ";")
+    #df = df.dropna(axis = 0, how="all").dropna(axis = 1, how = "all")
+    #df = df.drop("Päivämäärä", axis = 1)
     august = pd.date_range("2017-08-01", "2017-08-31")
     df1 = df1.loc[august,:]
     df1.reset_index(inplace = True)
