@@ -58,12 +58,12 @@ while True:
             ls = list(enumerate(nums))
             
             #output = [nums.index(nums[i]), nums.index(nums[i+1])]
-            if k <= 0:#i != 0:
-                #output = [nums.index(nums[i-1]), nums.index(nums[i+1])]
-                output = [ls[i-1][0], ls[i+1][0]]
-            elif k > 0:#i == 0:
-                #output = [nums.index(nums[i]), nums.index(nums[i+1])]
-                output = [ls[i][0], ls[i+1][0]]
+            if i != 0: #k <= 0:
+                output = [nums.index(nums[i-1]), nums.index(nums[i+1])]
+                #output = [ls[i-1][0], ls[i+1][0]]
+            elif i == 0: #k > 0:
+                output = [nums.index(nums[i]), nums.index(nums[i+1])]
+                #output = [ls[i][0], ls[i+1][0]]
             break
         else:
             
