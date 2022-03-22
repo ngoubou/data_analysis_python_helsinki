@@ -37,70 +37,44 @@ def main():
 if __name__ == "__main__":
     main()
 
-for i, j in enumerate(['foo', 'bar', 'baz', 'bar']):
-    if j == 'bar':
-        #print(i)
-        i
+
 #nums = [11,2,15,7]
-#nums = [2,7,11,15]
-#target = 9
-nums = [3,2,4]
-target = 6
+nums = [2,7,11,15]
+target = 9
+#nums = [3,2,4]
+#target = 6
 #nums = [3,3]
 #nums = [3,2,3]
 output = []
-#k = 0
-#for i, j in enumerate(nums):
- #   try:
-  #      print(j + nums[i + 1])
-   #     if j + nums[i + 1] == target:
-    #        output.append(i)
-     #       break
-        #else:
-                #print()
-         #   i += 1
-            
-    #except IndexError:
-        #pass # passe au chiffre suivant
-     #   j = nums[k + 1]
-      #  k += 1
-       # i -= 1
-    
+
 i = 0
 j = nums[i]
 k = 0
+
 while True:
     try:
         #print(j + nums[i + 1])
         if j + nums[i + 1] == target:
-            #print(j + nums[i + 1])
-            #print(nums.index(nums[i]))
-            #print(nums.index(nums[i+1]))
             ls = list(enumerate(nums))
-            #print(ls[i-1][0])
-            #print(ls[i+1][0])
-        
-            #print(nums[i+1])
-            #print(nums.index(nums[i+1]))
-            #print(nums.index(3))
+            
             #output = [nums.index(nums[i]), nums.index(nums[i+1])]
-            if i != 0:
+            if k <= 0:#i != 0:
                 #output = [nums.index(nums[i-1]), nums.index(nums[i+1])]
                 output = [ls[i-1][0], ls[i+1][0]]
-            elif i == 0:
+            elif k > 0:#i == 0:
                 #output = [nums.index(nums[i]), nums.index(nums[i+1])]
                 output = [ls[i][0], ls[i+1][0]]
             break
         else:
-            #print()
+            
             i += 1
             
     except IndexError:
-        #pass # passe au chiffre suivant
+      # passe au chiffre suivant
         j = nums[k + 1]
         k += 1
         i -= 1
-    #print(j+1)
+  
     
 # USE LIST COMPREHENSION instead of index method (STACKOVERFLOW)
 
