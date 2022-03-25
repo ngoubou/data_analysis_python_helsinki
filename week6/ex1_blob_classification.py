@@ -9,10 +9,11 @@ from sklearn.model_selection import train_test_split
 
 def blob_classification(X, y):
     model = GaussianNB()
-    model.fit(X, y)
-    y_fitted = model.predict(X)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.25, random_state = 0)
+    model.fit(X_train, y_train)
+    y_fitted = model.predict(X_test)
     #metrics.accuracy_score
-    acc=metrics.accuracy_score(y,y_fitted)
+    acc=metrics.accuracy_score(y_test,y_fitted)
     return acc
 
 def main():
