@@ -8,8 +8,7 @@ from sklearn import metrics
 def plant_classification():
     X = load_iris().get("data")
     y = load_iris().get("target") 
-    y_names = load_iris().get("target_names") # not very useful
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, train_size = 0.8, random_state = 0)
     model = naive_bayes.GaussianNB()
     model.fit(X_train, y_train)
     y_fitted = model.predict(X_test)
@@ -22,14 +21,8 @@ def main():
 if __name__ == "__main__":
     main()
 
-# Write function plant_classification that does the following:
-
-    # loads the iris dataset using sklearn (sklearn.datasets.load_iris)
-
-    # splits the data into training and testing part using the train_test_split function so that the training set size is 80% of the whole data (give the call also the random_state=0 argument to make the result deterministic)
-
-    # use Gaussian naive Bayes to fit the training data
-
-    # predict labels of the test data
-
-    # the function should return the accuracy score of the prediction performance (sklearn.metrics.accuracy_score)
+## Course Solution ----
+# Same as mine; just loaded the dataset differently. They did the following:
+#data = load_iris()
+#X = data.data
+#y = data.target
