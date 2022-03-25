@@ -6,6 +6,11 @@ from sklearn import naive_bayes
 from sklearn import metrics
 
 def plant_classification():
+    X = load_iris().get("data")
+    y = load_iris().get("target") 
+    y_names = load_iris().get("target_names") # not very useful
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
+    
     return 0.0
 
 def main():
