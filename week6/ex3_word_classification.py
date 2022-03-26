@@ -94,13 +94,34 @@ if __name__ == "__main__":
 finnish = load_finnish()
 print(len(finnish))
 english = list(load_english())
-print(len(english))
+#print(len(english))
 
     # Convert the Finnish words to lowercase, and then filter out those words that contain characters that don't belong to the alphabet.
 #a = np.array(finnish)
 finnish = [x.lower() for x in finnish]
-for i in finnish:
-    i.casefold()
+#f = [x.lower() for x in alphabet]
+#a = {"r", "a", "b"}
+#for i in "bara":
+ #   if i in a:
+  #      print("yes")
+import re
+for k, i in enumerate(finnish):
+    if re.findall(r'\s', i):
+        i_temp = i
+        i = i.replace(" ", "")
+    if i == "à la":
+        i
+    for j in i:
+        if j not in alphabet_set:
+            print(finnish[k])
+            if re.findall(r'\s', i_temp):
+                finnish.remove(i_temp)
+            else:
+                finnish.remove(i)
+            print(finnish[k]) 
+            #finnish.remove("à la")
+            #i.casefold()
+print(len(finnish))
     # For the English words first filter out those words that begin with an uppercase letter to get rid of proper nouns. 
     # Then proceed as with the Finnish words.
 
