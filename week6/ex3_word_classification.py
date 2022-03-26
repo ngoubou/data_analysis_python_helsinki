@@ -85,26 +85,26 @@ for i in a:
     
     for j in letters:
         count = 0
-        if i == "soon" and j == "o":
-            i 
-        if j in i:
-            count += 1
-        ls.append(count)
+        #if i == "soon" and j == "n":
+         #   i 
+        #if j in i:
+         #   count += 1
+        #ls.append(count)
             #print('yes')
         
-        #for k in i:
-         #   if k == j:
-          #      count += 1
+        for k in i:
+            if k == j:
+                count += 1
                 #print("yes")
-    #ls.append(count)
+        ls.append(count)
     #print(res.shape)
     #print(len(ls))
     #print(ls)
     #print(res[ar].shape)
     #print(res[ar])
-    if i == "soon" and j == "-":
-            i 
-            print(ls)
+    #if i == "soon" and j == "-":
+     #       i 
+      #      print(ls)
     
     res[ar] = ls
     #print(res[ar])
