@@ -41,7 +41,20 @@ def load_english():
 
 def get_features(a):
     n = a.size
-    return np.array([[]])
+    letters = "abcdefghijklmnopqrstuvwxyzäö-"
+    result = np.zeros(shape = (n, 29))
+    ind = 0
+    for i in a:
+        ls = []
+        for j in letters:
+            count = 0
+            for k in i:
+                if k == j:
+                    count += 1
+            ls.append(count)
+        result[ind] = ls
+        ind += 1    
+    return result
 
 def contains_valid_chars(s):
     return True
@@ -111,7 +124,7 @@ for i in a:
     ar += 1    
     
     #print(res.shape)
-#print(res.shape)
+print(res.shape)
 print(res)
 i
             #print(i.find(j))
