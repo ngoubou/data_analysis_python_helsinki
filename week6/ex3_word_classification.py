@@ -108,18 +108,7 @@ if __name__ == "__main__":
 # Use the labels 0 and 1 for Finnish and English, respectively. 
 # Use the supplied functions load_finnish() and load_english() to get the lists of words. Filter the lists in the following ways:
 finnish = load_finnish()
-#print(len(finnish))
 english = list(load_english())
-#print(len(english))
-#s = "As"
-#ss = "Aachen's"
-#print(s.split("'")[0])
-#print(ss.split("'"))
-#print(ss.split("'")[0])
-#print(ss.split("'")[0].isupper())
-#print(ss.split("'")[0].istitle())
-#print(len(s.split("'")))
-#print(len(ss.split("'")))
     # Convert the Finnish words to lowercase, and then filter out those words that contain characters that don't belong to the alphabet.
 finnish = [x.lower() for x in finnish]
 
@@ -135,25 +124,34 @@ for k, i in enumerate(finnish):
             else:
                 finnish.remove(i)
                 break
-    # For the English words first filter out those words that begin with an uppercase letter to get rid of proper nouns. 
-#print(len(english))
+    # For the English words first filter out those words that begin with an uppercase letter to get rid of proper nouns.
+    # Then proceed as with the Finnish words.
+print(len(english))
 a = english.copy()
 for i in english:
-        #if i == "Aachen's":
-         #   i
     if i.istitle() or i.isupper():
         a.remove(i)
     elif (len(i.split("'")) > 1) and (i.split("'")[0].istitle() or i.split("'")[0].isupper()):
         a.remove(i)
 english = a
-#print(len(english))
-#print(len(english) - len(a))
-i
-        #elif (re.findall(r"'", i)) :
-         #   a.remove(i)
-            #i
-    # Then proceed as with the Finnish words.
+print(len(english))
 
+english = [x.lower() for x in english]
+
+for i in english:
+    i_temp = i
+    if re.findall(r'\s', i):
+        i = i.replace(" ", "")
+    for j in i:
+        if j not in alphabet_set:
+            if re.findall(r'\s', i_temp):
+                english.remove(i_temp)
+                break
+            else:
+                english.remove(i)
+                break
+print(len(english))
+i
 # Use get_features function you made earlier to form the feature matrix.
 
 # Part 4.
