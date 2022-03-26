@@ -106,19 +106,26 @@ finnish = [x.lower() for x in finnish]
   #      print("yes")
 import re
 for k, i in enumerate(finnish):
+    i_temp = i
+    #if i == "bébé":
+        #i
     if re.findall(r'\s', i):
-        i_temp = i
+        #i_temp = i
+        #if i_temp == "beauty box":
+         #   i
         i = i.replace(" ", "")
-    if i == "à la":
-        i
+    #if i == "à la":
+     #   i
     for j in i:
         if j not in alphabet_set:
-            print(finnish[k])
+            #print(finnish[k])
             if re.findall(r'\s', i_temp):
                 finnish.remove(i_temp)
+                break
             else:
                 finnish.remove(i)
-            print(finnish[k]) 
+                break
+            #print(finnish[k]) 
             #finnish.remove("à la")
             #i.casefold()
 print(len(finnish))
