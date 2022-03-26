@@ -9,6 +9,7 @@ import numpy as np
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.model_selection import cross_val_score
 from sklearn import model_selection
+import re
 
 import os
 os.chdir("/Users/mamba/Downloads/Data_Scientist_Path/Courses/python_helsinki/week6")
@@ -68,6 +69,21 @@ def contains_valid_chars(s):
         return False
 
 def get_features_and_labels():
+    finnish = load_finnish()
+    english = list(load_english())
+    finnish = [x.lower() for x in finnish]
+    for i in finnish:
+        i_temp = i
+        if re.findall(r'\s', i):
+            i = i.replace(" ", "")
+        for j in i:
+            if j not in alphabet_set:
+                if re.findall(r'\s', i_temp):
+                    finnish.remove(i_temp)
+                    break
+                else:
+                    finnish.remove(i)
+                    break
     return np.array([[]]), np.array([])
 
 
@@ -92,7 +108,7 @@ if __name__ == "__main__":
 # Use the labels 0 and 1 for Finnish and English, respectively. 
 # Use the supplied functions load_finnish() and load_english() to get the lists of words. Filter the lists in the following ways:
 finnish = load_finnish()
-print(len(finnish))
+#print(len(finnish))
 english = list(load_english())
 #print(len(english))
 
@@ -104,7 +120,6 @@ finnish = [x.lower() for x in finnish]
 #for i in "bara":
  #   if i in a:
   #      print("yes")
-import re
 for k, i in enumerate(finnish):
     i_temp = i
     #if i == "bébé":
@@ -128,7 +143,7 @@ for k, i in enumerate(finnish):
             #print(finnish[k]) 
             #finnish.remove("à la")
             #i.casefold()
-print(len(finnish))
+#print(len(finnish))
     # For the English words first filter out those words that begin with an uppercase letter to get rid of proper nouns. 
     # Then proceed as with the Finnish words.
 
