@@ -75,24 +75,45 @@ n = a.size
 # It should return a feature matrix of shape (n, 29), where n is the number of elements of the input array. 
 # There should be one feature for each of the letters in the following alphabet: "abcdefghijklmnopqrstuvwxyzäö-". 
 letters = "abcdefghijklmnopqrstuvwxyzäö-"
-ls = []
+
 res = np.zeros(shape = (n, 29))
+ar = 0
 for i in a:
+    ls = []
     #if letters in i:
      #   print('yes')
+    
     for j in letters:
-        if j in i:
-            print('yes')
         count = 0
-        for k in i:
-            if k == j:
-                count += 1
-                #print("yes")
+        if i == "soon" and j == "o":
+            i 
+        if j in i:
+            count += 1
         ls.append(count)
-    ar = 0
+            #print('yes')
+        
+        #for k in i:
+         #   if k == j:
+          #      count += 1
+                #print("yes")
+    #ls.append(count)
+    #print(res.shape)
+    #print(len(ls))
+    #print(ls)
+    #print(res[ar].shape)
+    #print(res[ar])
+    if i == "soon" and j == "-":
+            i 
+            print(ls)
+    
     res[ar] = ls
+    #print(res[ar])
     ar += 1    
-    i
+    
+    #print(res.shape)
+#print(res.shape)
+print(res)
+i
             #print(i.find(j))
 # The values should be the number of times the corresponding character appears in the word.
 
