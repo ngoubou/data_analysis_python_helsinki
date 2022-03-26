@@ -91,8 +91,16 @@ if __name__ == "__main__":
 # Write function get_features_and_labels that returns the tuple (X, y) of the feature matrix and the target vector. 
 # Use the labels 0 and 1 for Finnish and English, respectively. 
 # Use the supplied functions load_finnish() and load_english() to get the lists of words. Filter the lists in the following ways:
+finnish = load_finnish()
+print(len(finnish))
+english = list(load_english())
+print(len(english))
 
     # Convert the Finnish words to lowercase, and then filter out those words that contain characters that don't belong to the alphabet.
+#a = np.array(finnish)
+finnish = [x.lower() for x in finnish]
+for i in finnish:
+    i.casefold()
     # For the English words first filter out those words that begin with an uppercase letter to get rid of proper nouns. 
     # Then proceed as with the Finnish words.
 
