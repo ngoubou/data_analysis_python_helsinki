@@ -57,8 +57,12 @@ def get_features(a):
     return result
 
 def contains_valid_chars(s):
-    #s = "awesome"
-    if s.isalpha():
+    count = 0
+    letters = "abcdefghijklmnopqrstuvwxyzäö-"
+    for i in s:
+        if i in letters:
+            count += 1
+    if count == len(s):
         return True
     else:
         return False
@@ -82,28 +86,6 @@ if __name__ == "__main__":
 
 # In this exercise we create a model that tries to label previously unseen words to be either Finnish or English.
 
-#a = np.array(["adam", "yes", "soon", "bad", "shit", "awesome"])
-
-# Part 2.
-
-# Write function contains_valid_chars that takes a string as a parameter and returns the truth value of whether all the characters 
-# in the string belong to the alphabet or not.
-s = "awesome"
-letters = "abcdefghijklmnopqrstuvwxyzäö-"
-#if s in letters:
- #   s
-count = 0
-for i in s:
-    if i in letters:
-        count += 1
-if count == len(s):
-    print(True)
-else:
-    print(False)
-if s.isalpha():
-    print(True)
-else:
-    print(False)
 # Part 3.
 
 # Write function get_features_and_labels that returns the tuple (X, y) of the feature matrix and the target vector. 
