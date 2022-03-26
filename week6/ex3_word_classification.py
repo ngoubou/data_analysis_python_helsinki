@@ -173,7 +173,15 @@ for i in english:
                 english.remove(i)
                 break
 #print(len(english))
-i
+a = np.array(["abc", "zaka"])
+X = get_features(a)
+for i in a:
+    if i in finnish:
+        print(0)
+    elif i in english:
+        print(1)
+print(len(finnish) + len(english))
+#print(len(f.shape))
 # Use get_features function you made earlier to form the feature matrix.
 
 # Part 4.
