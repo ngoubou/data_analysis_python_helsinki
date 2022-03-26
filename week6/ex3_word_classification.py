@@ -40,6 +40,7 @@ def load_english():
     return lines
 
 def get_features(a):
+    n = a.size
     return np.array([[]])
 
 def contains_valid_chars(s):
@@ -54,7 +55,8 @@ def word_classification():
 
 
 def main():
-    print("Accuracy scores are:", word_classification())
+    #print("Accuracy scores are:", word_classification())
+    pass
 
 if __name__ == "__main__":
     main()
@@ -66,8 +68,32 @@ if __name__ == "__main__":
 # Part 1.
 
 # Write function get_features that gets a one dimensional np.array, containing words, as parameter. 
+a = np.array(["adam", "yes", "soon", "bad", "shit", "awesome"])
+#print(a.size)
+n = a.size
+#r = np.array()
 # It should return a feature matrix of shape (n, 29), where n is the number of elements of the input array. 
 # There should be one feature for each of the letters in the following alphabet: "abcdefghijklmnopqrstuvwxyzäö-". 
+letters = "abcdefghijklmnopqrstuvwxyzäö-"
+ls = []
+res = np.zeros(shape = (n, 29))
+for i in a:
+    #if letters in i:
+     #   print('yes')
+    for j in letters:
+        if j in i:
+            print('yes')
+        count = 0
+        for k in i:
+            if k == j:
+                count += 1
+                #print("yes")
+        ls.append(count)
+    ar = 0
+    res[ar] = ls
+    ar += 1    
+    i
+            #print(i.find(j))
 # The values should be the number of times the corresponding character appears in the word.
 
 # Part 2.
