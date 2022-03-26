@@ -69,6 +69,7 @@ def contains_valid_chars(s):
         return False
 
 def get_features_and_labels():
+    # Finnish ---
     finnish = load_finnish()
     english = list(load_english())
     finnish = [x.lower() for x in finnish]
@@ -83,6 +84,27 @@ def get_features_and_labels():
                     break
                 else:
                     finnish.remove(i)
+                    break
+    # English ----
+    a = english.copy()
+    for i in english:
+        if i.istitle() or i.isupper():
+            a.remove(i)
+        elif (len(i.split("'")) > 1) and (i.split("'")[0].istitle() or i.split("'")[0].isupper()):
+            a.remove(i)
+    english = a
+    english = [x.lower() for x in english]
+    for i in english:
+        i_temp = i
+        if re.findall(r'\s', i):
+            i = i.replace(" ", "")
+        for j in i:
+            if j not in alphabet_set:
+                if re.findall(r'\s', i_temp):
+                    english.remove(i_temp)
+                    break
+                else:
+                    english.remove(i)
                     break
     return np.array([[]]), np.array([])
 
@@ -126,7 +148,7 @@ for k, i in enumerate(finnish):
                 break
     # For the English words first filter out those words that begin with an uppercase letter to get rid of proper nouns.
     # Then proceed as with the Finnish words.
-print(len(english))
+#print(len(english))
 a = english.copy()
 for i in english:
     if i.istitle() or i.isupper():
@@ -134,7 +156,7 @@ for i in english:
     elif (len(i.split("'")) > 1) and (i.split("'")[0].istitle() or i.split("'")[0].isupper()):
         a.remove(i)
 english = a
-print(len(english))
+#print(len(english))
 
 english = [x.lower() for x in english]
 
@@ -150,7 +172,7 @@ for i in english:
             else:
                 english.remove(i)
                 break
-print(len(english))
+#print(len(english))
 i
 # Use get_features function you made earlier to form the feature matrix.
 
