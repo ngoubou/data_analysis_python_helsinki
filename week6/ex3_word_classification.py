@@ -57,56 +57,6 @@ def get_features(a):
         ind += 1    
     return result
 
-def contains_valid_chars(s):
-    count = 0
-    letters = "abcdefghijklmnopqrstuvwxyzäö-"
-    for i in s:
-        if i in letters:
-            count += 1
-    if count == len(s):
-        return True
-    else:
-        return False
-
-def get_features_and_labels():
-    # Finnish ---
-    finnish = load_finnish()
-    english = list(load_english())
-    finnish = [x.lower() for x in finnish]
-    for i in finnish:
-        i_temp = i
-        if re.findall(r'\s', i):
-            i = i.replace(" ", "")
-        for j in i:
-            if j not in alphabet_set:
-                if re.findall(r'\s', i_temp):
-                    finnish.remove(i_temp)
-                    break
-                else:
-                    finnish.remove(i)
-                    break
-    # English ----
-    a = english.copy()
-    for i in english:
-        if i.istitle() or i.isupper():
-            a.remove(i)
-        elif (len(i.split("'")) > 1) and (i.split("'")[0].istitle() or i.split("'")[0].isupper()):
-            a.remove(i)
-    english = a
-    english = [x.lower() for x in english]
-    for i in english:
-        i_temp = i
-        if re.findall(r'\s', i):
-            i = i.replace(" ", "")
-        for j in i:
-            if j not in alphabet_set:
-                if re.findall(r'\s', i_temp):
-                    english.remove(i_temp)
-                    break
-                else:
-                    english.remove(i)
-                    break
-    return np.array([[]]), np.array([])
 
 
 def word_classification():
@@ -155,7 +105,7 @@ for i in english:
         a.remove(i)
     elif (len(i.split("'")) > 1) and (i.split("'")[0].istitle() or i.split("'")[0].isupper()):
         a.remove(i)
-english = a
+english = a.copy()
 #print(len(english))
 
 english = [x.lower() for x in english]
@@ -173,14 +123,22 @@ for i in english:
                 english.remove(i)
                 break
 #print(len(english))
-a = np.array(["abc", "zaka"])
+a = np.array(["aakkonen", "astroturf"])
+#b = np.zeros(shape = (1,29))
+#print(b)
 X = get_features(a)
+labels = {"Finnish": 0, "English": 1}
+ls = []
 for i in a:
     if i in finnish:
-        print(0)
+        #print(0)
+        ls.append(0)
     elif i in english:
-        print(1)
-print(len(finnish) + len(english))
+        #print(1)
+        ls.append(1)
+print("total: ", len(finnish) + len(english))
+print("finnish: ", len(finnish))# + len(english))
+print("english: ", len(english))
 #print(len(f.shape))
 # Use get_features function you made earlier to form the feature matrix.
 
