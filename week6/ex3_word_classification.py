@@ -126,6 +126,7 @@ for i in english:
 a = np.array(["aakkonen", "astroturf"])
 #b = np.zeros(shape = (1,29))
 #print(b)
+letters = "abcdefghijklmnopqrstuvwxyzäö-"
 X = get_features(a)
 labels = {"Finnish": 0, "English": 1}
 ls = []
