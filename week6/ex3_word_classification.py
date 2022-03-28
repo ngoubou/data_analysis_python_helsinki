@@ -99,13 +99,13 @@ for k, i in enumerate(finnish):
     # For the English words first filter out those words that begin with an uppercase letter to get rid of proper nouns.
     # Then proceed as with the Finnish words.
 #print(len(english))
-a = english.copy()
-for i in english:
+#a = english.copy() ### CHANGE THAT
+for i in english.copy():
     if i.istitle() or i.isupper():
-        a.remove(i)
+        english.remove(i)
     elif (len(i.split("'")) > 1) and (i.split("'")[0].istitle() or i.split("'")[0].isupper()):
-        a.remove(i)
-english = a.copy()
+        english.remove(i)
+#english = a.copy()
 #print(len(english))
 
 english = [x.lower() for x in english]
