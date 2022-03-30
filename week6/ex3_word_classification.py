@@ -79,10 +79,21 @@ if __name__ == "__main__":
 # Write function get_features_and_labels that returns the tuple (X, y) of the feature matrix and the target vector. 
 # Use the labels 0 and 1 for Finnish and English, respectively. 
 # Use the supplied functions load_finnish() and load_english() to get the lists of words. Filter the lists in the following ways:
+def contains_valid_chars(s):
+    count = 0
+    #letters = "abcdefghijklmnopqrstuvwxyzäö-"
+    for i in s:
+        if i in alphabet:
+            count += 1
+    if count == len(s):
+        return True
+    else:
+        return False
+
 finnish = load_finnish()
 english = list(load_english())
     # Convert the Finnish words to lowercase, and then filter out those words that contain characters that don't belong to the alphabet.
-finnish = [x.lower() for x in finnish]
+finnish = [x.lower() for x in finnish if contains_valid_chars(x)]
 
 for k, i in enumerate(finnish):
     i_temp = i
@@ -108,7 +119,7 @@ for i in english.copy():
 #english = a.copy()
 #print(len(english))
 
-english = [x.lower() for x in english]
+english = [x.lower() for x in english if contains_valid_chars(x)]
 
 for i in english:
     i_temp = i
@@ -130,6 +141,7 @@ letters = "abcdefghijklmnopqrstuvwxyzäö-"
 X = get_features(a)
 labels = {"Finnish": 0, "English": 1}
 y = []
+#print(X.shape)
 for i in a:
     if i in finnish:
         #print(0)
@@ -137,10 +149,11 @@ for i in a:
     elif i in english:
         #print(1)
         y.append(1)
-#print("total: ", len(finnish) + len(english))
-#rint("finnish: ", len(finnish))# + len(english))
-#print("english: ", len(english))
-print("tuple: ", (X,y))
+print("total: ", len(finnish) + len(english))
+print("finnish: ", len(finnish))# + len(english))
+print("english: ", len(english))
+#print("Features", X)
+#print("labels: ", y)
 #print(len(f.shape))
 # Use get_features function you made earlier to form the feature matrix.
 
