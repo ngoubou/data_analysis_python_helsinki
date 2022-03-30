@@ -42,39 +42,101 @@ def load_english():
 
 
 
+def get_features(a):
+    n = a.size
+    #letters = "abcdefghijklmnopqrstuvwxyzäö-"
+    result = np.zeros(shape = (n, 29))
+    ind = 0
+    for i in a:
+        ls = []
+        for j in alphabet:
+            count = 0
+            for k in i:
+                if k == j:
+                    count += 1
+            ls.append(count)
+        result[ind] = ls
+        ind += 1    
+    return result
+
+def contains_valid_chars(s):
+    count = 0
+    #letters = "abcdefghijklmnopqrstuvwxyzäö-"
+    for i in s:
+        if i in alphabet:
+            count += 1
+    if count == len(s):
+        return True
+    else:
+        return False
+
+def get_features_and_labels():
+    # @Anton on discord
+    finnish_words = load_finnish()
+    english_words = list(load_english())
+	 
+    finnish_words = [word.lower() for word in finnish_words]
+    finnish_words = [word for word in finnish_words if contains_valid_chars(word)]
+	    
+    english_words = [word for word in english_words if word[0].islower()]
+    english_words = [word.lower() for word in english_words]
+    english_words = [word for word in english_words if contains_valid_chars(word)]
+	 
+    combined = np.array(finnish_words + english_words)
+    features = get_features(combined)
+    target_vector = np.append(np.repeat(0, len(finnish_words)), np.repeat(1, len(english_words)))
+	 
+    return features, target_vector
+
+
 def word_classification():
-    return []
+    X, y = get_features_and_labels()
+    model = MultinomialNB()
+    return cross_val_score(model, X, y, cv = model_selection.KFold(n_splits=5, shuffle=True, random_state=0))
 
 
 def main():
-    #print("Accuracy scores are:", word_classification())
-    pass
+    print(get_features_and_labels())
+    print("Accuracy scores are:", word_classification())
 
 if __name__ == "__main__":
     main()
 
-# This exercise can give four points at maximum!
+## Course Solution ----
+# Had some trouble understanding  what was asked in part 3; so i copied someone else code on discord (part of the learning process)
+# and made sure to understand what it was doing
+# Reading the course solution reinforce my feeling to improve my comprehension (list huhu) of numpy arrays
 
-# In this exercise we create a model that tries to label previously unseen words to be either Finnish or English.
+#def get_features(a):
+ #   columns=len(alphabet)
+  #  n=a.shape[0]
+   # f=np.zeros((n, columns))
+    #for i, s in enumerate(a):
+     #   counts=Counter(s)
+      #  for j, c in enumerate(alphabet):
+       #     f[i, j] = counts[c]
+    #return f
 
+#def contains_valid_chars(s):
+ #   return alphabet_set.issuperset(s)
 
-# Part 4.
+#def get_features_and_labels():
+ #   lst=load_finnish()
+  #  finnish=np.array(list(filter(contains_valid_chars, map(lambda s: s.lower(), lst))))
+   # lines = load_english()
+    #lst=filter(contains_valid_chars, map(lambda s: s.lower(), filter(lambda s: s[0].islower(), lines)))
+    #english=np.array(list(lst))
+    #n1=finnish.shape[0]
+    #f1=get_features(finnish)
+    #n2=english.shape[0]
+    #f2=get_features(english)
+    #y=np.hstack([[0]*n1, [1]*n2])
+    #X = np.vstack([f1, f2])
+    #return X, y
 
-# We have earlier seen examples where we split the data into learning part and testing part. 
-# This way we can test whether the model can really be used to predict unseen data. 
-# However, it can be that we had bad luck and the split produced very biased learning and test datas. 
-# To counter this, we can perform the split several times and take as the final result the average from the different splits. 
-# This is called cross validation.
-
-# Create word_classification function that does the following:
-
-# Use the function get_features_and_labels you made earlier to get the feature matrix and the labels. 
-# Use multinomial naive Bayes to do the classification. Get the accuracy scores using the sklearn.model_selection.cross_val_score function; 
-# use 5-fold cross validation. The function should return a list of five accuracy scores.
-
-# The cv parameter of cross_val_score can be either an integer, which specifies the number of folds, 
-# or it can be a cross-validation generator that generates the (train set,test set) pairs. 
-# What happens if you pass the following cross-validation generator to cross_val_score as a parameter: 
-# sklearn.model_selection.KFold(n_splits=5, shuffle=True, random_state=0).
-
-# Why the difference?
+#def word_classification():
+ #   X, y = get_features_and_labels()
+  #  model = MultinomialNB()
+   # cv = model_selection.KFold(n_splits=5, shuffle=True, random_state=0)
+    #v=cross_val_score(model, X, y, cv=cv)
+    #return v
