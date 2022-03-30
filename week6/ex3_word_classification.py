@@ -129,17 +129,18 @@ a = np.array(["aakkonen", "astroturf"])
 letters = "abcdefghijklmnopqrstuvwxyzäö-"
 X = get_features(a)
 labels = {"Finnish": 0, "English": 1}
-ls = []
+y = []
 for i in a:
     if i in finnish:
         #print(0)
-        ls.append(0)
+        y.append(0)
     elif i in english:
         #print(1)
-        ls.append(1)
-print("total: ", len(finnish) + len(english))
-print("finnish: ", len(finnish))# + len(english))
-print("english: ", len(english))
+        y.append(1)
+#print("total: ", len(finnish) + len(english))
+#rint("finnish: ", len(finnish))# + len(english))
+#print("english: ", len(english))
+print("tuple: ", (X,y))
 #print(len(f.shape))
 # Use get_features function you made earlier to form the feature matrix.
 
