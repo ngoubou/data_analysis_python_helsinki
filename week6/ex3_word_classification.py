@@ -40,23 +40,6 @@ def load_english():
         lines = map(lambda s: s.rstrip(), data.readlines())
     return lines
 
-def get_features(a):
-    n = a.size
-    letters = "abcdefghijklmnopqrstuvwxyzäö-"
-    result = np.zeros(shape = (n, 29))
-    ind = 0
-    for i in a:
-        ls = []
-        for j in letters:
-            count = 0
-            for k in i:
-                if k == j:
-                    count += 1
-            ls.append(count)
-        result[ind] = ls
-        ind += 1    
-    return result
-
 
 
 def word_classification():
