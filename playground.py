@@ -280,16 +280,36 @@ import re
 ## WEEK 6 ----
 
 # ML : Naive Bayes
+#import numpy as np
+
+#array = np.array([1,2,3])
+#print(array.shape, array)
+
+#array = np.expand_dims(array, axis = 0)
+#print(array.shape, array)
+
+#array = np.append(array, [[4,5,6]], axis=0)
+#print(array.shape, array)
+
+#array = np.append(array, [[7,8,9]], axis=0)
+#print(array.shape, array)
+
+
+# ML: Clustering
 import numpy as np
+import matplotlib.pyplot as plt
+#%matplotlib inline
 
-array = np.array([1,2,3])
-print(array.shape, array)
+from sklearn.datasets import make_blobs
+X,y = make_blobs(centers=4, n_samples=200, random_state=0, cluster_std=0.7)
+#print(X[:10],y[:10])
+#plt.scatter(X[:,0],X[:,1])
+#plt.show()
 
-array = np.expand_dims(array, axis = 0)
-print(array.shape, array)
-
-array = np.append(array, [[4,5,6]], axis=0)
-print(array.shape, array)
-
-array = np.append(array, [[7,8,9]], axis=0)
-print(array.shape, array)
+from sklearn.cluster import KMeans
+model = KMeans(4)
+model.fit(X)
+print(model.cluster_centers_)
+plt.scatter(X[:,0],X[:,1], c=model.labels_);
+plt.scatter(model.cluster_centers_[:,0], model.cluster_centers_[:,1], s=100, color="red"); # Show the centres
+plt.show()
