@@ -265,19 +265,31 @@ import re
 
 ## WEEK 4 ----
 # PANDAS
-import pandas as pd
-import numpy as np
-df = pd.DataFrame(np.random.randn(2,3), columns=["First", "Second", "Third"], index=["a", "b"])
+#import pandas as pd
+##import numpy as np
+#df = pd.DataFrame(np.random.randn(2,3), columns=["First", "Second", "Third"], index=["a", "b"])
 #print(df)
-a = df.copy()
-print(a)
-df = df * 2
-print(a)
+#a = df.copy()
+#print(a)
+#df = df * 2
+#print(a)
 #print(df.index)
 #print(len(df.index))
 #print(pd.Series([1,3,2, np.nan]))
 
-## WEEK 5 ----
-# PANDAS STILL
+## WEEK 6 ----
 
-# ML
+# ML : Naive Bayes
+import numpy as np
+
+array = np.array([1,2,3])
+print(array.shape, array)
+
+array = np.expand_dims(array, axis = 0)
+print(array.shape, array)
+
+array = np.append(array, [[4,5,6]], axis=0)
+print(array.shape, array)
+
+array = np.append(array, [[7,8,9]], axis=0)
+print(array.shape, array)
