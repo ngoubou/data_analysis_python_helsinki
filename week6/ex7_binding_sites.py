@@ -18,7 +18,18 @@ import os
 os.chdir("/Users/mamba/Downloads/Data_Scientist_Path/Courses/python_helsinki/week6")
 
 def toint(x):
-    return 0
+    if x == "A":
+        x = 0
+    elif x == "C":
+        x = 1
+    elif x == "G":
+        x = 2
+    elif x == "T":
+        x = 3
+    else:
+        x = np.nan
+    return x
+
 
 def get_features_and_labels(filename):
     return (np.array([[]]), np.array([]))
@@ -44,17 +55,7 @@ def main():
 if __name__ == "__main__":
     main()
 
-# This exercise can give three points at maximum!
 
-# A binding site is a piece of DNA where a certain protein prefers to bind. 
-# The piece of DNA can be described as a string consisting of letters A, C, G, and T, 
-# which correspond to nucleotides Adenine, Cytosine, Guanine, and Thymine. 
-# In this exercise the length of binding sites is eight nucleotides. 
-# They are stored in the file data.seq, and the binding sites there are classified into two classes.
-
-# Part 1. Write function toint that converts a nucleotide to an integer. Use the following mapping:
-#dic = {"A":0, "C":1, "G":2, "T":3}
-#print(dic.keys())
 df = pd.read_csv("data/data.seq", sep = "\t")
 
 for k, i in enumerate(df.X.copy()):
