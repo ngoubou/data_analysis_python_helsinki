@@ -328,5 +328,14 @@ model.fit(X)
 from sklearn.cluster import DBSCAN
 model = DBSCAN(eps=0.3)
 model.fit(X)
-plt.scatter(X[:,0], X[:,1], c=model.labels_);
+#plt.scatter(X[:,0], X[:,1], c=model.labels_);
+#plt.show()
+
+import seaborn as sns; sns.set(color_codes=True)
+iris = sns.load_dataset("iris")
+species = iris.pop("species")   # Remove the species column
+print(species.unique())         # The samples seems to be from these three species
+sns.clustermap(iris, method="ward", col_cluster=False, cbar_kws={'label': 'centimeters'}); # Cluster only the rows
+#plt.colorbar().ax.set_title('This is a title')
+#plt.gca().images[-1].colorbar.ax.set_title("title")
 plt.show()
