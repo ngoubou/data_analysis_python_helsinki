@@ -1,85 +1,104 @@
 #!/usr/bin/env python3
 
-#from gzip import open
+# Credit to @Ja on discord
 
-import os
 import gzip
 import numpy as np
 from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.metrics import accuracy_score
+from sklearn.model_selection import train_test_split
 
-os.chdir("/Users/mamba/Downloads/Data_Scientist_Path/Courses/python_helsinki/week6/")
+import os
+os.chdir("/Users/mamba/Downloads/Data_Scientist_Path/Courses/python_helsinki/week2")
 
-def spam_detection(random_state=0, fraction=1.0):
-    return 0.0, 0, 0
+def read_zip(filename):
+	with gzip.open(filename, 'rt') as f:
+	    return f.read().split('\n')
+
+def spam_detection(random_state=0, fraction=0.1):
+	ham = np.array(read_zip('data/ham.txt.gz'))
+	spam = np.array(read_zip('data/spam.txt.gz'))
+	 
+	ham = ham[:int(len(ham) * fraction)]
+	spam = spam[:int(len(spam) * fraction)]
+	    
+	joined_data = np.concatenate((ham, spam))
+	vector_model = CountVectorizer()
+	training = vector_model.fit_transform(joined_data)
+	 
+	target = np.concatenate((np.zeros(ham.shape[0]), np.ones(spam.shape[0])))
+	train_data, test_data, train_target, test_target = train_test_split(training, target, test_size = 0.25, train_size = 0.75, random_state=random_state)
+	 
+	model = MultinomialNB()
+	model.fit(train_data, train_target)
+	result = model.predict(test_data)
+	 
+	accuracy = accuracy_score(result, test_target)
+	 
+	return accuracy, test_data.shape[0], int(test_data.shape[0] * (1 - accuracy))        
 
 def main():
     accuracy, total, misclassified = spam_detection()
-    #print("Accuracy score:", accuracy)
-    #print(f"{misclassified} messages miclassified out of {total}")
+    print("Accuracy score:", accuracy)
+    print(f"{misclassified} messages miclassified out of {total}")
 
 if __name__ == "__main__":
     main()
 
-# This exercise gives two points if solved correctly!
 
-# In the src folder there are two files: ham.txt.gz and spam.txt.gz. 
-# The files are preprocessed versions of the files from https://spamassassin.apache.org/old/publiccorpus/. 
-# There is one email per line. The file ham.txt.gz contains emails that are non-spam, and, conversely, emails in file spam.txt are spam. 
-# The email headers have been removed, except for the subject line, and non-ascii characters have been deleted.
-
-# Write function spam_detection that does the following:
-
-   # Read the lines from these files into arrays. Use function open from gzip module, since the files are compressed. 
-with gzip.open('data/ham.txt.gz','r') as file:  
-    ham = [] 
-    for line in file: 
-        ham.append(line)
+## Course Solution ----
+# Was confused (once again) by the instructions
+# but i was not far off (based on Ja code).
+# Reading the course solution, i realise i'd have never pulled that up.
+# My lack of numpy understanding is hampering me right now
+# The only addition i made is the os import to change files directories
+# I deleted my code
 
 
-with gzip.open('data/spam.txt.gz','r') as file1:  
-    spam = [] 
-    for line in file1: 
-        spam.append(line)    
+#import gzip
+#import pandas as pd
+#import numpy as np
+#from sklearn.feature_extraction.text import CountVectorizer
+#from sklearn.naive_bayes import MultinomialNB
+#from sklearn.metrics import accuracy_score
+#from sklearn.model_selection import train_test_split
 
-#print("ham: ", len(ham))
-#frac = int(len(ham) * 0.61)
-#print(frac)
 
-#print(t.shape)
-a = ham[:int(len(ham) * 0.61)] # 0.61 is the fraction
-b = spam[:int(len(ham) * 0.61)]
-#print(len(a))
-#print(len(b))
+#def load_ham(filename="src/ham.txt.gz"):
+ #   with gzip.open(filename) as f:
+  #      lines = f.readlines()
+   # return lines
 
-t = np.array(ham).reshape(2500,1)
-#print(t.shape)
-#print(t.shape[0])
-tt = np.array(spam).reshape(500,1)
 
-#print("spam: ", len(spam))
-   # From each file take only fraction of lines from the start of the file, where fraction is a parameter to spam_detection, 
-   # and should be in the range [0.0, 1.0].
+#def load_spam(filename="src/spam.txt.gz"):
+ #   with gzip.open(filename) as f:
+  #      lines = f.readlines()
+   # return lines
 
-   # forms the combined feature matrix using CountVectorizer class' fit_transform method. 
-   # The feature matrix should first have the rows for the ham dataset and then the rows for the spam dataset. 
-   # One row in the feature matrix corresponds to one email.
-vectorizer = CountVectorizer() 
-X = vectorizer.fit_transform(ham + spam)   
-print(X)
-#test = CountVectorizer.fit_transform(ham)
-1
-   # use labels 0 for ham and 1 for spam
 
-   # divide that feature matrix and the target label into training and test sets, using train_test_split. 
-   # Use 75% of the data for training. Pass the random_state parameter from spam_detection to train_test_split.
+#def spam_detection(random_state=0, fraction=1.0):
+#    vec = CountVectorizer()
+#    ham = load_ham()
+#    spam = load_spam()
+#    ham = ham[:int(fraction*len(ham))]
+#    spam = spam[:int(fraction*len(spam))]
+#    X = vec.fit_transform(ham+spam)
+ #   n1 = len(ham)
+  #  n2 = len(spam)
+   # if False:   # Print some info. From first two (ham) messages, show counts of common words.
+    #    print(X.shape)
+     #   temp = X[0:2, :].toarray()   # Vectorizer returns sparse array, convert to dense array
+    #    idx = temp[:, :] != 0
+     #   idx = temp.all(axis=0)
+      #  names = vec.get_feature_names()
+       # df = pd.DataFrame(temp[:, idx], columns=np.array(names)[idx])
+        #print(df.T)
 
-   # train a MultinomialNB model, and use it to predict the labels for the test set
-
-# The function should return a triple consisting of
-
-   # accuracy score of the prediction
-   # size of test sample
-   # number of misclassified sample points
-
-# Note. The tests use the fraction parameter with value 0.1 to ease to load on the TMC server. 
-# If full data were used and the solution did something non-optimal, it could use huge amounts of memory, causing the solution to fail.
+#    y = np.hstack([[0]*n1, [1]*n2])
+ #   X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=random_state, train_size=0.75, test_size=0.25)
+  #  model = MultinomialNB()
+   # model.fit(X_train, y_train)
+  #  y_fitted = model.predict(X_test)
+   # acc = model.score(X_test, y_test)
+    #return acc, len(y_test), (y_test != y_fitted).sum()
