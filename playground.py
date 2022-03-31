@@ -309,7 +309,24 @@ X,y = make_blobs(centers=4, n_samples=200, random_state=0, cluster_std=0.7)
 from sklearn.cluster import KMeans
 model = KMeans(4)
 model.fit(X)
-print(model.cluster_centers_)
-plt.scatter(X[:,0],X[:,1], c=model.labels_);
-plt.scatter(model.cluster_centers_[:,0], model.cluster_centers_[:,1], s=100, color="red"); # Show the centres
+#print(model.cluster_centers_)
+#plt.scatter(X[:,0],X[:,1], c=model.labels_);
+#plt.scatter(model.cluster_centers_[:,0], model.cluster_centers_[:,1], s=100, color="red"); # Show the centres
+#plt.show()
+
+from sklearn.datasets import make_moons
+X,y = make_moons(200, noise=0.05, random_state=0)
+
+#plt.scatter(X[:,0], X[:,1]);
+#plt.show()
+
+model=KMeans(2)
+model.fit(X)
+#plt.scatter(X[:,0], X[:,1], c=model.labels_);
+#plt.show()
+
+from sklearn.cluster import DBSCAN
+model = DBSCAN(eps=0.3)
+model.fit(X)
+plt.scatter(X[:,0], X[:,1], c=model.labels_);
 plt.show()
