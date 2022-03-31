@@ -13,17 +13,21 @@ sns.set(color_codes=True)
 import scipy.spatial as sp
 import scipy.cluster.hierarchy as hc
 
+import os
+
+os.chdir("/Users/mamba/Downloads/Data_Scientist_Path/Courses/python_helsinki/week6")
+
 def toint(x):
     return 0
 
 def get_features_and_labels(filename):
     return (np.array([[]]), np.array([]))
 
-def plot(distances, method='average', affinity='euclidean'):
-    mylinkage = hc.linkage(sp.distance.squareform(distances), method=method)
-    g=sns.clustermap(distances, row_linkage=mylinkage, col_linkage=mylinkage )
-    g.fig.suptitle(f"Hierarchical clustering using {method} linkage and {affinity} affinity")
-    plt.show()
+#def plot(distances, method='average', affinity='euclidean'):
+ #   mylinkage = hc.linkage(sp.distance.squareform(distances), method=method)
+  #  g=sns.clustermap(distances, row_linkage=mylinkage, col_linkage=mylinkage )
+   # g.fig.suptitle(f"Hierarchical clustering using {method} linkage and {affinity} affinity")
+    #plt.show()
 
 def cluster_euclidean(filename):
     return 0.0
@@ -33,8 +37,9 @@ def cluster_hamming(filename):
 
 
 def main():
-    print("Accuracy score with Euclidean affinity is", cluster_euclidean("src/data.seq"))
-    print("Accuracy score with Hamming affinity is", cluster_hamming("src/data.seq"))
+    pass
+    #print("Accuracy score with Euclidean affinity is", cluster_euclidean("src/data.seq"))
+    #print("Accuracy score with Hamming affinity is", cluster_hamming("src/data.seq"))
 
 if __name__ == "__main__":
     main()
@@ -48,11 +53,26 @@ if __name__ == "__main__":
 # They are stored in the file data.seq, and the binding sites there are classified into two classes.
 
 # Part 1. Write function toint that converts a nucleotide to an integer. Use the following mapping:
+#dic = {"A":0, "C":1, "G":2, "T":3}
+#print(dic.keys())
+df = pd.read_csv("data/data.seq", sep = "\t")
 
-# A -> 0
-# C -> 1
-# G -> 2
-# T -> 3
+for k, i in enumerate(df.X.copy()):
+    a = []
+    for j in i:
+        if j == "A":
+            a.append("0")
+        elif j == "C":
+            a.append("1")
+        elif j == "G":
+            a.append("2")
+        elif j == "T":
+            a.append("3")  
+
+    df.X[k] = int("".join(a))
+
+df = df.astype({"X": int})
+
 
 # Write also function get_features_and_labels that gets a filename as a parameter. 
 # The function should load the contents of the file into a DataFrame. The column X contains a string. 
