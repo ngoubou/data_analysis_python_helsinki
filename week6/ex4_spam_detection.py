@@ -5,6 +5,7 @@
 import os
 import gzip
 import numpy as np
+from sklearn.feature_extraction.text import CountVectorizer
 
 os.chdir("/Users/mamba/Downloads/Data_Scientist_Path/Courses/python_helsinki/week6/")
 
@@ -29,12 +30,6 @@ if __name__ == "__main__":
 # Write function spam_detection that does the following:
 
    # Read the lines from these files into arrays. Use function open from gzip module, since the files are compressed. 
-
-
-    #aa = np.empty(shape = (3,2))
-    #np.app
-    #print(aa)
-    #print(np.append(aa, np.zeros(shape = (3,2))))
 with gzip.open('data/ham.txt.gz','r') as file:  
     ham = [] 
     for line in file: 
@@ -46,15 +41,28 @@ with gzip.open('data/spam.txt.gz','r') as file1:
     for line in file1: 
         spam.append(line)    
 
-print("ham: ", len(ham))
-print("spam: ", len(spam))
+#print("ham: ", len(ham))
+#frac = int(len(ham) * 0.61)
+#print(frac)
+
+#print(t.shape)
+a = ham[:int(len(ham) * 0.61)] # 0.61 is the fraction
+b = spam[:int(len(ham) * 0.61)]
+#print(len(a))
+#print(len(b))
+
+t = np.array(ham).reshape(2500,1)
+print(t.shape)
+print(len(t[0]))
+
+#print("spam: ", len(spam))
    # From each file take only fraction of lines from the start of the file, where fraction is a parameter to spam_detection, 
    # and should be in the range [0.0, 1.0].
 
    # forms the combined feature matrix using CountVectorizer class' fit_transform method. 
    # The feature matrix should first have the rows for the ham dataset and then the rows for the spam dataset. 
    # One row in the feature matrix corresponds to one email.
-
+CountVectorizer.fit_transform()
    # use labels 0 for ham and 1 for spam
 
    # divide that feature matrix and the target label into training and test sets, using train_test_split. 
