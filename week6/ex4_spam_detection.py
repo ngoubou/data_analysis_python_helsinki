@@ -52,8 +52,9 @@ b = spam[:int(len(ham) * 0.61)]
 #print(len(b))
 
 t = np.array(ham).reshape(2500,1)
-print(t.shape)
-print(len(t[0]))
+#print(t.shape)
+#print(t.shape[0])
+tt = np.array(spam).reshape(500,1)
 
 #print("spam: ", len(spam))
    # From each file take only fraction of lines from the start of the file, where fraction is a parameter to spam_detection, 
@@ -62,7 +63,11 @@ print(len(t[0]))
    # forms the combined feature matrix using CountVectorizer class' fit_transform method. 
    # The feature matrix should first have the rows for the ham dataset and then the rows for the spam dataset. 
    # One row in the feature matrix corresponds to one email.
-CountVectorizer.fit_transform()
+vectorizer = CountVectorizer() 
+X = vectorizer.fit_transform(ham + spam)   
+print(X)
+#test = CountVectorizer.fit_transform(ham)
+1
    # use labels 0 for ham and 1 for spam
 
    # divide that feature matrix and the target label into training and test sets, using train_test_split. 
