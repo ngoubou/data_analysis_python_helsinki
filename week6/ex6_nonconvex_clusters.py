@@ -65,7 +65,10 @@ for i in np.arange(0.05, 0.2, 0.05):
     #print("Labels: ", len(np.unique(labels)), "|", "Clusters: ", n_clusters_)
     #print("Labels: ", len(np.unique(new_labels)), "|", "Clusters: ", n_clusters_)
     #print("Accuracy score is", accuracy_score(df.y, new_labels))
-    Score.append(accuracy_score(df.y, new_labels))
+    if n_clusters_ == len(np.unique(labels)):
+        Score.append(accuracy_score(df.y, new_labels))
+    else:
+        Score.append(np.nan)
 
     #print(find_permutation(n_clusters_, df.y, model.labels_))
 result = {"eps":eps, "Score":Score, "Clusters":Clusters, "Outliers":Outliers}
