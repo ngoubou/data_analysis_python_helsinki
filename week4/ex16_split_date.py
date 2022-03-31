@@ -30,7 +30,7 @@ def split_date():
         k = months[i]
         new_df.replace(to_replace = j, value = k, inplace = True)
 
-    # Convrt the columns to the right type
+    # Convert the columns to the right type
     new_df = new_df.astype({"Day": int, "Month": int, "Year": int, "Hour": int})
    
     return new_df
