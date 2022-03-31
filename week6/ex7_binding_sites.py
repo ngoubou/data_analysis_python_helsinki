@@ -57,7 +57,7 @@ if __name__ == "__main__":
 
 filename = "data/data.seq"
 df = pd.read_csv(filename, sep = "\t")
-s = toint(df.X)
+## USE THE BELOW CODE TO WRITE THE SECOND FUNCTION
 
 new_df = df.copy()
 for k, i in enumerate(df.X):
