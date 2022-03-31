@@ -55,10 +55,12 @@ def main():
 if __name__ == "__main__":
     main()
 
+filename = "data/data.seq"
+df = pd.read_csv(filename, sep = "\t")
+s = toint(df.X)
 
-df = pd.read_csv("data/data.seq", sep = "\t")
-
-for k, i in enumerate(df.X.copy()):
+new_df = df.copy()
+for k, i in enumerate(df.X):
     a = []
     for j in i:
         if j == "A":
@@ -70,10 +72,10 @@ for k, i in enumerate(df.X.copy()):
         elif j == "T":
             a.append("3")  
 
-    df.X[k] = int("".join(a))
+    new_df.X[k] = int("".join(a))
 
-df = df.astype({"X": int})
-
+new_df = new_df.astype({"X": int})
+print(new_df.head())
 
 # Write also function get_features_and_labels that gets a filename as a parameter. 
 # The function should load the contents of the file into a DataFrame. The column X contains a string. 
