@@ -36,20 +36,42 @@ if __name__ == "__main__":
     #print(aa)
     #print(np.append(aa, np.zeros(shape = (3,2))))
 with gzip.open('data/ham.txt.gz','r') as ham:  
-        
+    #print(ham.)
+    #t = np.empty(shape = (1,)) 
+    #print(t)    
+    #t = np.expand_dims(t, axis = 0)   
+    #print(t.ndim, t.shape)   
+    #print(t) 
+    a = [] 
     for line in ham: 
+        #print(line)
         #c = np.array([line])
         #print(c.shape)
         #e = np.appe   
-        a = []    
+           
         #print('got line', line)
         a.append(line)
-        b = np.array(a)
-        print(b.ndim)
+        #tt = np.array(a)
+
+        #b =  np.append(tt, [a], axis = 0)
+        #print(b.ndim)
+        #print(b.shape) 
+        #print(b)
+        #b = np.array(a)
+        #print(b.ndim)
+        #print(b.shape)
+        #b = np.expand_dims(b, axis = 0)
+        #print(b.ndim)
+        #print(b.shape)
+        #b = np.append(b, [[4,5,6]], axis=0)
+        #print(b.ndim)
+        #print(b.shape) 
         #d = np.array(a)
         #a = np.append(np.array(line))
         #print(a)
-    b = np.array(a)
+print(len(a))    
+print(len(a[1]))
+a
    # From each file take only fraction of lines from the start of the file, where fraction is a parameter to spam_detection, 
    # and should be in the range [0.0, 1.0].
 
