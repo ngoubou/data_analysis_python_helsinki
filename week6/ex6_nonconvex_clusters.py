@@ -4,13 +4,16 @@ import pandas as pd
 import numpy as np
 from sklearn.cluster import DBSCAN
 from sklearn.metrics import accuracy_score
+import os
 
+os.chdir("/Users/mamba/Downloads/Data_Scientist_Path/Courses/python_helsinki/week6")
 
 def nonconvex_clusters():
     return pd.DataFrame()
 
 def main():
-    print(nonconvex_clusters())
+    pass
+    #print(nonconvex_clusters())
 
 if __name__ == "__main__":
     main()
@@ -18,7 +21,15 @@ if __name__ == "__main__":
 # This exercise can give four points at maximum!
 
 # Read the tab separated file data.tsv from the src folder into a DataFrame. The dataset has two features X1 and X2, and the label y. 
+df = pd.read_csv("data/data.tsv", sep = "\t")
+#print(df.head())
+
 # Cluster the feature matrix using DBSCAN with different values for the eps parameter. 
+X = df.loc[:, "X1":"X2"]
+for i in np.arange(0.05, 0.2, 0.05):
+    i
+model = DBSCAN(eps = 0.05)
+model.fit(X)
 # Use values in np.arange(0.05, 0.2, 0.05) for clustering. 
 # For each clustering, collect the accuracy score, the number of clusters, and the number of outliers. 
 # Return these values in a DataFrame, where columns and column names are as in the below example.
