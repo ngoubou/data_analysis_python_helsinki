@@ -5,91 +5,76 @@ import pandas as pd
 import numpy as np
 from sklearn.cluster import DBSCAN
 from sklearn.metrics import accuracy_score
-import os
 
-os.chdir("/Users/mamba/Downloads/Data_Scientist_Path/Courses/python_helsinki/week6")
-
-def find_permutation(n_clusters, real_labels, labels):
-    permutation = []
-    for i in range(n_clusters):
+def find_permutation(real_labels, labels): # From course solution
+    permutation=[]
+    m = max(labels)
+    for i in range(m+1):
         idx = labels == i
         # Choose the most common label among data points in the cluster
-        new_label = scipy.stats.mode(real_labels[idx])[0][0]
+        new_label=scipy.stats.mode(real_labels[idx])[0][0]
         permutation.append(new_label)
     return permutation
 
 def nonconvex_clusters():
-    return pd.DataFrame()
+    df = pd.read_csv("src/data.tsv", sep = "\t")
+
+    X = df.loc[:, "X1":"X2"]
+    eps = []
+    Score = []
+    Clusters = []
+    Outliers = []
+    for i in np.arange(0.05, 0.2, 0.05):
+  
+        model = DBSCAN(eps = i)
+        model.fit(X)
+        labels = model.labels_
+        n_clusters_ = len(set(labels)) - (1 if -1 in labels else 0)
+        n_noise_ = list(labels).count(-1)
+        eps.append(model.eps)
+        Clusters.append(n_clusters_)
+        Outliers.append(n_noise_)
+   
+   
+        permutation = find_permutation(df.y, model.labels_)
+        new_labels = [permutation[label] for label in model.labels_]   # permute the labels
+        if n_clusters_ == 2: #changed condition based on course solution
+            Score.append(accuracy_score(df.y, new_labels))
+        else:
+            Score.append(np.nan)
+
+    cols = {"eps":eps, "Score":Score, "Clusters":Clusters, "Outliers":Outliers}
+    results = pd.DataFrame(cols)
+    results = results.astype({"eps": float, "Score": float, "Clusters": float, "Outliers": float})
+    return results
 
 def main():
-    pass
-    #print(nonconvex_clusters())
+    print(nonconvex_clusters())
 
 if __name__ == "__main__":
     main()
 
-# This exercise can give four points at maximum!
+## Course Solution ---- 
+# Kinda lost here. Grab some concepts but not everything (part of the learning curve i guess)
+# The first function has been pasted above, so i'll only out the second one.
 
-# Read the tab separated file data.tsv from the src folder into a DataFrame. The dataset has two features X1 and X2, and the label y. 
-df = pd.read_csv("data/data.tsv", sep = "\t")
-#print(df.head())
-
-# Cluster the feature matrix using DBSCAN with different values for the eps parameter. 
-X = df.loc[:, "X1":"X2"]
-eps = []
-Score = []
-Clusters = []
-Outliers = []
-
-for i in np.arange(0.05, 0.2, 0.05):
-    #i
-    model = DBSCAN(eps = i)
-    model.fit(X)
-    labels = model.labels_
-    n_clusters_ = len(set(labels)) - (1 if -1 in labels else 0)
-    n_noise_ = list(labels).count(-1)
-    eps.append(model.eps)
-    Clusters.append(n_clusters_)
-    Outliers.append(n_noise_)
-    #print("Labels: ", len(np.unique(labels)), "|", "Clusters: ", n_clusters_)
-    #print("Clusters: ", n_clusters_)
-    #print(len(labels))
-    #print(n_noise_)
-    
-    #model.
-    #acc = accuracy_score(df.y, model.labels_)
-    #print(accuracy_score(df.y, model.labels_))
-    #model.components_
-    permutation = find_permutation(n_clusters_, df.y, model.labels_)
-    new_labels = [ permutation[label] for label in model.labels_]   # permute the labels
-    #print("Labels: ", len(np.unique(labels)), "|", "Clusters: ", n_clusters_)
-    #print("Labels: ", len(np.unique(new_labels)), "|", "Clusters: ", n_clusters_)
-    #print("Accuracy score is", accuracy_score(df.y, new_labels))
-    if n_clusters_ == len(np.unique(labels)):
-        Score.append(accuracy_score(df.y, new_labels))
-    else:
-        Score.append(np.nan)
-
-    #print(find_permutation(n_clusters_, df.y, model.labels_))
-result = {"eps":eps, "Score":Score, "Clusters":Clusters, "Outliers":Outliers}
-r = pd.DataFrame(result)
-print(r)
-# Use values in np.arange(0.05, 0.2, 0.05) for clustering. 
-# For each clustering, collect the accuracy score, the number of clusters, and the number of outliers. 
-# Return these values in a DataFrame, where columns and column names are as in the below example.
-
-# Note that DBSCAN uses label -1 to denote outliers , that is, those data points that didn't fit well in any cluster. 
-# You have to modify the find_permutation function to handle this: ignore the outlier data points from the accuracy score computation. 
-# In addition, if the number of clusters is not the same as the number of labels in the original data, set the accuracy score to NaN.
-
-
-
-#      eps   Score  Clusters  Outliers                             
-# 0    0.05      ?         ?         ?
-# 1    0.10      ?         ?         ?
-# 2    0.15      ?         ?         ?
-# 3    0.20      ?         ?         ?
-
-# Before submitting the solution, you can plot the data set (with clusters colored) to see what kind of data we are dealing with.
-
-# Points are given for each correct column in the result DataFrame.
+#def nonconvex_clusters():
+   # df = pd.read_csv("src/data.tsv", sep="\t")
+  #  X = df.loc[:, "X1":"X2"].values
+ #   y = df.y.values
+#    result = []
+    #for e in np.arange(0.05, 0.2, 0.05):
+    #    model=DBSCAN(e)
+   #     model.fit(X)
+  #      idx = model.labels_ == -1
+ #       outliers = np.sum(idx)
+#        clusters = max(model.labels_) + 1
+        #if clusters == 2:
+       #     permutation = find_permutation(y, model.labels_)
+      #      acc = accuracy_score(y[~idx], [ permutation[label] for label in model.labels_[~idx]])
+     #   else:
+    #        acc = np.nan
+   #     result.append([e, acc, clusters, outliers])
+  #  df2 = pd.DataFrame(np.array(result))
+ #   df2.columns = ["eps", "Score", "Clusters", "Outliers"]
+#    return df2
