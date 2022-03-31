@@ -1,13 +1,20 @@
 #!/usr/bin/env python3
 
+#from gzip import open
+
+import os
+import gzip
+import numpy as np
+
+os.chdir("/Users/mamba/Downloads/Data_Scientist_Path/Courses/python_helsinki/week6/")
 
 def spam_detection(random_state=0, fraction=1.0):
     return 0.0, 0, 0
 
 def main():
     accuracy, total, misclassified = spam_detection()
-    print("Accuracy score:", accuracy)
-    print(f"{misclassified} messages miclassified out of {total}")
+    #print("Accuracy score:", accuracy)
+    #print(f"{misclassified} messages miclassified out of {total}")
 
 if __name__ == "__main__":
     main()
@@ -22,6 +29,27 @@ if __name__ == "__main__":
 # Write function spam_detection that does the following:
 
    # Read the lines from these files into arrays. Use function open from gzip module, since the files are compressed. 
+
+
+    #aa = np.empty(shape = (3,2))
+    #np.app
+    #print(aa)
+    #print(np.append(aa, np.zeros(shape = (3,2))))
+with gzip.open('data/ham.txt.gz','r') as ham:  
+        
+    for line in ham: 
+        #c = np.array([line])
+        #print(c.shape)
+        #e = np.appe   
+        a = []    
+        #print('got line', line)
+        a.append(line)
+        b = np.array(a)
+        print(b.ndim)
+        #d = np.array(a)
+        #a = np.append(np.array(line))
+        #print(a)
+    b = np.array(a)
    # From each file take only fraction of lines from the start of the file, where fraction is a parameter to spam_detection, 
    # and should be in the range [0.0, 1.0].
 
