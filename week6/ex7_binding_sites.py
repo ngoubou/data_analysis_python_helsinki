@@ -73,7 +73,13 @@ def cluster_euclidean(filename):
     return acc
 
 def cluster_hamming(filename):
-    return 0.0
+    features, labels = get_features_and_labels(filename)
+    clustering = AgglomerativeClustering(n_clusters = 2, linkage = "average", affinity = "precomputed").fit_predict(pairwise_distances(features))
+    permutation = find_permutation(2, labels, clustering.labels_)
+    new_labels = [permutation[label] for label in clustering.labels_]
+    acc = accuracy_score(labels, new_labels)
+    return acc
+    
 
 
 def main():
@@ -85,14 +91,20 @@ if __name__ == "__main__":
     main()
 
 
-# Part 2. Create function cluster_euclidean that gets a filename as parameter. Get the features and labels using the function from part 1.
-#filename = "data/data.seq"
+# Part 3. Create function cluster_hamming that works like the function in part 2, except now using the hamming affinity. 
+filename = "data/data.seq"
 #df = pd.read_csv(filename, sep = "\t")
 
-
-# Part 3. Create function cluster_hamming that works like the function in part 2, except now using the hamming affinity. 
 # Even though it is possible to pass the function hamming to AgglomerativeClustering, 
 # let us now compute the Hamming distance matrix explicitly. We can achieve this using the function sklearn.metrics.pairwise_distances. 
+features, labels = get_features_and_labels(filename)
+print(pairwise_distances(features, metric = "hamming"))
+#pairwise_distances()
+#sp.distance.hamming()
+# ValueError: Expected 2D array, got 1D array instead:
+#array=[0. 0. 1. ... 0. 1. 1.].
+#Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.
+
 # Use the affinity parameter precomputed to AgglomerativeClustering. 
 # And give the distance matrix you got from pairwise_distances, instead of the feature matrix, to the fit_predict method of the model. 
 # If you want, you can visualize the clustering using the provided plot function.
