@@ -84,10 +84,16 @@ for i, j in enumerate(new_df.X):
     #j = list(j)
     #print(new_df.X[i])
     new_df.X[i] = list(new_df.X[i])
-
-features = np.array(list(new_df.X))
+    print(type(new_df.X[i][0]))
+    new_df.X[i] = list(map(int, new_df.X[i]))
+    print(type(new_df.X[i][0]))
+print(new_df.dtypes)
+#new_df = new_df.astype({"X": int}) 
+#features = np.array(list(new_df.X))
 #print(b.shape)
-print(features.shape)
+#print(features.shape)
+#print(new_df.head())
+#print(new_df.dtypes)
 #test = 22030030
 #print(list(str(test)))
 
