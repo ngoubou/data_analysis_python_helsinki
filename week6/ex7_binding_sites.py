@@ -32,7 +32,28 @@ def toint(x):
 
 
 def get_features_and_labels(filename):
-    return (np.array([[]]), np.array([]))
+    df = pd.read_csv(filename, sep = "\t")
+    new_df = df.copy()
+    for i, k in enumerate(df.X):
+        a = []
+        for j in k:
+            if j == "A":
+                a.append("0")
+            elif j == "C":
+                a.append("1")
+            elif j == "G":
+                a.append("2")
+            elif j == "T":
+                a.append("3")  
+
+        new_df.X[i] = "".join(a)
+
+    for i, j in enumerate(new_df.X):
+        new_df.X[i] = list(new_df.X[i])
+        new_df.X[i] = list(map(int, new_df.X[i]))
+    features = np.array(list(new_df.X))  
+
+    return (features, new_df.y)
 
 #def plot(distances, method='average', affinity='euclidean'):
  #   mylinkage = hc.linkage(sp.distance.squareform(distances), method=method)
@@ -55,57 +76,6 @@ def main():
 if __name__ == "__main__":
     main()
 
-filename = "data/data.seq"
-df = pd.read_csv(filename, sep = "\t")
-## USE THE BELOW CODE TO WRITE THE SECOND FUNCTION
-
-new_df = df.copy()
-for i, k in enumerate(df.X):
-    a = []
-    for j in k:
-        if j == "A":
-            a.append("0")
-        elif j == "C":
-            a.append("1")
-        elif j == "G":
-            a.append("2")
-        elif j == "T":
-            a.append("3")  
-
-    new_df.X[i] = "".join(a)
-
-#new_df = new_df.astype({"X": int})
-#print(df.head())
-#b = np.array(list(new_df.X))
-#c = np.array(new_df.X)
-#print(new_df.head())
-#print(len(new_df.X))
-for i, j in enumerate(new_df.X):
-    #j = list(j)
-    #print(new_df.X[i])
-    new_df.X[i] = list(new_df.X[i])
-    print(type(new_df.X[i][0]))
-    new_df.X[i] = list(map(int, new_df.X[i]))
-    print(type(new_df.X[i][0]))
-print(new_df.dtypes)
-#new_df = new_df.astype({"X": int}) 
-#features = np.array(list(new_df.X))
-#print(b.shape)
-#print(features.shape)
-#print(new_df.head())
-#print(new_df.dtypes)
-#test = 22030030
-#print(list(str(test)))
-
-# Write also function get_features_and_labels that gets a filename as a parameter. 
-# The function should load the contents of the file into a DataFrame. The column X contains a string. 
-# Convert this column into a feature matrix using the above toint function. 
-# For example the column ["GGATAATA","CGATAACC"] should result to the feature matrix
-
-# [[2,2,0,3,0,0,3,0],
-# [1,2,0,3,0,0,1,1]]
-
-# The function should return a pair, whose first element is the feature matrix and the second element is the label vector.
 
 # Part 2. Create function cluster_euclidean that gets a filename as parameter. Get the features and labels using the function from part 1. 
 # Perform hierarchical clustering using the function sklearn.cluster.AgglomerativeClustering. 
