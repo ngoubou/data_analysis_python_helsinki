@@ -72,10 +72,16 @@ for k, i in enumerate(df.X):
         elif j == "T":
             a.append("3")  
 
-    new_df.X[k] = int("".join(a))
+    new_df.X[k] = "".join(a)
 
-new_df = new_df.astype({"X": int})
+#new_df = new_df.astype({"X": int})
+#print(df.head())
+#b = np.array(new_df.X)
 print(new_df.head())
+#print(len(new_df.X))
+#print(b.shape)
+#test = 22030030
+#print(list(str(test)))
 
 # Write also function get_features_and_labels that gets a filename as a parameter. 
 # The function should load the contents of the file into a DataFrame. The column X contains a string. 
