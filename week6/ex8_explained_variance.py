@@ -6,15 +6,35 @@ import pandas as pd
 from sklearn.decomposition import PCA
 import os
 import numpy as np
-
+import matplotlib.pyplot as plt
 os.chdir("/Users/mamba/Downloads/Data_Scientist_Path/Courses/python_helsinki/week6")
 
 def explained_variance():
-    return [], []
+    df = pd.read_csv("data/data.tsv", sep = "\t")
+    pca = PCA()
+    pca.fit(df)
+    var = []
+    for i in df:
+        var.append(variance(df[i]))
+    return var, pca.explained_variance_
 
 def main():
     v, ev = explained_variance()
-    #print(sum(v), sum(ev))
+    
+    #width = 10
+    #precision = 3
+    print("The variances are:", end = " ")
+    for i in v:
+        print(f"{i:.3f}", end = " ")
+    print("\n", end = "")
+    print("The variances after PCA are:", end = " ")
+    for j in ev:
+        print(f"{j:.3f}", end = " ")
+    print(f"The variances are:{v}")
+    print(f"The variances after PCA are:{ev}")
+    
+    plt.plot(np.arange(1,11), np.cumsum(ev));
+    plt.show()
 
 if __name__ == "__main__":
     main()
@@ -27,32 +47,15 @@ if __name__ == "__main__":
 df = pd.read_csv("data/data_pca.tsv", sep = "\t")
 pca = PCA()
 pca.fit(df)
-#print(df.head())
-#print(sum(np.sqrt(pca.singular_values_)))
-#numerateur = (pca.singular_values_ - pca.mean_)**2
-#print(numerateur)
-#denom = pca.n_samples_ - 1
-#print(sum(numerateur/denom))
-#print(3756.851785624242/399)
-#print(pca.explained_variance_)
+
 ls = []
 for i in df:
     ls.append(variance(df[i]))
-print(sum(ls))
-#print(variance(df.X1))
-#print(np.sum(pca.components_))
-#np.pow
-#print(pca.noise_variance_)
-# The function should return two lists (or 1D arrays). The first list should contain the variances of all the features. 
-# The second list should consist of the explained variances returned by the PCA.
-
-# In the main function print these values in the following form:
-
-# The variances are: ?.??? ?.??? ...
-# The explained variances after PCA are: ?.??? ?.??? ...
-
-# Print the values with three decimal precision and separate the values by a space.
 
 # Part 2.
 
 # Plot the cumulative explained variances. The y-axis should be the cumulative sum, and the x-axis the number of terms in the cumulative sum.
+v = pca.explained_variance_
+
+plt.plot(np.arange(1,11), np.cumsum(v));
+plt.show()
