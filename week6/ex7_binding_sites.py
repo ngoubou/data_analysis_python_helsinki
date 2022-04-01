@@ -100,7 +100,7 @@ filename = "data/data.seq"
 features, labels = get_features_and_labels(filename)
 print(pairwise_distances(features, metric = "hamming"))
 #pairwise_distances()
-#sp.distance.hamming()
+#sp.distance # this function gives the metrics accepted in pairwise_distances function
 # ValueError: Expected 2D array, got 1D array instead:
 #array=[0. 0. 1. ... 0. 1. 1.].
 #Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.
