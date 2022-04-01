@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+from cProfile import label
 import pandas as pd
 import numpy as np
 from sklearn.cluster import AgglomerativeClustering
@@ -14,6 +15,8 @@ import scipy.spatial as sp
 import scipy.cluster.hierarchy as hc
 
 import os
+
+from ex5_plant_clustering import find_permutation
 
 os.chdir("/Users/mamba/Downloads/Data_Scientist_Path/Courses/python_helsinki/week6")
 
@@ -62,7 +65,12 @@ def get_features_and_labels(filename):
     #plt.show()
 
 def cluster_euclidean(filename):
-    return 0.0
+    features, labels = get_features_and_labels(filename)
+    clustering = AgglomerativeClustering(n_clusters = 2, linkage = "average", affinity = "euclidean").fit(features)
+    permutation = find_permutation(2, labels, clustering.labels_)
+    new_labels = [permutation[label] for label in clustering.labels_]
+    acc = accuracy_score(labels, new_labels)
+    return acc
 
 def cluster_hamming(filename):
     return 0.0
@@ -77,11 +85,10 @@ if __name__ == "__main__":
     main()
 
 
-# Part 2. Create function cluster_euclidean that gets a filename as parameter. Get the features and labels using the function from part 1. 
-# Perform hierarchical clustering using the function sklearn.cluster.AgglomerativeClustering. 
-# Get two clusters using average linkage and euclidean affinity. Fit the model and predict the labels. 
-# Note that you may have to use the find_permutation function again, because even though the clusters are correct, 
-# they may be labeled differently than the real labels given in data.seq. The function should return the accuracy score.
+# Part 2. Create function cluster_euclidean that gets a filename as parameter. Get the features and labels using the function from part 1.
+#filename = "data/data.seq"
+#df = pd.read_csv(filename, sep = "\t")
+
 
 # Part 3. Create function cluster_hamming that works like the function in part 2, except now using the hamming affinity. 
 # Even though it is possible to pass the function hamming to AgglomerativeClustering, 
