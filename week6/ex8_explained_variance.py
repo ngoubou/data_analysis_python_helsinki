@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
-from math import sqrt
+
+from statistics import variance
 import pandas as pd
 from sklearn.decomposition import PCA
 import os
@@ -28,12 +29,17 @@ pca = PCA()
 pca.fit(df)
 #print(df.head())
 #print(sum(np.sqrt(pca.singular_values_)))
-numerateur = (pca.singular_values_ - pca.mean_)**2
+#numerateur = (pca.singular_values_ - pca.mean_)**2
 #print(numerateur)
-denom = pca.n_samples_ - 1
+#denom = pca.n_samples_ - 1
 #print(sum(numerateur/denom))
 #print(3756.851785624242/399)
-print(pca.explained_variance_)
+#print(pca.explained_variance_)
+ls = []
+for i in df:
+    ls.append(variance(df[i]))
+print(sum(ls))
+#print(variance(df.X1))
 #print(np.sum(pca.components_))
 #np.pow
 #print(pca.noise_variance_)
