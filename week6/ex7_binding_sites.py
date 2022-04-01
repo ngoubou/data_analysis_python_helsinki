@@ -60,9 +60,9 @@ df = pd.read_csv(filename, sep = "\t")
 ## USE THE BELOW CODE TO WRITE THE SECOND FUNCTION
 
 new_df = df.copy()
-for k, i in enumerate(df.X):
+for i, k in enumerate(df.X):
     a = []
-    for j in i:
+    for j in k:
         if j == "A":
             a.append("0")
         elif j == "C":
@@ -72,14 +72,22 @@ for k, i in enumerate(df.X):
         elif j == "T":
             a.append("3")  
 
-    new_df.X[k] = "".join(a)
+    new_df.X[i] = "".join(a)
 
 #new_df = new_df.astype({"X": int})
 #print(df.head())
-#b = np.array(new_df.X)
-print(new_df.head())
+#b = np.array(list(new_df.X))
+#c = np.array(new_df.X)
+#print(new_df.head())
 #print(len(new_df.X))
+for i, j in enumerate(new_df.X):
+    #j = list(j)
+    #print(new_df.X[i])
+    new_df.X[i] = list(new_df.X[i])
+
+features = np.array(list(new_df.X))
 #print(b.shape)
+print(features.shape)
 #test = 22030030
 #print(list(str(test)))
 
