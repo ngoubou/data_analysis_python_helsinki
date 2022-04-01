@@ -91,6 +91,9 @@ if __name__ == "__main__":
 # Their solution is waayyyy cleaner. Suspected the use of dictionary for the 1st function.
 # They recommended us ti use find_permutation, but they didn't use it themselves.
 
+# Regarding their last question, i would say the hamming distance is better than the euclidean one
+# for this particular exercise. Based on what i (briefly) read about the former on wiki.
+
 #def toint(x):
  #   d=dict(zip("ACGT", range(4)))
   #  return d[x]
