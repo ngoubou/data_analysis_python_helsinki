@@ -33,7 +33,6 @@ def toint(x):
         x = np.nan
     return x
 
-
 def get_features_and_labels(filename):
     df = pd.read_csv(filename, sep = "\t")
     new_df = df.copy()
@@ -50,19 +49,18 @@ def get_features_and_labels(filename):
                 a.append("3")  
 
         new_df.X[i] = "".join(a)
-
     for i, j in enumerate(new_df.X):
         new_df.X[i] = list(new_df.X[i])
         new_df.X[i] = list(map(int, new_df.X[i]))
-    features = np.array(list(new_df.X))  
 
+    features = np.array(list(new_df.X))  
     return (features, new_df.y)
 
-#def plot(distances, method='average', affinity='euclidean'):
- #   mylinkage = hc.linkage(sp.distance.squareform(distances), method=method)
-  #  g=sns.clustermap(distances, row_linkage=mylinkage, col_linkage=mylinkage )
-   # g.fig.suptitle(f"Hierarchical clustering using {method} linkage and {affinity} affinity")
-    #plt.show()
+def plot(distances, method='average', affinity='euclidean'):
+    mylinkage = hc.linkage(sp.distance.squareform(distances), method=method)
+    g=sns.clustermap(distances, row_linkage=mylinkage, col_linkage=mylinkage )
+    g.fig.suptitle(f"Hierarchical clustering using {method} linkage and {affinity} affinity")
+    plt.show()
 
 def cluster_euclidean(filename):
     features, labels = get_features_and_labels(filename)
@@ -74,41 +72,50 @@ def cluster_euclidean(filename):
 
 def cluster_hamming(filename):
     features, labels = get_features_and_labels(filename)
-    clustering = AgglomerativeClustering(n_clusters = 2, linkage = "average", affinity = "precomputed").fit_predict(pairwise_distances(features))
+    clustering = AgglomerativeClustering(n_clusters = 2, linkage = "average", affinity = "precomputed")
+    clustering.fit_predict(pairwise_distances(features, metric = "hamming"))
     permutation = find_permutation(2, labels, clustering.labels_)
     new_labels = [permutation[label] for label in clustering.labels_]
     acc = accuracy_score(labels, new_labels)
     return acc
-    
-
 
 def main():
-    pass
-    #print("Accuracy score with Euclidean affinity is", cluster_euclidean("src/data.seq"))
-    #print("Accuracy score with Hamming affinity is", cluster_hamming("src/data.seq"))
+    print("Accuracy score with Euclidean affinity is", cluster_euclidean("data/data.seq"))
+    print("Accuracy score with Hamming affinity is", cluster_hamming("data/data.seq"))
 
 if __name__ == "__main__":
     main()
 
 
-# Part 3. Create function cluster_hamming that works like the function in part 2, except now using the hamming affinity. 
-filename = "data/data.seq"
-#df = pd.read_csv(filename, sep = "\t")
+## Course Solution ----
+# Their solution is waayyyy cleaner. Suspected the use of dictionary for the 1st function.
+# They recommended us ti use find_permutation, but they didn't use it themselves.
 
-# Even though it is possible to pass the function hamming to AgglomerativeClustering, 
-# let us now compute the Hamming distance matrix explicitly. We can achieve this using the function sklearn.metrics.pairwise_distances. 
-features, labels = get_features_and_labels(filename)
-print(pairwise_distances(features, metric = "hamming"))
-#pairwise_distances()
-#sp.distance # this function gives the metrics accepted in pairwise_distances function
-# ValueError: Expected 2D array, got 1D array instead:
-#array=[0. 0. 1. ... 0. 1. 1.].
-#Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.
+#def toint(x):
+ #   d=dict(zip("ACGT", range(4)))
+  #  return d[x]
 
-# Use the affinity parameter precomputed to AgglomerativeClustering. 
-# And give the distance matrix you got from pairwise_distances, instead of the feature matrix, to the fit_predict method of the model. 
-# If you want, you can visualize the clustering using the provided plot function.
+#def get_features_and_labels(filename):
+#    df = pd.read_csv(filename, sep='\t')
+ #   y = df.y
+  #  A = np.array(df.X.map(list).values.tolist())
+   # toint2 = np.vectorize(toint)
+    #A = toint2(A)
+    #return A, y
 
-# NB! When submitting your solution, please comment away all plot function calls. This might cause tests to fail on the server.
+#def cluster_euclidean(filename):
+ #   A, y = get_features_and_labels(filename)
+  #  model = AgglomerativeClustering(2, linkage="average", affinity='euclidean')
+   # yfitted = model.fit_predict(A)
+    #acc = accuracy_score(y, yfitted)
+    #return acc
 
-# Which affinity (or distance) do you think is theoretically more correct of these two (Euclidean or Hamming)? Why?
+#def cluster_hamming(filename):
+ #   A, y = get_features_and_labels(filename)
+  #  distances = pairwise_distances(A, metric="hamming")
+   # model = AgglomerativeClustering(2, linkage="average", affinity='precomputed')
+    #yfitted = 1 - model.fit_predict(distances)
+    #acc = accuracy_score(y, yfitted)
+    # plot commented out from model solution, due to tests returning MemoryError sometimes
+    # plot(distances, "average", "hamming")
+    #return acc
