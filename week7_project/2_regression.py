@@ -32,17 +32,18 @@ def rescale(s):
 
 numerics = list(fram.select_dtypes(include=[np.number]).columns.values)
 del numerics[0]
-print(numerics)
+#print(numerics)
 for i in numerics:
-    print("s"+i)
+    #print("s"+i)
     fram["s"+i] = rescale(fram[i])
 
 for i,j in enumerate(numerics):
     #print("s"+j)
     fram["s"+j] = rescale(fram[j])
 
-print(fram.head())
-print(fram.describe())
+#print(fram.head())
+#print(fram.describe())
+print(fram.sAGE.describe())
 
 # Exercise 7
 # For the exercise 6, they did not specified to use the normalized variables
