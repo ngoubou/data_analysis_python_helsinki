@@ -83,3 +83,6 @@ def angle_between(v1, v2):
 #plt.show()
 
 #t = painting[:,:,0] # remove a dimension from a 3D numpy array
+
+# Get the numeric columns of a df
+#list(df.select_dtypes(include=[np.number]).columns.values)
