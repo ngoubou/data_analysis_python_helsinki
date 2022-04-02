@@ -43,4 +43,8 @@ for i,j in enumerate(numerics):
 
 print(fram.head())
 print(fram.describe())
-1
+
+# Exercise 7
+# For the exercise 6, they did not specified to use the normalized variables
+# But when we try to plot the model, the lines do not appear
+# Using the normalized variables in the model do make the line appear
