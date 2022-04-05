@@ -33,8 +33,8 @@ def rescale(s):
 numerics = list(fram.select_dtypes(include=[np.number]).columns.values)
 del numerics[0]
 #print(numerics)
-for i in numerics:
-    #print("s"+i)
+for i in "AGE FRW SBP DBP CHOL CIG".split():
+    print("s"+i)
     fram["s"+i] = rescale(fram[i])
 
 for i,j in enumerate(numerics):
@@ -44,29 +44,9 @@ for i,j in enumerate(numerics):
 #print(fram.head())
 #print(fram.describe())
 #print(fram.sAGE.describe())
-# Create function `rescale` that takes a Series as parameter. It should center the data and normalize it by dividing
-# by 2*sigma, where sigma is the standard deviation. Return the rescaled Series.
-def rescalee(s):
-    from statistics import stdev
-    center = s - s.mean()
-    scale = 2*stdev(s) # there appears to be a small variation between the two
-    return center/scale
 
-fram1 = fram.copy()
-#print(fram1.AGE.describe())
-numerics = list(fram1.select_dtypes(include=[np.number]).columns.values)
-del numerics[0]
-#print(numerics)
-for i in numerics:
-    #print("s"+i)
-    fram1["s"+i] = rescalee(fram1[i])
 
-#print(fram.sAGE.describe())
-#print(fram1.sAGE.describe())
-fit1 = smf.ols("SBP ~ FRW + SEX + CHOL + AGE", data = fram1).fit()
-#print(fit1.summary())
-fit3 = smf.ols("SBP ~ sFRW + SEX + sFRW:SEX + sCHOL + sCHOL:sFRW + sAGE + sAGE:sFRW + sCHOL:SEX + sAGE:SEX + sCHOL:sAGE", data = fram1).fit() 
-print(fit3.summary())
+
 
 # Exercise 2
 # is my computation of rescale correct? 
