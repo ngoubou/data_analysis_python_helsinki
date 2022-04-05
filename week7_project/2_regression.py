@@ -45,5 +45,11 @@ for i,j in enumerate(numerics):
 #print(fram.describe())
 print(fram.sAGE.describe())
 
+# Exercise 2
+# is my computation of rescale correct? 
 # Exercise 7
 # statsmodel plot interaction
+
+# Exercise 9
+# correct coefficient for the model but not the correct signs 
+# the above leads to an uncorrect error rate
