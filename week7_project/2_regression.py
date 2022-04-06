@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+#from statistics import mean
 import numpy as np
 import matplotlib.pyplot as plt
 import statsmodels
@@ -34,7 +35,7 @@ numerics = list(fram.select_dtypes(include=[np.number]).columns.values)
 del numerics[0]
 #print(numerics)
 for i in "AGE FRW SBP DBP CHOL CIG".split():
-    print("s"+i)
+    #print("s"+i)
     fram["s"+i] = rescale(fram[i])
 
 for i,j in enumerate(numerics):
@@ -45,11 +46,13 @@ for i,j in enumerate(numerics):
 #print(fram.describe())
 #print(fram.sAGE.describe())
 
-
+df = pd.DataFrame([{"sCHOL":200, "sCIG":17, "sFRW":100}])
+#print(rescale(df))
+#mean
+center = 100 - fram.FRW.mean()
+scale= 2*fram.FRW.std()
+print(center/scale)
 
 
 # Exercise 11
 # subplots matplotlib
-
-# Exercise 13
-# cross validation
