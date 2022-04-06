@@ -49,5 +49,7 @@ for i,j in enumerate(numerics):
 
 
 # Exercise 11
+# subplots matplotlib
 
-# subplots patplotlib
+# Exercise 13
+# cross validation
