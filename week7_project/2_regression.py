@@ -52,6 +52,7 @@ df = pd.DataFrame([{"sCHOL":200, "sCIG":17, "sFRW":100}])
 center = 100 - fram.FRW.mean()
 scale= 2*fram.FRW.std()
 print(center/scale)
+plt.scatter(marker = "")
 
 
 # Exercise 11
