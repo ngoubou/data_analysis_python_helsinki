@@ -48,16 +48,6 @@ for i,j in enumerate(numerics):
 
 
 
-# Exercise 2
-# is my computation of rescale correct? 
-# Exercise 7
-# statsmodel plot interaction
+# Exercise 11
 
-# Exercise 9
-# correct coefficient for the model but not the correct signs 
-# the above leads to an uncorrect error rate
-
-def rescale(s):
-    center = s - s.mean()
-    scale = 2*s.std()
-    return center/scale
+# subplots patplotlib
