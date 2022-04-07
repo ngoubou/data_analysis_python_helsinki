@@ -1,0 +1,32 @@
+#### ---- PYTHON CONCEPTS TO REVIEW/REVISIT/REINFORCE/IMPROVE/LEARN ---- ####
+
+CONCEPTS ----
+
+List comprehension
+Regular expressions
+Numpy arrays/Vectorization 
+Classes 
+Modules 
+Pass by reference 
+Match statement 
+For + else combined 
+Classification / Clustering 
+Visualisation 
+Algorithms and Data Structures
+
+Apply default directory for all the files in a folder python 
+
+
+USEFUL RESOURCES ----
+
+Corey Schafer 
+Python documentation 
+Image processing week3 DAP Helsinki
+Reddit
+Freecodeamp
+
+TO DO ---
+
+Leetcode
+Factorial Analysis in python
+Solve all CS50 problem sets using python
