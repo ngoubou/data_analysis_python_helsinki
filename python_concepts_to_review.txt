@@ -1,6 +1,6 @@
-#### ---- PYTHON CONCEPTS TO REVIEW/REVISIT/REINFORCE/IMPROVE/LEARN ---- ####
+#### ---- PYTHON CONCEPTS TO REVIEW/REVISIT/REINFORCE/IMPROVE/LEARN/MASTER ---- ####
 
-CONCEPTS ----
+CONCEPTS (not all are specific to to python)----
 
 List comprehension
 Regular expressions
@@ -13,6 +13,13 @@ For + else combined
 Classification / Clustering 
 Visualisation 
 Algorithms and Data Structures
+Dynamic typing
+Bytes
+String interpolation
+Format syntax
+Format specifier
+Difference between expression and statement
+
 
 Apply default directory for all the files in a folder python 
 
