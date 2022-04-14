@@ -19,7 +19,7 @@ String interpolation
 Format syntax
 Format specifier
 Difference between expression and statement
-
+API
 
 Apply default directory for all the files in a folder python 
 
@@ -27,6 +27,7 @@ Apply default directory for all the files in a folder python
 USEFUL RESOURCES ----
 
 Corey Schafer 
+mCoding
 Python documentation 
 Image processing week3 DAP Helsinki
 Reddit
