@@ -20,6 +20,7 @@ Format syntax
 Format specifier
 Difference between expression and statement
 API
+Unit tests (pytest)
 
 Apply default directory for all the files in a folder python 
 
