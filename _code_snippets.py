@@ -86,3 +86,6 @@ def angle_between(v1, v2):
 
 # Get the numeric columns of a df
 #list(df.select_dtypes(include=[np.number]).columns.values)
+
+# sum two lists element wise
+#[sum(x) for x in zip(nums, nums1)] # where nums and nums1 are lists
