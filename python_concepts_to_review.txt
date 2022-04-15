@@ -21,6 +21,7 @@ Format specifier
 Difference between expression and statement
 API
 Unit tests (pytest)
+Command line arguments
 
 Apply default directory for all the files in a folder python 
 
