@@ -22,6 +22,7 @@ Difference between expression and statement
 API
 Unit tests (pytest)
 Command line arguments
+Refactoring
 
 Apply default directory for all the files in a folder python 
 
