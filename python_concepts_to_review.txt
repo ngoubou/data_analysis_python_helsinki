@@ -23,6 +23,7 @@ API
 Unit tests (pytest)
 Command line arguments
 Refactoring
+Argument (un)packing
 
 Apply default directory for all the files in a folder python 
 
@@ -33,8 +34,10 @@ Corey Schafer
 mCoding
 Python documentation 
 Image processing week3 DAP Helsinki
+DAP Helsinki
 Reddit
 Freecodeamp
+https://github.com/practiceprobs/problemsets
 
 TO DO ---
 
