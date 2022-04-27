@@ -24,6 +24,11 @@ Unit tests (pytest)
 Command line arguments
 Refactoring
 Argument (un)packing
+List methods
+Zip
+OOP
+Debugging 
+Hashable (see CS50 2020 week 5 for c implementation)
 
 Apply default directory for all the files in a folder python 
 
