@@ -6,7 +6,7 @@ List comprehension
 Regular expressions
 Numpy arrays/Vectorization 
 Classes 
-Modules 
+Modules (difference with packages)
 Pass by reference 
 Match statement 
 For + else combined 
