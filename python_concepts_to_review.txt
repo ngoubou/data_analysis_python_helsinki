@@ -29,7 +29,9 @@ Zip
 OOP
 Debugging 
 Hashable (see CS50 2020 week 5 for c implementation)
-
+Random access (memory)
+filter, lambda, map, reduce
+generator expression
 Apply default directory for all the files in a folder python 
 
 
