@@ -32,17 +32,24 @@ Hashable (see CS50 2020 week 5 for c implementation)
 Random access (memory)
 filter, lambda, map, reduce
 generator expression
+Context manager
+Standard file objects (sys module)
+
+
 Apply default directory for all the files in a folder python 
 
 
 USEFUL RESOURCES ----
 
 Corey Schafer 
-mCoding
 Python documentation 
-Image processing week3 DAP Helsinki
 DAP Helsinki
+Python Programming 2022, Helsinki
 Reddit
+mCoding
+
+Image processing week3 DAP Helsinki
+
 Freecodeamp
 https://github.com/practiceprobs/problemsets
 
