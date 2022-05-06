@@ -13,9 +13,7 @@ def explained_variance():
     df = pd.read_csv("data/data.tsv", sep = "\t")
     pca = PCA()
     pca.fit(df)
-    var = []
-    for i in df:
-        var.append(variance(df[i]))
+    var = [variance(df[i]) for i in df]
     return var, pca.explained_variance_
 
 def main():

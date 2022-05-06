@@ -34,9 +34,8 @@ def commute():
     df1 = df1.loc[august, :]
     df1.reset_index(inplace = True)
     df1["Weekday"] = df1["Date"].dt.dayofweek
-    df1["Weekday"] += 1 
-    groups = df1.groupby("Weekday").sum()
-    return groups
+    df1["Weekday"] += 1
+    return df1.groupby("Weekday").sum()
 
 def main():
     df = commute()

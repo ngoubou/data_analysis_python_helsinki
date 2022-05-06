@@ -6,35 +6,36 @@ import numpy as np
 def last_week():
     file = "/Users/Mamba/Library/Application Support/tmc/vscode/mooc-data-analysis-with-python-2021/part04-e15_last_week/src/UK-top40-1964-1-2.tsv"
     df = pd.read_csv(file, sep = "\t")
-   
+
     ## Étape 1 : Replace lines with Re and New by NaNs
     df.loc[(df["LW"] == "New") | (df["LW"] == "Re")] = np.nan
     df = df.astype({"Pos": float, "LW": float, "Peak Pos": float, "WoC": float})
     # df = df.astype({"Pos": float}) # doesn't work for some reason
     ## Étape 2 : Since we don't know last week positions, WoC steps down by 1 point
     df["WoC"] = df["WoC"] - 1
-  
+
     ## Étape 3 : If the Peak Position of a song is Pos but not LW, then convert it to NaN
     df["Peak Pos"] = np.where((df['Peak Pos'] == df['Pos']) & (df['Peak Pos'] != df['LW']), np.nan, df["Peak Pos"])
     df.sort_values("LW", ascending = True, inplace = True)
- 
+
     ## Étape 4 : Use LW column as Pos and sent LW to NaN
-    df["Pos"] = df["LW"]  
+    df["Pos"] = df["LW"]
     df["LW"] = np.nan
-    
-    # This part needs some optimization
-    temp = df.loc[28]
-    df.loc[28] = df.loc[31]
-    df.loc[31] = temp
 
-    temp1 = df.loc[38]
-    df.loc[38] = df.loc[31]
-    df.loc[31] = temp1
-
+    _extracted_from_last_week_21(df, 28)
+    _extracted_from_last_week_21(df, 38)
     for i in range(40) :
         df.iloc[i, 0] = i + 1
-      
+
     return df
+
+
+# TODO Rename this here and in `last_week`
+def _extracted_from_last_week_21(df, arg1):
+    # This part needs some optimization
+    temp = df.loc[arg1]
+    df.loc[arg1] = df.loc[31]
+    df.loc[31] = temp
 
 def main():
     df = last_week()

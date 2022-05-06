@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import contextlib
 import pandas as pd
 import os 
 
@@ -13,17 +14,14 @@ def split_date():
 
     hour = new_df["Hour"].str.split(":")
     for i, j in enumerate(hour):
-        try:
+        with contextlib.suppress(TypeError):
             new_df.iloc[i, 4] = j[0]
-        except TypeError:
-            pass
-    
     # Change days from finnish to english
     days = ["Wed", "Thu", "Fri", "Sat", "Sun", "Mon", "Tue"]
     for i,j in enumerate(new_df["Weekday"].unique()):
         k = days[i]
         new_df.replace(to_replace = j, value = k, inplace = True)
-    
+
     # Change month from string (finnish) to numbers
     months = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
     for i, j in enumerate(new_df["Month"].unique()):
@@ -32,7 +30,7 @@ def split_date():
 
     # Convert the columns to the right type
     new_df = new_df.astype({"Day": int, "Month": int, "Year": int, "Hour": int})
-   
+
     return new_df
 
 

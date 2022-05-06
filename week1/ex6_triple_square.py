@@ -7,7 +7,6 @@ def square(x):
     return x ** 2
 
 def main():
-    pass
     for i in range(1,11):
         s = square(i)
         t = triple(i)

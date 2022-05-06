@@ -1,11 +1,7 @@
 #!/usr/bin/env python3
 
 def find_matching(L, pattern):
-    ls = []
-    for i, x in enumerate(L):
-        if pattern in x:
-            ls.append(i)
-    return ls
+    return [i for i, x in enumerate(L) if pattern in x]
 
 def main():
     pass

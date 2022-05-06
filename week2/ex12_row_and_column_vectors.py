@@ -3,17 +3,12 @@
 import numpy as np
 
 def get_row_vectors(a):
-    result = []
-    for rows in a:
-        result.append(np.array([rows]))
-    return result
+    return [np.array([rows]) for rows in a]
 
 def get_column_vectors(a):
     result = []
     for cols in a.T:
-        ls = []
-        for j in range(len(cols)):
-            ls.append([[cols[j]]])
+        ls = [[[cols[j]]] for j in range(len(cols))]
         result.append(np.concatenate(ls))
     return result
 

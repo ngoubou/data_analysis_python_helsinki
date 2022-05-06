@@ -5,10 +5,10 @@
 l = [1, 5, 9, 12, 2, 6, 10]
 
 # the loop should continue as long as the list is unsorted
-while(not all(l[j] <= l[j+1] for j in range(len(l)-1))): # found on stackoverflow
+while any(l[j] > l[j + 1] for j in range(len(l) - 1)):
 #while (l[0] != min(l)) or (l[-1] != max(l)): # should check here if list is sorted
-    for i in range(0, 1 + len(l)):
-    
+    for i in range(1 + len(l)):
+
         while i+1 < len(l):
             #print(i)
             temp = l[i]

@@ -6,9 +6,7 @@ def subsetting_with_loc():
     file = "/Users/Mamba/Library/Application Support/tmc/vscode/mooc-data-analysis-with-python-2021/part04-e07_subsetting_with_loc/src/municipal.tsv"
     df = pd.read_csv(file, sep = "\t", index_col = 0)
     df = df["Akaa" : "Äänekoski"]
-    rows = []
-    for i in df.index:
-        rows.append(i)
+    rows = list(df.index)
     cols = ["Population", "Share of Swedish-speakers of the population, %", "Share of foreign citizens of the population, %"]
     return df.loc[rows, cols]
 

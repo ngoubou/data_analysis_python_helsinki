@@ -9,8 +9,7 @@ def to_grayscale(painting):
             j[0] = 0.2126 * j[0]
             j[1] = 0.7152 * j[1]
             j[2] = 0.0722 * j[2]
-    result = painting[:,:,0] # drop the last dimension of the array
-    return result
+    return painting[:,:,0]
 
 def main():
     image = "/Users/Mamba/Library/Application Support/tmc/vscode/mooc-data-analysis-with-python-2021/part03-e11_to_grayscale/src/painting.png"

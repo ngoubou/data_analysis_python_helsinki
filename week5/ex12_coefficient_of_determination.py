@@ -32,13 +32,11 @@ def coefficient_of_determination():
     
 def main():
     R2 = coefficient_of_determination()
-    x = 0
-    for i in R2:
+    for x, i in enumerate(R2):
         if x == 0:
             print(f"R2-score with feature(s) X: {i}")
         else:
             print(f"R2-score with feature(s) X{x}: {i}")
-        x += 1
 
 if __name__ == "__main__":
     main()

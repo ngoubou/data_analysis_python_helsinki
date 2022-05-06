@@ -3,7 +3,7 @@
 def sum_equation(L):
     # L = [1, 5, 7]
     # 1 - écrire un programme qui additionne tous les éléments de la liste, convertir résultat en string"
-    
+
     from functools import reduce   # import the reduce function from the functools module
     add = reduce(lambda x,y:x+y, L, 0)
     add = str(add)
@@ -13,16 +13,7 @@ def sum_equation(L):
     # i want to convert each element of the list as a string, so i use the following method
     s1 = [str(x) for x in L]
 
-    # 3 - ajouter signe "+" à la liste convertie et signe "="
-    s2 = " + ".join(s1)
-
-    # 4 - concatener liste au résultat de l'addition
-    if len(L) > 0:
-        a = s2 + " = " + add
-    else: # handle empty lists
-        a = "0 = 0"
-
-    return a
+    return f'{" + ".join(s1)} = {add}' if len(L) > 0 else "0 = 0"
 
 def main():
     pass

@@ -3,11 +3,8 @@
 import pandas as pd
 
 def powers_of_series(s, k):
-    d = {}
-    for i in range(1, k + 1):
-        d.update({i: s.values**i})
-    df = pd.DataFrame(d, index = s.index)
-    return df
+    d = {i: s.values**i for i in range(1, k + 1)}
+    return pd.DataFrame(d, index = s.index)
     
 def main():
     ind = list("abcd")

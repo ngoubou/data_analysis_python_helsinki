@@ -6,8 +6,7 @@ def top_bands():
     df = pd.read_csv("src/bands.tsv", sep = "\t")
     df["Band"] = df["Band"].str.upper()
     df1 = pd.read_csv("src/UK-top40-1964-1-2.tsv", sep = "\t")
-    merged = pd.merge(df1, df, left_on = ["Artist"], right_on = ["Band"])
-    return merged
+    return pd.merge(df1, df, left_on = ["Artist"], right_on = ["Band"])
 
 def main():
     print(top_bands().shape)

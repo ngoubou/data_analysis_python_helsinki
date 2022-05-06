@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 
-import pandas as pd    
+import contextlib
+import pandas as pd
 import numpy as np
 import re
 
 def read_series():
     contents = []
-    ind = [] 
+    ind = []
     val = []
 
     while True: 
@@ -16,18 +17,14 @@ def read_series():
             continue
         else:
             break
-   
+
     for i in contents: 
         if i and len(i.split()) != 2: # if the input does not have two parts separated by a space
-            raise Exception("The line is malformed")  
-        try:
+            raise Exception("The line is malformed")
+        with contextlib.suppress(IndexError):
             ind.append(i.split()[0])
             val.append(i.split()[-1])
-        except IndexError:
-            pass
-        
-    result = pd.Series(val, index = ind)
-    return result
+    return pd.Series(val, index = ind)
 
 def main():
     print(read_series())

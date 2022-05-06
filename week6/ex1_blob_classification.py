@@ -11,8 +11,7 @@ def blob_classification(X, y):
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.25, random_state = 0)
     model.fit(X_train, y_train)
     y_fitted = model.predict(X_test)
-    acc = metrics.accuracy_score(y_test,y_fitted)
-    return acc
+    return metrics.accuracy_score(y_test,y_fitted)
 
 def main():
     X, y = datasets.make_blobs(100, 2, centers = 2, random_state = 2, cluster_std = 2.5)

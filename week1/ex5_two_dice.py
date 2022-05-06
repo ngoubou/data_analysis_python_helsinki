@@ -1,11 +1,9 @@
-#!/usr/bin/env python3
+import itertools
 
 def main():
-    pass
-    for i in range(1,7):
-        for j in range(1,7):
-            if i + j == 5:
-                print("(" + str(i) + "," + str(j) + ")")
+    for i, j in itertools.product(range(1,7), range(1,7)):
+        if i + j == 5:
+            print(f"({str(i)},{str(j)})")
 
 if __name__ == "__main__":
     main()

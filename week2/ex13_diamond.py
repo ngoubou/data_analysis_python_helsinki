@@ -7,7 +7,7 @@ def diamond(n):
     mat_id = np.eye(2 * n - 1, dtype = int)
     ## 2 - Create a matrix of zeros with the same shape as above
     #shape = (2 * n - 1,) * 2
-    mat_ze = np.zeros((2 * n - 1,) * 2, dtype = int) 
+    mat_ze = np.zeros((2 * n - 1,) * 2, dtype = int)
     ##  3 - Take the line of the identity matrix and replace it in the zeros matrix
     # For how this is done, see my paper shit
     s = 2 * n - 1 # the shape of the matrix
@@ -20,12 +20,8 @@ def diamond(n):
         else:
          a -= 1
     a = s//2 
-
 # Take the indexes of the ones in the identity matrix
-    ls = [] # store the indexes of each ones, one per array
-    for k in mat_id:
-        ls.append(np.where(k == 1)[0][0])
-
+    ls = [np.where(k == 1)[0][0] for k in mat_id]
     for j in reversed(range(s)): # range(s-1, 0, -1) is an alternative
         mat_ze[j, ls[a]] = mat_id[a, ls[a]]
         if j <= n - 1: # mouvements de remplissage en fonction des lignes (voir feuille papier)

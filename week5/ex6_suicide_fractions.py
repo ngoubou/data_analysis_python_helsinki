@@ -9,8 +9,7 @@ new_dir = os.chdir("/Users/mamba/Downloads/Data_Scientist_Path/Courses/python_he
 def suicide_fractions():
     df = pd.read_csv("data/who_suicide_statistics.csv")
     groups = df.groupby("country")
-    mean_fraction = groups["suicides_no"].mean() / groups["population"].mean()
-    return mean_fraction
+    return groups["suicides_no"].mean() / groups["population"].mean()
 
 def main():
     print(suicide_fractions())

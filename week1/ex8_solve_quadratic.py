@@ -12,7 +12,6 @@ def solve_quadratic(a, b, c):
 
 
 def main():
-    pass
     print(solve_quadratic(1,-3,2))
     print(solve_quadratic(1,2,1))   
 

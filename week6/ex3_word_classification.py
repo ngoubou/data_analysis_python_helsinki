@@ -24,9 +24,7 @@ def load_finnish():
     load_from_net = False
     if load_from_net:
         with urllib.request.urlopen(finnish_url) as data:
-            lines = []
-            for line in data:
-                lines.append(line.decode('utf-8'))
+            lines = [line.decode('utf-8') for line in data]
         doc = "".join(lines)
     else:
         with open(filename, "rb") as data:
@@ -46,29 +44,17 @@ def get_features(a):
     n = a.size
     #letters = "abcdefghijklmnopqrstuvwxyzäö-"
     result = np.zeros(shape = (n, 29))
-    ind = 0
-    for i in a:
+    for ind, i in enumerate(a):
         ls = []
         for j in alphabet:
-            count = 0
-            for k in i:
-                if k == j:
-                    count += 1
+            count = sum(k == j for k in i)
             ls.append(count)
         result[ind] = ls
-        ind += 1    
     return result
 
 def contains_valid_chars(s):
-    count = 0
-    #letters = "abcdefghijklmnopqrstuvwxyzäö-"
-    for i in s:
-        if i in alphabet:
-            count += 1
-    if count == len(s):
-        return True
-    else:
-        return False
+    count = sum(i in alphabet for i in s)
+    return count == len(s)
 
 def get_features_and_labels():
     # @Anton on discord

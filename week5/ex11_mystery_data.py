@@ -20,10 +20,8 @@ def mystery_data():
 
 def main():
     coefficients = mystery_data()
-    j = 1
-    for i in coefficients:
+    for j, i in enumerate(coefficients, start=1):
         print(f"Coefficient of X{j} is {i}")
-        j += 1
     
 if __name__ == "__main__":
     main()
