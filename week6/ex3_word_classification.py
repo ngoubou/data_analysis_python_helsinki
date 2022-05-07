@@ -1,17 +1,16 @@
 #!/usr/bin/env python3
 
-from collections import Counter
+import os
+import re
 import urllib.request
-from lxml import etree
+from collections import Counter
 
 import numpy as np
-
-from sklearn.naive_bayes import MultinomialNB
-from sklearn.model_selection import cross_val_score
+from lxml import etree
 from sklearn import model_selection
-import re
+from sklearn.model_selection import cross_val_score
+from sklearn.naive_bayes import MultinomialNB
 
-import os
 os.chdir("/Users/mamba/Downloads/Data_Scientist_Path/Courses/python_helsinki/week6")
 
 alphabet = "abcdefghijklmnopqrstuvwxyzäö-"

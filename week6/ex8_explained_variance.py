@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 
 
+import os
 from statistics import variance
+
+import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
 from sklearn.decomposition import PCA
-import os
-import numpy as np
-import matplotlib.pyplot as plt
+
 os.chdir("/Users/mamba/Downloads/Data_Scientist_Path/Courses/python_helsinki/week6")
 
 def explained_variance():
