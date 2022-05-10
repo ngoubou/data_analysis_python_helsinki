@@ -1,0 +1,71 @@
+
+
+## NUMPY DIMENSIONS AND SHAPE 
+
+The arrays in numpy shouldn't be seen as matrices.
+This view hampered my comprehension (list? huhu) of what an array (numpy) is.
+Specifically how dimensions and shape worked and what was the difference.
+I'll explain (in my words) what they are, at least how i understand them now after reading the numpy official documentation here
+https://numpy.org/doc/stable/user/quickstart.html
+
+Imagine you have a list and want to create an array based on this list.
+You use the following command : np.array([1,2,3]).
+This array has 1 dimension (which is called an axe in numpy terminology).
+The dimension is the number of "brackets" in your np.array call.
+For example the last command written as np.array([[1,2,3]]) will now have 2 dimensions, because there are 2 brackets.
+
+The program goes inside np.array and checks how many brackets (arrays) are they.
+In the first example, there is 1 array, so the dimension is 1.
+In the second example, there is 2 arrays, so the dimension is 2. 
+
+
+Depending on the applciation, it might be useful to have more than one dimension. 
+A matrix comes to mind when we think about a more than one dimension array.
+A matrix is a 2-dimensional array, where each array inside represent a matrix dimension (not to be confused with numpy dimension).
+In image processing, we might be interested in 3-D array where each dimension represents a color (RGB).
+
+After the dimensions, we'll talk about the shape.
+
+The shape just tells us how many elements are inside each bracket it encounters, ie how many elements in each dimension.
+Let's take our first example again. We have np.array([1,2,3]).
+So the program goes inside the np.array function and asks the following :
+"how many elements are they in this bracket? (the first array it encounters)"
+In the first example, there were 1 array, and this array had 3 elements in it, 
+so the shape is (3,) because we have 1 dimension and 3 elements inside that dimension.
+
+In the second example, there were 2 arrays. The first array had an another array inside, so the first dimension has 1 element. 
+After this, it goes inside the second dimension/axe, which has 3 elements.
+The shape is then (1,3).
+
+What is the dimension and shape of the following array : np.array([[1,2,3], [4,5,6]])?
+Dimension : 2
+Shape : (2,3)
+
+But why is dimension 2 if we do have 3 arrays? Well that is a good question.
+As stated earlier, i explained how it worked using my words which obviously wer enot perfect.
+Maybe i should add a precision saying that it is not the number of brackets/arrays per se that matters, 
+but - and i really don't know how to put it more elegantly - how many left brackets are there directly after entering the function np.array().
+So in the example above, there are 2 such brackets, so the number of dimension is 2.
+What really matters (for now at least) is what helps me understand it.
+
+How about the shape now?
+We have 3 elements in each array. So the answer is (2,3), 2-dimension, 3 elements.
+What if the arrays did not have the same number of elements?
+If it was the case, the shape will be (2,). It only prints the number of dimensions.
+
+The tuple contains as many elements as there are dimensions.
+A 1-D array will print (n,),
+A 2-D (m,n) (matrix style),
+A 3-D (n,m,o) and so on.
+
+The size is the total number of tlements in the array. "This is equal to the product of the elements of shape." (Numpy documentation)
+
+# week3
+"In core Python we can combine truth values using the and, or, and not keywords. 
+
+For boolean array however we have to use the elementwise operators &, |, and ~, respectively."
+
+That's why i was getting the following error "ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()"
+I was using "and" instead of "&".
+Example : print(np.sum((a > 0) & (a < 10))) # this is correct
+print(np.sum((a > 0) and (a < 10))) # will yield a ValueError
