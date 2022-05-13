@@ -23,9 +23,9 @@
 u_n = 1
 ls = [u_n]
 ls2 = []
-limit = 2
+limit = 18
 #un_1 = u_n + r
-
+#a = []
 for _ in range(1,limit):
     #print(i)
     #un_1 += r
@@ -34,8 +34,24 @@ for _ in range(1,limit):
     if sum(ls) >= limit:
         #print(sum(ls))
         ls2.append(sum(ls))
+        print("The consecutive sum: ", end = "")
+        for i in ls:
+            #print(f"{i}", sep=" ")
+            if i != ls[-1]:
+                print(i,"+",sep=" ", end=" ")
+                #i = f"{str(i)} +"
+                #a.append(i)
+            else:
+                print(i,"=", ls2[0], sep=" ")
+                #i = f"{str(i)} ="
+                #a.append(i)
+        #print(a)
+        break
+            #print("+", end=" ")
+        #print("=", ls2[0], sep=" ")
+            #prin
         #break
-print(ls2[0])
+#print(ls2[0])
     # un_1 = u_n + r
     # if un_1 >= limit:
     #     print(un_1)
