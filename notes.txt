@@ -1,5 +1,11 @@
 
 
+
+Note to myself :
+When given a task, try to see if it relates to any known mathematical problem.
+For example if i'm tasked to compute the consecutive sums of a given number, this relates to sequences.
+Doing so will make my code cleaner and more efficient.
+
 ## NUMPY DIMENSIONS AND SHAPE 
 
 The arrays in numpy shouldn't be seen as matrices.
