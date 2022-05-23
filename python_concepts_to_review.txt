@@ -28,8 +28,9 @@ List methods
 Zip
 OOP
 Debugging 
-Hashable (see CS50 2020 week 5 for c implementation)
+Hash table (see CS50 2020 week 5 for c implementation)
 Random access (memory)
+Memory
 filter, lambda, map, reduce
 generator expression
 Context manager
