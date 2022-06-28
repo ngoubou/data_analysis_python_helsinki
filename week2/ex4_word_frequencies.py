@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import re
-from unittest import result
 
 def word_frequencies(filename = "alice.txt"):
     dic = {}
