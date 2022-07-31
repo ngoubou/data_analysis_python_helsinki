@@ -90,7 +90,7 @@ def angle_between(v1, v2):
 # sum two lists element wise
 #[sum(x) for x in zip(nums, nums1)] # where nums and nums1 are lists
 
-# My binary search function (don't know if it works for all cases)
+# My binary search function from the advanced python class (don't know if it works for all cases)
 from math import floor
 
 def binary_search(List: list, target: int):
