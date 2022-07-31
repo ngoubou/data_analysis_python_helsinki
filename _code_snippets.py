@@ -89,3 +89,20 @@ def angle_between(v1, v2):
 
 # sum two lists element wise
 #[sum(x) for x in zip(nums, nums1)] # where nums and nums1 are lists
+
+# My binary search function (don't know if it works for all cases)
+from math import floor
+
+def binary_search(List: list, target: int):
+    center = floor(len(List)/2)
+    ls_1 = List.copy()
+    while ls_1[center] != target:
+        for j in ls_1:
+            if j < ls_1[center]:
+                List.remove(j)
+        ls_1 = List.copy()
+        center = floor(len(List)/2)
+        if ls_1[center] == target:
+            print(f"We found the item! It is at the following position: {center}")
+            print(f"The final list is: {List}")
+            break
